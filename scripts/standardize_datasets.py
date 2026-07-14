@@ -124,6 +124,13 @@ def standardize_latex(text: str) -> Tuple[str, int]:
     cleaned = re.sub(r'\^\{([^}]+)\}', r'^\1', cleaned)
     cleaned = re.sub(r'_\{([^}]+)\}', r'_\1', cleaned)
     
+    # Remove LaTeX sizing/ boxing commands and leftover curly braces
+    # (curly braces are not part of actual Game of 24 math notation)
+    cleaned = re.sub(r'boxed', '', cleaned)
+    cleaned = re.sub(r'left\(', '(', cleaned)
+    cleaned = re.sub(r'right\)', ')', cleaned)
+    cleaned = cleaned.replace('{', '').replace('}', '')
+    
     return cleaned, conversions
 
 
@@ -335,12 +342,11 @@ def main():
     # Define datasets to process
     datasets = [
         # (input_path, output_path, text_field, is_debate)
-        (archive_path / 'ai_debate' / 'regenerated_ai_debate.jsonl', base_path / 'ai_debate' / 'processed_ai_debate.jsonl', 'full_text_no_labels', True),
-        (raw_path / 'ai_monologue' / 'qwen_generation' / 'cell4_monologues.jsonl', base_path / 'ai_monologue' / 'processed_prompted_ai_monologue.jsonl', 'transcript', False),
-        (raw_path / 'ai_reasoning' / 'deepseek_generation' / 'cell5_reasoning_traces.jsonl', base_path / 'ai_reasoning' / 'processed_native_reasoning_traces.jsonl', 'think_trace', False),
-        (human_debate_path / 'human_debate_delidata.jsonl', base_path / 'human_debate' / 'processed_human_debate.jsonl', 'transcript', True),
-        (raw_path / 'human_monologue' / 'think_aloud_source' / 'human_monologue_think_aloud.jsonl', base_path / 'human_monologue' / 'processed_human_think_aloud.jsonl', 'think_trace', False),
-        (archive_path / 'human_monologue' / 'sample_600_human_think_aloud.jsonl', base_path / 'human_monologue' / 'processed_sample_600_human_think_aloud.jsonl', 'think_trace', False),
+        (base_path / 'ai_debate' / 'raw_qwen_generation' / 'regenerated_ai_debate.jsonl', base_path / 'ai_debate' / 'processed_ai_debate.jsonl', 'full_text_no_labels', True),
+        (base_path / 'ai-monolouge' / 'prompted_ai_monologue.jsonl', base_path / 'ai_monologue' / 'processed_prompted_ai_monologue.jsonl', 'transcript', False),
+        (base_path / 'ai_reasoning' / 'raw_deepseek_generation' / 'native_reasoning_traces.jsonl', base_path / 'ai_reasoning' / 'processed_native_reasoning_traces.jsonl', 'think_trace', False),
+        (base_path / 'human_debate' / 'json formatted delidata (source in raw)' / 'human_debate_with_speaker_labels.jsonl', base_path / 'human_debate' / 'processed_human_debate.jsonl', 'transcript', True),
+        (base_path / 'human_monologue' / 'all samples (source in raw folder)' / 'human_think_aloud.jsonl', base_path / 'human_monologue' / 'processed_sample_600_human_think_aloud.jsonl', 'think_trace', False),
     ]
     
     print("=" * 60)

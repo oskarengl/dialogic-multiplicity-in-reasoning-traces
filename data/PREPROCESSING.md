@@ -1,21 +1,23 @@
 # Preprocessing Documentation
 
-This document contains all preprocessing decisions, schema definitions, standardization rules, and transformations applied to the datasets in `00_core-2x2/`.
+This document contains all preprocessing decisions, schema definitions, standardization rules, and transformations applied to the datasets in `00_core-2x2/`. Last updated: 2026-07-14.
 
 **Goal:** Ensure all datasets have consistent structure and formatting for fair comparison.
 
 ---
 
-## Preprocessing Policy Decisions (2026-07-10, revised 14:33 UTC)
+## Preprocessing Policy Decisions (2026-07-10, revised 2026-07-14)
 
 These decisions govern all future preprocessing work and supersede any conflicting statements elsewhere in this document. They came out of a review of why we normalize, what counts as a nuisance artifact vs. a real structural signal, and how to verify the cleaning actually worked.
 
-### 1. Replace, don't delete
+### 1. Replace, don't delete (CURRENT IMPLEMENTATION: DELETE)
 **Problem:** Outright deleting disallowed characters (`filter_character_set` in `standardize_datasets.py`) can jam adjacent text together at the deletion site (e.g. a 500-character Chinese run removed from mid-sentence leaves a discontinuity/scar exactly where the contamination was). A step-change or exchangeability method could key on that scar instead of genuine authorial structure — reintroducing the exact problem the cleaning was meant to solve.
 
 **Policy:** Wherever a disallowed character or run of characters is stripped, replace it with a single space (word-boundary-preserving placeholder) instead of deleting it outright. Collapse-multiple-spaces normalization (already applied) then absorbs the placeholder cleanly without leaving a jam. This applies to: foreign-script runs (Chinese/Japanese/Korean), emoji, decorative/special unicode, and special punctuation.
 
-**Status:** 🟡 Decided, not yet implemented. `scripts/standardize_datasets.py::filter_character_set` currently deletes; needs to be updated to replace-with-space before existing `*_processed.jsonl` files are regarded as final. All *_processed.jsonl files listed under "Current Dataset State" below were generated under the old deletion policy and must be regenerated once the script is updated.
+**Status:** 🟡 Decided, but not fully implemented. `scripts/standardize_datasets.py::filter_character_set` currently deletes disallowed characters. For the current processing run (2026-07-14), deletion was retained for non-essential symbols (special unicode math symbols like ≈, →, ≠, decorative symbols, emojis, Chinese characters). Curly quotes and backticks are remapped to semantically equivalent ASCII characters (`'` and `"`), so no scar risk there. The replace-with-space update is still pending for future refinement if deletion scars are detected in leakage probes.
+
+**Current approach:** Delete all characters outside the `ALLOWED_CHARS` set, except for quote normalization and LaTeX conversions which happen before character filtering. Processed `*_processed.jsonl` files in `00_core-2x2/` were generated with this deletion policy.
 
 ### 2. Document length / turn count is NOT a nuisance variable — do not normalize it away
 **Clarification:** AI/human debates will always run longer than solo monologues on the same task — that is a direct, expected consequence of the mono-/dialogue manipulation itself, not a pipeline artifact. Trying to equalize length across conditions in preprocessing would destroy real signal (turn-taking structure is partly *defined* by having more text to divide into turns).
@@ -38,7 +40,7 @@ Before trusting any classification method's output on the known cells (①②③
 
 ### AI Debate Schema
 
-**Files:** `ai_debate.jsonl` / `ai_debate_processed.jsonl`
+**Files:** `ai_debate/raw_qwen_generation/regenerated_ai_debate.jsonl` → `ai_debate/processed_ai_debate.jsonl`
 
 #### Core Fields
 - `debate_id` - Unique debate identifier (string)
@@ -71,7 +73,7 @@ Before trusting any classification method's output on the known cells (①②③
 
 ### AI Monologue Schema
 
-**Files:** `ai_mololouge.jsonl` / `ai_mololouge_processed.jsonl`
+**Files:** `ai-monolouge/prompted_ai_monologue.jsonl` → `ai_monologue/processed_prompted_ai_monologue.jsonl`
 
 #### Core Fields
 - `puzzle_id` - Standardized puzzle ID (g24_XXXX format) (string)
@@ -94,7 +96,7 @@ Before trusting any classification method's output on the known cells (①②③
 
 ### AI Monologue Reasoning Schema
 
-**Files:** `ai_monolouge_reasoning.jsonl` / `ai_monolouge_reasoning_processed.jsonl`
+**Files:** `ai_reasoning/raw_deepseek_generation/native_reasoning_traces.jsonl` → `ai_reasoning/processed_native_reasoning_traces.jsonl`
 
 #### Core Fields
 - `puzzle_id` - Standardized puzzle ID (g24_XXXX format) (string)
@@ -118,7 +120,7 @@ Before trusting any classification method's output on the known cells (①②③
 
 ### Human Debate Schema
 
-**Files:** `human_debate_delidata.jsonl` / `human_debate_delidata_processed.jsonl`
+**Files:** `human_debate/json formatted delidata (source in raw)/human_debate_with_speaker_labels.jsonl` → `human_debate/processed_human_debate.jsonl`
 
 #### Core Fields
 - `puzzle_id` - Unique puzzle identifier (UUID format) (string)
@@ -144,9 +146,9 @@ Before trusting any classification method's output on the known cells (①②③
 
 ---
 
-### Human Reasoning Traces Schema
+### Human Monologue / Think-Aloud Schema
 
-**Files:** `human_reasoning_traces.jsonl` / `human_reasoning_traces_processed.jsonl`
+**Files:** `human_monologue/all samples (source in raw folder)/human_think_aloud.jsonl` → `human_monologue/processed_sample_600_human_think_aloud.jsonl`
 
 #### Core Fields
 - `puzzle_id` - Standardized puzzle ID (g24_XXXX format) (string)
@@ -166,11 +168,11 @@ Before trusting any classification method's output on the known cells (①②③
 
 ---
 
-### Human Reasoning Traces (Small) Schema
+### Human Reasoning Traces (Small) Schema (Archived / Not Currently Processed)
 
 **Files:** `human_reasoning_traces_small.jsonl` / `human_reasoning_traces_small_processed.jsonl`
 
-Same schema as human_reasoning_traces.jsonl
+Same schema as human_reasoning_traces.jsonl. Note: The current `processed_sample_600_human_think_aloud.jsonl` is a sample of 600 rows drawn from the full 5,143-row human think-aloud dataset, not the small reasoning-traces sample.
 
 ---
 
@@ -183,21 +185,32 @@ Same schema as human_reasoning_traces.jsonl
 #### Allowed Characters
 - **Letters:** a-z, A-Z
 - **Numbers:** 0-9
-- **Basic punctuation:** . , ! ? ; : ' " ( ) [ ] { } -
-- **Mathematical symbols:** + - * / = < > × ÷
+- **Basic punctuation:** . , ! ? ; : ' " ( ) [ ] -
+- **Mathematical symbols:** + - * / = < > × ÷ ^ _
 - **Whitespace:** space, newline
 - **Special:** & (preserved as it appears in multiple datasets)
+- **Note:** Curly braces `{ }` are removed during LaTeX standardization (they are not part of actual Game of 24 math notation and only appear as LaTeX formatting artifacts).
 
-#### Replaced Characters (⚠ policy updated — see "Preprocessing Policy Decisions" above)
-> As originally implemented these were *deleted*. Per the 2026-07-10 policy update, these should be *replaced with a single space* to avoid deletion scars, then absorbed by whitespace collapsing. Script update pending — see Policy Decisions §1.
+#### Replaced Characters
+- Curly quotes (' ' " ") and backtick (`) → re-mapped to `'`/`"` (semantically equivalent characters, no scar risk)
+- LaTeX commands:
+  - `\frac{a}{b}` → `(a/b)`
+  - `\times` → `×`
+  - `\sqrt{x}` → `sqrt(x)`
+  - `\[`, `\]`, `\(`, `\)` → removed
+  - `^{n}` → `^n`, `_{n}` → `_n`
+  - `boxed`, `left(`, `right)` → removed / replaced with `(` and `)`
+  - `{ }` → removed
+
+#### Deleted Characters (⚠ see "Preprocessing Policy Decisions" §1)
+> Per the 2026-07-10 policy, these *should* be replaced with a single space. The current implementation deletes them. This was accepted for the 2026-07-14 processing run because the symbols are not part of the English/math vocabulary and are judged unlikely to leave meaningful scars, but it may be revisited if leakage probes detect condition-predictive artifacts.
 - Chinese characters (上千个字符)
 - Japanese characters (あいうえかがけしずせそっつてとなにねのはばまみめもょらるれわをん)
 - Korean characters (솞치)
 - Turkish characters (ä, ş)
 - Special unicode (², ·, é, ʃ, –, —, ', ₁, ₂, ₃, ⅓, →, √, ≈, ≠, −, ')
 - Emojis (😁)
-- Special punctuation (¿, …, 、。)
-- Curly quotes (' ' " ") — exception: these are directly re-mapped to `'`/`"` (a semantically equivalent character), not blanked, so no scar risk here
+- Special punctuation (¿, …, —, –, 、。)
 - Other special symbols (@, #, `, ^, ~, $, etc.)
 
 ---
@@ -208,19 +221,23 @@ Same schema as human_reasoning_traces.jsonl
 Keep mathematical meaning but convert LaTeX to standardized plain text.
 
 #### Conversion Rules
-- `\frac{a}{b}` → `(a/b)` or `a/b`
+- `\frac{a}{b}` → `(a/b)`
 - `\times` → `×` (already in character set)
-- `\sqrt{x}` → `sqrt(x)` or `√x` (if we add √ to character set)
+- `\sqrt{x}` → `sqrt(x)`
 - `\[` and `\]` → remove (display math delimiters)
 - `\(` and `\)` → remove (inline math delimiters)
 - `^{n}` → `^n` (keep exponent notation)
 - `_{n}` → `_n` (keep subscript notation)
-- Keep: `\` (backslash) for remaining LaTeX commands
+- `boxed{...}` → remove `boxed` and all `{ }` (LaTeX boxing artifacts)
+- `left(` → `(` (LaTeX parenthesis sizing command)
+- `right)` → `)` (LaTeX parenthesis sizing command)
+- `{` and `}` → removed (curly braces are not part of Game of 24 math notation and are only used as LaTeX delimiters)
 - Remove: Pure formatting LaTeX (e.g., `\textbf`, `\emph`)
 
 #### Mathematical Symbol Preservation
-- Keep: × ÷ + - * / = < > ( ) [ ] { } ^ _
+- Keep: × ÷ + - * / = < > ( ) [ ] ^ _
 - These are essential for mathematical reasoning content
+- Curly braces `{ }` are NOT preserved; they are removed as LaTeX artifacts
 
 ---
 
@@ -248,9 +265,9 @@ Keep mathematical meaning but convert LaTeX to standardized plain text.
 - Format: `system_info` contains the raw SYSTEM line content
 
 #### Special Character Removal
-- Replace (not delete — see Policy §1) emojis: 😁, 🎉, etc. with a single space
-- Replace special punctuation: ¿, …, —, –, etc. with a single space
-- Replace decorative symbols: ◆, ●, etc. with a single space
+- Delete (current implementation) or replace-with-space (planned policy) emojis: 😁, 🎉, etc.
+- Delete special punctuation: ¿, …, —, –, etc.
+- Delete decorative symbols: ◆, ●, etc.
 
 ---
 
@@ -259,10 +276,11 @@ Keep mathematical meaning but convert LaTeX to standardized plain text.
 #### Transcript Fields (ai_debate, human_debate)
 1. Extract SYSTEM line to `system_info` field
 2. Remove speaker labels
-3. Apply character set filtering
-4. Apply text normalization
+3. Apply LaTeX standardization
+4. Apply character set filtering
+5. Apply text normalization
 
-#### Think Trace Fields (ai_monolouge, human_reasoning)
+#### Think Trace / Monologue Fields (ai_monologue, human_monologue)
 1. Apply LaTeX standardization
 2. Apply character set filtering
 3. Apply text normalization
@@ -278,7 +296,7 @@ Keep mathematical meaning but convert LaTeX to standardized plain text.
 
 1. **Extract metadata** (SYSTEM line, speaker info)
 2. **Remove structural elements** (speaker labels, SYSTEM line from text)
-3. **LaTeX standardization** (convert to plain text math)
+3. **LaTeX standardization** (convert to plain text math; remove `boxed`, `left(`, `right)`, `{`, `}`)
 4. **Character set filtering** (remove non-allowed characters)
 5. **Text normalization** (quotes, whitespace, special chars)
 6. **Quality check** (ensure no empty transcripts, reasonable length)
@@ -300,8 +318,10 @@ Keep mathematical meaning but convert LaTeX to standardized plain text.
     "processed_length": 1200,
     "characters_removed": 34,
     "latex_conversions": 5,
+    "normalization_changes": 12,
     "speaker_labels_removed": 10,
     "system_extracted": true,
+    "removed_char_types": ["\\", "\\u2019", "\\u2248"],
     "processing_timestamp": "2026-07-10T15:30:00Z"
   }
 }
@@ -400,7 +420,7 @@ Keep mathematical meaning but convert LaTeX to standardized plain text.
 
 ---
 
-### 2026-07-10 10:59 UTC - Text Standardization Phase
+### 2026-07-10 10:59 UTC - Text Standardization Phase (Initial)
 **Files:** All datasets - created *_processed.jsonl versions
 
 **Transformations Applied:**
@@ -461,6 +481,89 @@ Keep mathematical meaning but convert LaTeX to standardized plain text.
 **Scripts Created:**
 - `scripts/standardize_datasets.py` - Main standardization script
 - `scripts/verify_processed_integrity.py` - Verification script
+
+**Status:** ✅ Superseded by 2026-07-14 reprocessing
+
+---
+
+### 2026-07-14 UTC - Reprocessing and LaTeX Artifact Cleanup
+**Files:** All `processed_*.jsonl` files in `data/00_core-2x2/`
+
+**Rationale:**
+- Original raw sources were already in JSON Lines format (`.jsonl`); no JSON conversion was necessary.
+- The `standardize_datasets.py` script reads `.jsonl` source files and writes `processed_*.jsonl` output files.
+- Discovered orphaned LaTeX artifacts (`boxed`, `left(`, `right)`, `{`, `}`) in the processed AI debate and AI monologue files.
+- Updated the script to clean these artifacts as part of the LaTeX standardization step.
+- Re-ran the full pipeline on all 5 canonical datasets.
+
+**Transformations Applied:**
+
+1. **File format / JSONL handling**
+   - Source files are `.jsonl` (JSON Lines), one JSON object per line
+   - Output files are `.jsonl` with identical structure plus `processing_info` field
+   - No JSON-to-JSON conversion; the script reads and writes `.jsonl` directly
+
+2. **Dataset Source-to-Output Mapping**
+   - `ai_debate/raw_qwen_generation/regenerated_ai_debate.jsonl` → `ai_debate/processed_ai_debate.jsonl` (600 rows)
+   - `ai-monolouge/prompted_ai_monologue.jsonl` → `ai_monologue/processed_prompted_ai_monologue.jsonl` (600 rows)
+   - `ai_reasoning/raw_deepseek_generation/native_reasoning_traces.jsonl` → `ai_reasoning/processed_native_reasoning_traces.jsonl` (600 rows)
+   - `human_debate/json formatted delidata (source in raw)/human_debate_with_speaker_labels.jsonl` → `human_debate/processed_human_debate.jsonl` (500 rows)
+   - `human_monologue/all samples (source in raw folder)/human_think_aloud.jsonl` → `human_monologue/processed_sample_600_human_think_aloud.jsonl` (5,143 rows)
+
+3. **LaTeX Standardization (updated)**
+   - `\frac{a}{b}` → `(a/b)` (32,889 conversions in AI debate, 10,105 in AI monologue, 922 in AI reasoning)
+   - `\times` → `×`
+   - `\sqrt{x}` → `sqrt(x)`
+   - Removed `\[`, `\]`, `\(`, `\)` (display/inline math delimiters)
+   - `^{n}` → `^n`, `_{n}` → `_n`
+   - **NEW:** `boxed` command removed
+   - **NEW:** `left(` → `(` (LaTeX sizing command)
+   - **NEW:** `right)` → `)` (LaTeX sizing command)
+   - **NEW:** `{` and `}` removed (curly braces are LaTeX formatting artifacts, not Game of 24 math)
+
+4. **Speaker Label Removal (human_debate, ai_debate)**
+   - Removed `SpeakerName: ` patterns at start of lines
+   - Removed animal names (Cat, Dog, Bird, etc.) as speaker labels
+   - Removed generic labels (Speaker A, Speaker 1, etc.)
+   - Removed self-references: "I agree with SpeakerName"
+   - 13,578 labels removed from human debate, 884 from AI debate
+
+5. **SYSTEM Line Extraction (human_debate)**
+   - Extracted `SYSTEM: ...` lines to `system_info` field
+   - Removed from transcript text
+
+6. **Character Set Filtering**
+   - Removed all characters outside the `ALLOWED_CHARS` set
+   - Includes: Chinese/Japanese/Korean/Turkish characters, emojis, special unicode, special punctuation
+   - **Note:** This currently *deletes* characters rather than replacing with spaces (see Policy §1)
+
+7. **Text Normalization**
+   - Curly quotes and backtick → straight `'` / `"`
+   - Collapse multiple spaces to single space
+   - Remove leading/trailing whitespace from lines
+   - Normalize newlines (max 2 consecutive)
+
+8. **Processing Metadata**
+   - Added `processing_info` to each row
+   - New fields include `normalization_changes` and `removed_char_types`
+
+**Results:**
+- ✅ Total 7,443 rows processed
+- ✅ Character set violations: 0 across all processed text
+- ✅ `boxed`, `left(`, `right)`, `{`, `}` artifacts: 0 in processed AI debate
+- ✅ No Chinese characters in regenerated AI debate source
+- ✅ Processing info present in 100% of rows
+- ⚠️ Deletion-based character filtering (replace-with-space policy still pending)
+
+**Processed Files Created/Updated:**
+- `ai_debate/processed_ai_debate.jsonl` (600 rows)
+- `ai_monologue/processed_prompted_ai_monologue.jsonl` (600 rows)
+- `ai_reasoning/processed_native_reasoning_traces.jsonl` (600 rows)
+- `human_debate/processed_human_debate.jsonl` (500 rows)
+- `human_monologue/processed_sample_600_human_think_aloud.jsonl` (5,143 rows)
+
+**Scripts Updated:**
+- `scripts/standardize_datasets.py` - Updated file paths and integrated LaTeX artifact cleanup
 
 **Status:** ✅ Complete
 
@@ -535,15 +638,26 @@ python cell3_build_dataset_random_discussion.py --seed 32345 --ranks "1,9,23,29,
 
 ## Current Dataset State
 
+### Raw / Source Files
+
 | File | Rows | Unique puzzles | Correctness fields | Notes |
 |---|---|---|---|---|
-| `ai_debate.jsonl` | 600 | 200 | No | Removed correctness (extraction failed), removed g24_0193, 47/600 have Chinese (7.83%) |
-| `ai_debate_regenerated.jsonl` | 600 | 200 | No | Clean version: 47 corrupted debates regenerated, English-only, verified |
-| `ai_mololouge.jsonl` | 600 | 200 | No | Removed correctness (extraction failed), removed g24_0193 |
-| `ai_monolouge_reasoning.jsonl` | 600 | 200 | No | Removed correctness (extraction issues), removed g24_0193 |
-| `human_debate_delidata.jsonl` | 500 | 500 | Yes | Different task (Wason card selection), original correctness kept |
-| `human_reasoning_traces.jsonl` | 5,143 | 200 | Yes | Full dataset, original correctness kept |
-| `human_reasoning_traces_small.jsonl` | 600 | 200 | Yes | Test dataset (3 trials/puzzle), original correctness kept |
+| `ai_debate/raw_qwen_generation/original_ai_debate (with chinese).jsonl` | 600 | 200 | No | Original with Chinese contamination; kept for traceability |
+| `ai_debate/raw_qwen_generation/regenerated_ai_debate.jsonl` | 600 | 200 | No | Clean version: 47 corrupted debates regenerated, English-only, verified |
+| `ai-monolouge/prompted_ai_monologue.jsonl` | 600 | 200 | No | Removed correctness (extraction failed), removed g24_0193 |
+| `ai_reasoning/raw_deepseek_generation/native_reasoning_traces.jsonl` | 600 | 200 | No | Removed correctness (extraction issues), removed g24_0193 |
+| `human_debate/json formatted delidata (source in raw)/human_debate_with_speaker_labels.jsonl` | 500 | 500 | Yes | Original includes speaker labels; Wason card selection task |
+| `human_monologue/all samples (source in raw folder)/human_think_aloud.jsonl` | 5,143 | 200 | Yes | Full dataset, original correctness kept |
+
+### Processed Files
+
+| File | Rows | Text field | Notes |
+|---|---|---|---|
+| `ai_debate/processed_ai_debate.jsonl` | 600 | `full_text_no_labels` | Speaker labels removed, LaTeX cleaned, character-set filtered |
+| `ai_monologue/processed_prompted_ai_monologue.jsonl` | 600 | `transcript` | LaTeX cleaned, character-set filtered |
+| `ai_reasoning/processed_native_reasoning_traces.jsonl` | 600 | `think_trace` | LaTeX cleaned, character-set filtered |
+| `human_debate/processed_human_debate.jsonl` | 500 | `transcript` | Speaker labels removed, SYSTEM line extracted, character-set filtered |
+| `human_monologue/processed_sample_600_human_think_aloud.jsonl` | 5,143 | `think_trace` | Character-set filtered, normalized |
 
 ---
 
@@ -557,14 +671,16 @@ python cell3_build_dataset_random_discussion.py --seed 32345 --ranks "1,9,23,29,
 - [x] Remove g24_0193 for puzzle overlap
 - [x] Create small human test dataset
 
-### Phase 2: Data Quality (COMPLETED 2026-07-10)
+### Phase 2: Data Quality (COMPLETED 2026-07-14)
 - [x] Text standardization (whitespace, special characters, LaTeX)
 - [x] Character set standardization across all datasets
 - [x] Transcript/think trace normalization (trailing whitespace, formatting)
 - [x] System line extraction (human debate)
 - [x] Speaker label removal (processed versions)
-- [x] Created *_processed.jsonl files alongside originals
+- [x] Created `processed_*.jsonl` files in `data/00_core-2x2/`
 - [x] Added processing_info metadata to all processed rows
+- [x] Integrated LaTeX artifact cleanup (`boxed`, `left(`, `right)`, `{`, `}`)
+- [x] Re-ran standardization on 5 canonical datasets after artifact cleanup
 
 ### Phase 3: Schema Alignment (INTENTIONAL ASYMETRIES)
 - [x] Keep AI-specific fields (pass, seed, cost_usd, timestamp)
@@ -582,10 +698,10 @@ python cell3_build_dataset_random_discussion.py --seed 32345 --ranks "1,9,23,29,
 - [x] Create final clean version: ai_debate_regenerated.jsonl
 - [x] Verify regenerated debates are English-only
 
-### Phase 5: Policy Update & Leakage Validation (PLANNED — see Preprocessing Policy Decisions above)
-- [ ] Update `filter_character_set` (and emoji/special-punct removal) in `standardize_datasets.py` to replace-with-space instead of delete
-- [ ] Re-run standardization on all six datasets once regeneration (Phase 4) and the script update are both done, superseding current `*_processed.jsonl` files
-- [ ] Spot-check regenerated + re-cleaned `ai_debate_processed.jsonl` for residual jamming/scars at former contamination sites
+### Phase 5: Policy Update & Leakage Validation (PARTIALLY COMPLETED — 2026-07-14)
+- [x] Re-run standardization on all 5 canonical datasets after regeneration (Phase 4) and LaTeX cleanup, superseding earlier `*_processed.jsonl` files
+- [x] Spot-check regenerated + re-cleaned `processed_ai_debate.jsonl` for residual `boxed`, `left(`, `right)`, `{`, `}` artifacts
+- [ ] Update `filter_character_set` (and emoji/special-punct removal) in `standardize_datasets.py` to replace-with-space instead of delete (deferred; deletion accepted for current run)
 - [ ] Build surface-feature leakage probe (LaTeX-token rate, non-ASCII rate, character-set-violation rate, avg sentence length — excluding length/turn-count, which are expected condition differences) and confirm condition label is not trivially recoverable on ①②③④
 - [ ] Document probe results here before proceeding to Step 1 method validation in `research_plan.md`
 
@@ -593,26 +709,31 @@ python cell3_build_dataset_random_discussion.py --seed 32345 --ranks "1,9,23,29,
 
 ## File Locations
 
-**Original Sources:**
-- AI debate: `data/ai-debate/cell3_debates.jsonl`
-- AI monologue: Generated by `scripts/cell4_build_ai_monologue.py`
-- AI reasoning: Generated by `scripts/cell5_build_reasoning_traces.py`
-- Human debate: `data/human-monologue-think-aloud-llms/` (original TSV/CSV files)
-- Human reasoning: `data/human-monologue-think-aloud-llms/` (original CSV files)
+**Original Sources (raw, in `data/00_core-2x2/`):**
+- AI debate: `ai_debate/raw_qwen_generation/original_ai_debate (with chinese).jsonl`
+- AI debate (clean): `ai_debate/raw_qwen_generation/regenerated_ai_debate.jsonl`
+- AI monologue: `ai-monolouge/prompted_ai_monologue.jsonl`
+- AI reasoning: `ai_reasoning/raw_deepseek_generation/native_reasoning_traces.jsonl`
+- Human debate: `human_debate/json formatted delidata (source in raw)/human_debate_with_speaker_labels.jsonl`
+- Human monologue: `human_monologue/all samples (source in raw folder)/human_think_aloud.jsonl`
 
-**Current Working Files:**
-- `data/00_core-2x2/` - All canonicalized datasets
+**Processed Working Files (in `data/00_core-2x2/`):**
+- `ai_debate/processed_ai_debate.jsonl`
+- `ai_monologue/processed_prompted_ai_monologue.jsonl`
+- `ai_reasoning/processed_native_reasoning_traces.jsonl`
+- `human_debate/processed_human_debate.jsonl`
+- `human_monologue/processed_sample_600_human_think_aloud.jsonl`
+
+**Scripts:**
 - `scripts/correctness/` - Archived correctness extraction scripts
 - `scripts/plotting_scripts/` - Analysis scripts (turn distribution, difficulty)
-
-**Analysis Scripts:**
-- `scripts/analyze_ai_debate_language.py` - Language contamination analysis
-- `scripts/analyze_chinese_position.py` - Chinese position analysis  
-- `scripts/extract_chinese_debate_parameters.py` - Parameter extraction for regeneration
 - `scripts/standardize_datasets.py` - Main standardization script
 - `scripts/verify_processed_integrity.py` - Verification script
+- `scripts/analyze_ai_debate_language.py` - Language contamination analysis
+- `scripts/analyze_chinese_position.py` - Chinese position analysis
+- `scripts/extract_chinese_debate_parameters.py` - Parameter extraction for regeneration
 
 **Documentation:**
-- `data/00_core-2x2/PREPROCESSING.md` - This consolidated documentation file
+- `data/PREPROCESSING.md` - This consolidated documentation file
 - `data/00_core-2x2/DATA_SAMPLES.md` - Samples of current canonicalized datasets
 - `data/00_core-2x2/character_frequency_analysis.txt` - Character frequency analysis results

@@ -25,7 +25,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 CELLS = [
     {
         "cell": "1",
-        "input": PROJECT_ROOT / "data" / "00_core-2x2" / "human_monologue" / "processed_sample_600_human_think_aloud.jsonl",
+        "input": PROJECT_ROOT / "data" / "00_core-2x2" / "human_monologue" / "all samples (source in raw folder)" / "sample_600_human_think_aloud.jsonl",
         "output": PROJECT_ROOT / "outputs" / "method3" / "cell1_human_monologue",
         "text_field": "think_trace",
     },
@@ -57,7 +57,7 @@ CELLS = [
 
 # Model and settings
 MODEL = "tencent/hy3:free"
-PROMPT = PROJECT_ROOT / "methods" / "3_dialogue_act_tagging" / "CAMS_LLM_labeling_prompt.txt"
+PROMPT = PROJECT_ROOT / "methods" / "3_dialogue_act_tagging" / "implementation" / "CAMS_LLM_labeling_prompt.txt"
 MAX_TOKENS = 32000
 RATE_LIMIT_RPM = 19
 MAX_WORKERS = 25

@@ -307,6 +307,11 @@ def process_file(
                 base_name = f"{cell_prefix}{safe_id}_{idx:04d}"
                 output_path = out_dir / f"{base_name}.jsonl"
 
+                # Resume: skip if a non-empty output file already exists.
+                if output_path.exists() and output_path.stat().st_size > 0:
+                    print(f"[{idx}] {base_name}: already exists, skipping")
+                    continue
+
                 print(f"[{idx}] {base_name}: {len(text)} chars")
 
                 semaphore.acquire()
