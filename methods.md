@@ -151,17 +151,27 @@ TBC and WMC), not just the paper's prose, since the two don't fully agree:
 
 **Per-document output**: predicted author count (TBC).
 
-**Step 1 pass/fail rule — significance against chance, not an imported round number.** Each
-calibration cell has a uniform true label, so "accuracy" is only meaningful pooled across all four
-cells (documents from ①④ truly single-author, ②③ truly multi-author). Rather than importing Nath's
-own 0.85 test-set accuracy as a floor — a number measured on a 5-class task in a very different
-domain (long StackExchange threads vs. short Game-of-24 transcripts), which isn't a fair transplant
-either way — the gate is: **pooled binary accuracy across the four cells is significantly better
-than chance** (binomial test against a 50% baseline, one-sided, p < .05). Report the pooled
-accuracy, the per-cell breakdown, and a confusion matrix alongside, so the *size* of the effect is
-visible even though the gate itself doesn't hinge on a specific percentage. This mirrors how
-Methods 2 and 3's gates already work (direction + effect size, no invented floor) — Method 1 was the
-only one still importing a point estimate from someone else's domain.
+**Step 1 pass/fail rule — balanced accuracy against the degenerate baseline, not pooled accuracy.**
+Each calibration cell has a uniform true label (①④ single-author, ②③ multi-author), so a method
+reveals nothing about *dialogue detection* merely by leaving the monologue cells alone. Pooled
+binary accuracy is actively misleading here because the cells are class-imbalanced: with ~1,200
+single-author documents (①④) against ~1,100 multi-author (②③), a degenerate detector that labels
+*everything* single already scores ≈0.52, which a plain binomial test against 0.5 can wave through
+on sample size alone — a "pass" that detected no dialogue whatsoever. The gate therefore uses
+**balanced accuracy = ½·(recall_single + recall_multi)**, where recall_single is over the pooled
+monologue cells ①④ and recall_multi over the pooled dialogue cells ②③. The all-single detector
+scores exactly 0.50 on this, so passing *requires* actually detecting multi-voice somewhere.
+**Gate: balanced accuracy significantly exceeds 0.50** (the trivial baseline), tested by a
+label-permutation null — shuffle the true labels across documents, recompute balanced accuracy,
+10,000 draws; one-sided p < .05. That null centres at 0.50 regardless of the class imbalance or the
+method's own prediction rate, which is exactly the property pooled-accuracy-vs-0.5 lacked. Report
+the two per-class recalls, the per-cell recall breakdown, the confusion matrix, and a bootstrap 95%
+CI on balanced accuracy alongside, so the effect size is visible. This keeps the "significance +
+effect size, no imported floor" logic shared with Methods 2 and 3; the switch from pooled to
+balanced accuracy is a *tightening* (it removes a free pass), not a relaxation, and corrects a
+genuine metric flaw rather than reacting to any observed result — Nath's own 0.85 is still not
+imported, since it was a 5-class score in a different domain (long StackExchange threads vs. short
+Game-of-24 transcripts).
 
 ---
 

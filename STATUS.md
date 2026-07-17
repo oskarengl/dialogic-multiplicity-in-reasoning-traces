@@ -89,3 +89,31 @@ the user's request, to remove the last "asserted round numbers" from the pre-reg
 
 Neither change involved inspecting cell ⑤'s tags or any §3 statistic on cell ⑤ — both procedures run
 exclusively on ③ and ④.
+
+## Method 1 — gate changed from pooled to balanced accuracy (2026-07-17)
+
+**Supersedes** the earlier note that "Method 1's gate uses a binomial test against chance" (in the
+"Open items carried" section above). While preparing the Method 1 validation we found the
+pooled-accuracy-vs-0.5 gate is not imbalance-safe: the calibration cells hold ~1,200 single-author
+documents (①④) against ~1,100 multi-author (②③), so a **degenerate detector that labels everything
+single-author already scores ≈0.52 pooled** and can clear a one-sided binomial test against 0.5 on
+sample size alone — i.e. a method that detects no dialogue at all could "pass."
+
+Fix: the gate now uses **balanced accuracy = ½·(recall_single + recall_multi)**, where
+recall_single is over the pooled monologue cells ①④ and recall_multi over the pooled dialogue cells
+②③. The all-single detector scores exactly 0.50 on this, so passing requires genuinely detecting
+multi-voice text somewhere. Significance is a label-permutation null (10,000 shuffles, one-sided
+p < .05), which centres at 0.50 regardless of the imbalance; per-class recalls, per-cell recall
+breakdown, confusion matrix, and a bootstrap 95% CI on balanced accuracy are reported alongside.
+
+Character of the change: this is a **tightening** (it removes a free pass) and a metric-correctness
+fix, decided from the class-count structure of the cells — not a reaction to any observed
+calibration result (none has been computed). Applied consistently in `methods.md` §1, the paper
+(`paper/main_v2.tex`, Method 1), and `run_calibration.py`/`RUN_METHOD1.md`.
+
+Scope check — Methods 2 and 3 do **not** need the same fix: their gates are effect-size / rank based
+(Method 2: direction + Cliff's δ ≥ 0.33; Method 3: κ ≥ 0.70 + directional completion-rate with
+Cliff's δ), which are inherently imbalance-robust and cannot be passed by a degenerate constant
+predictor. Method 1 was the only gate stated as raw accuracy. (Separately, whether off-task
+`human_debate` should carry weight in the Method 2/3 pole contrasts is a different question, not
+addressed here.)
