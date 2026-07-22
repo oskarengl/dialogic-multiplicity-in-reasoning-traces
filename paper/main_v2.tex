@@ -420,7 +420,17 @@ AI cell is written text, so human--AI comparisons mix producer with register.
 Fourth, document lengths span two orders of magnitude across cells
 (Figure~\ref{fig:lengths}), and the reasoning traces are longer than either
 anchor; Section~\ref{sec:method2} shows where this matters and how we handle
-it.
+it. Fifth, the two dialogue cells originally carried explicit speaker
+identifiers in their transcript text (participant pseudonyms in \cellhd{},
+role titles and letter labels in \cellad{}), which are high-frequency tokens
+that a method could exploit to detect dialogue from speaker identity rather
+than interactional structure. We removed these before analysis
+(Appendix~\ref{app:preprocessing}) and re-ran every calibration; all gates
+still pass, with the dialogue-vs-monologue effect sizes for Methods~2 and~3
+slightly larger on the cleaned data than before. Dialogue detection here is
+therefore not an artifact of speaker-identity cues. Nine \cellad{} documents
+that the Method~3 tagger could not process are excluded from its calibration
+(Appendix~\ref{app:preprocessing}).
 
 % ---------------------------------------------------------------------------
 \section{Methods}
@@ -1170,7 +1180,14 @@ explicit attribution), so that the bare letters \texttt{A}--\texttt{D} used
 as the article ``a'' or in arithmetic are never touched. This cleanup was
 added for the same reason as \cellhd{}'s: the role titles and letter
 references were initially left in place and are a condition leak of the same
-kind. See \texttt{STATUS.md} for the audit and re-run results.
+kind. Nine of the 600 documents are excluded from the Method~3 calibration:
+the dialogue-act tagger (a reasoning model) exhausts its output budget
+re-deriving the embedded arithmetic solution instead of tagging, returning no
+usable labels even at double the token limit; these nine skew toward the
+longest, most circuitous transcripts, so the retained cell slightly
+under-represents them. See \texttt{STATUS.md} and
+\texttt{outputs/method3/cell3\_excluded\_docs.md} for the audit and re-run
+results.
 \emph{\cellam{}} (600 documents) and \emph{\cellrt{}} (600 documents):
 single-blob transcripts; LaTeX normalization is the main transformation, as
 both models emit mathematical markup.
