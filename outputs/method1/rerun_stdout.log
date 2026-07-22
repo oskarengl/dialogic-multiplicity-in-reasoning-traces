@@ -1,0 +1,20 @@
+cell 1 (human_monologue) [0:None] n=600 (4s)
+cell 2 (human_debate) [0:None] n=500 (0s)
+cell 3 (ai_debate) [0:None] n=600 (44s)
+cell 4 (ai_monologue) [0:None] n=600 (2s)
+
+cell                 n  correct  recall
+human_monologue    600      585   0.975
+human_debate       500        0   0.000
+ai_debate          600      254   0.423
+ai_monologue       600      599   0.998
+
+Confusion (true \ pred):     pred_single  pred_multi
+  true_single (mono, 1&4):         1184          16
+  true_multi  (dia,  2&3):          846         254
+
+recall_single (mono 1&4) = 0.9867   recall_multi (dia 2&3) = 0.2309
+Balanced accuracy = 0.6088   (all-single baseline = 0.50)
+Bootstrap 95% CI  = [0.5961, 0.6210]
+Label-permutation p (one-sided vs 0.50) = 0.0001
+GATE (balanced acc > 0.50, p < .05): PASS

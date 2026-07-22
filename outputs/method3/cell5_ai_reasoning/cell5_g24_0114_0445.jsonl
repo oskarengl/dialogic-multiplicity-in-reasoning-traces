@@ -1,0 +1,206 @@
+{"text": "I need to reach the number 24 using the numbers 5, 5, 12, and 12 exactly once each, with the operations addition, subtraction, multiplication, and division.", "start": 0, "end": 156, "label": "inform"}
+{"text": "I can also use parentheses to group operations.", "start": 157, "end": 204, "label": "inform"}
+{"text": "First, since multiplication and division can give larger or smaller numbers, I should look into ways to multiply or divide the numbers to get closer to 24.", "start": 206, "end": 361, "label": "inform"}
+{"text": "Also, I have two 5s and two 12s, so maybe I can combine the like numbers in some way.", "start": 362, "end": 447, "label": "inform"}
+{"text": "One idea is to use the two 12s.", "start": 449, "end": 480, "label": "inform"}
+{"text": "12 times 2 is 24, so if I can make one of the other numbers become a 2 using the two 5s, that might work.", "start": 481, "end": 586, "label": "inform"}
+{"text": "How can I make a 2 with two 5s?", "start": 588, "end": 619, "label": "setQuestion"}
+{"text": "5 divided by 5 is 1, that's not 2.", "start": 620, "end": 654, "label": "disconfirm"}
+{"text": "5 minus 5 is 0, that's worse.", "start": 655, "end": 684, "label": "inform"}
+{"text": "5 plus 5 is 10, too big.", "start": 685, "end": 709, "label": "inform"}
+{"text": "Multiplication would be 25, even bigger.", "start": 710, "end": 750, "label": "inform"}
+{"text": "So division seems key.", "start": 751, "end": 773, "label": "inform"}
+{"text": "5 divided by 5 is 1, but I need 2.", "start": 775, "end": 809, "label": "disconfirm"}
+{"text": "What if I do something like (12 / 5) * something, but 12/5 is 2.4, not an integer, and I might be able to work with that.", "start": 810, "end": 931, "label": "inform"}
+{"text": "If I have 12 and 12, I can do operations with the 5s separately.", "start": 933, "end": 997, "label": "inform"}
+{"text": "Another thought: 24 is 12 times 2, and 2 can be made from 10 divided by 5, but I only have two 5s.", "start": 999, "end": 1097, "label": "inform"}
+{"text": "10 divided by 5 is 2, but where do I get the 10?", "start": 1098, "end": 1146, "label": "setQuestion"}
+{"text": "5 plus 5 is 10!", "start": 1147, "end": 1162, "label": "answer"}
+{"text": "Let's see.", "start": 1163, "end": 1173, "label": "stalling"}
+{"text": "So, (5 + 5) = 10, then 10 / 5?", "start": 1175, "end": 1205, "label": "setQuestion"}
+{"text": "But I have only two 5s, and I just used both for the sum.", "start": 1206, "end": 1263, "label": "inform"}
+{"text": "Let's not confuse.", "start": 1264, "end": 1282, "label": "retraction"}
+{"text": "Numbers: two 5s and two 12s.", "start": 1284, "end": 1312, "label": "inform"}
+{"text": "If I do 5 + 5 = 10, that uses both 5s.", "start": 1314, "end": 1352, "label": "inform"}
+{"text": "Then I have two 12s left.", "start": 1353, "end": 1378, "label": "inform"}
+{"text": "I need to incorporate one 12 to make a 2, and then multiply by the other 12.", "start": 1379, "end": 1455, "label": "inform"}
+{"text": "10 divided by 5, but I don't have another 5; both 5s are used in the 10.", "start": 1457, "end": 1529, "label": "inform"}
+{"text": "When I say 5 + 5, I'm using both 5s to make 10.", "start": 1530, "end": 1577, "label": "inform"}
+{"text": "Now I have that 10 and two 12s.", "start": 1578, "end": 1609, "label": "inform"}
+{"text": "I need to use one of the 12s to make division.", "start": 1611, "end": 1657, "label": "inform"}
+{"text": "So, something like (10 / something) but with what?", "start": 1658, "end": 1708, "label": "setQuestion"}
+{"text": "Maybe divide by another number, but I have 12s, not another 5.", "start": 1709, "end": 1771, "label": "inform"}
+{"text": "Perhaps I can divide 12 by something to make a number that can be used with 10.", "start": 1773, "end": 1852, "label": "inform"}
+{"text": "Let's denote the numbers.", "start": 1854, "end": 1879, "label": "inform"}
+{"text": "Let me call them A=5, B=5, C=12, D=12.", "start": 1880, "end": 1918, "label": "inform"}
+{"text": "I need an expression like ... with operations.", "start": 1920, "end": 1966, "label": "inform"}
+{"text": "Another idea: 12 * 2 = 24, and 2 = (5 + 5) / 5, but again, (5+5)/5 = 10/5 = 2, but that uses three 5s, and I have only two.", "start": 1968, "end": 2091, "label": "disconfirm"}
+{"text": "So not possible.", "start": 2092, "end": 2108, "label": "disconfirm"}
+{"text": "Unless I use one of the 12s to provide the denominator, but 12 is not 5.", "start": 2110, "end": 2182, "label": "inform"}
+{"text": "So (5+5)/12?", "start": 2183, "end": 2195, "label": "setQuestion"}
+{"text": "That would be 10/12 = 5/6, which is less than 1, not good for making 2.", "start": 2196, "end": 2267, "label": "disconfirm"}
+{"text": "(12 * 12) / something.", "start": 2269, "end": 2291, "label": "inform"}
+{"text": "12*12=144, which is too big; I need to divide by 6 to get 24, since 144/6=24.", "start": 2292, "end": 2369, "label": "inform"}
+{"text": "Can I make a 6 with the two 5s?", "start": 2370, "end": 2401, "label": "setQuestion"}
+{"text": "5 + 1, but no 1.", "start": 2403, "end": 2419, "label": "disconfirm"}
+{"text": "30/5, but 30 with one 5?", "start": 2420, "end": 2444, "label": "setQuestion"}
+{"text": "5*6, circular.", "start": 2445, "end": 2459, "label": "inform"}
+{"text": "How about (12 * 12) / (5 - something), but I need to use the other numbers.", "start": 2461, "end": 2536, "label": "inform"}
+{"text": "5 - 5 is 0, division by zero undefined, bad idea.", "start": 2538, "end": 2587, "label": "inform"}
+{"text": "5 * 5 is 25, too big alone.", "start": 2589, "end": 2616, "label": "inform"}
+{"text": "12 - 5 =7, then what.", "start": 2618, "end": 2639, "label": "inform"}
+{"text": "I should consider division between the numbers.", "start": 2641, "end": 2688, "label": "inform"}
+{"text": "For example, 12 / 5 = 2.4, and I have another 12 and another 5.", "start": 2690, "end": 2753, "label": "inform"}
+{"text": "12 / 5 = 2.4, then 2.4 * 10 = 24, and 10 is 5*2, but no.", "start": 2755, "end": 2811, "label": "inform"}
+{"text": "I have another 12 and another 5.", "start": 2813, "end": 2845, "label": "inform"}
+{"text": "So if I have 12 / 5 = 2.4, and then I have 12 and 5 left.", "start": 2847, "end": 2904, "label": "inform"}
+{"text": "12 * 2 = 24, but 2.4 is not 2.", "start": 2905, "end": 2935, "label": "disconfirm"}
+{"text": "2.4 * 10 = 24, but 10 from what?", "start": 2936, "end": 2968, "label": "setQuestion"}
+{"text": "I have 5, I can multiply by 5, but 2.4 * 5 = 12, which is not helpful.", "start": 2969, "end": 3039, "label": "inform"}
+{"text": "(12 / 5) * (12 / 0.5) or something, but I don't have 0.5.", "start": 3041, "end": 3098, "label": "disconfirm"}
+{"text": "(12 / 5) * 10, but 10 from where?", "start": 3100, "end": 3133, "label": "setQuestion"}
+{"text": "Perhaps (12 / 5) * (5 * 2), but no 2.", "start": 3135, "end": 3172, "label": "disconfirm"}
+{"text": "Another idea: use subtraction.", "start": 3174, "end": 3204, "label": "inform"}
+{"text": "12 * 2 = 24, and 2 = 12 / 6, but no 6.", "start": 3205, "end": 3243, "label": "disconfirm"}
+{"text": "5 * 4.8, but 4.8 is not obvious.", "start": 3245, "end": 3277, "label": "inform"}
+{"text": "12 + 12 = 24, but I have to use the 5s, and each number must be used once, so I can't just do 12+12; I need to incorporate the 5s in a way that they cancel or something.", "start": 3279, "end": 3448, "label": "inform"}
+{"text": "For example, 12 + 12 + (5 - 5), but that would be 24 + 0 = 24, and I used each number once: two 12s, one 5+, one 5-.", "start": 3450, "end": 3566, "label": "inform"}
+{"text": "Is subtraction allowed like that?", "start": 3568, "end": 3601, "label": "checkQuestion"}
+{"text": "Let's see: 12 + 12 + (5 - 5) = 24 + 0 = 24.", "start": 3602, "end": 3645, "label": "inform"}
+{"text": "But I think I need to have an expression with operations between them.", "start": 3646, "end": 3716, "label": "inform"}
+{"text": "In terms of operations, it's using + and -, and the numbers are used.", "start": 3718, "end": 3787, "label": "inform"}
+{"text": "But is this acceptable?", "start": 3789, "end": 3812, "label": "checkQuestion"}
+{"text": "I think so, because I'm using each number and the operations.", "start": 3813, "end": 3874, "label": "confirm"}
+{"text": "But let me check if there are parentheses or something.", "start": 3876, "end": 3931, "label": "inform"}
+{"text": "The expression would be: (12 + 12) + (5 - 5)", "start": 3933, "end": 3977, "label": "inform"}
+{"text": "That equals 24 + 0 = 24.", "start": 3979, "end": 4003, "label": "inform"}
+{"text": "I can write it as 12 + 12 + 5 - 5, which is the same thing.", "start": 4005, "end": 4064, "label": "inform"}
+{"text": "12 + 12 is 24, +5 -5 is 0, so 24.", "start": 4066, "end": 4099, "label": "inform"}
+{"text": "Is this using each number exactly once?", "start": 4101, "end": 4140, "label": "checkQuestion"}
+{"text": "Yes: 12, 12, 5, 5 each used once with + and - operations.", "start": 4141, "end": 4198, "label": "confirm"}
+{"text": "Also, the operations are +, -, *, / allowed, but I used only + and -, which are fine.", "start": 4200, "end": 4285, "label": "inform"}
+{"text": "Multiplication and division are not necessary if I can do it with + and -.", "start": 4287, "end": 4361, "label": "inform"}
+{"text": "Is this a valid solution?", "start": 4363, "end": 4388, "label": "checkQuestion"}
+{"text": "I think so.", "start": 4389, "end": 4400, "label": "confirm"}
+{"text": "But let me confirm the rules.", "start": 4402, "end": 4431, "label": "inform"}
+{"text": "\"Use each number exactly once with +, -, *, /\".", "start": 4432, "end": 4479, "label": "inform"}
+{"text": "It doesn't say I have to use all operations, just that I can use them.", "start": 4480, "end": 4550, "label": "inform"}
+{"text": "So, using addition and subtraction should be acceptable.", "start": 4552, "end": 4608, "label": "inform"}
+{"text": "Perhaps the problem implies to use operations to combine them, but this seems fine.", "start": 4610, "end": 4693, "label": "inform"}
+{"text": "I recall that in some 24 game rules, you have to use all four numbers with three operations to make 24, and this does it.", "start": 4695, "end": 4816, "label": "inform"}
+{"text": "But in this case, 12 + 12 + 5 - 5, that's four numbers and three operations.", "start": 4818, "end": 4894, "label": "inform"}
+{"text": "So it should work.", "start": 4896, "end": 4914, "label": "inform"}
+{"text": "But maybe someone expects multiplication or division, but it's not required.", "start": 4916, "end": 4992, "label": "inform"}
+{"text": "Perhaps I can do it with multiplication.", "start": 4994, "end": 5034, "label": "inform"}
+{"text": "Another common way: since 5 * 5 = 25, and 25 - 1 = 24, but I need to make 1 from the 12s.", "start": 5036, "end": 5125, "label": "inform"}
+{"text": "12 / 12 = 1, perfect.", "start": 5127, "end": 5148, "label": "inform"}
+{"text": "So, (5 * 5) - (12 / 12) = 25 - 1 = 24.", "start": 5150, "end": 5188, "label": "inform"}
+{"text": "And I used each number exactly once.", "start": 5190, "end": 5226, "label": "inform"}
+{"text": "Now I have division and subtraction.", "start": 5228, "end": 5264, "label": "inform"}
+{"text": "(5 * 5) - (12 / 12)", "start": 5266, "end": 5285, "label": "inform"}
+{"text": "Multiply, divide, subtract.", "start": 5287, "end": 5314, "label": "inform"}
+{"text": "All good.", "start": 5339, "end": 5348, "label": "inform"}
+{"text": "Another way: (12 / 12) =1, then 5 * 5 =25, minus that 1?", "start": 5350, "end": 5406, "label": "setQuestion"}
+{"text": "But in expression, it's fine.", "start": 5407, "end": 5436, "label": "inform"}
+{"text": "So this is another solution.", "start": 5438, "end": 5466, "label": "inform"}
+{"text": "Perhaps I can write it as 5 × 5 - 12 / 12, but without parentheses, the division would be first, but 12/12=1, then 5×5=25, then 25 - 1 =24, and since multiplication and division have precedence, it should be fine without parentheses?", "start": -1, "end": -1, "label": "checkQuestion"}
+{"text": "But let's see: 5 × 5 - 12 / 12.", "start": 5689, "end": 5720, "label": "inform"}
+{"text": "Order: division and multiplication before addition and subtraction.", "start": 5722, "end": 5789, "label": "inform"}
+{"text": "So 12/12=1, then 5×5=25, then 25 - 1 =24.", "start": 5791, "end": 5832, "label": "inform"}
+{"text": "But the order is left to right for same precedence, but here division and multiplication are same, so 12/12 first, then 5×5, then subtraction.", "start": 5834, "end": 5976, "label": "inform"}
+{"text": "So yes, it works without parentheses.", "start": 5978, "end": 6015, "label": "confirm"}
+{"text": "With parentheses it's clearer.", "start": 6017, "end": 6047, "label": "inform"}
+{"text": "But either way.", "start": 6049, "end": 6064, "label": "inform"}
+{"text": "Similarly, the first solution: 12 + 12 + 5 - 5.", "start": 6066, "end": 6113, "label": "inform"}
+{"text": "But in terms of expression, I have to write it properly.", "start": 6115, "end": 6171, "label": "inform"}
+{"text": "But both work.", "start": 6173, "end": 6187, "label": "inform"}
+{"text": "In the first solution, 12 + 12 + 5 - 5, that's also fine.", "start": 6189, "end": 6246, "label": "inform"}
+{"text": "But perhaps the subtraction of the 5s is essentially cancelling out.", "start": 6248, "end": 6316, "label": "inform"}
+{"text": "Now, is there a way using multiplication with both 12s, like 12 * 2 =24, but I need to make the 2 with the two 5s.", "start": 6318, "end": 6432, "label": "setQuestion"}
+{"text": "5 / 5 =1, but that's not 2.", "start": 6434, "end": 6461, "label": "disconfirm"}
+{"text": "5 - 3, but no 3.", "start": 6463, "end": 6479, "label": "disconfirm"}
+{"text": "With the 12, like (12 / 6), but no 6.", "start": 6481, "end": 6518, "label": "disconfirm"}
+{"text": "(5 + 5) / 5 for 2, but three 5s.", "start": 6520, "end": 6552, "label": "disconfirm"}
+{"text": "Not possible.", "start": 6554, "end": 6567, "label": "disconfirm"}
+{"text": "(12 * 5) / (5 / 2) or something, but let's not complicate.", "start": 6569, "end": 6627, "label": "inform"}
+{"text": "I think the solutions I have are fine.", "start": 6629, "end": 6667, "label": "inform"}
+{"text": "But in the second solution, I have subtraction and division, which might be more varied operations.", "start": 6669, "end": 6768, "label": "inform"}
+{"text": "But both are acceptable.", "start": 6770, "end": 6794, "label": "inform"}
+{"text": "Another idea: 24 = 12 * 2, and 2= 10 / 5, but 10 from where?", "start": 6796, "end": 6856, "label": "setQuestion"}
+{"text": "5 + 5, but then I used three numbers for the 2: (5+5)/5=10/5=2, but that uses three 5s.", "start": 6857, "end": 6944, "label": "disconfirm"}
+{"text": "(12 + 12) * (5/5) = 24 * 1 =24, but that's similar to the first idea.", "start": 6946, "end": 7015, "label": "inform"}
+{"text": "(12 + 12) × (5 / 5) = 24 × 1 = 24.", "start": -1, "end": -1, "label": "inform"}
+{"text": "And I used division and multiplication.", "start": 7053, "end": 7092, "label": "inform"}
+{"text": "In expression: (12 + 12) × (5 / 5)", "start": 7094, "end": 7128, "label": "inform"}
+{"text": "Now, the numbers are used once.", "start": 7130, "end": 7161, "label": "inform"}
+{"text": "Operations: +, ×, / also good.", "start": 7163, "end": 7193, "label": "inform"}
+{"text": "But essentially, it's the same as adding the 12s and multiplying by 1 from dividing the 5s.", "start": 7195, "end": 7286, "label": "inform"}
+{"text": "Similar.", "start": 7288, "end": 7296, "label": "inform"}
+{"text": "So I have multiple ways.", "start": 7298, "end": 7322, "label": "inform"}
+{"text": "But the question is to target 24 with [5,5,12,12].", "start": 7324, "end": 7374, "label": "inform"}
+{"text": "So, I think I can present one.", "start": 7376, "end": 7406, "label": "inform"}
+{"text": "But should I use division and multiplication differently?", "start": 7408, "end": 7465, "label": "setQuestion"}
+{"text": "For example, 12 * 2, and 2 from 12 / 6, but no 6.", "start": 7467, "end": 7516, "label": "disconfirm"}
+{"text": "5 * (24 / 5), but circular.", "start": 7518, "end": 7545, "label": "inform"}
+{"text": "Another thought: (12 - 5/5) * 2, but 5/5=1, 12-1=11, times 2 is 22, not 24, and I have another 12, not used.", "start": 7547, "end": 7655, "label": "disconfirm"}
+{"text": "(12 - 5/5) * something with 12.", "start": 7657, "end": 7688, "label": "inform"}
+{"text": "12 - 5/5 = 12 - 1 =11, and I have another 12, 12 * 2 =24, but no 2, 11 is not 2.", "start": 7690, "end": 7770, "label": "disconfirm"}
+{"text": "(12 * 5 - 12) / something.", "start": 7772, "end": 7798, "label": "inform"}
+{"text": "12*5 =60, minus 12 is 48, divided by 2 is 24, and 2 could be from 5/2.5, but no 2.5.", "start": 7800, "end": 7884, "label": "inform"}
+{"text": "With remaining 5, but 48 / 2 =24, and I have 5, not 2.", "start": 7886, "end": 7940, "label": "disconfirm"}
+{"text": "48 / (5/ something), but complicated.", "start": 7942, "end": 7979, "label": "inform"}
+{"text": "For example, 48 divided by 2, but I need to make 2 from 5, not possible alone.", "start": 7981, "end": 8059, "label": "disconfirm"}
+{"text": "(12 * 5 - 12) / (5 / 12) or something, messy.", "start": 8061, "end": 8106, "label": "inform"}
+{"text": "Not necessary since I have simpler ways.", "start": 8108, "end": 8148, "label": "inform"}
+{"text": "Another combination: (12 / 12) + (5 * 5) - 1?", "start": 8150, "end": 8195, "label": "setQuestion"}
+{"text": "1 + 25 =26, minus 1 is 25, not 24.", "start": 8196, "end": 8230, "label": "disconfirm"}
+{"text": "Not good.", "start": 8232, "end": 8241, "label": "inform"}
+{"text": "12 * (5 - 1/5) or something, but 1/5 with one 5, I need another 5.", "start": 8243, "end": 8309, "label": "setQuestion"}
+{"text": "Let's say 12 * (5 - 1/5), but 1/5 would require using another fraction, but I have one 5 used in denominator, but I have another 5 for subtraction?", "start": 8311, "end": 8458, "label": "setQuestion"}
+{"text": "Not clear.", "start": 8459, "end": 8469, "label": "inform"}
+{"text": "Set: I have two 12s and two 5s.", "start": 8471, "end": 8502, "label": "inform"}
+{"text": "Suppose I do 12 * ( something ) , and something should be 2.", "start": 8504, "end": 8564, "label": "inform"}
+{"text": "But how to make 2 with the remaining numbers: 12,5,5.", "start": 8566, "end": 8619, "label": "setQuestion"}
+{"text": "Similar problem.", "start": 8621, "end": 8637, "label": "inform"}
+{"text": "( 12 * 12 ) / ( 5 / 2 * something), complicated.", "start": 8639, "end": 8687, "label": "inform"}
+{"text": "I think it's unnecessary; I should stick with the earlier solutions.", "start": 8689, "end": 8757, "label": "inform"}
+{"text": "So, to conclude, I can have:", "start": 8759, "end": 8787, "label": "inform"}
+{"text": "1. (12 + 12) × (5 / 5) = 24 × 1 = 24", "start": 8789, "end": 8825, "label": "inform"}
+{"text": "2. (5 × 5) - (12 / 12) = 25 - 1 = 24", "start": 8827, "end": 8863, "label": "inform"}
+{"text": "3. 12 + 12 + 5 - 5 = 24", "start": 8865, "end": 8888, "label": "inform"}
+{"text": "All of these use each number exactly once with the allowed operations.", "start": 8890, "end": 8960, "label": "inform"}
+{"text": "Now, for the answer, I should write one expression.", "start": 8962, "end": 9013, "label": "inform"}
+{"text": "Since the problem says \"use each number exactly once\", I need to present the expression.", "start": 9015, "end": 9103, "label": "inform"}
+{"text": "Perhaps I can write it as a single expression.", "start": 9105, "end": 9151, "label": "inform"}
+{"text": "Let me see if there is a way with all operations, but it's not necessary.", "start": 9153, "end": 9226, "label": "inform"}
+{"text": "Another one: 12 × (5 - 5/12) or something, but let's not.", "start": 9228, "end": 9285, "label": "inform"}
+{"text": "5 - 5/12 = (60/12 - 5/12) = 55/12?", "start": 9287, "end": 9321, "label": "setQuestion"}
+{"text": "Then 12 * (55/12) = 55, not 24.", "start": 9322, "end": 9353, "label": "disconfirm"}
+{"text": "Not good.", "start": 9355, "end": 9364, "label": "inform"}
+{"text": "(12 * 5) / (5 / 2.4) or whatever, complicated.", "start": 9366, "end": 9412, "label": "inform"}
+{"text": "I think the simple ways are fine.", "start": 9414, "end": 9447, "label": "inform"}
+{"text": "So, I'll go with (5 × 5) - (12 ÷ 12) = 25 - 1 = 24.", "start": 9449, "end": 9500, "label": "inform"}
+{"text": "Using multiplication, division, subtraction.", "start": 9502, "end": 9546, "label": "inform"}
+{"text": "In symbols.", "start": 9548, "end": 9559, "label": "inform"}
+{"text": "Since we have two 12s, perhaps another way.", "start": 9561, "end": 9604, "label": "inform"}
+{"text": "12 ÷ (5/6) or something, but not.", "start": 9606, "end": 9639, "label": "disconfirm"}
+{"text": "12 * 2 =24 with 2= (12/6), but no 6.", "start": 9641, "end": 9677, "label": "disconfirm"}
+{"text": "I think I'm overcomplicating.", "start": 9679, "end": 9708, "label": "inform"}
+{"text": "So, I think (5 × 5) - (12 / 12) is a good one.", "start": 9710, "end": 9756, "label": "inform"}
+{"text": "To write it in a single line.", "start": 9758, "end": 9787, "label": "inform"}
+{"text": "(5 × 5) - (12 / 12)", "start": 10144, "end": 10163, "label": "inform"}
+{"text": "In the expression, it uses division and multiplication.", "start": 9810, "end": 9865, "label": "inform"}
+{"text": "Another one: since 24 is 48 ÷ 2, and 48 from 12 × 4, but not.", "start": 9867, "end": 9928, "label": "inform"}
+{"text": "12 × 4 =48, but I have 12 and 5s.", "start": 9930, "end": 9963, "label": "inform"}
+{"text": "Not directly.", "start": 9965, "end": 9978, "label": "inform"}
+{"text": "I think it's fine.", "start": 9980, "end": 9998, "label": "inform"}
+{"text": "So, I'll box the answer.", "start": 10000, "end": 10024, "label": "inform"}
+{"text": "The problem says \"Target 24 with numbers [5,5,12,12].", "start": 10026, "end": 10079, "label": "inform"}
+{"text": "Use each number exactly once with +, -, *, /.\"", "start": 10080, "end": 10126, "label": "inform"}
+{"text": "So, expression: (5 × 5) - (12 / 12)", "start": 10128, "end": 10163, "label": "inform"}
+{"text": "That should be it.", "start": 10165, "end": 10183, "label": "inform"}
+{"text": "To use addition, but anyway.", "start": 10185, "end": 10213, "label": "inform"}
+{"text": "Perhaps with the two 12s multiplied or something.", "start": 10215, "end": 10264, "label": "inform"}
+{"text": "(12 + 12) * 1 with 1 from 5/5.", "start": 10266, "end": 10296, "label": "inform"}
+{"text": "Same as before.", "start": 10298, "end": 10313, "label": "inform"}
+{"text": "So, I think it's good.", "start": 10315, "end": 10337, "label": "inform"}

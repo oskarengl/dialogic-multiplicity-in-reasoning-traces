@@ -1,0 +1,24 @@
+{"text": "To target 24 using the numbers [3, 5, 12, 12] exactly once with the operations +, -, *, /, we can use the following calculation:", "start": 0, "end": 128, "label": "inform"}
+{"text": "First, let's break it down:", "start": 130, "end": 157, "label": "suggest"}
+{"text": "5 × 12 = 60", "start": 159, "end": 170, "label": "inform"}
+{"text": "Next, use the other two numbers to adjust towards 24:", "start": 172, "end": 225, "label": "request"}
+{"text": "60 div 3 = 20", "start": 227, "end": 240, "label": "inform"}
+{"text": "Finally, add the remaining number:", "start": 242, "end": 276, "label": "request"}
+{"text": "20 + 12 = 32", "start": 278, "end": 290, "label": "inform"}
+{"text": "This doesn't work, so let's try another approach:", "start": 292, "end": 341, "label": "suggest"}
+{"text": "12 + 12 = 24", "start": 343, "end": 355, "label": "inform"}
+{"text": "Since we already used the 24, we need to adjust.", "start": 357, "end": 405, "label": "inform"}
+{"text": "Let's try:", "start": 406, "end": 416, "label": "suggest"}
+{"text": "12 div 3 = 4", "start": 418, "end": 430, "label": "inform"}
+{"text": "Then use the remaining numbers:", "start": 432, "end": 463, "label": "request"}
+{"text": "4 × (5 + 12) = 4 × 17 = 68", "start": 465, "end": 491, "label": "inform"}
+{"text": "This is still not working.", "start": 493, "end": 519, "label": "inform"}
+{"text": "Let's try another combination:", "start": 520, "end": 550, "label": "suggest"}
+{"text": "(12 - 5) = 7", "start": 552, "end": 564, "label": "inform"}
+{"text": "Then:", "start": 566, "end": 571, "label": "none"}
+{"text": "7 × 3 = 21", "start": 573, "end": 583, "label": "inform"}
+{"text": "Then add the last number:", "start": 585, "end": 610, "label": "request"}
+{"text": "21 + 3 = 24", "start": 612, "end": 623, "label": "inform"}
+{"text": "So, one correct solution is:", "start": 625, "end": 653, "label": "inform"}
+{"text": "(12 - 5) × 3 + 12 = 24", "start": 655, "end": 677, "label": "inform"}
+{"text": "This uses each number exactly once and results in 24.", "start": 679, "end": 732, "label": "inform"}

@@ -1,0 +1,197 @@
+{"text": "I need to reach the target number 24 using the numbers 8, 9, 12, and 12.", "start": 0, "end": 72, "label": "inform"}
+{"text": "I must use each number exactly once, and I can use addition, subtraction, multiplication, and division.", "start": 73, "end": 176, "label": "inform"}
+{"text": "I can also use parentheses to group operations.", "start": 177, "end": 224, "label": "inform"}
+{"text": "First, since I have two 12s, that might be useful.", "start": 226, "end": 276, "label": "inform"}
+{"text": "Maybe I can multiply them or something.", "start": 277, "end": 316, "label": "inform"}
+{"text": "12 times 12 is 144, which is way bigger than 24, so I'd need to divide or subtract to get down to 24.", "start": 317, "end": 418, "label": "inform"}
+{"text": "But I have to use all four numbers.", "start": 419, "end": 454, "label": "inform"}
+{"text": "Let me list the numbers: 8, 9, 12, 12.", "start": 456, "end": 494, "label": "inform"}
+{"text": "One idea: maybe I can do something like (12 - 8) * something with 9 and 12.", "start": 496, "end": 571, "label": "inform"}
+{"text": "12 - 8 is 4, and then I have 9 and 12 left.", "start": 572, "end": 615, "label": "inform"}
+{"text": "4 times 9 is 36, which is bigger than 24, and I still have another 12 to use.", "start": 616, "end": 693, "label": "inform"}
+{"text": "36 divided by 12 is 3, but that's not 24.", "start": 694, "end": 735, "label": "inform"}
+{"text": "Or 36 minus 12 is 24, but I used 12 twice?", "start": 736, "end": 778, "label": "checkQuestion"}
+{"text": "No, I used one 12 in (12 - 8), and then another 12 for subtraction, but I have two 12s, so that might work?", "start": 779, "end": 886, "label": "inform"}
+{"text": "Let's see: (12 - 8) * 9 - 12? That would be 4 * 9 = 36, minus 12 is 24.", "start": 887, "end": 958, "label": "inform"}
+{"text": "But I used both 12s: one in (12 - 8) and one in subtracting.", "start": 959, "end": 1019, "label": "inform"}
+{"text": "And I used 8 and 9.", "start": 1020, "end": 1039, "label": "inform"}
+{"text": "So that seems to work: (12 - 8) × 9 - 12 = 4 × 9 - 12 = 36 - 12 = 24.", "start": 1040, "end": 1109, "label": "inform"}
+{"text": "But is that using each number exactly once?", "start": 1111, "end": 1154, "label": "checkQuestion"}
+{"text": "I used 12, 8, 9, and 12.", "start": 1155, "end": 1179, "label": "inform"}
+{"text": "Yes, both 12s are used.", "start": 1180, "end": 1203, "label": "confirm"}
+{"text": "And operators: subtraction, multiplication, subtraction.", "start": 1204, "end": 1260, "label": "inform"}
+{"text": "But let me write it clearly: (12 - 8) × 9 - 12", "start": 1262, "end": 1308, "label": "inform"}
+{"text": "Now, order of operations: parentheses first, 12-8=4, then 4×9=36, then 36-12=24.", "start": 1310, "end": 1390, "label": "inform"}
+{"text": "Perfect.", "start": 1391, "end": 1399, "label": "autoPositive"}
+{"text": "But I feel like maybe I should use division or something else, but this seems to work.", "start": 1401, "end": 1487, "label": "inform"}
+{"text": "The problem says \"use each number exactly once with +, -, *, /\", and I used subtraction and multiplication, which are allowed.", "start": 1489, "end": 1615, "label": "inform"}
+{"text": "Division isn't required, I think it's just the operations available.", "start": 1616, "end": 1684, "label": "inform"}
+{"text": "But let me confirm if there's any restriction.", "start": 1686, "end": 1732, "label": "setQuestion"}
+{"text": "It doesn't say I have to use all operations, just that I can use them.", "start": 1733, "end": 1803, "label": "inform"}
+{"text": "So this should be fine.", "start": 1805, "end": 1828, "label": "autoPositive"}
+{"text": "But I have two 12s, and in this expression, both are used separately.", "start": 1830, "end": 1899, "label": "inform"}
+{"text": "Perhaps I can do it with division.", "start": 1901, "end": 1935, "label": "inform"}
+{"text": "For example, 12 divided by something.", "start": 1937, "end": 1974, "label": "inform"}
+{"text": "12 / 12 = 1, but then I have 8 and 9 left.", "start": 1976, "end": 2018, "label": "inform"}
+{"text": "1 times something, but 8 and 9, how to get 24?", "start": 2019, "end": 2065, "label": "setQuestion"}
+{"text": "8 times 3 is 24, but I have 9, not 3.", "start": 2066, "end": 2103, "label": "inform"}
+{"text": "Or 9 times something.", "start": 2104, "end": 2125, "label": "inform"}
+{"text": "(12 / 12) * (8 * 3), but I don't have 3.", "start": 2127, "end": 2167, "label": "inform"}
+{"text": "9 - 6 or something, but no.", "start": 2169, "end": 2196, "label": "inform"}
+{"text": "Another idea: 12 * 2 = 24, so I need to make 2 from the other numbers.", "start": 2198, "end": 2268, "label": "inform"}
+{"text": "I have 8, 9, and 12.", "start": 2270, "end": 2290, "label": "inform"}
+{"text": "How to make 2? 12 / 6, but no 6.", "start": 2292, "end": 2324, "label": "inform"}
+{"text": "8 / 4, no.", "start": 2325, "end": 2335, "label": "inform"}
+{"text": "9 - 7, no.", "start": 2336, "end": 2346, "label": "inform"}
+{"text": "(12 + 12) / something, but 24 / something = 24, so something=1, but how to make 1 with 8 and 9?", "start": 2348, "end": 2443, "label": "setQuestion"}
+{"text": "9/9=1, but I have only one 9 and I need to use 8.", "start": 2444, "end": 2493, "label": "inform"}
+{"text": "8/8=1, but I have two 12s, not two 8s.", "start": 2495, "end": 2533, "label": "inform"}
+{"text": "I have only one 8 and one 9.", "start": 2535, "end": 2563, "label": "inform"}
+{"text": "So (12 + 12) * (8/8) = 24 * 1 = 24, but I used 8 twice?", "start": 2565, "end": 2620, "label": "checkQuestion"}
+{"text": "No, I used 8 once in numerator and once in denominator?", "start": 2621, "end": 2676, "label": "checkQuestion"}
+{"text": "But in expression, it's 8/8, which uses the number 8 twice, but I only have one 8.", "start": 2677, "end": 2759, "label": "inform"}
+{"text": "The numbers are [8,9,12,12], so I have one 8, one 9, two 12s.", "start": 2760, "end": 2821, "label": "inform"}
+{"text": "So I can't use 8 twice.", "start": 2823, "end": 2846, "label": "inform"}
+{"text": "Similarly, in my first solution, I used each number once.", "start": 2848, "end": 2905, "label": "inform"}
+{"text": "Another idea: multiplication and division.", "start": 2907, "end": 2949, "label": "inform"}
+{"text": "For example, 12 * 12 = 144, then divide by something to get 24.", "start": 2951, "end": 3014, "label": "inform"}
+{"text": "144 / 6 = 24, so I need to make 6 from 8 and 9.", "start": 3015, "end": 3062, "label": "inform"}
+{"text": "8 and 9, how to make 6? 9 - 3, but no 3.", "start": 3064, "end": 3104, "label": "inform"}
+{"text": "8 - 2, no.", "start": 3105, "end": 3115, "label": "inform"}
+{"text": "(9 + 3)/2, no.", "start": 3116, "end": 3130, "label": "inform"}
+{"text": "12 * 2 = 24, and 2 could be 12/6, but again, need 6.", "start": 3132, "end": 3184, "label": "inform"}
+{"text": "Perhaps (12 * 12) / (9 - 3), but no 3.", "start": 3186, "end": 3224, "label": "inform"}
+{"text": "Use the 8 and 9 together.", "start": 3226, "end": 3251, "label": "inform"}
+{"text": "9 * 8 = 72, which is bigger than 24, then divide by 3, but no 3.", "start": 3253, "end": 3317, "label": "inform"}
+{"text": "72 / 3 = 24, but how to get 3 from the two 12s.", "start": 3319, "end": 3366, "label": "setQuestion"}
+{"text": "12/4=3, but no 4.", "start": 3368, "end": 3385, "label": "inform"}
+{"text": "(12/12) * 3, but no 3.", "start": 3386, "end": 3408, "label": "inform"}
+{"text": "12 - 9 = 3, but I have only one 9, and I need to use both 12s.", "start": 3410, "end": 3472, "label": "inform"}
+{"text": "Let's say I do (12 - 9) = 3, then I have 8 and 12 left.", "start": 3474, "end": 3529, "label": "inform"}
+{"text": "Then 8 * 3 = 24, but I have another 12 unused.", "start": 3531, "end": 3577, "label": "inform"}
+{"text": "If I do 8 * (12 - 9) = 8 * 3 = 24, but I haven't used the second 12.", "start": 3579, "end": 3647, "label": "inform"}
+{"text": "So I need to incorporate the second 12.", "start": 3649, "end": 3688, "label": "inform"}
+{"text": "Perhaps multiply by 12/12=1, so 8 * (12 - 9) * (12/12) = 24 * 1 = 24, but that uses the second 12 twice?", "start": 3690, "end": 3794, "label": "checkQuestion"}
+{"text": "No, 12/12 uses two 12s, but I have only two 12s, so that might work.", "start": 3795, "end": 3863, "label": "inform"}
+{"text": "Expression: 8 × (12 - 9) × (12 ÷ 12)", "start": 3865, "end": 3901, "label": "inform"}
+{"text": "Now, 12 ÷ 12 = 1, and 12 - 9 = 3, so 8 × 3 × 1 = 24.", "start": 3903, "end": 3955, "label": "inform"}
+{"text": "But in terms of using numbers: I used 8, 12, 9, 12, and 12 again?", "start": 3957, "end": 4022, "label": "checkQuestion"}
+{"text": "No: in (12 ÷ 12), that's two 12s, but I only have two 12s total.", "start": 4023, "end": 4087, "label": "inform"}
+{"text": "Let's list the numbers used: first 12 in (12 - 9), second 12 in numerator of (12 ÷ 12), and third 12 in denominator?", "start": 4089, "end": 4205, "label": "inform"}
+{"text": "No.", "start": 4206, "end": 4209, "label": "disconfirm"}
+{"text": "In the expression 8 × (12 - 9) × (12 ÷ 12), the numbers are: 8, then in parentheses: 12 and 9, so that's one 12 and one 9.", "start": 4211, "end": 4333, "label": "inform"}
+{"text": "Then in the next part: (12 ÷ 12), that's another two 12s.", "start": 4334, "end": 4391, "label": "inform"}
+{"text": "So total: 8, 9, and three 12s?", "start": 4392, "end": 4422, "label": "inform"}
+{"text": "But I only have two 12s.", "start": 4423, "end": 4447, "label": "inform"}
+{"text": "Mistake: when I write (12 ÷ 12), that uses two instances of the number 12.", "start": 4449, "end": 4523, "label": "inform"}
+{"text": "But in the expression, I have: - The 12 in (12 - 9) - The numerator 12 in (12 ÷ 12) - The denominator 12 in (12 ÷ 12) That's three separate uses of the number 12, but I only have two available.", "start": -1, "end": -1, "label": "inform"}
+{"text": "So I can't do that.", "start": 4722, "end": 4741, "label": "inform"}
+{"text": "In terms of counting, each occurrence of a number in the expression must correspond to one of the given numbers.", "start": 4743, "end": 4855, "label": "inform"}
+{"text": "So in this case, for (12 ÷ 12), it requires two separate 12s, which I have, but then I also have another 12 in (12 - 9), so that would be three, which is too many.", "start": 4857, "end": 5020, "label": "inform"}
+{"text": "Therefore, invalid.", "start": 5022, "end": 5041, "label": "inform"}
+{"text": "To avoid confusion, I should think of the expression using each number once.", "start": 5043, "end": 5119, "label": "inform"}
+{"text": "So back to my first solution: (12 - 8) × 9 - 12 = 4 × 9 - 12 = 36 - 12 = 24.", "start": 5121, "end": 5197, "label": "inform"}
+{"text": "That seems correct.", "start": 5199, "end": 5218, "label": "autoPositive"}
+{"text": "Perhaps I can use division: for example, 12 ÷ (1/2) = 24, but 1/2 needs to be made.", "start": 5220, "end": 5303, "label": "inform"}
+{"text": "But I have to use all numbers.", "start": 5305, "end": 5335, "label": "inform"}
+{"text": "Another idea: (12 + 12) × something, but 24 × 1 = 24, and make 1 with 8 and 9?", "start": 5337, "end": 5415, "label": "setQuestion"}
+{"text": "8/8 or 9/9, but again, only one of each.", "start": 5416, "end": 5456, "label": "inform"}
+{"text": "(12 + 12) × (9/9) = 24 × 1 = 24, but 9/9 uses two 9s, but I have only one 9.", "start": 5458, "end": 5534, "label": "inform"}
+{"text": "Similarly, not possible.", "start": 5536, "end": 5560, "label": "inform"}
+{"text": "12 × (9 - 8) × 2, but 9-8=1, then 12×1=12, times 2 would be 24, but I need to make 2 from the other 12.", "start": 5562, "end": 5665, "label": "inform"}
+{"text": "12/6, no.", "start": 5667, "end": 5676, "label": "inform"}
+{"text": "(12 × 12) / (8 / 2), but no 2.", "start": 5678, "end": 5708, "label": "inform"}
+{"text": "Perhaps (12 × 12) / 6, and 6 from 9 and 8?", "start": 5710, "end": 5752, "label": "setQuestion"}
+{"text": "9 - 3, no.", "start": 5753, "end": 5763, "label": "inform"}
+{"text": "8 + 9 - 11, no.", "start": 5765, "end": 5780, "label": "inform"}
+{"text": "I think my first solution is fine.", "start": 5782, "end": 5816, "label": "autoPositive"}
+{"text": "But let me see if I can use all operations or something, but not necessary.", "start": 5818, "end": 5893, "label": "inform"}
+{"text": "Another common way: 24 is 8 × 3, and 3 is 12/4, but no 4.", "start": 5895, "end": 5952, "label": "inform"}
+{"text": "12 / (9 - 7), no.", "start": 5954, "end": 5971, "label": "inform"}
+{"text": "(12 × 9) / (12 / 2), but need 2.", "start": 5973, "end": 6005, "label": "inform"}
+{"text": "12 × 9 = 108, divided by (12 / 2) = 6, so 108 / 6 = 18, not 24.", "start": 6007, "end": 6070, "label": "inform"}
+{"text": "(12 × 8) / 4, but 12×8=96, 96/4=24, but need to make 4 with 9 and 12.", "start": 6072, "end": 6141, "label": "inform"}
+{"text": "9 - 5, no.", "start": 6143, "end": 6153, "label": "inform"}
+{"text": "12/3, no.", "start": 6154, "end": 6163, "label": "inform"}
+{"text": "(12 + 12) / 1, and 1 from 9/9, but again, only one 9.", "start": 6165, "end": 6218, "label": "inform"}
+{"text": "I think I'm overcomplicating.", "start": 6220, "end": 6249, "label": "inform"}
+{"text": "Perhaps subtraction: 12 × 2 = 24, and 2 = 10 - 8, but 10 from 12 and something?", "start": 6251, "end": 6330, "label": "inform"}
+{"text": "12 - 2, circular.", "start": 6331, "end": 6348, "label": "inform"}
+{"text": "Not helpful.", "start": 6350, "end": 6362, "label": "inform"}
+{"text": "Division: 48 / 2 = 24, but need to make 48 and 2.", "start": 6364, "end": 6413, "label": "inform"}
+{"text": "48 could be 12 × 4, but no 4.", "start": 6415, "end": 6444, "label": "inform"}
+{"text": "9 × 5.333, no.", "start": 6446, "end": 6460, "label": "inform"}
+{"text": "12 × 12 = 144, 144 / 6 = 24, and 6 = 8 - 2, no.", "start": 6462, "end": 6509, "label": "inform"}
+{"text": "6 = 18 / 3, no.", "start": 6511, "end": 6526, "label": "inform"}
+{"text": "With 9 and 8, (9 + 3) but no 3.", "start": 6528, "end": 6559, "label": "inform"}
+{"text": "8 * 3 = 24, and 3 = 12 / 4, but no 4.", "start": 6561, "end": 6598, "label": "inform"}
+{"text": "3 = (12 - 9), but then I have another 12 unused.", "start": 6600, "end": 6648, "label": "inform"}
+{"text": "Unless I do 8 * (12 - 9) * (12 / 12), but as before, that uses extra 12s.", "start": 6650, "end": 6723, "label": "inform"}
+{"text": "No.", "start": 6725, "end": 6728, "label": "disconfirm"}
+{"text": "Perhaps add and subtract zero or something.", "start": 6730, "end": 6773, "label": "inform"}
+{"text": "For example, (12 * 2) + 0, but need 2 and 0.", "start": 6775, "end": 6819, "label": "inform"}
+{"text": "Not easy.", "start": 6821, "end": 6830, "label": "inform"}
+{"text": "Another idea: 12 / 0.5 = 24, but 0.5 is 1/2, and need to make 1/2 with other numbers.", "start": 6832, "end": 6917, "label": "inform"}
+{"text": "For example, 1/2 = 4/8, but I have 8, so (4/8) = 1/2, but 4 from where?", "start": 6919, "end": 6990, "label": "setQuestion"}
+{"text": "I have another 12 and 9.", "start": 6991, "end": 7015, "label": "inform"}
+{"text": "If I do 12 / (4/8), but 4/8 is 0.5, so 12 / 0.5 = 24, but I used 12, 4, and 8, but 4 is not a given number; I need to make 4 from the other numbers.", "start": 7017, "end": 7165, "label": "inform"}
+{"text": "I have 9 and 12 left.", "start": 7167, "end": 7188, "label": "inform"}
+{"text": "12 / 3 = 4, but no 3.", "start": 7190, "end": 7211, "label": "inform"}
+{"text": "(12 + 12) / 6, but 24/6=4, but I used both 12s already?", "start": 7213, "end": 7268, "label": "checkQuestion"}
+{"text": "Messy.", "start": 7269, "end": 7275, "label": "inform"}
+{"text": "Let's define the expression properly.", "start": 7277, "end": 7314, "label": "inform"}
+{"text": "Suppose I want 12 / (something) = 24, so something must be 0.5.", "start": 7316, "end": 7379, "label": "inform"}
+{"text": "So I need to make 0.5 with 8, 9, and 12.", "start": 7381, "end": 7421, "label": "inform"}
+{"text": "But I have to use all.", "start": 7423, "end": 7445, "label": "inform"}
+{"text": "0.5 could be 1/2, but need 1 and 2.", "start": 7447, "end": 7482, "label": "inform"}
+{"text": "With 8,9,12.", "start": 7484, "end": 7496, "label": "inform"}
+{"text": "For example, 4/8 = 0.5, but 4 from 12 and 9?", "start": 7498, "end": 7542, "label": "setQuestion"}
+{"text": "12/3=4, no 3.", "start": 7543, "end": 7556, "label": "inform"}
+{"text": "9 - 5, no.", "start": 7558, "end": 7568, "label": "inform"}
+{"text": "(12 - 8) / 4? But 12-8=4, then 4/4=1, not 0.5.", "start": 7570, "end": 7616, "label": "inform"}
+{"text": "Not working.", "start": 7618, "end": 7630, "label": "inform"}
+{"text": "Perhaps (9 - 8) / 2, but 1/2=0.5, but need 2 from 12.", "start": 7632, "end": 7685, "label": "inform"}
+{"text": "12/6=2, no 6.", "start": 7687, "end": 7700, "label": "inform"}
+{"text": "12/12=1, but I need 2.", "start": 7702, "end": 7724, "label": "inform"}
+{"text": "Not easy.", "start": 7726, "end": 7735, "label": "inform"}
+{"text": "So probably my first solution is simplest.", "start": 7737, "end": 7779, "label": "inform"}
+{"text": "But let me see if there's a way with division included.", "start": 8121, "end": 8176, "label": "inform"}
+{"text": "For example, (12 ÷ 12) × 24, but 24 from 8 and 9?", "start": 8178, "end": 8227, "label": "setQuestion"}
+{"text": "8×3, no.", "start": 8228, "end": 8236, "label": "inform"}
+{"text": "(12 + 12) × 1, same issue.", "start": 8238, "end": 8264, "label": "inform"}
+{"text": "Another idea: 12 × (8 ÷ 4) × something, but 8÷4=2, 12×2=24, but I have 9 and 12 left unused.", "start": 8266, "end": 8358, "label": "inform"}
+{"text": "Then multiply by 12/12=1, but same problem as before.", "start": 8360, "end": 8413, "label": "inform"}
+{"text": "So not.", "start": 8415, "end": 8422, "label": "disconfirm"}
+{"text": "Perhaps (12 × 2) where 2 = 24 ÷ 12, circular.", "start": 8424, "end": 8469, "label": "inform"}
+{"text": "I think I should accept that (12 - 8) × 9 - 12 = 24 is valid.", "start": 8471, "end": 8532, "label": "autoPositive"}
+{"text": "To write it with division or other operations.", "start": 8534, "end": 8580, "label": "inform"}
+{"text": "(12 × 12 - 12 × 8) ÷ something, but let's calculate: 12×12=144, 12×8=96, 144-96=48, then 48 ÷ 2 =24, but need to make 2 with 9?", "start": 8582, "end": 8709, "label": "inform"}
+{"text": "9/4.5, no.", "start": 8710, "end": 8720, "label": "inform"}
+{"text": "Not.", "start": 8722, "end": 8726, "label": "inform"}
+{"text": "(12 × 9) ÷ (12 ÷ 2) but need 2.", "start": 8728, "end": 8759, "label": "inform"}
+{"text": "I think it's fine.", "start": 8761, "end": 8779, "label": "autoPositive"}
+{"text": "Perhaps use the two 12s to make 1 or 24 directly.", "start": 8781, "end": 8830, "label": "inform"}
+{"text": "12 ÷ 12 = 1, then I have 1, 8, 9 to make 24.", "start": 8832, "end": 8876, "label": "inform"}
+{"text": "24 = 8 × 3, but 3 from 9 and 1?", "start": 8878, "end": 8909, "label": "setQuestion"}
+{"text": "9 ÷ 3, no.", "start": 8910, "end": 8920, "label": "inform"}
+{"text": "24 = 9 × (8/3) * something, 8/3 is about 2.666, times 9 is 24, but I have the 1 from 12/12, so 9 × (8/3) × 1, but I need to use the 1, and I have no 3; 3 is not a number.", "start": 8922, "end": 9092, "label": "inform"}
+{"text": "Unless I make 3 from something.", "start": 9094, "end": 9125, "label": "inform"}
+{"text": "But I have only 1,8,9.", "start": 9127, "end": 9149, "label": "inform"}
+{"text": "9 ÷ 3 = 3, but no 3.", "start": 9151, "end": 9171, "label": "inform"}
+{"text": "(9 + 15) / something, no.", "start": 9173, "end": 9198, "label": "inform"}
+{"text": "Not possible.", "start": 9200, "end": 9213, "label": "inform"}
+{"text": "So I think my first solution is the way to go.", "start": 9215, "end": 9261, "label": "autoPositive"}
+{"text": "Therefore, the expression is (12 - 8) × 9 - 12 = 24.", "start": 9263, "end": 9315, "label": "inform"}
+{"text": "To write it neatly: (12 - 8) × 9 - 12 = 24", "start": 9317, "end": 9359, "label": "inform"}
+{"text": "Now, just to be thorough, let's compute step by step:", "start": 9361, "end": 9414, "label": "inform"}
+{"text": "1. 12 - 8 = 4", "start": 9416, "end": 9429, "label": "inform"}
+{"text": "2. 4 × 9 = 36", "start": 9431, "end": 9444, "label": "inform"}
+{"text": "3. 36 - 12 = 24", "start": 9446, "end": 9461, "label": "inform"}
+{"text": "Yes.", "start": 9463, "end": 9467, "label": "confirm"}
+{"text": "If I want to use division, another possibility: 12 × (2) = 24, and 2 = 18 ÷ 9, but 18 from 12 + 6, no.", "start": 9469, "end": 9571, "label": "inform"}
+{"text": "12 + 12 = 24, then multiply by 1 and add 0, but not with 8 and 9.", "start": 9573, "end": 9638, "label": "inform"}
+{"text": "(12 + 12) × (8 ÷ 8) = 24 × 1 = 24, but again, 8 ÷ 8 uses two 8s.", "start": 9640, "end": 9704, "label": "inform"}
+{"text": "Not allowed.", "start": 9706, "end": 9718, "label": "inform"}
+{"text": "Similarly, (12 + 12) + (9 - 9), but only one 9.", "start": 9720, "end": 9767, "label": "inform"}
+{"text": "No.", "start": 9769, "end": 9772, "label": "disconfirm"}
+{"text": "So I think it's settled.", "start": 9774, "end": 9798, "label": "autoPositive"}

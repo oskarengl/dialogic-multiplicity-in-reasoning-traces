@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CAMS dialogue act cheat sheet</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 32px 60px;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f7f7f9; color: #1a1a1f;
+  }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .sub { color: #666; font-size: 13px; margin-bottom: 22px; }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    align-items: start;
+  }
+  .cluster {
+    background: #fff; border-radius: 12px; border: 1px solid #e4e4e8;
+    border-top: 5px solid var(--c, #888); padding: 14px 16px 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  }
+  .cluster h2 { font-size: 15px; margin: 0 0 2px; color: var(--c, #333); }
+  .cluster .sub2 { font-size: 11.5px; color: #888; margin-bottom: 10px; }
+  .tag { border-top: 1px solid #eee; padding: 9px 0; }
+  .tag:first-of-type { border-top: none; }
+  .tag .name { font-weight: 700; font-size: 13.5px; }
+  .tag .short { color: #555; font-size: 12.5px; margin-left: 6px; }
+  .tag .gloss { font-size: 12px; color: #444; margin-top: 3px; line-height: 1.4; }
+  .tag .ex { font-size: 12px; font-style: italic; color: #333; margin-top: 3px; }
+  .tag .warn {
+    font-size: 11.5px; color: #92400e; background: #fef3c7; border-radius: 5px;
+    padding: 4px 7px; margin-top: 5px; line-height: 1.4;
+  }
+  @media print {
+    body { background: #fff; padding: 10px; }
+    .cluster { box-shadow: none; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<h1>CAMS dialogue act cheat sheet</h1>
+<div class="sub">27 tags + none, grouped by the schema's own 8 functional categories. Click "Open full cheat sheet" from the labeling tool, or keep this tab open alongside it.</div>
+<div class="board" id="board">Loading...</div>
+
+<script>
+fetch('./tag_schema.json').then(r => r.json()).then(schema => {
+  const board = document.getElementById('board');
+  board.innerHTML = '';
+  schema.clusters.forEach(cluster => {
+    const div = document.createElement('div');
+    div.className = 'cluster';
+    div.style.setProperty('--c', cluster.color);
+    let html = `<h2>${cluster.name}</h2><div class="sub2">${cluster.subtitle || ''}</div>`;
+    cluster.tags.forEach(t => {
+      html += `<div class="tag">
+        <span class="name">${t.tag}</span><span class="short">${t.short}</span>
+        <div class="gloss">${t.gloss}</div>
+        ${t.example ? `<div class="ex">${t.example}</div>` : ''}
+        ${t.watchFor ? `<div class="warn">${t.watchFor}</div>` : ''}
+      </div>`;
+    });
+    div.innerHTML = html;
+    board.appendChild(div);
+  });
+}).catch(() => {
+  document.getElementById('board').textContent =
+    'Could not load tag_schema.json - open this page through the label_tool.py server (http://localhost:8765/cheatsheet.html), not by double-clicking the file.';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+{
+  "source": "CAMS (Conversation Analysis Modelling Schema) - https://nathanduran.github.io/Conversation-Analysis-Modelling-Schema/",
+  "clusters": [
+    {
+      "id": "info_seeking",
+      "name": "Information-seeking",
+      "subtitle": "questions",
+      "color": "#2563eb",
+      "tags": [
+        {
+          "tag": "propositionalQuestion",
+          "short": "Yes/No question",
+          "gloss": "Asks whether a proposition is true; expects yes/no (or equivalent).",
+          "example": "“Does the meeting start at ten?”",
+          "watchFor": "vs checkQuestion: use checkQuestion if the asker already leans toward believing it's true and is just double-checking (often tagged “...right?”)."
+        },
+        {
+          "tag": "setQuestion",
+          "short": "Who/What/Where/How question",
+          "gloss": "Asks which element(s) of an open set have some property (a WH-question).",
+          "example": "“What time does the meeting start?” / “How far is it to the station?”",
+          "watchFor": "vs choiceQuestion: only use choiceQuestion if the question offers an explicit closed list of alternatives to pick exactly one from."
+        },
+        {
+          "tag": "choiceQuestion",
+          "short": "Which one of these?",
+          "gloss": "Asks which one of an explicit list of alternatives is true; expects exactly one to be picked.",
+          "example": "“Should the cable go in the phone line or the external line?”",
+          "watchFor": "vs setQuestion: needs an explicit list of options, not an open-ended what/who/where."
+        },
+        {
+          "tag": "checkQuestion",
+          "short": "Confirming what I already suspect",
+          "gloss": "Asks whether a proposition is true, but the asker already leans toward believing it.",
+          "example": "“The meeting starts at ten, right?”",
+          "watchFor": "vs propositionalQuestion: the tell is a tag like “...right?” / “...isn't it?” signaling the asker's prior belief."
+        }
+      ]
+    },
+    {
+      "id": "info_providing",
+      "name": "Information-providing",
+      "subtitle": "statements & responses",
+      "color": "#059669",
+      "tags": [
+        {
+          "tag": "inform",
+          "short": "Statement / unprompted info",
+          "gloss": "States something as fact, not in direct response to a question.",
+          "example": "“The 6.34 to Breda leaves from platform 2.”",
+          "watchFor": "vs answer: use answer instead if it's a direct response to a preceding question."
+        },
+        {
+          "tag": "answer",
+          "short": "Response to a question",
+          "gloss": "Provides information that was specifically asked for.",
+          "example": "Q: “What does the display say?” A: “Send error, document ready.”",
+          "watchFor": "Only follows a question act (propositionalQuestion / setQuestion / choiceQuestion / checkQuestion)."
+        },
+        {
+          "tag": "agreement",
+          "short": "I already thought that too",
+          "gloss": "States a proposition is true, aligning with a claim/opinion the addressee holds - not primarily a reply to a check/prop question.",
+          "example": "“Exactly.”",
+          "watchFor": "vs confirm: confirm specifically answers a check/propositional question; agreement is aligning with a stated claim or opinion."
+        },
+        {
+          "tag": "disagreement",
+          "short": "I think that's false (re: a claim)",
+          "gloss": "States a proposition is false, contradicting a claim/opinion the addressee holds.",
+          "example": "“Uh... no.” (after a claim)",
+          "watchFor": "vs disconfirm/correction: disconfirm answers a check/prop question negatively; correction supplies the replacement correct info."
+        },
+        {
+          "tag": "correction",
+          "short": "No, actually X",
+          "gloss": "Says previously-assumed info is wrong and supplies the correct info instead.",
+          "example": "“To Montreal, not to Ottawa.”",
+          "watchFor": "Must include the corrected fact itself, not just a bare “no.”"
+        },
+        {
+          "tag": "confirm",
+          "short": "Yes, that's right (re: a check/prop question)",
+          "gloss": "Confirms a proposition the addressee was uncertain about is true.",
+          "example": "“Indeed.”",
+          "watchFor": "Response to checkQuestion/propositionalQuestion specifically."
+        },
+        {
+          "tag": "disconfirm",
+          "short": "No, that's wrong (re: a check/prop question)",
+          "gloss": "Tells the addressee a proposition they were uncertain about is false.",
+          "example": "“Nope.”",
+          "watchFor": "Response to checkQuestion/propositionalQuestion specifically; if you also supply the right info, consider correction instead."
+        }
+      ]
+    },
+    {
+      "id": "commissive",
+      "name": "Commissive",
+      "subtitle": "committing to future action",
+      "color": "#7c3aed",
+      "tags": [
+        {
+          "tag": "offer",
+          "short": "I'll do X for you",
+          "gloss": "Signals willingness/ability to do something, conditional on the addressee's consent.",
+          "example": "“I will look that up for you.”",
+          "watchFor": "vs suggest: offer is self-committing (“I will...”), suggest proposes that the other party act."
+        },
+        {
+          "tag": "conditionalAccept",
+          "short": "I'll do it if...",
+          "gloss": "Commits to an action only if a stated condition is met (response to a request/suggestion/offer).",
+          "example": "“If you push the bag to me.”",
+          "watchFor": "Must state an explicit condition; an unconditional commitment is accept instead."
+        },
+        {
+          "tag": "accept",
+          "short": "Sure, I will",
+          "gloss": "Unconditionally commits to a requested/suggested action, or takes up an offer.",
+          "example": "“Sure.” (after “Would you like help?”)",
+          "watchFor": "Response to request/suggest/offer only."
+        },
+        {
+          "tag": "decline",
+          "short": "No thanks, I won't",
+          "gloss": "Refuses a requested/suggested action, or turns down an offer.",
+          "example": "“No thank you.”",
+          "watchFor": "vs disagreement: decline refuses an action; disagreement rejects a claim."
+        }
+      ]
+    },
+    {
+      "id": "directive",
+      "name": "Directive",
+      "subtitle": "asking the other party to act",
+      "color": "#ea580c",
+      "tags": [
+        {
+          "tag": "request",
+          "short": "Please do X",
+          "gloss": "Asks the addressee to perform an action, conditional on their consent.",
+          "example": "“Please turn to page five.”",
+          "watchFor": "vs suggest: request is more directive/imperative; suggest is framed as being in the addressee's own interest."
+        },
+        {
+          "tag": "suggest",
+          "short": "How about X?",
+          "gloss": "Proposes an action the speaker believes is in the addressee's interest.",
+          "example": "“Let's wait for the speaker to finish.”",
+          "watchFor": "Softer, more collaborative framing than request."
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "name": "Feedback",
+      "subtitle": "did I follow you?",
+      "color": "#db2777",
+      "tags": [
+        {
+          "tag": "autoPositive",
+          "short": "Mm-hm / okay (I followed you)",
+          "gloss": "Signals successful processing/understanding of what was just said - a backchannel, not agreement with content.",
+          "example": "“Uh-huh”; “Okay”; “Yes” (as acknowledgment)",
+          "watchFor": "vs agreement/confirm: autoPositive just says “I heard/understood,” it doesn't assert the content is true."
+        },
+        {
+          "tag": "autoNegative",
+          "short": "Huh? / Sorry? (I didn't follow)",
+          "gloss": "Signals a processing problem understanding the prior utterance.",
+          "example": "“Sorry?”; “What?”",
+          "watchFor": "About comprehension failure, not disagreement with content."
+        }
+      ]
+    },
+    {
+      "id": "time_mgmt",
+      "name": "Time management",
+      "subtitle": "buying a moment",
+      "color": "#64748b",
+      "tags": [
+        {
+          "tag": "stalling",
+          "short": "Umm... let me think",
+          "gloss": "Buys time to construct a response or pause the dialogue briefly.",
+          "example": "“Let me see...”; “Ehm...”; “Just a moment.”",
+          "watchFor": "Pure time-buying filler, not yet a real speech act."
+        }
+      ]
+    },
+    {
+      "id": "comm_mgmt",
+      "name": "Communication management",
+      "subtitle": "self-interruption",
+      "color": "#64748b",
+      "tags": [
+        {
+          "tag": "retraction",
+          "short": "Then we're going to g-",
+          "gloss": "Withdraws/abandons something the speaker just started saying, within the same turn.",
+          "example": "“Then we're going to g-”",
+          "watchFor": "Mid-utterance self-interruption/abandonment - distinct from correction, which fixes a previous turn's info."
+        }
+      ]
+    },
+    {
+      "id": "social",
+      "name": "Social obligations",
+      "subtitle": "ritual pairs - check who's speaking",
+      "color": "#ca8a04",
+      "tags": [
+        {
+          "tag": "greeting",
+          "short": "Hello!",
+          "gloss": "Signals presence/awareness of the addressee, typically opening a dialogue.",
+          "example": "“Hello!”; “Good morning”",
+          "watchFor": ""
+        },
+        {
+          "tag": "goodbye",
+          "short": "Bye, see you later",
+          "gloss": "Signals this is the speaker's final contribution, typically closing a dialogue.",
+          "example": "“Bye bye, see you later.”",
+          "watchFor": ""
+        },
+        {
+          "tag": "thanking",
+          "short": "Thanks a lot",
+          "gloss": "Expresses gratitude for something the addressee did.",
+          "example": "“Thanks a lot.”",
+          "watchFor": "vs acceptThanking: this is the one giving thanks, not receiving it."
+        },
+        {
+          "tag": "acceptThanking",
+          "short": "Don't mention it",
+          "gloss": "Response that plays down the addressee's expressed gratitude.",
+          "example": "“Don't mention it.”",
+          "watchFor": "vs thanking: this is the reply to being thanked, not the thanks itself."
+        },
+        {
+          "tag": "apology",
+          "short": "Sorry about that",
+          "gloss": "Signals regret about something, seeking acknowledgment.",
+          "example": "“Sorry about that.”",
+          "watchFor": "vs acceptApology: this is the one apologizing, not accepting the apology."
+        },
+        {
+          "tag": "acceptApology",
+          "short": "No problem",
+          "gloss": "Response that plays down the addressee's expressed regret.",
+          "example": "“No problem.”",
+          "watchFor": "vs apology: this is the reply to an apology, not the apology itself."
+        }
+      ]
+    },
+    {
+      "id": "none",
+      "name": "None",
+      "subtitle": "fallback - use sparingly",
+      "color": "#991b1b",
+      "tags": [
+        {
+          "tag": "none",
+          "short": "Doesn't clearly match any of the 27",
+          "gloss": "Use only when a sentence clearly does not perform any of the 27 CAMS acts and does not form a speech act at all.",
+          "example": "",
+          "watchFor": "Last resort - re-check the 27 tags above before reaching for this."
+        }
+      ]
+    }
+  ]
+}

@@ -97,7 +97,7 @@ def call_llm(
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY environment variable is not set.")
 
-    client = openai.OpenAI(api_key=api_key, base_url=base_url)
+    client = openai.OpenAI(api_key=api_key, base_url=base_url, timeout=120, max_retries=3)
     response = client.chat.completions.create(
         model=model,
         messages=[

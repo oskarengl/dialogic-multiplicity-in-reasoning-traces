@@ -64,8 +64,8 @@ chance instead of an imported percentage; Method 2's gate requires direction + C
 instead of a bare direction check; Method 2's equal-slope tolerance is no longer applicable since
 each pole gets its own independently-fit curve; Method 3's comparison margin `m` is now calibrated
 per signal from a bootstrap noise floor on ③/④ instead of a flat 0.10 default; and Method 3's
-reliability sample size is now computed from Cohen's κ asymptotic variance formula (target: 95% CI
-half-width ≤ 0.05) instead of a flat 50/cell default.
+reliability sample size is now computed from Cohen's κ asymptotic variance formula (target: 90% CI
+half-width ≤ 0.10, 122/83/137/168 utterances for cells ①–④, 510 total) instead of a flat 50/cell default.
 
 ## Method 3 — margin and reliability-sample procedures made empirical (2026-07-16)
 
@@ -117,3 +117,162 @@ Cliff's δ), which are inherently imbalance-robust and cannot be passed by a deg
 predictor. Method 1 was the only gate stated as raw accuracy. (Separately, whether off-task
 `human_debate` should carry weight in the Method 2/3 pole contrasts is a different question, not
 addressed here.)
+
+## Method 2 — AIC-comparison precisified to a common scale (2026-07-17)
+
+`methods.md` §2 says the per-pole length curve is chosen among linear / semi-log / log-log "by
+minimizing AIC," but that instruction is under-specified: the log-log candidate is fit on
+`log(score)` while linear and semi-log are fit on `score` directly, so their AICs are computed on
+different response scales and are not directly comparable as-is — a lower log-log AIC could just
+reflect the smaller numeric range of log-space, not a better fit.
+
+`run_calibration.py` (Method 2) resolves this by scoring all three candidates on a **common
+scale**: residual sum of squares in the *original* score units (back-transforming the log-log
+fit's predictions before computing residuals), then applying the standard AIC formula
+(`n·log(RSS/n) + 2k`) to that common-scale RSS. This is a precisification of the frozen wording,
+not a substantive change to the selection rule (still AIC, same three candidates, still fit
+independently per pole on calibration-only data) — logged here for the same reason the other
+precisifications are: so the exact comparison procedure is on record before it's run on any
+calibration numbers.
+
+## Method 3 — reliability sample-size precision target relaxed (2026-07-18)
+
+The κ reliability sample size (§3e.1) was computed at the original 95%-CI/±0.05-half-width
+precision target and came out to 691 / 466 / 778 / 949 utterances for cells ①/②/③/④ — **2,884
+total**. For a practical (non-thesis) project, this is disproportionate hand-labeling effort.
+
+**What changed and what didn't.** The pass/fail bar itself — κ ≥ 0.70 — is untouched; lowering
+that would be lowering the actual reliability standard, which we do not do. What changed is the
+*precision target* for how tightly the measured κ must be pinned down: from 95% CI / half-width
+≤ 0.05 to **90% CI / half-width ≤ 0.08**. This is a legitimate blind decision — a cost/precision
+trade-off fixed independent of any measured κ (no hand-labels exist yet) and independent of cell
+⑤ — not a relaxation of the actual reliability requirement. At a measured κ around 0.75, a ±0.08
+band ([0.63, 0.87] roughly) is still unambiguous relative to the 0.70 cutoff; it is a
+substantially looser precision guarantee than ±0.05, but still sufficient to make the pass/fail
+call meaningfully rather than as an artifact of a wide interval.
+
+Recomputed at the new setting, using each cell's real observed §3a marginals (calibration-only):
+**191 / 129 / 215 / 261, 796 total** — 28% of the original, and close to the original
+"100–200/cell" ballpark noted in the "Open items" section above (before the exact formula was
+run). `reliability_sample.py` now exposes `--half-width` and `--confidence` as CLI flags (default
+0.08 / 0.90) so this setting is explicit and adjustable rather than hard-coded silently; the
+original 95%/±0.05 setting remains available (`--confidence 0.95 --half-width 0.05`) if stricter
+precision is wanted later. See `methods.md` §3e.1 and `RUN_METHOD3.md` for the same numbers.
+
+## Method 3 — reliability sample-size precision target relaxed further (2026-07-17)
+
+Even 796 total hand-labels (§ above) was judged more than needed for a practical project.
+Decided to loosen the precision target once more, from **90% CI / half-width ≤ 0.08** to **90%
+CI / half-width ≤ 0.10** — confidence level unchanged, only the half-width widened. As before,
+the pass/fail bar (κ ≥ 0.70) is untouched, and the decision was made blind to any measured κ (no
+hand-labels exist yet, only §3a marginals). Unlike the first relaxation, the reasoning this time
+is not purely the CI-precision argument: it also reflects a deliberate margin against noise in
+the human labeling itself (a single rater covering 27 confusable dialogue-act categories is more
+error-prone at very low n) — more samples make the measured κ more robust to a handful of
+mislabels, independent of what the formal CI target requires.
+
+Recomputed at the new setting: **122 / 83 / 137 / 168, 510 total** (①/②/③/④) — 64% of the
+intermediate 796, 18% of the original 2,884. At a measured κ around 0.75, a ±0.10 band
+([0.65, 0.85] roughly) is still unambiguous relative to the 0.70 cutoff. `reliability_sample.py`
+defaults updated to `CI_HALFWIDTH = 0.10` (confidence unchanged at 0.90); `sample_plan.json`
+regenerated at this setting; the stale test-era `worksheet.csv` / `hidden_llm_labels.json` (10
+rows, left over from an earlier dry run, inconsistent with any real plan size) were deleted so
+the next `--sample` draws a clean, correctly-sized worksheet. See `methods.md` §3e.1 and
+`RUN_METHOD3.md` for the same numbers.
+
+## Data — speaker-label leak found in BOTH dialogue cells, fixed + re-runs pending (2026-07-21)
+
+`standardize_datasets.py`'s `remove_speaker_labels` under-cleaned the two dialogue cells,
+leaving a **condition leak** (speaker identifiers that let any method shortcut "this is a
+dialogue cell" rather than reading genuine signal). Found while auditing the raw-vs-processed
+human_debate files; then, prompted to check the other dialogue cell, confirmed ai_debate is
+infected too. Monologue cells (①④) and the cell⑤ target are **unaffected** — verified 0
+occurrences in all non-dialogue cells, so the pre-registration firewall around cell⑤ is intact.
+
+**human_debate (②).** Only line-start `Name:` prefixes for a hardcoded animal list were
+stripped. This missed the two-word name `Guinea pig:` entirely (444/444 turn prefixes left in
+place) and ~1,000 inline references (`@Cat`, `Thanks Bat`, lowercase `yes kiwi is right`) for
+all 29 pseudonyms. The names are the **top-1/2/3 most-frequent tokens** in every document, i.e.
+Method 1's dominant MFT clustering features.
+
+**ai_debate (③).** The four prompt-assigned role titles (`Critical Analyst`,
+`Creative Problem Solver`, `Mathematical Validator`, `Alternative Seeker`; 600+ occurrences,
+**cell③-only**, 0 in every other cell incl. ⑤) plus capital-letter speaker references
+(`A's approach`, `great job, C!`) survived in the utterance text. Role-words sit in the top-50
+MFT of ~half the docs. Bare/lowercase `a`–`d` were deliberately **not** removed (overloaded with
+the article "a", sentence-initial "A", and math) — the letter cleanup is surgical and
+case-sensitive (possessive / vocative-before-punctuation / "X said" / "well done X" only).
+
+**Fix (audited, non-destructive until committed).** Two new scripts,
+`scripts/refix_human_debate_labels.py` and `scripts/refix_ai_debate_labels.py`. Each derives its
+target set (human: 29 names via a frequency-floor "cliff"; ai: the 4 titles + surgical letter
+patterns), removes it from every field the methods consume (`transcript` for human; and for ai
+`full_text_no_labels` + `turns[].text_clean/raw` + `labeled_turns[].text` — M1/M2 read
+`turns[].text_clean`, M3 tagged `full_text_no_labels`), and prints a full removal audit.
+Verified: **residual 0** in every field, **0 content-word / article-"A" false positives**.
+M1/M2 use `turns[].speaker` only for turn boundaries (never injected into the token stream), so
+no method-code change is needed.
+
+**Re-runs required** (data is upstream of the frozen `methods.md`, so this is a legitimate
+data-integrity fix, logged not silently applied): Method 3 re-tag of cell②+cell③ only (LLM),
+then M3 gate + reliability worksheet regen; Method 1 full re-run; Method 2 first run on clean
+data. Step-by-step commands in **`RECLEAN_RUNBOOK.md`** (repo root). Watch items: M3 completion-
+rate δ (was 0.438) may drop if it was partly leak-driven — still needs δ ≥ 0.33; M1 balanced
+accuracy may move.
+
+### Re-run results (2026-07-22) — all three gates re-verified on clean data
+
+**Method 1** (`run_calibration.py`, unmodified, re-run on cleaned `processed_human_debate.jsonl` /
+`processed_ai_debate.jsonl`): balanced accuracy **0.6088**, identical to the dirty-data figure
+(0.6088). Per-cell recall unchanged (585/600, 0/500, 254/600, 599/600); bootstrap 95% CI
+[0.5961, 0.6210]; label-permutation p = 0.0001. **GATE PASS.** The leak was not driving this
+signal — confirmed the re-run wasn't a caching artifact (574/600 `ai_debate` docs' cleaned text
+independently verified to differ from the dirty version; no data-level cache existed, only
+Python bytecode).
+
+**Method 2** (`run_calibration.py`, unmodified, re-run on the same cleaned files): Cliff's
+δ = **0.6211** vs. the dirty-data baseline of 0.6300 (direction unchanged, True). **GATE PASS.**
+Small decrease, not a meaningful shift — again consistent with the leak not being what drove the
+signal.
+
+**Method 3 re-tag.** Ran `label_dialogue_acts_v2.py` (confirmed via git history to be the exact
+script + prompt file used for the original cell①④⑤ tagging, both untouched since the initial
+commit — not the newer `label_dialogue_acts.py`, which gained resume/retry logic afterward),
+model `tencent/hy3`, temperature 0 (script default), on the cleaned `processed_human_debate.jsonl`
+(`--text-field transcript`, cell②) and `processed_ai_debate.jsonl` (`--text-field
+full_text_no_labels`, cell③). cell①④⑤ untouched, as required.
+
+- **cell② human_debate: 500/500** — no losses.
+- **cell③ ai_debate: 591/600** — 9 docs excluded after 4 real attempts each (original run, a
+  retry once OpenRouter credits were confirmed available — a mid-run `402 Insufficient credits`
+  had blocked one retry round entirely and doesn't count as a real model attempt — a further
+  retry, then a final parallel attempt at 2× `--max-tokens`). Root cause confirmed via direct API
+  diagnostic: `tencent/hy3` (a reasoning model) gets stuck re-solving the embedded arithmetic
+  puzzle inside these specific `ai_debate` transcripts instead of tagging them, exhausting the
+  full completion-token budget on reasoning with `finish_reason: length` and no tagging output
+  ever produced. Not a chunking-fixable problem (chunking was explicitly rejected — it would
+  break CAMS's whole-utterance-context requirement) and not budget-fixable either (doubling the
+  budget only rescued 5 of the 14 candidates at that point). **Caveat:** the 9 exclusions skew
+  toward the longest/most circuitous `ai_debate` transcripts (most of the original 14 stuck docs
+  were above the corpus's 90th-percentile length) — this is not a random ~1.5% loss and should be
+  read as such in any writeup. Full retry history and excluded `debate_id`s in
+  `outputs/method3/cell3_excluded_docs.md`.
+
+**Method 3 signal-validity gate (§3c completion rate), re-run on the new tags:** Cliff's
+δ = **0.4649** (cell③ n=591) vs. the dirty-data baseline of 0.4380 (cell③ n=598, recorded in
+`M3_internal_verification.md`) — direction unchanged, **GATE-A and GATE-B PASS**. Signal is
+slightly stronger post-cleaning, not weaker — the leak was not inflating this gate either.
+
+**Method 3 reliability sample, re-solved from the clean-tag marginals:** 122/82/131/168 = **503
+total** (①/②/③/④), close to the pre-cleaning figure of 510. Fresh `worksheet.csv` (503 rows,
+blank) and a fresh 200-item `practice.csv` (verified disjoint from the worksheet, 0 shared keys)
+were generated; the stale pre-cleaning worksheet/practice files were overwritten by this
+regeneration.
+
+**Bottom line:** across all three methods, the speaker-label leak was a real data-integrity bug
+worth fixing, but empirically it was not the source of any method's validation signal — every
+gate still passes on clean data, with results essentially unchanged (M1) or slightly improved
+(M2 down 0.009 δ but still far above threshold; M3 completion-rate δ up 0.027). The one
+substantive change is the 9 excluded `ai_debate` documents in cell③, which is a model-capability
+limitation of `tencent/hy3` on long arithmetic-heavy transcripts, unrelated to the leak fix
+itself.

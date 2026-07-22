@@ -1,0 +1,211 @@
+{"text": "I need to reach the target number 24 using the numbers 1, 6, 6, and 11.", "start": 0, "end": 71, "label": "inform"}
+{"text": "I must use each number exactly once, and I can use addition, subtraction, multiplication, and division.", "start": 72, "end": 175, "label": "inform"}
+{"text": "No other operations or tricks are allowed.", "start": 176, "end": 218, "label": "inform"}
+{"text": "First, since 24 is the target, and I have two 6s, I should think about how to combine them.", "start": 220, "end": 311, "label": "inform"}
+{"text": "6 times 4 is 24, but I don't have a 4.", "start": 312, "end": 350, "label": "inform"}
+{"text": "6 plus 6 is 12, and 12 times 2 is 24, but I don't have a 2; I have a 1 and an 11.", "start": 351, "end": 432, "label": "inform"}
+{"text": "11 plus 1 is 12, which is the same as 6 plus 6, but I have to use all numbers separately.", "start": 433, "end": 522, "label": "inform"}
+{"text": "Maybe I can do something with multiplication and subtraction.", "start": 524, "end": 585, "label": "suggest"}
+{"text": "For example, 6 multiplied by something, or 11 multiplied by something.", "start": 586, "end": 656, "label": "suggest"}
+{"text": "Since I have an 11, and 24 is not too far from it, but 11 times 2 is 22, which is close to 24, and 22 plus 2 would be 24, but again, no extra 2.", "start": 658, "end": 802, "label": "inform"}
+{"text": "I have a 1, but 1 is not 2.", "start": 803, "end": 830, "label": "inform"}
+{"text": "Another idea: 6 divided by something.", "start": 832, "end": 869, "label": "suggest"}
+{"text": "Let me list possible combinations.", "start": 870, "end": 904, "label": "request"}
+{"text": "Perhaps I can think about the numbers in pairs.", "start": 906, "end": 953, "label": "suggest"}
+{"text": "For example, one pair makes a number that I can use with another pair.", "start": 954, "end": 1024, "label": "inform"}
+{"text": "Set A as the numbers: 1, 6, 6, 11.", "start": 1026, "end": 1060, "label": "inform"}
+{"text": "I need to use all four operations or just combine them with operations?", "start": 1062, "end": 1133, "label": "setQuestion"}
+{"text": "The operations are between the numbers, so I can have expressions like (a op b) op (c op d) or a op b op c op d with parentheses to group.", "start": 1134, "end": 1272, "label": "inform"}
+{"text": "Since division is involved, I have to be careful with the order and with fractions, but with integers, it should be fine as long as I don't divide by zero.", "start": 1274, "end": 1429, "label": "inform"}
+{"text": "11 is larger than 1, so if I subtract, I might get negative numbers, which could be useful or not.", "start": 1431, "end": 1529, "label": "inform"}
+{"text": "Let me try multiplication.", "start": 1531, "end": 1557, "label": "request"}
+{"text": "Suppose I multiply the two 6s: 6 * 6 = 36.", "start": 1558, "end": 1600, "label": "inform"}
+{"text": "Now I have 36, and I need to use 1 and 11 to get to 24.", "start": 1601, "end": 1656, "label": "inform"}
+{"text": "So, 36 minus something.", "start": 1657, "end": 1680, "label": "inform"}
+{"text": "36 minus what?", "start": 1682, "end": 1696, "label": "setQuestion"}
+{"text": "36 - 12 = 24, but I have 11 and 1.", "start": 1697, "end": 1731, "label": "inform"}
+{"text": "11 + 1 = 12, so that could work.", "start": 1732, "end": 1764, "label": "inform"}
+{"text": "But let's see: (6 * 6) - (11 + 1) = 36 - 12 = 24.", "start": 1765, "end": 1814, "label": "inform"}
+{"text": "Is that right?", "start": 1815, "end": 1829, "label": "checkQuestion"}
+{"text": "But in this expression, I have (6 * 6) which uses both 6s, and then (11 + 1), which uses 11 and 1, and then I subtract the sum from the product.", "start": 1831, "end": 1975, "label": "inform"}
+{"text": "In terms of operations, it's like (6 * 6) - (11 + 1).", "start": 1977, "end": 2030, "label": "inform"}
+{"text": "But I need to write it with operations between each number, but since I group them, it should be fine.", "start": 2031, "end": 2133, "label": "inform"}
+{"text": "I could write it as 6 * 6 - 11 - 1, but that would be different due to order of operations.", "start": 2135, "end": 2226, "label": "inform"}
+{"text": "6 * 6 is 36, minus 11 is 25, minus 1 is 24?", "start": 2227, "end": 2270, "label": "checkQuestion"}
+{"text": "36 - 11 = 25, 25 - 1 = 24.", "start": 2271, "end": 2297, "label": "answer"}
+{"text": "Oh, that's 24 directly.", "start": 2298, "end": 2321, "label": "autoPositive"}
+{"text": "But 6 * 6 - 11 - 1: in this expression, I used the two 6s for multiplication, and the 11 and 1 for subtraction.", "start": 2323, "end": 2434, "label": "inform"}
+{"text": "But is this using each number only once?", "start": 2435, "end": 2475, "label": "checkQuestion"}
+{"text": "Yes, 6,6,11,1 each used once.", "start": 2476, "end": 2505, "label": "confirm"}
+{"text": "Now, order of operations: multiplication before subtraction, so 6*6=36, then 36 - 11 =25, then 25-1=24.", "start": 2507, "end": 2610, "label": "inform"}
+{"text": "Perfect.", "start": 2611, "end": 2619, "label": "autoPositive"}
+{"text": "The expression is 6 × 6 - 11 - 1.", "start": 2621, "end": 2654, "label": "inform"}
+{"text": "I think that might work.", "start": 2656, "end": 2680, "label": "autoPositive"}
+{"text": "But let me confirm: (6 × 6) - 11 - 1 = 36 - 11 - 1 = 25 - 1 = 24.", "start": 2681, "end": 2746, "label": "inform"}
+{"text": "Yes.", "start": 2747, "end": 2751, "label": "confirm"}
+{"text": "Is this valid?", "start": 2753, "end": 2767, "label": "checkQuestion"}
+{"text": "I think so.", "start": 2768, "end": 2779, "label": "autoPositive"}
+{"text": "But let me see if there's another way or if I can find with division.", "start": 2780, "end": 2849, "label": "suggest"}
+{"text": "Another common way to 24 is with fractions or other operations.", "start": 2851, "end": 2914, "label": "inform"}
+{"text": "For example, if I use division.", "start": 2916, "end": 2947, "label": "suggest"}
+{"text": "Suppose I do 11 - 1 = 10, and then something with the 6s.", "start": 2948, "end": 3005, "label": "inform"}
+{"text": "10 plus 14 is 24, but not helpful.", "start": 3007, "end": 3041, "label": "inform"}
+{"text": "10 * 2.4, but I need to get 14 with 6s?", "start": 3042, "end": 3081, "label": "inform"}
+{"text": "6+6=12, not 14.", "start": 3082, "end": 3097, "label": "inform"}
+{"text": "(6 + 6) * 2, but no 2.", "start": 3099, "end": 3121, "label": "inform"}
+{"text": "Another idea: 6 * (4) = 24, and 4 can be 11 - 7, but no 7; or 6 - 2, but no 2.", "start": 3123, "end": 3201, "label": "inform"}
+{"text": "With the numbers, perhaps (11 - 1) * 2.4, but 2.4 from 6 and 6?", "start": 3203, "end": 3266, "label": "inform"}
+{"text": "Not integer.", "start": 3267, "end": 3279, "label": "inform"}
+{"text": "But I can use fractions.", "start": 3281, "end": 3305, "label": "inform"}
+{"text": "Suppose I do 6 divided by 1/4 or something.", "start": 3307, "end": 3350, "label": "suggest"}
+{"text": "Let's think.", "start": 3351, "end": 3363, "label": "stalling"}
+{"text": "(6 / 1) * whatever, but I have to use all numbers.", "start": 3365, "end": 3415, "label": "inform"}
+{"text": "Another combination: 11 * something.", "start": 3417, "end": 3453, "label": "inform"}
+{"text": "11 * 2 = 22, need 24, so need to add 2, but have two 6s and a 1.", "start": 3454, "end": 3518, "label": "inform"}
+{"text": "11 * 2 + 2, but no 2s.", "start": 3520, "end": 3542, "label": "inform"}
+{"text": "(11 + 1) * something.", "start": 3544, "end": 3565, "label": "inform"}
+{"text": "11 + 1 = 12, then 12 * 2 = 24, and I have two 6s, so 6/3 or something, but no 3.", "start": 3566, "end": 3646, "label": "inform"}
+{"text": "6 ÷ 0.5 = 12, but 0.5 from what?", "start": 3648, "end": 3680, "label": "setQuestion"}
+{"text": "I need to use the numbers.", "start": 3681, "end": 3707, "label": "inform"}
+{"text": "Perhaps the other 6 and 1 to make 0.5?", "start": 3709, "end": 3747, "label": "suggest"}
+{"text": "1/2, but no 2, except I have another 6.", "start": 3748, "end": 3787, "label": "inform"}
+{"text": "This is messy.", "start": 3789, "end": 3803, "label": "autoNegative"}
+{"text": "(6 + 6) / 0.5 = 12 / 0.5 = 24, but 0.5 from where?", "start": 3805, "end": 3855, "label": "setQuestion"}
+{"text": "I have 1 and 11 to use, but 1 divided by 2 is 0.5, but I don't have 2, I have 11.", "start": 3856, "end": 3937, "label": "inform"}
+{"text": "11 divided by something, but 11 is big.", "start": 3939, "end": 3978, "label": "inform"}
+{"text": "(6 + 6) × (something) to get 24.", "start": 3980, "end": 4012, "label": "inform"}
+{"text": "(6+6)=12, 12×2=24, so need 2 from 1 and 11.", "start": 4014, "end": 4057, "label": "inform"}
+{"text": "11-9, no; 11/5.5, no.", "start": 4059, "end": 4080, "label": "inform"}
+{"text": "(11+1)/6, that's 12/6=2, then with the other 6?", "start": 4082, "end": 4129, "label": "inform"}
+{"text": "Let's see.", "start": 4130, "end": 4140, "label": "stalling"}
+{"text": "If I do (11+1)/6 = 12/6 = 2, but I have one 6 left.", "start": 4142, "end": 4193, "label": "inform"}
+{"text": "Then that 2 times 12 or something, but I need to use the last 6.", "start": 4195, "end": 4259, "label": "inform"}
+{"text": "The last 6 is already used in division?", "start": 4261, "end": 4300, "label": "checkQuestion"}
+{"text": "No, in (11+1)/6, I used 11,1, and one 6, so there's one 6 left.", "start": 4301, "end": 4364, "label": "answer"}
+{"text": "Now I have 2, but I need to make 24?", "start": 4366, "end": 4402, "label": "setQuestion"}
+{"text": "2 * 12 but no 12, I have the remaining 6.", "start": 4403, "end": 4444, "label": "inform"}
+{"text": "6 * 4, but no 4.", "start": 4446, "end": 4462, "label": "inform"}
+{"text": "( (11+1)/6 ) * 12, but no 12.", "start": 4464, "end": 4493, "label": "inform"}
+{"text": "I have the other 6, so if I multiply by 6: (2) * 6 = 12, which is not 24.", "start": 4495, "end": 4568, "label": "inform"}
+{"text": "( (11+1)/6 ) * (6 * 2), but no 2, and I have only four numbers.", "start": 4570, "end": 4633, "label": "inform"}
+{"text": "Not working.", "start": 4635, "end": 4647, "label": "autoNegative"}
+{"text": "Perhaps (6 * 6 * something) with 1 and 11.", "start": 4649, "end": 4691, "label": "suggest"}
+{"text": "6*6=36, 36 divided by 1.5 is 24, and 1.5 could be 3/2, not directly.", "start": 4693, "end": 4761, "label": "inform"}
+{"text": "11 - 1 = 10, then divide by something, but 36/10=3.6, not.", "start": 4763, "end": 4821, "label": "inform"}
+{"text": "Back to my first solution, which seems correct: 6 × 6 - 11 - 1 = 36 - 11 -1 = 25-1=24.", "start": 4823, "end": 4909, "label": "inform"}
+{"text": "But in the expression, is the subtraction from left to right?", "start": 4911, "end": 4972, "label": "checkQuestion"}
+{"text": "Yes.", "start": 4973, "end": 4977, "label": "confirm"}
+{"text": "I could write it as (6 × 6) - (11 + 1) = 36 - 12 = 24, same thing.", "start": 4979, "end": 5045, "label": "inform"}
+{"text": "Another way: perhaps using division to get fractions.", "start": 5047, "end": 5100, "label": "suggest"}
+{"text": "For example, 1 divided by something.", "start": 5102, "end": 5138, "label": "suggest"}
+{"text": "(6 / 1) * (4), but no 4.", "start": 5140, "end": 5164, "label": "inform"}
+{"text": "11 * (24/11) , but not helpful.", "start": 5166, "end": 5197, "label": "inform"}
+{"text": "(6 - 1) * something.", "start": 5199, "end": 5219, "label": "inform"}
+{"text": "6 - 1 = 5, then I need 4.8 or something with two 6s.", "start": 5220, "end": 5272, "label": "inform"}
+{"text": "5 * 4.8, no.", "start": 5274, "end": 5286, "label": "inform"}
+{"text": "(6 - 1) * 6 - something, 5*6=30, minus 6 is 24, but only one 6, I have another 6?", "start": 5288, "end": 5369, "label": "inform"}
+{"text": "(6-1)=5, then *6=30, then I have 11 left, 30 -6?", "start": 5370, "end": 5418, "label": "inform"}
+{"text": "No, I used two 6s?", "start": 5419, "end": 5437, "label": "checkQuestion"}
+{"text": "6-1 uses one 6 and 1, then *6 uses another 6, then I have 11 left.", "start": 5438, "end": 5504, "label": "answer"}
+{"text": "So ( (6 - 1) * 6 ) - 11?", "start": 5506, "end": 5530, "label": "inform"}
+{"text": "5*6=30, 30-11=19, not 24.", "start": 5531, "end": 5556, "label": "inform"}
+{"text": "( (6 - 1) * 6 ) - 6, but I have 11, not another 6.", "start": 5558, "end": 5608, "label": "inform"}
+{"text": "Not possible.", "start": 5610, "end": 5623, "label": "autoNegative"}
+{"text": "I could use multiplication and addition: 6 * 4 =24, and 4 can be 11 - 7, but how to get 7 from 6 and 1?", "start": 5625, "end": 5728, "label": "inform"}
+{"text": "6+1=7, yes!", "start": 5729, "end": 5740, "label": "autoPositive"}
+{"text": "Let me see: 6 * (11 - (6 - 1))?", "start": 5742, "end": 5773, "label": "inform"}
+{"text": "Let's write it.", "start": 5774, "end": 5789, "label": "request"}
+{"text": "First, 6 - 1 = 5?", "start": 5791, "end": 5808, "label": "checkQuestion"}
+{"text": "No, I need 7?", "start": 5809, "end": 5822, "label": "disagreement"}
+{"text": "11 minus something.", "start": 5823, "end": 5842, "label": "inform"}
+{"text": "So, 11 minus (6 - 1)?", "start": 5844, "end": 5865, "label": "inform"}
+{"text": "6-1=5, 11-5=6.", "start": 5866, "end": 5880, "label": "answer"}
+{"text": "Then 6 times 6?", "start": 5882, "end": 5897, "label": "setQuestion"}
+{"text": "But I don't have another 6?", "start": 5898, "end": 5925, "label": "checkQuestion"}
+{"text": "I used both 6s and the 1.", "start": 5926, "end": 5951, "label": "answer"}
+{"text": "Numbers used: say a=11, b=6, c=6, d=1.", "start": 5953, "end": 5991, "label": "inform"}
+{"text": "Then b * ( a - (c - d) ) = 6 * (11 - (6 - 1)) = 6 * (11 - (5)) = 6 * (6) = 36, which is larger than 24.", "start": 5993, "end": 6096, "label": "inform"}
+{"text": "But I have only three numbers?", "start": 6098, "end": 6128, "label": "checkQuestion"}
+{"text": "c - d is one operation using c and d, then a minus that result, then b times the result, so that's using all: 11, then 6,6,1 each once.", "start": 6129, "end": 6264, "label": "answer"}
+{"text": "But 36 24.", "start": 6266, "end": 6276, "label": "disagreement"}
+{"text": "Not good.", "start": 6278, "end": 6287, "label": "autoNegative"}
+{"text": "( a * something )", "start": 6289, "end": 6306, "label": "inform"}
+{"text": "Another idea: 24 = 6 * 4, and 4 = (6 + 2)/2, but no 2.", "start": 6308, "end": 6362, "label": "inform"}
+{"text": "With 11 and 1, perhaps.", "start": 6364, "end": 6387, "label": "suggest"}
+{"text": "11 - 1 =10, then?", "start": 6389, "end": 6406, "label": "inform"}
+{"text": "Not helpful.", "start": 6407, "end": 6419, "label": "autoNegative"}
+{"text": "(11 - 1) + 13, but 13 from 6 and 6.", "start": 6421, "end": 6456, "label": "inform"}
+{"text": "6+7, no.", "start": 6458, "end": 6466, "label": "inform"}
+{"text": "(11 * 6 - 6 * something) /1, let's see.", "start": 6468, "end": 6507, "label": "suggest"}
+{"text": "11*6=66, 6* something, say *1=6, 66-6=60, then divided by 1, 60, not 24.", "start": 6509, "end": 6581, "label": "inform"}
+{"text": "Not.", "start": 6583, "end": 6587, "label": "autoNegative"}
+{"text": "Perhaps division: (6 * 11) / (something)", "start": 6589, "end": 6629, "label": "suggest"}
+{"text": "66 divided by ?", "start": 6631, "end": 6646, "label": "setQuestion"}
+{"text": "66/2.75=24?", "start": 6647, "end": 6658, "label": "checkQuestion"}
+{"text": "Not nice.", "start": 6659, "end": 6668, "label": "disconfirm"}
+{"text": "(6 * 6) / 1.5, and 1.5 from what?", "start": 6670, "end": 6703, "label": "setQuestion"}
+{"text": "3/2, but no.", "start": 6704, "end": 6716, "label": "inform"}
+{"text": "11 +1 =12, 12 /0.5=24, and 0.5 from 1/2, but I need another number to make 2, like the other 6 divided by 3, but no 3.", "start": 6718, "end": 6836, "label": "inform"}
+{"text": "(1 / (6/12)) or something.", "start": 6838, "end": 6864, "label": "suggest"}
+{"text": "Let me think differently.", "start": 6866, "end": 6891, "label": "request"}
+{"text": "Suppose I want to make 24 using division.", "start": 6892, "end": 6933, "label": "inform"}
+{"text": "For example, ( something ) / 1 * something.", "start": 6935, "end": 6978, "label": "suggest"}
+{"text": "Or ( some product ) / (some number).", "start": 6980, "end": 7016, "label": "suggest"}
+{"text": "Since I have two 6s, 6/6=1, then I have 1 and 1 and 11, then 11 + 1 + 1 =13, not 24; 11 * 1 + 1 =12, etc., no.", "start": 7018, "end": 7128, "label": "inform"}
+{"text": "(11 + 1) * (6/3), but no 3, and I have another 6.", "start": -1, "end": -1, "label": "inform"}
+{"text": "6/3 is not possible.", "start": 7183, "end": 7203, "label": "inform"}
+{"text": "Perhaps I need to arrange operations with parentheses.", "start": 7205, "end": 7259, "label": "suggest"}
+{"text": "Another thought: 11 * 2 + 2, but same as before.", "start": 7261, "end": 7309, "label": "inform"}
+{"text": "(6 * 4) * 1, but 4 missing.", "start": 7311, "end": 7338, "label": "inform"}
+{"text": "6 divided by 0.25 is 24, and 0.25 is 1/4, but 4 from where.", "start": 7340, "end": 7399, "label": "inform"}
+{"text": "If I can make 4 from the other numbers.", "start": 7400, "end": 7439, "label": "inform"}
+{"text": "With 6 and 11, (11- something), 11-7, no.", "start": 7441, "end": 7482, "label": "inform"}
+{"text": "11 / 6 * something, but fractions.", "start": 7484, "end": 7518, "label": "inform"}
+{"text": "Suppose (11 - 1/6) * something?", "start": 7520, "end": 7551, "label": "suggest"}
+{"text": "11 - 1/6 = (66/6 - 1/6) = 65/6, then times 6?", "start": 7553, "end": 7598, "label": "inform"}
+{"text": "65/6 * 6 =65, not 24.", "start": 7599, "end": 7620, "label": "inform"}
+{"text": "Not good.", "start": 7622, "end": 7631, "label": "autoNegative"}
+{"text": "(11 + 1) * 2, as before.", "start": 7633, "end": 7657, "label": "inform"}
+{"text": "I think it's not possible or too complicated.", "start": 9011, "end": 9056, "label": "autoNegative"}
+{"text": "So, back to subtraction: 6*6=36, minus 12 is 24, and 12 is 11+1.", "start": 9058, "end": 9122, "label": "inform"}
+{"text": "So (6 × 6) - (11 + 1) = 36 - 12 = 24.", "start": 9124, "end": 9161, "label": "inform"}
+{"text": "To use each number once: numbers used 6,6 for first part, 11 and 1 for second part.", "start": 9163, "end": 9246, "label": "inform"}
+{"text": "In expression: I can write it as product and sum.", "start": 9248, "end": 9297, "label": "inform"}
+{"text": "So I think that's acceptable.", "start": 9299, "end": 9328, "label": "autoPositive"}
+{"text": "Since the problem says to use +, -, *, /, but in this case, I used *, -, +.", "start": 9330, "end": 9405, "label": "inform"}
+{"text": "- and + are used.", "start": 9407, "end": 9424, "label": "inform"}
+{"text": "I could use division pointlessly, like divide by 1, but not necessary.", "start": 9426, "end": 9496, "label": "inform"}
+{"text": "So I believe (6 × 6) - (11 + 1) is a valid expression.", "start": 9498, "end": 9552, "label": "inform"}
+{"text": "To write it without extra parentheses, but the order might be ambiguous, so parentheses are good.", "start": 9554, "end": 9651, "label": "inform"}
+{"text": "Another expression: 6 × 6 - 11 - 1, as I said, gives 24 with left to right subtraction.", "start": 9653, "end": 9740, "label": "inform"}
+{"text": "In mathematics, subtraction is left-associative, so a - b - c = (a - b) - c, which is a - b - c, not a - (b - c).", "start": 9742, "end": 9855, "label": "inform"}
+{"text": "Similarly, addition and subtraction same precedence, left to right.", "start": 9857, "end": 9924, "label": "inform"}
+{"text": "But in my expression, there is multiplication which has higher precedence.", "start": 9926, "end": 10000, "label": "inform"}
+{"text": "So 6 × 6 - 11 - 1: multiplication first: 36 - 11 - 1, then subtraction: 36-11=25, then 25-1=24.", "start": 10002, "end": 10097, "label": "inform"}
+{"text": "Good.", "start": 10098, "end": 10103, "label": "autoPositive"}
+{"text": "If I wrote 6 × 6 - (11 - 1), that would be 36 - (10) =26, not 24.", "start": 10105, "end": 10170, "label": "inform"}
+{"text": "But I don't have parentheses there.", "start": 10172, "end": 10207, "label": "inform"}
+{"text": "So without parentheses, 6 × 6 - 11 - 1 is fine.", "start": 10209, "end": 10256, "label": "inform"}
+{"text": "But to be safe, perhaps write with parentheses.", "start": 10258, "end": 10305, "label": "suggest"}
+{"text": "But in any case, I think it's correct.", "start": 10307, "end": 10345, "label": "autoPositive"}
+{"text": "Another possible way: (6 - 1/6) * 24/ something, no.", "start": 10347, "end": 10399, "label": "inform"}
+{"text": "Not necessary.", "start": 10401, "end": 10415, "label": "autoNegative"}
+{"text": "So I think I should go with that.", "start": 10417, "end": 10450, "label": "autoPositive"}
+{"text": "But the problem is to target 24 with [1,6,6,11], and I have it.", "start": 10452, "end": 10515, "label": "inform"}
+{"text": "But just to confirm, are there other combinations?", "start": 10517, "end": 10567, "label": "checkQuestion"}
+{"text": "Suppose I use 11 and 1 in subtraction: 11 - 1 =10.", "start": 10569, "end": 10619, "label": "inform"}
+{"text": "Then with the two 6s: I need to get to 24.", "start": 10621, "end": 10663, "label": "inform"}
+{"text": "10 + 14, not; 10 * 2.4; but 2.4 from 6 and 6?", "start": 10665, "end": 10710, "label": "inform"}
+{"text": "6/2.5, no.", "start": 10711, "end": 10721, "label": "inform"}
+{"text": "(6*6) - 12, but 12 is not from the 10.", "start": 10723, "end": 10761, "label": "inform"}
+{"text": "I have 10 and need to involve.", "start": 10763, "end": 10793, "label": "inform"}
+{"text": "(6*6) - 10 - something, same as before but 10 instead.", "start": 10795, "end": 10849, "label": "inform"}
+{"text": "(6*6) - 10 =26, minus what?", "start": 10851, "end": 10878, "label": "setQuestion"}
+{"text": "I have only the 1 not used, but 26-1=25, not 24.", "start": 10879, "end": 10927, "label": "answer"}
+{"text": "No.", "start": 10929, "end": 10932, "label": "disconfirm"}
+{"text": "(11* 2.181), no.", "start": 10934, "end": 10950, "label": "inform"}
+{"text": "Another idea: 24 = 72 / 3, and 72 from 6*12, 12 from 6*2, no.", "start": 10952, "end": 11013, "label": "inform"}
+{"text": "(6*11) / (3/ something), not.", "start": 11015, "end": 11044, "label": "inform"}
+{"text": "I think it's fine.", "start": 11046, "end": 11064, "label": "autoPositive"}
+{"text": "So the expression is 6 × 6 11 1 = 24.", "start": 11066, "end": 11103, "label": "inform"}
+{"text": "To write it clearly.", "start": 11105, "end": 11125, "label": "request"}

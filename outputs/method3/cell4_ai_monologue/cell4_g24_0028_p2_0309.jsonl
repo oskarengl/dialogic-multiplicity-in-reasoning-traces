@@ -1,0 +1,15 @@
+{"text": "To target 24 using the numbers [7, 10, 10, 12] exactly once with the operations +, -, *, /, we can use the following expression:", "start": 0, "end": 128, "label": "inform"}
+{"text": "(12 - 10) × (10 + 7) = 2 × 17 = 34", "start": 130, "end": 164, "label": "inform"}
+{"text": "However, this does not give us 24.", "start": 166, "end": 200, "label": "inform"}
+{"text": "Let's try another approach:", "start": 201, "end": 228, "label": "suggest"}
+{"text": "(12 - 7) × (10 + 10) = 5 × 20 = 100", "start": 230, "end": 265, "label": "inform"}
+{"text": "This also does not work.", "start": 267, "end": 291, "label": "inform"}
+{"text": "Let's try another combination:", "start": 292, "end": 322, "label": "suggest"}
+{"text": "(12 - 7) × (10 - 10) div 10 = 5 × 0 = 0", "start": 324, "end": 363, "label": "inform"}
+{"text": "This is incorrect.", "start": 365, "end": 383, "label": "inform"}
+{"text": "We need to find a different combination.", "start": 384, "end": 424, "label": "inform"}
+{"text": "Let's try:", "start": 425, "end": 435, "label": "suggest"}
+{"text": "(12 - 10) × (10 + (12 - 10)) = 2 × (10 + 2) = 2 × 12 = 24", "start": 437, "end": 494, "label": "inform"}
+{"text": "This works.", "start": 496, "end": 507, "label": "inform"}
+{"text": "Therefore, the correct expression is:", "start": 508, "end": 545, "label": "inform"}
+{"text": "(12 - 10) × (10 + (12 - 10)) = 24", "start": 547, "end": 580, "label": "inform"}

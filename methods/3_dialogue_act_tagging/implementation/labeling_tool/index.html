@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Method 3 - hand labeling</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="title">Method 3 reliability worksheet</div>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="progress-label" id="progressLabel">0 / 0 labeled</div>
+  </div>
+  <a class="cheatsheet-link" href="/cheatsheet.html" target="_blank" rel="noopener">Open full cheat sheet ↗</a>
+</div>
+
+<div class="layout">
+  <div class="main">
+    <div class="nav-row">
+      <button id="btnPrev">◀ Prev</button>
+      <button id="btnNext">Next ▶</button>
+      <button id="btnNextUnlabeled">Next unlabeled ▶▶</button>
+      <span class="rownum" id="rowNum">row 0 / 0</span>
+      <input type="number" id="jumpInput" min="1" placeholder="go to #">
+      <button id="btnJump">Go</button>
+    </div>
+
+    <div id="doneBanner" class="done-banner" style="display:none">
+      All rows labeled. Run <code>python reliability_sample.py --score</code> from
+      <code>implementation/</code> to compute Cohen's &kappa;.
+    </div>
+
+    <div class="cell-badge" id="cellBadge">-</div>
+    <div class="sentence-card" id="sentenceCard">Loading...</div>
+
+    <div class="clusters" id="clusters"></div>
+  </div>
+
+  <div class="sidebar">
+    <h2>CAMS quick reference</h2>
+    <div id="refList"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

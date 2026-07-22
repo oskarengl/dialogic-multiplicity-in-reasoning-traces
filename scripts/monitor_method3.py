@@ -47,6 +47,8 @@ def format_seconds(seconds: float) -> str:
     """Format seconds as HH:MM:SS."""
     if seconds < 0:
         return "?"
+    if not (seconds < float("inf")):
+        return "?"
     td = timedelta(seconds=int(seconds))
     return str(td)
 

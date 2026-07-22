@@ -1,0 +1,419 @@
+{"text": "I need to reach the target number 24 using the numbers 2, 5, 8, and 10 exactly once.", "start": 0, "end": 84, "label": "inform"}
+{"text": "I can use addition, subtraction, multiplication, and division.", "start": 85, "end": 147, "label": "inform"}
+{"text": "Let me think about how to combine these.", "start": 148, "end": 188, "label": "stalling"}
+{"text": "First, since 24 is a multiple of many numbers, I should look for factors.", "start": 190, "end": 263, "label": "inform"}
+{"text": "For example, 24 divided by 2 is 12, so if I can make 12 with the other numbers, that might work.", "start": 264, "end": 360, "label": "inform"}
+{"text": "The other numbers are 5, 8, and 10.", "start": 361, "end": 396, "label": "inform"}
+{"text": "Can I make 12 with 5, 8, and 10?", "start": 398, "end": 430, "label": "setQuestion"}
+{"text": "Well, 10 + 8 is 18, which is too big, and 10 + 5 is 15, still not 12.", "start": 431, "end": 500, "label": "inform"}
+{"text": "10 - 5 is 5, not helpful.", "start": 501, "end": 526, "label": "inform"}
+{"text": "8 + 5 is 13, close but not 12.", "start": 527, "end": 557, "label": "inform"}
+{"text": "10 + 8 - 5 is 13, still not 12.", "start": 558, "end": 589, "label": "inform"}
+{"text": "10 + 5 - 8 is 7, not 12.", "start": 590, "end": 614, "label": "inform"}
+{"text": "Multiplication: 10 * 8 is 80, too big.", "start": 615, "end": 653, "label": "inform"}
+{"text": "Division: 10 / 5 is 2, but that's small.", "start": 654, "end": 694, "label": "inform"}
+{"text": "Not sure.", "start": 695, "end": 704, "label": "autoNegative"}
+{"text": "Maybe I should consider multiplying to get close to 24.", "start": 706, "end": 761, "label": "suggest"}
+{"text": "For example, 8 * 3 is 24, but I don't have a 3.", "start": 762, "end": 809, "label": "inform"}
+{"text": "How can I make a 3?", "start": 810, "end": 829, "label": "setQuestion"}
+{"text": "With 5 and 2, 5 - 2 is 3, but I have to use all numbers.", "start": 830, "end": 886, "label": "inform"}
+{"text": "If I do 5 - 2 to get 3, then I have 8 and 10 left.", "start": 887, "end": 937, "label": "inform"}
+{"text": "But I need to use all four numbers.", "start": 938, "end": 973, "label": "inform"}
+{"text": "Perhaps (5 - 2) * 8, but that's 3 * 8 = 24, but I haven't used the 10.", "start": 975, "end": 1045, "label": "inform"}
+{"text": "That's a problem.", "start": 1046, "end": 1063, "label": "inform"}
+{"text": "I need to incorporate the 10 somehow.", "start": 1064, "end": 1101, "label": "inform"}
+{"text": "Maybe I can divide or something.", "start": 1103, "end": 1135, "label": "suggest"}
+{"text": "Another idea: 10 * 2 is 20, and 24 - 20 is 4, but I need to make 4 with 8 and 5.", "start": 1136, "end": 1216, "label": "inform"}
+{"text": "8 / 2 is 4, but I already used the 2.", "start": 1217, "end": 1254, "label": "inform"}
+{"text": "Let's not reuse numbers.", "start": 1255, "end": 1279, "label": "request"}
+{"text": "I have 10, 2, 8, 5.", "start": 1281, "end": 1300, "label": "inform"}
+{"text": "If I do 10 * 2 = 20, then I need to add 4 to make 24, but with 8 and 5, how to make 4?", "start": 1301, "end": 1387, "label": "setQuestion"}
+{"text": "8 - 5 is 3, not 4.", "start": 1388, "end": 1406, "label": "inform"}
+{"text": "5 - 1, but no 1.", "start": 1407, "end": 1423, "label": "inform"}
+{"text": "Division: 8 / 2, but 2 is used.", "start": 1424, "end": 1455, "label": "inform"}
+{"text": "Perhaps (10 + 2) * something.", "start": 1457, "end": 1486, "label": "inform"}
+{"text": "10 + 2 is 12, 12 * 2 = 24, but I only have one 2, and I need to use 5 and 8.", "start": 1487, "end": 1563, "label": "inform"}
+{"text": "(10 + 2) * (8 / 4), but I don't have a 4, I have a 5.", "start": 1565, "end": 1618, "label": "inform"}
+{"text": "Not working.", "start": 1620, "end": 1632, "label": "autoNegative"}
+{"text": "Another approach: 24 is 48 / 2, so if I can make 48 with 5, 8, 10, then divide by 2.", "start": 1634, "end": 1718, "label": "inform"}
+{"text": "How to make 48 with 5, 8, 10?", "start": 1720, "end": 1749, "label": "setQuestion"}
+{"text": "10 * 5 is 50, minus 2, but 2 is separate.", "start": 1750, "end": 1791, "label": "inform"}
+{"text": "10 * 5 = 50, then 50 - 2 = 48, but I have 8 left unused.", "start": 1792, "end": 1848, "label": "inform"}
+{"text": "If I do 10 * 5 - 2, that's 48, then divide by 2? But I divided by 2, but I used 2 twice?", "start": 1849, "end": 1937, "label": "checkQuestion"}
+{"text": "No, in 10 * 5 - 2, I used 10,5,2, and then divide by 2, but I don't have another 2.", "start": 1938, "end": 2021, "label": "inform"}
+{"text": "The numbers are 2,5,8,10, so only one 2.", "start": 2022, "end": 2062, "label": "inform"}
+{"text": "(10 * 5 - 2) / something, but I need to use 8.", "start": 2064, "end": 2110, "label": "inform"}
+{"text": "Perhaps (8 * 6) = 48, but how to make 6 with 10,5,2?", "start": 2112, "end": 2164, "label": "setQuestion"}
+{"text": "10 - 5 + 2/2 or something, but complicated.", "start": 2165, "end": 2208, "label": "inform"}
+{"text": "Let's list all possible ways.", "start": 2210, "end": 2239, "label": "suggest"}
+{"text": "Since 8 and 10 are both multiples of 2, but I have a separate 2.", "start": 2241, "end": 2305, "label": "inform"}
+{"text": "Another idea: 10 * 8 is 80, divided by something.", "start": 2307, "end": 2356, "label": "inform"}
+{"text": "80 / 10/3 or something, but I have to use all numbers.", "start": 2357, "end": 2411, "label": "inform"}
+{"text": "80 divided by (10/3) is 80 * 3/10 = 24, but I need a 3.", "start": 2413, "end": 2468, "label": "inform"}
+{"text": "How to make 3? With 5 and 2, 5 - 2 = 3.", "start": 2470, "end": 2509, "label": "inform"}
+{"text": "So, let's see: 10 * 8 / ( (5 - 2) * something ), no.", "start": 2511, "end": 2563, "label": "inform"}
+{"text": "If I have (10 * 8) / (5 - 2) * something, but (10*8)/(5-2) = 80 / 3, which is not integer, and I need to multiply by something to get 24.", "start": 2565, "end": 2702, "label": "inform"}
+{"text": "80/3 * what = 24? 24 * 3 = 72, not 80, so not.", "start": 2704, "end": 2750, "label": "inform"}
+{"text": "(10 * 8 * 3) / 10, but I used 10 twice.", "start": 2752, "end": 2791, "label": "inform"}
+{"text": "Not possible.", "start": 2793, "end": 2806, "label": "autoNegative"}
+{"text": "Perhaps subtraction or addition.", "start": 2808, "end": 2840, "label": "suggest"}
+{"text": "Let's think about 24 as 30 - 6, but how to make 30 and 6 with these numbers.", "start": 2842, "end": 2918, "label": "inform"}
+{"text": "30 could be 10 * 3, but no 3.", "start": 2920, "end": 2949, "label": "inform"}
+{"text": "5 * 6, no 6.", "start": 2950, "end": 2962, "label": "inform"}
+{"text": "10 + 10 + 4, but only one 10.", "start": 2964, "end": 2993, "label": "inform"}
+{"text": "Not working.", "start": 2995, "end": 3007, "label": "autoNegative"}
+{"text": "Another combination: 8 * 3 = 24, and 3 from 5 - 2, but again, 10 is unused.", "start": 3009, "end": 3084, "label": "inform"}
+{"text": "So I need to incorporate 10.", "start": 3086, "end": 3114, "label": "inform"}
+{"text": "Perhaps (8 * (10 - 5)) * something.", "start": 3116, "end": 3151, "label": "inform"}
+{"text": "10 - 5 is 5, 8 * 5 = 40, too big, then divide by 2? 40 / 2 = 20, not 24.", "start": 3152, "end": 3224, "label": "inform"}
+{"text": "(8 * 10) / (5/3) or something, but need 3.", "start": 3226, "end": 3268, "label": "inform"}
+{"text": "5/3 is not integer.", "start": 3270, "end": 3289, "label": "inform"}
+{"text": "Perhaps use division early.", "start": 3291, "end": 3318, "label": "suggest"}
+{"text": "For example, 10 / 5 = 2, but then I have 2 and another 2, and 8.", "start": 3320, "end": 3384, "label": "inform"}
+{"text": "So numbers become 2,2,8, but I used 10 and 5 to make 2, so I have two 2s and 8.", "start": 3385, "end": 3464, "label": "inform"}
+{"text": "Then 8 * 3 = 24, but no 3, or 6 * 4, etc.", "start": 3466, "end": 3507, "label": "inform"}
+{"text": "With two 2s and 8, I can do 8 * (2 + 2/2) * something, 2+2/2 = 2+1 =3, then 8*3=24, but I used only three numbers effectively: 10/5=2, then 8 and the original 2?", "start": 3509, "end": 3670, "label": "inform"}
+{"text": "Let's see the operations.", "start": 3671, "end": 3696, "label": "inform"}
+{"text": "If I do (10 / 5) = 2, then I have this 2, plus the original 2, and 8.", "start": 3698, "end": 3767, "label": "inform"}
+{"text": "Then I need to use these with operations.", "start": 4143, "end": 4184, "label": "inform"}
+{"text": "So, let A = 10 / 5 = 2", "start": 4186, "end": 4208, "label": "inform"}
+{"text": "Then I have the original 2, and 8.", "start": 4210, "end": 4244, "label": "inform"}
+{"text": "Now, I need to use A, the original 2, and 8 to make 24.", "start": 4246, "end": 4301, "label": "inform"}
+{"text": "But A is 2, so it's like having two 2s and one 8.", "start": 4303, "end": 4352, "label": "inform"}
+{"text": "Then, as I thought, 8 * (2 + 2/2) but 2/2 uses two 2s, so 2 + (2/2) = 2 + 1 =3, then 8*3=24.", "start": 4354, "end": 4446, "label": "inform"}
+{"text": "But in terms of the original numbers: the 2 in the denominator is the original 2?", "start": 4448, "end": 4529, "label": "checkQuestion"}
+{"text": "Let's specify.", "start": 4530, "end": 4544, "label": "request"}
+{"text": "Let me define the expression.", "start": 4546, "end": 4575, "label": "inform"}
+{"text": "I have numbers: 2, 5, 8, 10.", "start": 4577, "end": 4605, "label": "inform"}
+{"text": "First, compute 10 divided by 5: that's 10/5 = 2", "start": 4607, "end": 4654, "label": "inform"}
+{"text": "Now, I have this result, which is 2, and the original 2, and 8.", "start": 4657, "end": 4720, "label": "inform"}
+{"text": "Now, I need to combine: 8, the original 2, and the result 2 from division.", "start": 4722, "end": 4796, "label": "inform"}
+{"text": "But the result from division is not a number; it's a value.", "start": 4798, "end": 4857, "label": "inform"}
+{"text": "In the expression, I need to use the numbers with operations.", "start": 4858, "end": 4919, "label": "inform"}
+{"text": "So, the expression would be: 8 * (2 + ( (10 / 5) / 2 ) ) ?", "start": -1, "end": -1, "label": "checkQuestion"}
+{"text": "Let's see.", "start": 4975, "end": 4985, "label": "inform"}
+{"text": "(10 / 5) is 2", "start": 4987, "end": 5000, "label": "inform"}
+{"text": "Then (10/5)/2 = 2/2 =1", "start": 5380, "end": 5402, "label": "inform"}
+{"text": "Then 2 + 1 =3", "start": 5404, "end": 5417, "label": "inform"}
+{"text": "Then 8*3=24.", "start": 5419, "end": 5431, "label": "inform"}
+{"text": "But is this using each number exactly once?", "start": 5449, "end": 5492, "label": "checkQuestion"}
+{"text": "Let's see: the expression has: 8, 2, 10, 5, and another 2?", "start": 5493, "end": 5551, "label": "setQuestion"}
+{"text": "No.", "start": 5552, "end": 5555, "label": "disagreement"}
+{"text": "In 8 * (2 + ( (10 / 5) / 2 ) )", "start": 5557, "end": 5587, "label": "inform"}
+{"text": "The numbers are: first 8, then the 2 in (2 + ...), then inside, 10, 5, and then another 2 in the division /2.", "start": 5589, "end": 5698, "label": "inform"}
+{"text": "So that's two 2s? No, the /2 is using the original number 2.", "start": 5700, "end": 5760, "label": "inform"}
+{"text": "The numbers are: 8, 2 (the one added), 10, 5, and 2 (the one divided).", "start": 5762, "end": 5832, "label": "inform"}
+{"text": "But I only have one 2 in the set.", "start": 5834, "end": 5867, "label": "inform"}
+{"text": "The set is 2,5,8,10, so only one 2.", "start": 5868, "end": 5903, "label": "inform"}
+{"text": "In this expression, I used the number 2 twice: once in \"2 +\" and once in \"/2\".", "start": 5905, "end": 5983, "label": "inform"}
+{"text": "But it's the same number? No, in the expression, it's written twice, but it's using the same value?", "start": 5985, "end": 6084, "label": "checkQuestion"}
+{"text": "No, in terms of the count, I think I'm using the number 2 only once, but in the expression, I have to write it where it is used.", "start": 6085, "end": 6213, "label": "inform"}
+{"text": "Perhaps it's better to write it as a single expression.", "start": -1, "end": -1, "label": "suggest"}
+{"text": "Maybe I can think of it as using the number 2 in two operations, but the rule is to use each number exactly once, meaning each number appears once in the expression.", "start": 6267, "end": 6432, "label": "inform"}
+{"text": "In this case, the number 2 is used only once, but in the expression, it appears in two places?", "start": 6434, "end": 6528, "label": "checkQuestion"}
+{"text": "No, in the expression above, \"2\" appears twice, but it refers to the same number, so I think it's using the number once.", "start": 6529, "end": 6649, "label": "inform"}
+{"text": "For example, in some puzzles, you might have expressions like (a + b) * c where c is used once.", "start": -1, "end": -1, "label": "inform"}
+{"text": "Here, in 8 * (2 + ( (10 / 5) / 2 ) ), the number 2 is used in the addition and in the division, but it's the same instance?", "start": 6724, "end": 6847, "label": "checkQuestion"}
+{"text": "I'm confused.", "start": 6848, "end": 6861, "label": "autoNegative"}
+{"text": "Perhaps it's acceptable, as long as each number is used once.", "start": -1, "end": -1, "label": "inform"}
+{"text": "To avoid confusion, perhaps I can write it as:", "start": 7656, "end": 7702, "label": "suggest"}
+{"text": "Let me compute step by step with values.", "start": 7704, "end": 7744, "label": "inform"}
+{"text": "Start with numbers: 2,5,8,10.", "start": 7746, "end": 7775, "label": "inform"}
+{"text": "First, compute 10 ÷ 5 = 2 (this is an intermediate result).", "start": 7777, "end": 7836, "label": "inform"}
+{"text": "Now, I have the original 2, this new 2, and 8.", "start": 7838, "end": 7884, "label": "inform"}
+{"text": "Then, divide this new 2 by the original 2? No, I need to use the original 2.", "start": 7886, "end": 7962, "label": "inform"}
+{"text": "In the expression, (10 ÷ 5) ÷ 2 = 2 ÷ 2 = 1.", "start": 7964, "end": 8008, "label": "inform"}
+{"text": "Then, take the original 2? But I used the original 2 in the division.", "start": 8010, "end": 8079, "label": "inform"}
+{"text": "In (10 ÷ 5) ÷ 2, the ÷2 is using the original number 2.", "start": 8081, "end": 8136, "label": "inform"}
+{"text": "Then, after that, I have 2 + that result, but what is this \"2\"? It's another use of the number 2?", "start": 8138, "end": 8235, "label": "checkQuestion"}
+{"text": "No.", "start": 8236, "end": 8239, "label": "disagreement"}
+{"text": "In the expression 8 × (2 + ( (10 ÷ 5) ÷ 2 ) ), the first \"2\" in \"2 +\" is the number 2, and the last \"2\" in \"÷ 2\" is also the number 2, so it's used twice, but it's the same number.", "start": 8241, "end": 8421, "label": "inform"}
+{"text": "I think it's acceptable because the number is used once, but in multiple operations.", "start": 8423, "end": 8507, "label": "inform"}
+{"text": "Perhaps the puzzle allows each number to be used once in the expression, meaning it appears once.", "start": 8509, "end": 8606, "label": "inform"}
+{"text": "In that case, this might not be valid.", "start": 8608, "end": 8646, "label": "inform"}
+{"text": "Let me check online or think differently.", "start": 8648, "end": 8689, "label": "suggest"}
+{"text": "Another way: perhaps I can do (10 - 2) × 3, but 10-2=8, and 8×3=24, but I need to make 3 with 5 and 8, but 8 is used, and 5 is left.", "start": 8691, "end": 8823, "label": "inform"}
+{"text": "(10 - 2) =8, but I have another 8, so I have two 8s, not good.", "start": 8825, "end": 8887, "label": "inform"}
+{"text": "(10 - 2) uses 10 and 2, then I have 5 and 8 left.", "start": 8889, "end": 8938, "label": "inform"}
+{"text": "Then (10 - 2) × (8 / something), 8 / (1/3) or something.", "start": 8940, "end": 8996, "label": "inform"}
+{"text": "(10 - 2) =8, then 8 × (8 / something), but I only have one 8.", "start": 8998, "end": 9059, "label": "inform"}
+{"text": "No.", "start": 9061, "end": 9064, "label": "disagreement"}
+{"text": "Perhaps division: 48 / 2 = 24, and 48 from 8 × 6, but 6 from 10 and 5? 10 + 5 - something, not 6.", "start": 9066, "end": 9163, "label": "inform"}
+{"text": "10 × 5 - 2 = 50 - 2 =48, then divided by 2, but I used 2 twice? 10×5-2=48, using 10,5,2, then divide by 2, but no other 2.", "start": 9165, "end": 9287, "label": "inform"}
+{"text": "But I have 8 unused.", "start": 9289, "end": 9309, "label": "inform"}
+{"text": "Unless I incorporate 8.", "start": 9311, "end": 9334, "label": "inform"}
+{"text": "(10 × 5 - 2) × (8/8) or something, but that's multiplying by 1, but using 8 twice?", "start": 9336, "end": 9418, "label": "inform"}
+{"text": "No, 8/8 uses 8 twice.", "start": 9419, "end": 9440, "label": "inform"}
+{"text": "Not allowed.", "start": 9442, "end": 9454, "label": "inform"}
+{"text": "Perhaps (10 + 2) × 2, but 12×2=24, but I used 2 twice, and 10, but 5 and 8 unused.", "start": 9456, "end": 9538, "label": "inform"}
+{"text": "No.", "start": 9540, "end": 9543, "label": "disagreement"}
+{"text": "Another idea: 5 × (8 - 2) + something.", "start": 9545, "end": 9583, "label": "inform"}
+{"text": "8-2=6, 5×6=30, too big, then minus 6, but no.", "start": 9584, "end": 9629, "label": "inform"}
+{"text": "30 - 6, but how to make 6 with 10? 10-4, no.", "start": 9631, "end": 9675, "label": "inform"}
+{"text": "(5 × 8) / (10/6) or something, complicated.", "start": 9677, "end": 9720, "label": "inform"}
+{"text": "10/6 is 5/3, not integer.", "start": 9722, "end": 9747, "label": "inform"}
+{"text": "Let's list all possible pairs.", "start": 9749, "end": 9779, "label": "suggest"}
+{"text": "Perhaps multiplication and division.", "start": 9781, "end": 9817, "label": "inform"}
+{"text": "8 and 10, 8*10=80.", "start": 9819, "end": 9837, "label": "inform"}
+{"text": "Then 80 divided by something to get 24.", "start": 9839, "end": 9878, "label": "inform"}
+{"text": "80 / x = 24, so x=80/24=10/3, not integer.", "start": 9880, "end": 9922, "label": "inform"}
+{"text": "80 / (10/3) = 80 * 3/10 = 24, but I need a 3.", "start": 9924, "end": 9969, "label": "inform"}
+{"text": "So if I can make 3 from 5 and 2, 5-2=3.", "start": 9971, "end": 10010, "label": "inform"}
+{"text": "So, 8 * 10 * (5-2) / 10, but I used 10 twice.", "start": 10012, "end": 10057, "label": "inform"}
+{"text": "8 * 10 * (5-2) / 10 = 8 * (5-2) * 10/10 = 8*3*1 =24, but I used 10 twice, once in multiplication and once in division.", "start": 10059, "end": 10177, "label": "inform"}
+{"text": "Not good.", "start": 10179, "end": 10188, "label": "autoNegative"}
+{"text": "(8 * (5-2)) * (10/10) = 24 * 1 =24, but again, 10/10 uses 10 twice.", "start": 10190, "end": 10257, "label": "inform"}
+{"text": "Not allowed.", "start": 10259, "end": 10271, "label": "inform"}
+{"text": "So need to use each number once.", "start": 10273, "end": 10305, "label": "inform"}
+{"text": "Back to my first idea.", "start": 10307, "end": 10329, "label": "inform"}
+{"text": "Perhaps (10 - 8/2) * 3 or something.", "start": 10331, "end": 10367, "label": "inform"}
+{"text": "8/2 =4, 10-4=6, then 6*4=24, but no 4, and I used 2.", "start": 10369, "end": 10421, "label": "inform"}
+{"text": "10 - 8/2 =10 -4=6, using 10,8,2.", "start": 10423, "end": 10455, "label": "inform"}
+{"text": "Then I have 5 left.", "start": 10457, "end": 10476, "label": "inform"}
+{"text": "6 * 4, but no 4.", "start": 10478, "end": 10494, "label": "inform"}
+{"text": "(10 - 8/2) * (5 -1), no 1.", "start": 10496, "end": 10522, "label": "inform"}
+{"text": "Not.", "start": 10524, "end": 10528, "label": "disagreement"}
+{"text": "5 * (10 - 8/2) / something, 5*6=30, divide by 1.25 or something.", "start": 10530, "end": 10594, "label": "inform"}
+{"text": "Not integer.", "start": 10596, "end": 10608, "label": "inform"}
+{"text": "Another combination: 2 * 10 + 4, but 20+4=24, and 4 from 8/2, but then 5 unused.", "start": 10610, "end": 10690, "label": "inform"}
+{"text": "2*10 + 8/2 =20 +4=24, but I used 2 twice: once in multiplication and once in division.", "start": 10692, "end": 10778, "label": "inform"}
+{"text": "In expression: 2 * 10 + 8 / 2", "start": 10780, "end": 10809, "label": "inform"}
+{"text": "Numbers used: 2,10,8,2? No, the /2 is using the number 2, and the *2 is also using the number 2, so it's the same number used in two operations.", "start": 10811, "end": 10955, "label": "inform"}
+{"text": "But in terms of the number of times it appears, it appears twice in the expression.", "start": 10957, "end": 11040, "label": "inform"}
+{"text": "Similarly to my earlier issue.", "start": 11042, "end": 11072, "label": "inform"}
+{"text": "Perhaps it is allowed, as long as each number is used once.", "start": 11074, "end": 11133, "label": "inform"}
+{"text": "For example, in many such puzzles, expressions like (a * b) / c are fine, with c used once.", "start": 11135, "end": 11226, "label": "inform"}
+{"text": "Here, in 2 * 10 + 8 / 2, the number 2 is used for multiplication and for division, but it's the same number.", "start": 11228, "end": 11336, "label": "inform"}
+{"text": "I think it's acceptable.", "start": 11338, "end": 11362, "label": "inform"}
+{"text": "Let's confirm with the target.", "start": 11364, "end": 11394, "label": "suggest"}
+{"text": "2 * 10 = 20", "start": 11396, "end": 11407, "label": "inform"}
+{"text": "8 / 2 = 4, but I used 2 for division, but 2 is already used? No, in the expression, it's separate.", "start": 11409, "end": 11507, "label": "inform"}
+{"text": "In the expression \"2 * 10 + 8 / 2\", this is ambiguous without parentheses.", "start": 11509, "end": 11583, "label": "inform"}
+{"text": "Order of operations: multiplication and division before addition, so it's (2*10) + (8/2) = 20 + 4 = 24.", "start": 11585, "end": 11688, "label": "inform"}
+{"text": "And the numbers used are: 2 (for multiplication), 10, 8, and 2 (for division).", "start": 11690, "end": 11768, "label": "inform"}
+{"text": "But it's the same number 2 used twice? No, in the set, there is only one 2, but in the expression, it is used in two places.", "start": 11769, "end": 11893, "label": "inform"}
+{"text": "I think for the purpose of this puzzle, it is considered using the number once, but the value is used multiple times.", "start": 11895, "end": 12012, "label": "inform"}
+{"text": "Perhaps it's not allowed; I need each number to appear exactly once in the expression.", "start": 12014, "end": 12100, "label": "inform"}
+{"text": "To avoid debate, let's find an expression where each number is used only once.", "start": 12102, "end": 12180, "label": "suggest"}
+{"text": "For example, (10 - 2) * (8 / (5/3)) or something, but need 3.", "start": 12182, "end": 12243, "label": "inform"}
+{"text": "5/3 not integer.", "start": 12245, "end": 12261, "label": "inform"}
+{"text": "(8 + 8) * 1.5, but no.", "start": 12263, "end": 12285, "label": "disagreement"}
+{"text": "Another idea: 10 * 2.4, but 2.4 from 12/5, not.", "start": 12287, "end": 12334, "label": "inform"}
+{"text": "5 * 4.8, etc.", "start": 12336, "end": 12349, "label": "inform"}
+{"text": "Perhaps subtraction: 5 * 8 - 10 * 2 / 2 or something, messy.", "start": 12351, "end": 12411, "label": "inform"}
+{"text": "5*8 =40, 10*2=20, 40-20=20, not 24.", "start": 12413, "end": 12448, "label": "inform"}
+{"text": "5*8 - 16, but 16 from 10 and 2? 10+6, no.", "start": 12450, "end": 12491, "label": "inform"}
+{"text": "(5*8) - (10 + 2) * something, 40 - 12 =28, not 24.", "start": 12493, "end": 12543, "label": "inform"}
+{"text": "(5*8) - 10 - 2 =40-10-2=28, too big.", "start": 12545, "end": 12581, "label": "inform"}
+{"text": "(5*8) - 16, but no 16.", "start": 12583, "end": 12605, "label": "inform"}
+{"text": "10 * 2 + 4, with 4 from 8/2, but same issue.", "start": 12607, "end": 12651, "label": "inform"}
+{"text": "Perhaps use the numbers in a different order.", "start": 12653, "end": 12698, "label": "suggest"}
+{"text": "Let's try division first.", "start": 12700, "end": 12725, "label": "suggest"}
+{"text": "For example, 8 / 2 = 4, then I have 4, 5, 10.", "start": 12727, "end": 12772, "label": "inform"}
+{"text": "Then 10 + 5 * something, 10+5=15, not 24.", "start": 12774, "end": 12815, "label": "inform"}
+{"text": "10 * 4 - 16, no.", "start": 12817, "end": 12833, "label": "inform"}
+{"text": "(10 + 14) , no.", "start": 12835, "end": 12850, "label": "disagreement"}
+{"text": "5 * 4 =20, then 20 + 4, but no another 4.", "start": 12852, "end": 12893, "label": "inform"}
+{"text": "With 10, 5*4 + 10/ something.", "start": 12895, "end": 12924, "label": "inform"}
+{"text": "5*4 =20, 10/ something to add 4.", "start": 12926, "end": 12958, "label": "inform"}
+{"text": "10 / 2.5, not.", "start": 12960, "end": 12974, "label": "inform"}
+{"text": "(10 * 4) - 16, no.", "start": 12976, "end": 12994, "label": "inform"}
+{"text": "Not working.", "start": 12996, "end": 13008, "label": "autoNegative"}
+{"text": "Another combination: (10 + 2) * 2, but again, 2 used twice.", "start": 13010, "end": 13069, "label": "inform"}
+{"text": "(10 + 2) * (8 / 4), but no 4.", "start": 13071, "end": 13100, "label": "inform"}
+{"text": "8/2=4, but 2 used.", "start": 13102, "end": 13120, "label": "inform"}
+{"text": "(10 + 2) * (8 / 4) but I don't have 4, I have 5.", "start": 13122, "end": 13170, "label": "inform"}
+{"text": "Unless I make 4 from 8 and 2, but 2 is used.", "start": 13172, "end": 13216, "label": "inform"}
+{"text": "Stuck.", "start": 13218, "end": 13224, "label": "autoNegative"}
+{"text": "Perhaps (8 - 2) * 5 - 6, but no 6.", "start": 13226, "end": 13260, "label": "inform"}
+{"text": "(8-2)=6, 6*5=30, then minus 6, but no, or with 10, 30 - 10/ something.", "start": 13262, "end": 13332, "label": "inform"}
+{"text": "30 - 6 =24, but how to make 6 from 10? 10-4, no.", "start": 13334, "end": 13382, "label": "inform"}
+{"text": "10 / (5/3) = 10 * 3/5 =6, but need 3.", "start": 13384, "end": 13421, "label": "inform"}
+{"text": "So, (8-2) * 5 - (10 / (5/3)) but complicated and uses 5 twice.", "start": 13423, "end": 13485, "label": "inform"}
+{"text": "Not.", "start": 13487, "end": 13491, "label": "disagreement"}
+{"text": "Let's think about the first expression I had.", "start": 13493, "end": 13538, "label": "inform"}
+{"text": "Perhaps I can do (10 * 8 - 8) / 2 * something, but 80-8=72, 72/2=36, not 24.", "start": 13540, "end": 13616, "label": "inform"}
+{"text": "Not.", "start": 13618, "end": 13622, "label": "disagreement"}
+{"text": "Another idea: 24 = 12 * 2, and 12 from 10 + 2, but then 5 and 8 unused.", "start": 13624, "end": 13695, "label": "inform"}
+{"text": "10 + 2 =12, then 12 * 2, but no other 2.", "start": 13697, "end": 13737, "label": "inform"}
+{"text": "(10 + 2) * (8 / 4), but no 4.", "start": 13739, "end": 13768, "label": "inform"}
+{"text": "With 5, 8/ (5/3) = 8 * 3/5 = 24/5, not integer.", "start": 13770, "end": 13817, "label": "inform"}
+{"text": "(10 + 2) * (5 - 1), no 1.", "start": 13819, "end": 13844, "label": "inform"}
+{"text": "Perhaps addition and subtraction.", "start": 13846, "end": 13879, "label": "suggest"}
+{"text": "5 * 10 =50, minus 8*3=24, but 50-24=26, not.", "start": 13881, "end": 13925, "label": "inform"}
+{"text": "50 - 26, no.", "start": 13927, "end": 13939, "label": "disagreement"}
+{"text": "8 * 10 =80, divided by 3.333, not.", "start": 13941, "end": 13975, "label": "inform"}
+{"text": "I think my initial expression is valid.", "start": 13977, "end": 14016, "label": "inform"}
+{"text": "Let me search online for a standard way.", "start": 14018, "end": 14058, "label": "suggest"}
+{"text": "Perhaps (8 / (2 / 10)) * 3 or something.", "start": 14060, "end": 14100, "label": "inform"}
+{"text": "2 / 10 = 0.2, then 8 / 0.2 = 40, then need to divide or something.", "start": 14102, "end": 14168, "label": "inform"}
+{"text": "With 5, 40 / 5 * 3, no.", "start": 14170, "end": 14193, "label": "inform"}
+{"text": "(8 / (2 / 10)) / (5/6) or something, messy.", "start": 14195, "end": 14238, "label": "inform"}
+{"text": "Let's calculate: 2 / 10 = 0.2", "start": 14240, "end": 14269, "label": "inform"}
+{"text": "8 / 0.2 = 40", "start": 14271, "end": 14283, "label": "inform"}
+{"text": "Then 40 / 5 = 8, not 24.", "start": 14285, "end": 14309, "label": "inform"}
+{"text": "Not.", "start": 14311, "end": 14315, "label": "disagreement"}
+{"text": "(10 - 2/2) * 2.4, no.", "start": 14317, "end": 14338, "label": "inform"}
+{"text": "2/2 =1, 10-1=9, then 9 * (8/3) = 24, but 8/3 is not integer, and I have 5 unused.", "start": 14340, "end": 14421, "label": "inform"}
+{"text": "With 5, 9 * (8/3) * something.", "start": 14423, "end": 14453, "label": "inform"}
+{"text": "Not.", "start": 14455, "end": 14459, "label": "disagreement"}
+{"text": "I think I should accept the first expression.", "start": 14461, "end": 14506, "label": "inform"}
+{"text": "Perhaps there's a better way.", "start": 14508, "end": 14537, "label": "inform"}
+{"text": "Another common way: (5 - 2) * 8 * (10/10) = 3*8*1=24, but 10/10 uses 10 twice.", "start": 14539, "end": 14617, "label": "inform"}
+{"text": "Not.", "start": 14619, "end": 14623, "label": "disagreement"}
+{"text": "(5 - 2) * 8 + 0, but no 0.", "start": 14625, "end": 14651, "label": "inform"}
+{"text": "(5 - 2) * 8 * 1, but no 1.", "start": 14653, "end": 14679, "label": "inform"}
+{"text": "10/10=1, but same issue.", "start": 14681, "end": 14705, "label": "inform"}
+{"text": "Perhaps use the numbers in a fraction.", "start": 14707, "end": 14745, "label": "suggest"}
+{"text": "For example, (10 * 8 * 3) / 10, but 10 used twice.", "start": 14747, "end": 14797, "label": "inform"}
+{"text": "No.", "start": 14799, "end": 14802, "label": "disagreement"}
+{"text": "(10 * 8) / (5/3) * 1, but need 3.", "start": 14804, "end": 14837, "label": "inform"}
+{"text": "5/3 not integer.", "start": 14839, "end": 14855, "label": "inform"}
+{"text": "I think I found a way.", "start": 14857, "end": 14879, "label": "inform"}
+{"text": "What about: (10 + 8 - 2) * 2, but 16*2=32, not 24, and 5 unused.", "start": 14881, "end": 14945, "label": "inform"}
+{"text": "10 + 8 =18, 18 - 2 =16, 16*1.5, no.", "start": 14947, "end": 14982, "label": "inform"}
+{"text": "(10 * 8) / (5 - 2) * 0.9, no.", "start": 14984, "end": 15013, "label": "inform"}
+{"text": "80 / (5-2) = 80/3 26.666, not 24.", "start": 15015, "end": 15048, "label": "inform"}
+{"text": "Then divide by 10/9 or something.", "start": 15050, "end": 15083, "label": "inform"}
+{"text": "Not.", "start": 15085, "end": 15089, "label": "disagreement"}
+{"text": "Perhaps subtraction: 5 * 6 =30, 30 - 6=24, but circular.", "start": 15091, "end": 15147, "label": "inform"}
+{"text": "5 * (10 - 4) =5*6=30, but 4 from 8/2, then 30 - 6, no.", "start": 15149, "end": 15203, "label": "inform"}
+{"text": "5 * (10 - 8/2) =5*(10-4)=5*6=30, then I have the original 2 left, 30 - 6, but no.", "start": 15205, "end": 15286, "label": "inform"}
+{"text": "30 - 6, but 6 from where.", "start": 15288, "end": 15313, "label": "setQuestion"}
+{"text": "(5 * (10 - 8/2)) - 6, but no 6.", "start": 15315, "end": 15346, "label": "inform"}
+{"text": "With the 2, 30 - 2*3, no.", "start": 15348, "end": 15373, "label": "inform"}
+{"text": "Not working.", "start": 15375, "end": 15387, "label": "autoNegative"}
+{"text": "Let's try to use the 2 in a different way.", "start": 15389, "end": 15431, "label": "suggest"}
+{"text": "Suppose I do 10 * 2 =20, then need +4, and 4 from 8/2, but 2 used.", "start": 15433, "end": 15499, "label": "inform"}
+{"text": "5 * 5 =25, but only one 5.", "start": 15501, "end": 15527, "label": "inform"}
+{"text": "8 * 3 =24, with 3 from 5-2, and 10 unused.", "start": 15529, "end": 15571, "label": "inform"}
+{"text": "Unless I do (8 * (5 - 2)) * (10/10) =24*1=24, but 10/10 not allowed.", "start": 15573, "end": 15641, "label": "inform"}
+{"text": "Perhaps (8 * (5 - 2)) + (10 - 10), but 10-10 uses 10 twice.", "start": 15643, "end": 15702, "label": "inform"}
+{"text": "No.", "start": 15704, "end": 15707, "label": "disagreement"}
+{"text": "I think for the sake of time, I'll go with the first expression.", "start": 15709, "end": 15773, "label": "inform"}
+{"text": "So, 8 × (2 + ( (10 ÷ 5) ÷ 2 ) )", "start": 15775, "end": 15806, "label": "inform"}
+{"text": "But to write it clearly: 8 * (2 + ((10 / 5) / 2))", "start": 15808, "end": 15857, "label": "inform"}
+{"text": "Compute: 10/5 = 2", "start": 15859, "end": 15876, "label": "inform"}
+{"text": "(10/5)/2 = 2/2 =1", "start": 15878, "end": 15895, "label": "inform"}
+{"text": "2 + 1 =3", "start": 15897, "end": 15905, "label": "inform"}
+{"text": "8*3=24.", "start": 15907, "end": 15914, "label": "inform"}
+{"text": "And numbers used: 8, 2, 10, 5, and the division by 2 uses the same 2? No, in the expression, the \"2\" in \"2 +\" is the number 2, and the \"2\" in \"/2\" is also the number 2, so it's the same number used in two places.", "start": 15916, "end": 16128, "label": "inform"}
+{"text": "But since it's the same number, I think it's ok.", "start": 16130, "end": 16178, "label": "inform"}
+{"text": "To make it with each number appearing once, perhaps I can write it as:", "start": 16180, "end": 16250, "label": "suggest"}
+{"text": "(10 / 5) / 2 = 1/2? No, (10/5)/2 = 2/2 =1.", "start": 16252, "end": 16294, "label": "inform"}
+{"text": "Then 2 + 1 =3, then 8*3.", "start": 16296, "end": 16320, "label": "inform"}
+{"text": "But in expression, it's combined.", "start": 16322, "end": 16355, "label": "inform"}
+{"text": "Another way: 8 * ( (10 / 5) + 2 / 2 ) but 10/5 =2, 2/2=1, 2+1=3, same as before.", "start": 16357, "end": 16437, "label": "inform"}
+{"text": "In this case: 8 * ( (10 / 5) + (2 / 2) )", "start": 16439, "end": 16479, "label": "inform"}
+{"text": "Here, numbers used: 8, 10, 5, 2, 2? No, 2/2 uses the number 2 twice? No, 2/2 uses the number 2 once for numerator and once for denominator, but it's the same number.", "start": 16481, "end": 16646, "label": "inform"}
+{"text": "In terms of the count, it's one number used in a fraction.", "start": 16648, "end": 16706, "label": "inform"}
+{"text": "Similarly, in the expression \"2 / 2\", it is using the number 2 once, but the value is used twice? I'm confusing myself.", "start": 16708, "end": 16827, "label": "inform"}
+{"text": "I think in standard interpretation, \"2 / 2\" uses the number 2 once, but it is written twice, which might be against the \"use each number exactly once\" rule.", "start": 16829, "end": 16985, "label": "inform"}
+{"text": "For example, in the game 24, you must use each card once, so in the expression, each number appears once.", "start": 16987, "end": 17092, "label": "inform"}
+{"text": "In this case, for \"2 / 2\", the number 2 appears twice, so it might not be allowed.", "start": 17094, "end": 17176, "label": "inform"}
+{"text": "Similarly, in my first expression.", "start": 17178, "end": 17212, "label": "inform"}
+{"text": "So I need an expression where each number is used once.", "start": 17214, "end": 17269, "label": "inform"}
+{"text": "Let's find that.", "start": 17271, "end": 17287, "label": "suggest"}
+{"text": "Possible expressions:", "start": 17289, "end": 17310, "label": "inform"}
+{"text": "Assume I multiply 8 and 3: 8*3=24.", "start": 17312, "end": 17346, "label": "inform"}
+{"text": "3 from 5-2, so (8 * (5-2)) but need to use 10.", "start": 17348, "end": 17394, "label": "inform"}
+{"text": "So multiply by 10/10 or add 0, not possible.", "start": 17396, "end": 17440, "label": "inform"}
+{"text": "Divide by 1: (8 * (5-2)) / (10/10) same.", "start": 17442, "end": 17482, "label": "inform"}
+{"text": "(8 * (5-2)) * (10/10) not.", "start": 17484, "end": 17510, "label": "inform"}
+{"text": "Perhaps (10 - 8) * 12, but 2*12=24, and 12 from 5 and 2? 5*2.4, no.", "start": 17512, "end": 17579, "label": "inform"}
+{"text": "(10 - 8) =2, but I have another 2, so I have two 2s, and 5.", "start": 17581, "end": 17640, "label": "inform"}
+{"text": "Then 2 * 12, but 12 from 5 and? 5*2.4 no.", "start": 17642, "end": 17683, "label": "inform"}
+{"text": "(10 - 8) * (5 * 2.4) no.", "start": 17685, "end": 17709, "label": "inform"}
+{"text": "Not.", "start": 17711, "end": 17715, "label": "disagreement"}
+{"text": "Another idea: 10 * (8 / (5/3)) but 5/3, then 8 / (5/3) = 8 * 3/5 = 24/5, then 10 * 24/5 = 240/5 =48, not 24.", "start": 17717, "end": 17825, "label": "inform"}
+{"text": "10 * (24/5) / 2 = 240/10 =24, but I used 10 twice? 10 * something /2.", "start": 17827, "end": 17896, "label": "inform"}
+{"text": "10 * (24/5) / 2, but 24/5 from where.", "start": 17898, "end": 17935, "label": "setQuestion"}
+{"text": "From 8 * 3/5, but 3 from 5-2, but 5 used.", "start": 17937, "end": 17978, "label": "inform"}
+{"text": "Let's not.", "start": 17980, "end": 17990, "label": "request"}
+{"text": "(10 * 2) * (8/ (5/3)) mess.", "start": 17992, "end": 18019, "label": "inform"}
+{"text": "I think I found one.", "start": 18021, "end": 18041, "label": "inform"}
+{"text": "How about: (10 - 2) * 3, but 8*3=24, and 10-2=8, but then I have two 8s? (10-2) is 8, and I have another 8, so not.", "start": 18043, "end": 18158, "label": "inform"}
+{"text": "(10 - 2) * (8 / 8) * 3, but 8/8 uses 8 twice.", "start": 18160, "end": 18205, "label": "inform"}
+{"text": "No.", "start": 18207, "end": 18210, "label": "disagreement"}
+{"text": "Perhaps use division: 48 / 2 =24.", "start": 18212, "end": 18245, "label": "inform"}
+{"text": "48 from 8*6, 6 from 10 - 4, 4 from 5-1, no.", "start": 18247, "end": 18290, "label": "inform"}
+{"text": "10 * 4.8, not.", "start": 18292, "end": 18306, "label": "inform"}
+{"text": "5 * 8 =40, 40 - 16 =24, and 16 from 10 +6, no.", "start": 18308, "end": 18354, "label": "inform"}
+{"text": "16 from 2*8, but 8 used.", "start": 18356, "end": 18380, "label": "inform"}
+{"text": "2*8=16, but I have only one 8.", "start": 18382, "end": 18412, "label": "inform"}
+{"text": "10 * 2 - 8 + 4, no.", "start": 18414, "end": 18433, "label": "inform"}
+{"text": "10 * 2 =20, 20 + 4 =24, 4 from 8/2, but 2 used.", "start": 18435, "end": 18482, "label": "inform"}
+{"text": "20 + 8/2, but 8/2=4, so 20 + 4=24, but in expression: 10 * 2 + 8 / 2.", "start": 18484, "end": 18553, "label": "inform"}
+{"text": "Order of operations: division and multiplication first, so (10*2) + (8/2) =20 +4=24.", "start": 18555, "end": 18639, "label": "inform"}
+{"text": "Numbers used: 10,2,8,2? No, the number 2 is used for multiplication and for division.", "start": 18641, "end": 18726, "label": "inform"}
+{"text": "But in the set, there is one 2, so in the expression, it is used once, but in two operations.", "start": 18728, "end": 18821, "label": "inform"}
+{"text": "I think it is commonly accepted.", "start": 18823, "end": 18855, "label": "inform"}
+{"text": "For example, on the 24 game website, such expressions are used.", "start": 18857, "end": 18920, "label": "inform"}
+{"text": "So I'll go with that.", "start": 18922, "end": 18943, "label": "inform"}
+{"text": "So, 10 * 2 + 8 / 2 = 20 + 4 = 24.", "start": 18945, "end": 18978, "label": "inform"}
+{"text": "But to write it clearly: (10 × 2) + (8 ÷ 2) = 20 + 4 = 24.", "start": 18980, "end": 19038, "label": "inform"}
+{"text": "And numbers used: 10, 2, 8, and for division, it's ÷ by 2, so the number 2 is used.", "start": 19040, "end": 19123, "label": "inform"}
+{"text": "In this expression, the number 2 appears twice: once in \"10 × 2\" and once in \"8 ÷ 2\", but it is the same number from the set.", "start": 19125, "end": 19250, "label": "inform"}
+{"text": "Since it's the same number, it should be fine.", "start": 19252, "end": 19298, "label": "inform"}
+{"text": "To have each number appear once, we can think of it as using the number in a binary operation.", "start": 19300, "end": 19394, "label": "inform"}
+{"text": "But in writing, it appears twice.", "start": 19396, "end": 19429, "label": "inform"}
+{"text": "Perhaps for this puzzle, it's acceptable.", "start": 19431, "end": 19472, "label": "inform"}
+{"text": "Another expression: (8 - 2) * 5 - 6, but no 6.", "start": 19474, "end": 19520, "label": "inform"}
+{"text": "(8-2)*5 =30, then 30 - 6=24, and 6 from 10 -4, no.", "start": 19522, "end": 19572, "label": "inform"}
+{"text": "30 - (10 - 4), but no 4.", "start": 20852, "end": 20876, "label": "inform"}
+{"text": "2*2=4, but 2 used.", "start": 20878, "end": 20896, "label": "inform"}
+{"text": "(5 * (8 - 2)) - (10 - 2*2) but 2 used multiple times.", "start": 20898, "end": 20951, "label": "inform"}
+{"text": "Not.", "start": 20953, "end": 20957, "label": "disagreement"}
+{"text": "I think I should accept (10 × 2) + (8 ÷ 2) = 24.", "start": 19638, "end": 19686, "label": "inform"}
+{"text": "But I have the number 5 unused? No, in this, I used 10,2,8,2, but no 5, and I used 2 twice, but no 5.", "start": -1, "end": -1, "label": "inform"}
+{"text": "Mistake.", "start": 19913, "end": 19921, "label": "autoNegative"}
+{"text": "I forgot the 5.", "start": 19923, "end": 19938, "label": "inform"}
+{"text": "So I need to use 5.", "start": 19940, "end": 19959, "label": "inform"}
+{"text": "In my very first expression, I used 5.", "start": 19961, "end": 19999, "label": "inform"}
+{"text": "First expression: 8 × (2 + ((10 ÷ 5) ÷ 2))", "start": -1, "end": -1, "label": "inform"}
+{"text": "Here, numbers: 8, 2, 10, 5, and for the division by 2, it's the same 2.", "start": 20048, "end": 20119, "label": "inform"}
+{"text": "But 5 is used in 10÷5.", "start": 20121, "end": 20143, "label": "inform"}
+{"text": "So all numbers are used: 2,5,8,10.", "start": 20145, "end": 20179, "label": "inform"}
+{"text": "And the expression gives 24.", "start": 20181, "end": 20209, "label": "inform"}
+{"text": "To write it without the double 2, perhaps (10 ÷ 5) = 2, but that's intermediate.", "start": 20211, "end": 20291, "label": "inform"}
+{"text": "Another idea: (8 ÷ (2 ÷ 10)) × 1.5 or something.", "start": 20293, "end": 20341, "label": "inform"}
+{"text": "2 ÷ 10 = 0.2", "start": 20343, "end": 20355, "label": "inform"}
+{"text": "8 ÷ 0.2 = 40", "start": 20357, "end": 20369, "label": "inform"}
+{"text": "Then 40 × 0.6 = 24, and 0.6 from 3/5, but 3 from where.", "start": 20371, "end": 20426, "label": "inform"}
+{"text": "With 5, 40 * (3/5) = 24, but need 3.", "start": 20428, "end": 20464, "label": "inform"}
+{"text": "If I had 3, but I have 2 and 5.", "start": 20466, "end": 20497, "label": "inform"}
+{"text": "2+1, no.", "start": 20499, "end": 20507, "label": "disagreement"}
+{"text": "Not.", "start": 20509, "end": 20513, "label": "disagreement"}
+{"text": "(8 ÷ (2 ÷ (10 × something))) messy.", "start": 20515, "end": 20550, "label": "inform"}
+{"text": "I think for practical purposes, I'll use the expression with the numbers.", "start": 20552, "end": 20625, "label": "inform"}
+{"text": "So, one possible way is: 8 * (2 + ((10 / 5) / 2))", "start": 20627, "end": 20676, "label": "inform"}
+{"text": "But to write it neatly.", "start": 20678, "end": 20701, "label": "inform"}
+{"text": "Perhaps: (8 * (5 - 2)) * (10 / 10) but not.", "start": 20703, "end": 20746, "label": "inform"}
+{"text": "Another common way: 5 * (8 - 2) - 10 + 4, no.", "start": 20748, "end": 20793, "label": "inform"}
+{"text": "5 * (8 - 2) = 5*6=30", "start": 20795, "end": 20815, "label": "inform"}
+{"text": "30 - 6 =24, but 6 from 10 -4, no.", "start": 20817, "end": 20850, "label": "inform"}
+{"text": "30 - (10 - 4), but no 4.", "start": 20852, "end": 20876, "label": "inform"}
+{"text": "2*2=4, but 2 used.", "start": 20878, "end": 20896, "label": "inform"}
+{"text": "(5 * (8 - 2)) - (10 - 2*2) but 2 used multiple times.", "start": 20898, "end": 20951, "label": "inform"}
+{"text": "Not.", "start": 20953, "end": 20957, "label": "disagreement"}
+{"text": "I think I should conclude with the first expression.", "start": 20959, "end": 21011, "label": "inform"}
+{"text": "So, using 2, 5, 8, 10 to get 24:", "start": 21013, "end": 21045, "label": "inform"}
+{"text": "Compute 10 divided by 5: 10 / 5 = 2", "start": 21047, "end": 21082, "label": "inform"}
+{"text": "Divide that result by 2: (10 / 5) / 2 = 2 / 2 = 1", "start": 21084, "end": 21133, "label": "inform"}
+{"text": "Add 2: 2 + 1 = 3", "start": 21135, "end": 21151, "label": "inform"}
+{"text": "Multiply by 8: 8 * 3 = 24", "start": 21153, "end": 21178, "label": "inform"}
+{"text": "In single expression: 8 * (2 + ((10 / 5) / 2)) = 8 * (2 + (2 / 2)) = 8 * (2 + 1) = 8 * 3 = 24", "start": 21180, "end": 21273, "label": "inform"}
+{"text": "Since 2/2=1, it's fine.", "start": 21275, "end": 21298, "label": "inform"}
+{"text": "To use the 5 directly.", "start": 21300, "end": 21322, "label": "inform"}
+{"text": "Another expression: (10 - 8/2) * 2 * 1.2, no.", "start": 21324, "end": 21369, "label": "inform"}
+{"text": "8/2=4, 10-4=6, 6*4=24, but 4 from where, and 5 unused.", "start": 21371, "end": 21425, "label": "inform"}
+{"text": "6*4, but no 4.", "start": 21427, "end": 21441, "label": "inform"}
+{"text": "(10 - 8/2) * (5 - 1), no 1.", "start": 21443, "end": 21470, "label": "inform"}
+{"text": "Not.", "start": 21472, "end": 21476, "label": "disagreement"}
+{"text": "I think it's the best I can do.", "start": 21478, "end": 21509, "label": "inform"}
+{"text": "Perhaps (10 + 2) * 2, but no.", "start": 21511, "end": 21540, "label": "disagreement"}
+{"text": "10 * (8 - 5) * 1.2, 10*3=30, 30*0.8=24, but 0.8 from 4/5, no.", "start": 21542, "end": 21603, "label": "inform"}
+{"text": "Not.", "start": 21605, "end": 21609, "label": "disagreement"}
+{"text": "I give up.", "start": 21611, "end": 21621, "label": "autoNegative"}
+{"text": "I'll box the answer as 8 × (2 + ((10 ÷ 5) ÷ 2))", "start": 21623, "end": 21670, "label": "inform"}
+{"text": "But to write it properly.", "start": 21672, "end": 21697, "label": "inform"}

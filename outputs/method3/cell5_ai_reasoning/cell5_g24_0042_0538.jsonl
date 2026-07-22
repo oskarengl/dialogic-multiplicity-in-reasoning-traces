@@ -1,0 +1,205 @@
+{"text": "I need to reach 24 using the numbers 2, 8, 10, and 13 exactly once with addition, subtraction, multiplication, and division.", "start": 0, "end": 124, "label": "inform"}
+{"text": "I can use parentheses to change the order of operations.", "start": 125, "end": 181, "label": "inform"}
+{"text": "First, I should consider the target number, 24.", "start": 183, "end": 230, "label": "inform"}
+{"text": "It's a multiple of many numbers, like 8 times 3, or 6 times 4, or 12 times 2, etc.", "start": 231, "end": 313, "label": "inform"}
+{"text": "Since I have a 2 and an 8, maybe I can multiply them to get 16, but then I need to get to 24 with the remaining 10 and 13.", "start": 314, "end": 436, "label": "inform"}
+{"text": "16 is less than 24, so I need to add something.", "start": 437, "end": 484, "label": "inform"}
+{"text": "10 and 13 added together are 23, which is close but not quite.", "start": 485, "end": 547, "label": "inform"}
+{"text": "If I add 10 and 13 to get 23, and I have 16 from 2 times 8, but 23 + 16 is way more than 24, and I can only use each number once.", "start": 548, "end": 677, "label": "inform"}
+{"text": "I need to combine them differently.", "start": 678, "end": 713, "label": "inform"}
+{"text": "Maybe I can do something with division.", "start": 715, "end": 754, "label": "suggest"}
+{"text": "For example, if I divide two numbers to get a fraction, and then use that with others.", "start": 755, "end": 841, "label": "inform"}
+{"text": "Let me list the numbers: 2, 8, 10, 13.", "start": 843, "end": 881, "label": "inform"}
+{"text": "I see that 13 is a prime number, and it's larger than the others.", "start": 883, "end": 948, "label": "inform"}
+{"text": "10 is also even, 8 is even, 2 is small.", "start": 949, "end": 988, "label": "inform"}
+{"text": "Another idea: 24 is 12 times 2, and I have a 2, so if I can make 12 from the other numbers.", "start": 990, "end": 1081, "label": "inform"}
+{"text": "With 8, 10, 13, can I make 12?", "start": 1082, "end": 1112, "label": "setQuestion"}
+{"text": "10 + 2 is 12, but I already used the 2?", "start": 1113, "end": 1152, "label": "checkQuestion"}
+{"text": "No, I need to use all four numbers separately.", "start": 1153, "end": 1199, "label": "disconfirm"}
+{"text": "Perhaps (10 + 2) * something, but 10 + 2 is 12, then I need to multiply by 2 to get 24, but I only have one 2.", "start": 1201, "end": 1311, "label": "inform"}
+{"text": "And I have 8 and 13 left, but I need to incorporate them.", "start": 1312, "end": 1369, "label": "inform"}
+{"text": "I should think about multiplication and division.", "start": 1371, "end": 1420, "label": "suggest"}
+{"text": "Maybe (13 - something) times something.", "start": 1422, "end": 1461, "label": "inform"}
+{"text": "13 - 1 is 12, but I don't have a 1.", "start": 1462, "end": 1497, "label": "inform"}
+{"text": "How can I make a 1?", "start": 1498, "end": 1517, "label": "setQuestion"}
+{"text": "With division, like 8/8, but I can only use one 8.", "start": 1518, "end": 1568, "label": "disconfirm"}
+{"text": "I have only one of each number.", "start": 1570, "end": 1601, "label": "inform"}
+{"text": "Another thought: 10 + 14 is 24, but I don't have 14.", "start": 1603, "end": 1655, "label": "inform"}
+{"text": "13 + 11, no.", "start": 1656, "end": 1668, "label": "inform"}
+{"text": "Perhaps subtraction: 26 - 2 = 24, and 26 is 13 times 2, but again, I need to use all numbers.", "start": 1670, "end": 1763, "label": "inform"}
+{"text": "(13 * 2) - (10 - 8) or something?", "start": 1874, "end": 1907, "label": "setQuestion"}
+{"text": "Let's calculate: 10 - 8 is 2, then 13*2 is 26, minus 2 is 24.", "start": 1908, "end": 1969, "label": "inform"}
+{"text": "But I used 2 twice?", "start": 1970, "end": 1989, "label": "checkQuestion"}
+{"text": "No: I used 13, 2, 10, and 8.", "start": 1990, "end": 2018, "label": "disconfirm"}
+{"text": "Each once: 13, 2 for multiplication, 10 and 8 for subtraction.", "start": 2019, "end": 2081, "label": "inform"}
+{"text": "So: (13 × 2) - (10 - 8) = 26 - (2) = 24?", "start": -1, "end": -1, "label": "checkQuestion"}
+{"text": "10 - 8 is 2, yes, then 26 - 2 = 24.", "start": 2124, "end": 2159, "label": "confirm"}
+{"text": "Perfect!", "start": 2160, "end": 2168, "label": "autoPositive"}
+{"text": "But let me write it out: (13 × 2) - (10 - 8)", "start": 2170, "end": 2214, "label": "inform"}
+{"text": "Now, using the numbers: 13, 2, 10, 8.", "start": 2216, "end": 2253, "label": "inform"}
+{"text": "All used once.", "start": 2254, "end": 2268, "label": "inform"}
+{"text": "Operations: multiplication, subtraction, and another subtraction inside parentheses.", "start": 2270, "end": 2354, "label": "inform"}
+{"text": "Is this allowed?", "start": 2356, "end": 2372, "label": "checkQuestion"}
+{"text": "I think so, as per the problem.", "start": 2373, "end": 2404, "label": "confirm"}
+{"text": "Let me confirm the order: first, 10 - 8 = 2, then 13 × 2 = 26, then 26 - 2 = 24.", "start": 2406, "end": 2486, "label": "inform"}
+{"text": "Yes.", "start": 2487, "end": 2491, "label": "confirm"}
+{"text": "The expression is (13 × 2) - (10 - 8), which is 26 - 2 = 24.", "start": 2493, "end": 2553, "label": "inform"}
+{"text": "But the 2 in the subtraction is the result of (10-8), not the original 2.", "start": 2555, "end": 2628, "label": "inform"}
+{"text": "The original 2 is used in multiplication.", "start": 2629, "end": 2670, "label": "inform"}
+{"text": "So, no number is reused; each is used once.", "start": 2672, "end": 2715, "label": "inform"}
+{"text": "I think this works.", "start": 2717, "end": 2736, "label": "autoPositive"}
+{"text": "But let me see if there's another way, or if this is correct.", "start": 2738, "end": 2799, "label": "inform"}
+{"text": "Perhaps I can write it without parentheses, but subtraction has the same precedence as addition, left to right, but multiplication has higher precedence.", "start": 2801, "end": 2954, "label": "inform"}
+{"text": "If I write 13 × 2 - 10 - 8, that would be 26 - 10 = 16, then 16 - 8 = 8, which is wrong.", "start": 2956, "end": 3044, "label": "inform"}
+{"text": "So parentheses are necessary to group the subtraction.", "start": 3046, "end": 3100, "label": "inform"}
+{"text": "Similarly, (13 × 2) - (10 - 8) is fine.", "start": 3102, "end": 3141, "label": "inform"}
+{"text": "Another way: 13 × 2 - 10 + 8, but that would be 26 - 10 = 16, +8=24, but I didn't use the subtraction properly; I used addition, but I have to use the numbers as is.", "start": 3143, "end": 3308, "label": "inform"}
+{"text": "13 × 2 - 10 + 8: if I do it left to right, 13×2=26, minus 10 is 16, plus 8 is 24.", "start": 3310, "end": 3391, "label": "inform"}
+{"text": "But I used all numbers: 13,2,10,8.", "start": 3392, "end": 3426, "label": "inform"}
+{"text": "And operations: ×, -, +.", "start": 3427, "end": 3451, "label": "inform"}
+{"text": "Is that allowed?", "start": 3453, "end": 3469, "label": "checkQuestion"}
+{"text": "The problem says +, -, *, /, so addition is allowed.", "start": 3470, "end": 3522, "label": "confirm"}
+{"text": "So 13 × 2 - 10 + 8 = 26 - 10 + 8.", "start": 3524, "end": 3557, "label": "inform"}
+{"text": "Now, subtraction and addition have the same precedence, left to right, so 26 - 10 = 16, then 16 + 8 = 24.", "start": 3559, "end": 3664, "label": "inform"}
+{"text": "Yes.", "start": 3665, "end": 3669, "label": "confirm"}
+{"text": "And I didn't need parentheses.", "start": 3671, "end": 3701, "label": "inform"}
+{"text": "But in the problem, it says \"use each number exactly once with +, -, *, /\", and I used multiplication, subtraction, and addition.", "start": 4163, "end": 4292, "label": "inform"}
+{"text": "All good.", "start": 4294, "end": 4303, "label": "autoPositive"}
+{"text": "But I have the number 10, which I subtracted, and 8 added.", "start": 4305, "end": 4363, "label": "inform"}
+{"text": "Another way: perhaps using division.", "start": 4365, "end": 4401, "label": "suggest"}
+{"text": "For example, 24 is 48 divided by 2, but I have a 2, so if I can make 48 with 8,10,13.", "start": 4403, "end": 4488, "label": "inform"}
+{"text": "8 times 6 is 48, but no 6.", "start": 4490, "end": 4516, "label": "inform"}
+{"text": "10 times 4.8, not integer.", "start": 4517, "end": 4543, "label": "inform"}
+{"text": "13 times something.", "start": 4544, "end": 4563, "label": "inform"}
+{"text": "Not easy.", "start": 4565, "end": 4574, "label": "inform"}
+{"text": "(10 + 14) but no 14.", "start": 4576, "end": 4596, "label": "inform"}
+{"text": "But I already have a solution.", "start": 4598, "end": 4628, "label": "inform"}
+{"text": "Perhaps with division: for example, 8 divided by something.", "start": 4630, "end": 4689, "label": "suggest"}
+{"text": "Another idea: 12 times 2, and 12 is 10 + 2, but again, I need to use all numbers.", "start": 4691, "end": 4772, "label": "inform"}
+{"text": "(10 + 2) * 2, but I need another number, and I have 8 and 13 unused.", "start": 4774, "end": 4842, "label": "inform"}
+{"text": "(10 + 2) * (8 / something), but 8/ something to get 2?", "start": 4844, "end": 4898, "label": "setQuestion"}
+{"text": "8/4, no 4.", "start": 4899, "end": 4909, "label": "disconfirm"}
+{"text": "Not working.", "start": 4911, "end": 4923, "label": "inform"}
+{"text": "(13 - 1) * 2, and 1 from 10/10, but only one 10.", "start": 4925, "end": 4973, "label": "inform"}
+{"text": "Not possible.", "start": 4975, "end": 4988, "label": "inform"}
+{"text": "So my first solution seems fine.", "start": 4990, "end": 5022, "label": "autoPositive"}
+{"text": "In my solution, I used 13, 2, 10, 8 with ×, -, +.", "start": 5024, "end": 5073, "label": "inform"}
+{"text": "But the problem has numbers 2,8,10,13, same.", "start": 5075, "end": 5119, "label": "inform"}
+{"text": "Perhaps I can write it as an expression: 13 × 2 + 8 - 10?", "start": 5121, "end": 5178, "label": "setQuestion"}
+{"text": "Let's see: 13×2=26, +8=34, -10=24.", "start": 5179, "end": 5213, "label": "inform"}
+{"text": "Oh, that also works: 13 × 2 + 8 - 10 = 26 + 8 = 34, minus 10 is 24.", "start": 5214, "end": 5281, "label": "confirm"}
+{"text": "Same thing, just order different.", "start": 5283, "end": 5316, "label": "inform"}
+{"text": "13 × 2 - 10 + 8 or 13 × 2 + 8 - 10, both give 24.", "start": 5318, "end": 5367, "label": "inform"}
+{"text": "In the first case, I have subtraction then addition, in the second, addition then subtraction.", "start": 5369, "end": 5463, "label": "inform"}
+{"text": "But both are fine.", "start": 5465, "end": 5483, "label": "autoPositive"}
+{"text": "Now, what about division?", "start": 5485, "end": 5510, "label": "setQuestion"}
+{"text": "I should try to include division to see if possible.", "start": 5511, "end": 5563, "label": "suggest"}
+{"text": "For example, 48 / 2 = 24, so if I can make 48 with 8,10,13.", "start": 5565, "end": 5624, "label": "inform"}
+{"text": "8 × 6 = 48, but no 6.", "start": 5626, "end": 5647, "label": "inform"}
+{"text": "10 × 4.8, not integer.", "start": 5649, "end": 5671, "label": "inform"}
+{"text": "13 × 3. something, no.", "start": 5673, "end": 5695, "label": "inform"}
+{"text": "(13 + 11) × something, no.", "start": 5697, "end": 5723, "label": "inform"}
+{"text": "Another idea: 24 = 192 / 8, and I have an 8, so if I can make 192 with 2,10,13.", "start": 5725, "end": 5804, "label": "inform"}
+{"text": "2 × 96, no.", "start": 5806, "end": 5817, "label": "inform"}
+{"text": "10 × 19.2, no.", "start": 5819, "end": 5833, "label": "inform"}
+{"text": "13 × 14.769, no.", "start": 5835, "end": 5851, "label": "inform"}
+{"text": "Not easy.", "start": 5853, "end": 5862, "label": "inform"}
+{"text": "(10 × 13) - something?", "start": 5864, "end": 5886, "label": "setQuestion"}
+{"text": "10×13=130, minus what?", "start": 5887, "end": 5909, "label": "setQuestion"}
+{"text": "130 - 106 = 24?", "start": 5910, "end": 5925, "label": "checkQuestion"}
+{"text": "But 106 with 2 and 8?", "start": 5926, "end": 5947, "label": "setQuestion"}
+{"text": "2×53, no.", "start": 5948, "end": 5957, "label": "disconfirm"}
+{"text": "Not working.", "start": 5959, "end": 5971, "label": "inform"}
+{"text": "Perhaps division: 8 / (1/3) = 24, but 1/3 from what?", "start": 5973, "end": 6025, "label": "setQuestion"}
+{"text": "With 2,10,13.", "start": 6026, "end": 6039, "label": "inform"}
+{"text": "10/30, but no 30.", "start": 6041, "end": 6058, "label": "disconfirm"}
+{"text": "13/39, no.", "start": 6060, "end": 6070, "label": "disconfirm"}
+{"text": "Not likely.", "start": 6072, "end": 6083, "label": "inform"}
+{"text": "So I think multiplication and addition/subtraction is the way to go.", "start": 6085, "end": 6153, "label": "inform"}
+{"text": "Another combination: 10 and 14, but 14 from 13+1, no 1.", "start": 6155, "end": 6210, "label": "inform"}
+{"text": "(10 + 14) but no 14.", "start": 6212, "end": 6232, "label": "inform"}
+{"text": "13 + 11, same.", "start": 6234, "end": 6248, "label": "inform"}
+{"text": "Perhaps (8 - 2) × something.", "start": 6250, "end": 6278, "label": "inform"}
+{"text": "8-2=6, then 6×4=24, but need 4 from 10 and 13?", "start": 6279, "end": 6325, "label": "setQuestion"}
+{"text": "10-6, no.", "start": 6326, "end": 6335, "label": "disconfirm"}
+{"text": "13-9, no.", "start": 6336, "end": 6345, "label": "disconfirm"}
+{"text": "Not working.", "start": 6347, "end": 6359, "label": "inform"}
+{"text": "10 / 2 = 5, then 5 × 4.8, no.", "start": 6361, "end": 6390, "label": "inform"}
+{"text": "13 - 10 = 3, then 3 × 8 = 24, but I have a 2 left unused.", "start": 6392, "end": 6449, "label": "inform"}
+{"text": "And I used 13,10,8, but not 2.", "start": 6450, "end": 6480, "label": "inform"}
+{"text": "So missing the 2.", "start": 6482, "end": 6499, "label": "inform"}
+{"text": "Unless I incorporate it, like (13 - 10) × 8 × something, but that would be 3×8=24, times what?", "start": 6501, "end": 6595, "label": "setQuestion"}
+{"text": "I need to divide by 1 or something, but no.", "start": 6596, "end": 6639, "label": "inform"}
+{"text": "(13 - 10) × 8 + 0, but no zero.", "start": 6641, "end": 6672, "label": "inform"}
+{"text": "Not possible.", "start": 6674, "end": 6687, "label": "inform"}
+{"text": "(13 - 10) × (8) × (2/2), but that uses 2 twice, and I only have one 2.", "start": 6689, "end": 6759, "label": "inform"}
+{"text": "2/2=1, but I need to use the numbers separately.", "start": 6761, "end": 6809, "label": "inform"}
+{"text": "In expression, I can do (13 - 10) × 8 × (2/2), but that uses two 2s, which I don't have; I have only one 2.", "start": 6811, "end": 6918, "label": "inform"}
+{"text": "The numbers are 2,8,10,13, each used once, so in (2/2), that would be using two 2s, which is not allowed.", "start": 6920, "end": 7025, "label": "inform"}
+{"text": "So invalid.", "start": 7027, "end": 7038, "label": "inform"}
+{"text": "Therefore, my initial solution is best.", "start": 7040, "end": 7079, "label": "autoPositive"}
+{"text": "Perhaps with division: for example, 48 / 2, but as before.", "start": 7081, "end": 7139, "label": "inform"}
+{"text": "Another idea: 24 = 12 × 2, and 12 = 8 + 4, but 4 from 10 and 13?", "start": 7141, "end": 7205, "label": "setQuestion"}
+{"text": "10 - 6, no.", "start": 7206, "end": 7217, "label": "disconfirm"}
+{"text": "13 - 9, no.", "start": 7219, "end": 7230, "label": "disconfirm"}
+{"text": "(10 + 2) × 2, but again, missing other numbers.", "start": 7232, "end": 7279, "label": "inform"}
+{"text": "(10 + 2) × (13 - 11), no 11.", "start": 7281, "end": 7309, "label": "inform"}
+{"text": "Not working.", "start": 7311, "end": 7323, "label": "inform"}
+{"text": "So I think 13 × 2 + 8 - 10 is fine.", "start": 7325, "end": 7360, "label": "autoPositive"}
+{"text": "To use division, suppose I do something like (13 - 1) × 2, and 1 = 10/10, but again, only one 10.", "start": 7362, "end": 7459, "label": "inform"}
+{"text": "Not possible.", "start": 7461, "end": 7474, "label": "inform"}
+{"text": "(8 / (1/3)) but need 1/3.", "start": 7476, "end": 7501, "label": "inform"}
+{"text": "For example, 1/3 from 2/6, but no 6.", "start": 7503, "end": 7539, "label": "disconfirm"}
+{"text": "13/39, no.", "start": 7541, "end": 7551, "label": "disconfirm"}
+{"text": "Not feasible.", "start": 7553, "end": 7566, "label": "inform"}
+{"text": "Therefore, I think the solution is 13 × 2 + 8 - 10 = 24.", "start": 7568, "end": 7624, "label": "inform"}
+{"text": "Or equivalently, 13 × 2 - 10 + 8.", "start": 7626, "end": 7659, "label": "inform"}
+{"text": "Now, to write it neatly.", "start": 7661, "end": 7685, "label": "inform"}
+{"text": "Perhaps I can use parentheses for clarity, but not necessary.", "start": 7687, "end": 7748, "label": "inform"}
+{"text": "In the expression 13 × 2 - 10 + 8, since multiplication first, then left to right for addition and subtraction.", "start": 7750, "end": 7861, "label": "inform"}
+{"text": "Yes.", "start": 7863, "end": 7867, "label": "confirm"}
+{"text": "To avoid any confusion, I can write (13 × 2) + 8 - 10.", "start": 7869, "end": 7923, "label": "inform"}
+{"text": "But same thing.", "start": 7925, "end": 7940, "label": "inform"}
+{"text": "Now, the problem says \"use each number exactly once with +, -, *, /\", and I used *, -, +, so division not used, but that's fine, I think it's allowed to not use all operations, just use the available ones.", "start": 7942, "end": 8147, "label": "inform"}
+{"text": "The problem doesn't say I must use all operations, just that I can use them.", "start": 8149, "end": 8225, "label": "inform"}
+{"text": "So it should be okay.", "start": 8227, "end": 8248, "label": "autoPositive"}
+{"text": "Perhaps there is a way with division.", "start": 8250, "end": 8287, "label": "setQuestion"}
+{"text": "Another thought: 24 = 240 / 10, and I have a 10, so if I can make 240 with 2,8,13.", "start": 8289, "end": 8371, "label": "inform"}
+{"text": "2 × 120, no.", "start": 8373, "end": 8385, "label": "inform"}
+{"text": "8 × 30, no.", "start": 8387, "end": 8398, "label": "inform"}
+{"text": "13 × 18.461, no.", "start": 8400, "end": 8416, "label": "inform"}
+{"text": "(13 × 18) + something, but no.", "start": 8418, "end": 8448, "label": "inform"}
+{"text": "Not working.", "start": 8450, "end": 8462, "label": "inform"}
+{"text": "8 × 13 = 104, then 104 / something = 24?", "start": 8464, "end": 8504, "label": "setQuestion"}
+{"text": "104 / 4.333, no.", "start": 8505, "end": 8521, "label": "disconfirm"}
+{"text": "104 + 16 = 120, but not 24.", "start": 8523, "end": 8550, "label": "inform"}
+{"text": "Not helpful.", "start": 8552, "end": 8564, "label": "inform"}
+{"text": "So I think it's fine.", "start": 8566, "end": 8587, "label": "autoPositive"}
+{"text": "Therefore, the expression is 13 × 2 + 8 - 10 = 24.", "start": 8589, "end": 8639, "label": "inform"}
+{"text": "To write it in a single line.", "start": 8641, "end": 8670, "label": "inform"}
+{"text": "Perhaps I can do it with subtraction first.", "start": 8672, "end": 8715, "label": "suggest"}
+{"text": "Like (8 - 2) × (13 - 10) × something, but 6 × 3 = 18, not 24, and I have no other numbers.", "start": 8717, "end": 8807, "label": "inform"}
+{"text": "(8 - 2) × 4, but no 4.", "start": 8809, "end": 8831, "label": "inform"}
+{"text": "13 - 10 = 3, then 3 × 8 = 24, but missing the 2.", "start": 8833, "end": 8881, "label": "inform"}
+{"text": "Unless I do (13 - 10) × 8 × 1, but no 1.", "start": 8883, "end": 8923, "label": "inform"}
+{"text": "Or divide by 1, like (13 - 10) × 8 ÷ (2/2), but again, using two 2s.", "start": 8925, "end": 8993, "label": "inform"}
+{"text": "Invalid.", "start": 8995, "end": 9003, "label": "inform"}
+{"text": "So no.", "start": 9005, "end": 9011, "label": "disconfirm"}
+{"text": "Therefore, I think the only way is the one I have.", "start": 9013, "end": 9063, "label": "autoPositive"}
+{"text": "Perhaps addition: 10 + 14, 14 from 13 +1, no.", "start": 9065, "end": 9110, "label": "inform"}
+{"text": "8 × 3 = 24, and 3 from 13 - 10, but again, missing 2.", "start": 9112, "end": 9165, "label": "inform"}
+{"text": "Same issue.", "start": 9167, "end": 9178, "label": "inform"}
+{"text": "So, I must use the 2 in a way that it doesn't cancel or something.", "start": 9180, "end": 9246, "label": "inform"}
+{"text": "In my solution, it works.", "start": 9248, "end": 9273, "label": "confirm"}
+{"text": "Another idea: 2 × (12), and 12 from 10 + 2, but again, using 2 twice.", "start": 9275, "end": 9344, "label": "inform"}
+{"text": "No.", "start": 9346, "end": 9349, "label": "disconfirm"}
+{"text": "(10 + 14) but no.", "start": 9351, "end": 9368, "label": "inform"}
+{"text": "I think I should stick with the solution.", "start": 9370, "end": 9411, "label": "autoPositive"}
+{"text": "So, final answer: 13 × 2 + 8 - 10 = 26 + 8 - 10 = 34 - 10 = 24.", "start": 9413, "end": 9476, "label": "inform"}
+{"text": "To write it as an expression: 13 × 2 + 8 - 10", "start": 9478, "end": 9523, "label": "inform"}
+{"text": "With the numbers in order: but the problem doesn't specify order, so any order is fine.", "start": 9525, "end": 9612, "label": "inform"}
+{"text": "Perhaps I can write it using the given numbers.", "start": 9614, "end": 9661, "label": "inform"}
+{"text": "So, using 2, 8, 10, 13 with operations ×, +, -.", "start": 9663, "end": 9710, "label": "inform"}
+{"text": "Yes.", "start": 9712, "end": 9716, "label": "confirm"}
+{"text": "To include division, but not necessary.", "start": 9718, "end": 9757, "label": "inform"}
+{"text": "I think it's acceptable.", "start": 9759, "end": 9783, "label": "autoPositive"}

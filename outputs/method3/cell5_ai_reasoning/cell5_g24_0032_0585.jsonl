@@ -1,0 +1,805 @@
+{"text": "I need to reach the target number 24 using the numbers 1, 3, 9, and 10 exactly once.", "start": 0, "end": 84, "label": "inform"}
+{"text": "I can use addition, subtraction, multiplication, and division.", "start": 85, "end": 147, "label": "inform"}
+{"text": "Also, I should use parentheses to group operations as needed.", "start": 148, "end": 209, "label": "inform"}
+{"text": "First, since 24 is the target, and I have numbers like 10 and 9, which are close to each other, I might multiply them or something.", "start": 211, "end": 342, "label": "inform"}
+{"text": "But 10 times 9 is 90, which is way bigger than 24, so I probably need to divide or subtract to get down to 24.", "start": 343, "end": 453, "label": "inform"}
+{"text": "I also have 1 and 3.", "start": 455, "end": 475, "label": "inform"}
+{"text": "Maybe I can use those to adjust.", "start": 476, "end": 508, "label": "inform"}
+{"text": "Let me think about multiplication.", "start": 510, "end": 544, "label": "inform"}
+{"text": "24 could be 8 times 3, and I have a 3, so if I can make 8 from 1, 9, and 10.", "start": 545, "end": 621, "label": "inform"}
+{"text": "How to make 8 from 1, 9, 10?", "start": 623, "end": 651, "label": "setQuestion"}
+{"text": "10 minus 1 is 9, but I already have a 9.", "start": 652, "end": 692, "label": "inform"}
+{"text": "10 minus 2, but I don't have a 2.", "start": 693, "end": 726, "label": "inform"}
+{"text": "9 minus 1 is 8, that's interesting.", "start": 727, "end": 762, "label": "inform"}
+{"text": "So, if I do 9 minus 1, I get 8, then multiply by 3, that's 24.", "start": 764, "end": 826, "label": "inform"}
+{"text": "But I have a 10 left unused.", "start": 827, "end": 855, "label": "inform"}
+{"text": "I have to use all four numbers.", "start": 856, "end": 887, "label": "inform"}
+{"text": "So that doesn't work.", "start": 889, "end": 910, "label": "inform"}
+{"text": "I used only 9, 1, and 3, but 10 is not used.", "start": 911, "end": 955, "label": "inform"}
+{"text": "Perhaps (10 - something) times something.", "start": 957, "end": 998, "label": "inform"}
+{"text": "10 times 3 is 30, which is 6 more than 24.", "start": 1000, "end": 1042, "label": "inform"}
+{"text": "30 minus 6 is 24, but I have 9 and 1.", "start": 1043, "end": 1080, "label": "inform"}
+{"text": "9 minus 3 is 6, but I used 3 already.", "start": 1081, "end": 1118, "label": "inform"}
+{"text": "Let's write it down.", "start": 1120, "end": 1140, "label": "inform"}
+{"text": "If I do 10 * 3 = 30, then I need to subtract 6 to get 24.", "start": 1142, "end": 1199, "label": "inform"}
+{"text": "Now, with 9 and 1, how do I get 6?", "start": 1200, "end": 1234, "label": "setQuestion"}
+{"text": "9 - 3, but 3 is used.", "start": 1235, "end": 1256, "label": "inform"}
+{"text": "Or 9 - 1 - something, but I only have two numbers left?", "start": 1257, "end": 1312, "label": "checkQuestion"}
+{"text": "No, I have 9 and 1, but I need to use them to make 6.", "start": 1313, "end": 1366, "label": "inform"}
+{"text": "9 - 3 would be 6, but 3 is used in multiplication.", "start": 1368, "end": 1418, "label": "inform"}
+{"text": "Unless I incorporate it differently.", "start": 1419, "end": 1455, "label": "inform"}
+{"text": "Perhaps (10 * 3) - (9 - 3), but I used 3 twice, and I don't have another 3.", "start": 1457, "end": 1532, "label": "inform"}
+{"text": "I have only one 3.", "start": 1533, "end": 1551, "label": "inform"}
+{"text": "The numbers are 1,3,9,10 each used once.", "start": 1553, "end": 1593, "label": "inform"}
+{"text": "So (10 * 3) - (9 - 3) uses 3 twice, not allowed.", "start": 1595, "end": 1643, "label": "inform"}
+{"text": "(10 * 3) - 9 + 3, but that would be 30 - 9 + 3 = 21 + 3 = 24, but I used 3 twice?", "start": 1645, "end": 1726, "label": "checkQuestion"}
+{"text": "No: 10, 3, 9, and another 3?", "start": 1727, "end": 1755, "label": "checkQuestion"}
+{"text": "No, I have only one 3.", "start": 1756, "end": 1778, "label": "inform"}
+{"text": "In (10 * 3) - 9 + 3, the first 3 and the second 3 are the same number, but I can't use it twice.", "start": 1780, "end": 1876, "label": "inform"}
+{"text": "I have to use each number once, so I can't use 3 twice.", "start": 1877, "end": 1932, "label": "inform"}
+{"text": "Unless I have another number, but I don't.", "start": 1934, "end": 1976, "label": "inform"}
+{"text": "I have 1, so maybe (10 * 3) - 9 + 1?", "start": 1977, "end": 2013, "label": "inform"}
+{"text": "30 - 9 = 21, +1 = 22, not 24.", "start": 2014, "end": 2043, "label": "inform"}
+{"text": "(10 * 3) - (9 + 1) + something, no.", "start": 2045, "end": 2080, "label": "inform"}
+{"text": "Not working.", "start": 2082, "end": 2094, "label": "inform"}
+{"text": "Division might help.", "start": 2096, "end": 2116, "label": "inform"}
+{"text": "24 is 240 divided by 10, but I have a 10, so if I can make 240 from 1,3,9.", "start": 2117, "end": 2191, "label": "inform"}
+{"text": "1,3,9 how to make 240?", "start": 2193, "end": 2215, "label": "setQuestion"}
+{"text": "3*80, not helpful.", "start": 2216, "end": 2234, "label": "inform"}
+{"text": "9*26.666, no.", "start": 2235, "end": 2248, "label": "inform"}
+{"text": "1*3*9=27, too small.", "start": 2249, "end": 2269, "label": "inform"}
+{"text": "9*9=81, but I have only one 9.", "start": 2270, "end": 2300, "label": "inform"}
+{"text": "Not easy.", "start": 2302, "end": 2311, "label": "inform"}
+{"text": "Perhaps (10 - something) * something.", "start": 2313, "end": 2350, "label": "inform"}
+{"text": "10 - 1 = 9, then I have 9 and 3 and 9, but I have only one 9.", "start": 2352, "end": 2413, "label": "inform"}
+{"text": "(10 - 1) = 9, then I have 9 and 3, but I need to use the other 9?", "start": 2414, "end": 2479, "label": "checkQuestion"}
+{"text": "No, I have the number 9, but I used it already?", "start": 2480, "end": 2527, "label": "checkQuestion"}
+{"text": "Let's see: I used 10 and 1 to make 9, but I also have the number 9 separately.", "start": 2528, "end": 2606, "label": "inform"}
+{"text": "So if I do (10 - 1) = 9, that's using 10 and 1, resulting in 9.", "start": 2608, "end": 2671, "label": "inform"}
+{"text": "Then I have the number 9 and 3 left.", "start": 2672, "end": 2708, "label": "inform"}
+{"text": "So I can multiply this by 3 or something.", "start": 2947, "end": 2988, "label": "inform"}
+{"text": "For example, (10 - 1) * 3 = 9 * 3 = 27, then I have the number 9 left unused.", "start": 2990, "end": 3067, "label": "inform"}
+{"text": "I need to incorporate it.", "start": 3068, "end": 3093, "label": "inform"}
+{"text": "27 is 3 more than 24, so 27 - 3, but I don't have another 3.", "start": 3095, "end": 3155, "label": "inform"}
+{"text": "(10 - 1) * 3 - 3, but I used 3 twice.", "start": 3157, "end": 3194, "label": "inform"}
+{"text": "No, I have the number 9 left, not 3.", "start": 3196, "end": 3232, "label": "inform"}
+{"text": "I have number 9 left.", "start": 3234, "end": 3255, "label": "inform"}
+{"text": "So (10 - 1) * 3 = 27, then 27 - 3, but can't.", "start": -1, "end": -1, "label": "inform"}
+{"text": "27 divided by something.", "start": 3345, "end": 3369, "label": "inform"}
+{"text": "27 / 1.125 or something, not helpful.", "start": 3371, "end": 3408, "label": "inform"}
+{"text": "(10 - 1) * 3 = 27, and I have 9, so 27 - 3, but no 3, I have 9.", "start": -1, "end": -1, "label": "inform"}
+{"text": "27 - 3 is not possible with 9.", "start": 3313, "end": 3343, "label": "inform"}
+{"text": "27 divided by something.", "start": 3345, "end": 3369, "label": "inform"}
+{"text": "Another idea: 9 * 3 = 27, which is close to 24, and I have 10 and 1.", "start": 3506, "end": 3574, "label": "inform"}
+{"text": "27 - 3 = 24, but again, no extra 3.", "start": 3575, "end": 3610, "label": "inform"}
+{"text": "With 10 and 1, I can make 10+1=11 or 10-1=9 or 10*1=10 or 10/1=10.", "start": 3612, "end": 3678, "label": "inform"}
+{"text": "So 27 - 3, but I need to make 3 from 10 and 1?", "start": 3680, "end": 3726, "label": "setQuestion"}
+{"text": "10/1 is 10, not 3.", "start": 3727, "end": 3745, "label": "inform"}
+{"text": "10-7, no.", "start": 3746, "end": 3755, "label": "inform"}
+{"text": "Not working.", "start": 3757, "end": 3769, "label": "inform"}
+{"text": "Division: 10 / something.", "start": 3771, "end": 3796, "label": "inform"}
+{"text": "10 divided by what is part of 24.", "start": 3798, "end": 3831, "label": "inform"}
+{"text": "24 divided by 10 is 2.4, so if I can make 2.4 from 1,3,9.", "start": 3833, "end": 3890, "label": "inform"}
+{"text": "2.4 is 24/10, circular.", "start": 3892, "end": 3915, "label": "inform"}
+{"text": "12/5, not helpful.", "start": 3917, "end": 3935, "label": "inform"}
+{"text": "3 - 0.6, but how to make 0.6.", "start": 3937, "end": 3966, "label": "inform"}
+{"text": "This seems messy.", "start": 3968, "end": 3985, "label": "inform"}
+{"text": "Perhaps (9 - 1) * 3 = 8*3=24, but again, 10 unused.", "start": 3987, "end": 4038, "label": "inform"}
+{"text": "I have to use 10.", "start": 4040, "end": 4057, "label": "inform"}
+{"text": "So maybe (9 - 1) * 3 * something with 10, but 24 * 10 is 240, too big, or divided by 10, but 24/10=2.4, not integer, but division is allowed, so fractions are ok, but 2.4 is not 24.", "start": 4059, "end": 4240, "label": "inform"}
+{"text": "The target is 24, so I need to get to 24.", "start": 4242, "end": 4283, "label": "inform"}
+{"text": "(9 - 1) * 3 = 24, but that ignores 10, so I need to incorporate 10 in a way that it cancels out or something.", "start": 4285, "end": 4394, "label": "inform"}
+{"text": "For example, multiply by 10 and divide by 10, but I have to use each number once, so I can't do that directly.", "start": 4396, "end": 4506, "label": "inform"}
+{"text": "(9 - 1) * 3 * (10/10) = 8*3*1 = 24, but that uses 10 twice?", "start": 4508, "end": 4567, "label": "checkQuestion"}
+{"text": "No, 10/10 uses 10 twice, but I have only one 10.", "start": 4568, "end": 4616, "label": "inform"}
+{"text": "I have numbers 1,3,9,10. So in (10/10), I need two 10s, but I have only one 10.", "start": -1, "end": -1, "label": "inform"}
+{"text": "I can do (9 - 1) * 3 * 1, but that uses 1 twice?", "start": 4696, "end": 4744, "label": "checkQuestion"}
+{"text": "No, (9-1) uses 1, and *1 uses another 1, but I have only one 1.", "start": 4745, "end": 4808, "label": "inform"}
+{"text": "The numbers are 1,3,9,10, so only one 1.", "start": 4810, "end": 4850, "label": "inform"}
+{"text": "So I can't do that.", "start": 4852, "end": 4871, "label": "inform"}
+{"text": "Perhaps (10 + 2) * 2, but I don't have 2.", "start": 4873, "end": 4914, "label": "inform"}
+{"text": "Another idea: 10 * 3 = 30, 30 - 6 = 24, and 6 is 9 - 3, but again, 3 used twice.", "start": 4916, "end": 4996, "label": "inform"}
+{"text": "Unless I use the 1 to make a 6 or something.", "start": 4998, "end": 5042, "label": "inform"}
+{"text": "9 - 3 = 6, but 3 used.", "start": 5044, "end": 5066, "label": "inform"}
+{"text": "With 1, how to make 6 from 9 and 1?", "start": 5068, "end": 5103, "label": "setQuestion"}
+{"text": "9 - 3, no 3.", "start": 5104, "end": 5116, "label": "inform"}
+{"text": "9/1.5, not helpful.", "start": 5117, "end": 5136, "label": "inform"}
+{"text": "(10 - 1) * 2.4, no.", "start": 5138, "end": 5157, "label": "inform"}
+{"text": "Let's list all possible ways.", "start": 5159, "end": 5188, "label": "inform"}
+{"text": "Perhaps multiplication and division together.", "start": 5190, "end": 5235, "label": "inform"}
+{"text": "For example, 9 * 10 = 90, then divide by something to get 24.", "start": 5237, "end": 5298, "label": "inform"}
+{"text": "90 / 3.75 = 24, but 3.75 from 1 and 3?", "start": 5300, "end": 5338, "label": "setQuestion"}
+{"text": "3 + 0.75, but 0.75 is 3/4, not from 1.", "start": 5339, "end": 5377, "label": "inform"}
+{"text": "90 / 3 = 30, then 30 - 6, but 6 from where.", "start": 5379, "end": 5422, "label": "inform"}
+{"text": "90 divided by 3.75, but 3.75 is 15/4, not easy.", "start": 5424, "end": 5471, "label": "inform"}
+{"text": "(9 * 10) / (5/2) or something, but I have 1 and 3.", "start": 5473, "end": 5523, "label": "inform"}
+{"text": "(9 * 10) / (3 + 1.5), no.", "start": 5525, "end": 5550, "label": "inform"}
+{"text": "Another combination: 3 * 10 = 30, 30 - 6 = 24, and 6 = 9 - 3, but 3 used twice.", "start": 5552, "end": 5631, "label": "inform"}
+{"text": "I keep coming back to that.", "start": 5633, "end": 5660, "label": "inform"}
+{"text": "Perhaps use division first.", "start": 5662, "end": 5689, "label": "inform"}
+{"text": "10 divided by something.", "start": 5691, "end": 5715, "label": "inform"}
+{"text": "10 / (1/2.4) or something, complicated.", "start": 5717, "end": 5756, "label": "inform"}
+{"text": "(10 - 1) * 3 = 27, then 27 - 3, but no, I have 9.", "start": 5758, "end": 5807, "label": "inform"}
+{"text": "27 and 9, 27 - 3 = 24, but 3 not available.", "start": 5809, "end": 5852, "label": "inform"}
+{"text": "9 / 3 = 3, but then I use 3 and 9, and I have 10 and 1 left.", "start": 5854, "end": 5914, "label": "inform"}
+{"text": "So if I do 9 / 3 = 3, then I have 3 from the operation, and numbers 10 and 1.", "start": 5916, "end": 5993, "label": "inform"}
+{"text": "Then I can do 10 * 3 = 30, but I have the 3 from division, and 10 and 1, so 10 * (9/3) = 10*3 = 30, then I have 1 left, 30 - 6, not, or 30 + something.", "start": 5995, "end": 6146, "label": "inform"}
+{"text": "30 - 6, but 6 not there.", "start": 6148, "end": 6172, "label": "inform"}
+{"text": "(10 * (9/3)) - 6, but no 6.", "start": 6174, "end": 6201, "label": "inform"}
+{"text": "With 1, I can only add or subtract 1, not 6.", "start": 6203, "end": 6247, "label": "inform"}
+{"text": "(10 * (9/3)) * (4/5) or something, no.", "start": 6249, "end": 6287, "label": "inform"}
+{"text": "Perhaps (10 + 2) * 2, but no 2.", "start": 6289, "end": 6320, "label": "inform"}
+{"text": "Let's think about addition or subtraction.", "start": 6322, "end": 6364, "label": "inform"}
+{"text": "10 + 9 + 3 + 2, but I have 1, not 2.", "start": 6366, "end": 6402, "label": "inform"}
+{"text": "10 + 9 = 19, +3 = 22, +1 = 23, not 24.", "start": 6404, "end": 6442, "label": "inform"}
+{"text": "10 + 9 = 19, +1 = 20, +3 = 23, still 23.", "start": 6444, "end": 6484, "label": "inform"}
+{"text": "10 * 3 = 30, 9 + 1 = 10, 30 - 10 = 20, not 24.", "start": 6486, "end": 6532, "label": "inform"}
+{"text": "10 * 3 = 30, 9 - 1 = 8, 30 - 8 = 22, not 24.", "start": 6534, "end": 6578, "label": "inform"}
+{"text": "9 * 3 = 27, 10 - 1 = 9, 27 - 9 = 18, not 24.", "start": 6580, "end": 6624, "label": "inform"}
+{"text": "27 - 3 = 24, but 3 used.", "start": 6626, "end": 6650, "label": "inform"}
+{"text": "I'm stuck.", "start": 6652, "end": 6662, "label": "inform"}
+{"text": "Perhaps division: 48 / 2 = 24, but how to make 48 and 2 from 1,3,9,10.", "start": 6664, "end": 6734, "label": "inform"}
+{"text": "48 from 10 and 3?", "start": 6736, "end": 6753, "label": "setQuestion"}
+{"text": "10*4.8, no.", "start": 6754, "end": 6765, "label": "inform"}
+{"text": "9*5.333, no.", "start": 6766, "end": 6778, "label": "inform"}
+{"text": "3*16, not.", "start": 6780, "end": 6790, "label": "inform"}
+{"text": "10*4 +8, no.", "start": 6792, "end": 6804, "label": "inform"}
+{"text": "Not easy.", "start": 6806, "end": 6815, "label": "inform"}
+{"text": "(10 + 14) * something, no.", "start": 6817, "end": 6843, "label": "inform"}
+{"text": "Another idea: 24 = 30 - 6, and 30 = 10*3, 6 = 9 - 3, but 3 used twice.", "start": 6845, "end": 6915, "label": "inform"}
+{"text": "24 = 27 - 3, 27 = 9*3, same issue.", "start": 6917, "end": 6951, "label": "inform"}
+{"text": "24 = 12*2, but no 2.", "start": 6953, "end": 6973, "label": "inform"}
+{"text": "12 from 10+2, no.", "start": 6975, "end": 6992, "label": "inform"}
+{"text": "10 + 2 = 12, but 2 from where?", "start": 6994, "end": 7024, "label": "setQuestion"}
+{"text": "3-1=2.", "start": 7025, "end": 7031, "label": "inform"}
+{"text": "Oh! That's an idea.", "start": 7033, "end": 7052, "label": "inform"}
+{"text": "So, 3 - 1 = 2, then I have 2, and numbers 9 and 10.", "start": 7054, "end": 7105, "label": "inform"}
+{"text": "Then 2 * 12 = 24, but 12 from 9 and 10?", "start": 7107, "end": 7146, "label": "setQuestion"}
+{"text": "10 + 2, but 2 is already used.", "start": 7147, "end": 7177, "label": "inform"}
+{"text": "I have 9 and 10 left.", "start": 7179, "end": 7200, "label": "inform"}
+{"text": "So with 9 and 10, how to make 12?", "start": 7202, "end": 7235, "label": "setQuestion"}
+{"text": "10 + 2, but 2 is not available, or 9 + 3, no 3.", "start": 7236, "end": 7283, "label": "inform"}
+{"text": "10 + 2, but I don't have another 2.", "start": 7285, "end": 7320, "label": "inform"}
+{"text": "(10 + (3-1)) * something with 9.", "start": 7525, "end": 7557, "label": "inform"}
+{"text": "(10 + (3-1)) = 10 + 2 = 12, then I have 9 left.", "start": 7559, "end": 7606, "label": "inform"}
+{"text": "12 * 2 = 24, but no second 2, or 12 * 1, but 1 is used.", "start": 7607, "end": 7662, "label": "inform"}
+{"text": "12 + 12, no.", "start": 7664, "end": 7676, "label": "inform"}
+{"text": "(10 + (3-1)) * (9/3) but 3 used twice.", "start": 7678, "end": 7716, "label": "inform"}
+{"text": "Not working.", "start": 7718, "end": 7730, "label": "inform"}
+{"text": "(10 + (3-1)) * 2, but no 2.", "start": 7732, "end": 7759, "label": "inform"}
+{"text": "Perhaps divide: 24 / 1 = 24, but I need to make 24 from the others.", "start": 7761, "end": 7828, "label": "inform"}
+{"text": "Let's try to use the 10 and 9 to make something.", "start": 7830, "end": 7878, "label": "inform"}
+{"text": "10 * 9 = 90, too big.", "start": 7880, "end": 7901, "label": "inform"}
+{"text": "10 + 9 = 19.", "start": 7903, "end": 7915, "label": "inform"}
+{"text": "10 - 9 = 1, but I already have a 1.", "start": 7917, "end": 7952, "label": "inform"}
+{"text": "(10 - 9) = 1, then I have 1 from operation, and numbers 1 and 3, so two 1s, but I need to use them.", "start": 7954, "end": 8053, "label": "inform"}
+{"text": "Then (10 - 9) = 1, and I have number 1 and 3, so I can do 3 * 8, but no 8.", "start": 8055, "end": 8129, "label": "inform"}
+{"text": "3 * ( something).", "start": 8131, "end": 8148, "label": "inform"}
+{"text": "With two 1s and a 3, how to make 24?", "start": 8150, "end": 8186, "label": "setQuestion"}
+{"text": "3*8, but 8 from two 1s?", "start": 8187, "end": 8210, "label": "inform"}
+{"text": "1+1=2, not 8.", "start": 8211, "end": 8224, "label": "inform"}
+{"text": "1/1=1, not helpful.", "start": 8225, "end": 8244, "label": "inform"}
+{"text": "(3 * 8) but no.", "start": 8246, "end": 8261, "label": "inform"}
+{"text": "Not good.", "start": 8263, "end": 8272, "label": "inform"}
+{"text": "Perhaps (10 * 3) / something.", "start": 8274, "end": 8303, "label": "inform"}
+{"text": "30 / 1.25 = 24, and 1.25 is 5/4, but from 9 and 1?", "start": 8305, "end": 8355, "label": "setQuestion"}
+{"text": "9/1 =9, not 1.25.", "start": 8356, "end": 8373, "label": "inform"}
+{"text": "(10 * 3) / (5/4) but no 5 or 4.", "start": 8375, "end": 8406, "label": "inform"}
+{"text": "Not.", "start": 8408, "end": 8412, "label": "inform"}
+{"text": "Another idea: 9 * (8/3) = 24, because 9*8=72, 72/3=24, but I have 8/3, need to make 8 and 3.", "start": 8414, "end": 8506, "label": "inform"}
+{"text": "I have 3, so if I can make 8 from 10 and 1.", "start": 8508, "end": 8551, "label": "inform"}
+{"text": "10 - 2, but no 2.", "start": 8553, "end": 8570, "label": "inform"}
+{"text": "10 - 1 -1, but only one 1.", "start": 8571, "end": 8597, "label": "inform"}
+{"text": "10 - 1 =9, not 8.", "start": 8599, "end": 8616, "label": "inform"}
+{"text": "9 is there, but I need 8.", "start": 8618, "end": 8643, "label": "inform"}
+{"text": "(10 - 2) but no 2.", "start": 8645, "end": 8663, "label": "inform"}
+{"text": "With 1, how to make 8 from 10 and 1?", "start": 8665, "end": 8701, "label": "setQuestion"}
+{"text": "10 - 1 -1, but only one 1.", "start": 8702, "end": 8728, "label": "inform"}
+{"text": "10 * 0.8, not.", "start": 8730, "end": 8744, "label": "inform"}
+{"text": "So not.", "start": 8746, "end": 8753, "label": "inform"}
+{"text": "Perhaps (9 + 3) * 2 = 12*2=24, and 2 from 10 and 1?", "start": 8755, "end": 8806, "label": "inform"}
+{"text": "10/5, no.", "start": 8807, "end": 8816, "label": "inform"}
+{"text": "10-8, no.", "start": 8817, "end": 8826, "label": "inform"}
+{"text": "2 from 10 and 1?", "start": 8828, "end": 8844, "label": "setQuestion"}
+{"text": "10/5 not, (10/5) but no 5.", "start": 8845, "end": 8871, "label": "inform"}
+{"text": "(10 - 8) but 8 not there.", "start": 8941, "end": 8966, "label": "inform"}
+{"text": "So stuck.", "start": 8968, "end": 8977, "label": "inform"}
+{"text": "Let's try a different approach.", "start": 8979, "end": 9010, "label": "inform"}
+{"text": "Maybe use the numbers in a fraction or something.", "start": 9011, "end": 9060, "label": "inform"}
+{"text": "For example, (10 - 1) * 3 = 27, and I have 9, so 27 - 3, but no.", "start": 9062, "end": 9126, "label": "inform"}
+{"text": "27 * (8/9) or something.", "start": 9128, "end": 9152, "label": "inform"}
+{"text": "27 * (8/9) = 3*8 =24, yes!", "start": 9154, "end": 9180, "label": "inform"}
+{"text": "27 * (8/9) = 24, but I have 27 from (10-1)*3, and I have the number 9, so I need to make 8.", "start": 9182, "end": 9273, "label": "inform"}
+{"text": "But I don't have 8, I have only 9 left.", "start": 9275, "end": 9314, "label": "inform"}
+{"text": "I have (10-1)*3 = 27, and number 9.", "start": 9316, "end": 9351, "label": "inform"}
+{"text": "So to do 27 * (8/9), I need 8, which I don't have.", "start": 9353, "end": 9403, "label": "inform"}
+{"text": "27 / 9 * 8, but same thing.", "start": 9405, "end": 9432, "label": "inform"}
+{"text": "Perhaps (27 * 8) / 9, but no 8.", "start": 9434, "end": 9465, "label": "inform"}
+{"text": "Not.", "start": 9467, "end": 9471, "label": "inform"}
+{"text": "Another idea: 10 * 2.4 = 24, and 2.4 from 3,9,1.", "start": 9473, "end": 9521, "label": "inform"}
+{"text": "2.4 is 12/5, or 24/10, circular.", "start": 9523, "end": 9555, "label": "inform"}
+{"text": "2.4 = 12/5, 12 from 3*4, no.", "start": 9595, "end": 9623, "label": "inform"}
+{"text": "9/3.75, not.", "start": 9625, "end": 9637, "label": "inform"}
+{"text": "3*0.8, but 0.8 from 1 and 9?", "start": 9639, "end": 9667, "label": "inform"}
+{"text": "8/10, but 8 and 10 not available.", "start": 9668, "end": 9701, "label": "inform"}
+{"text": "(9 - 1) / something.", "start": 9703, "end": 9723, "label": "inform"}
+{"text": "(9 - 1) = 8, then 8 / (1/3) = 8*3 = 24, but I used 9 and 1, and 3, but 10 unused.", "start": 9725, "end": 9806, "label": "inform"}
+{"text": "Again, 10 not used.", "start": 9808, "end": 9827, "label": "inform"}
+{"text": "So (9 - 1) * 3 = 24, 10 not used.", "start": 9829, "end": 9862, "label": "inform"}
+{"text": "I need to include 10.", "start": 9864, "end": 9885, "label": "inform"}
+{"text": "Perhaps (9 - 1) * 3 * (10/10) , but that uses 10 twice.", "start": 9887, "end": 9942, "label": "inform"}
+{"text": "Or (9 - 1) * 3 + 0*10, but 0 not there, and +0 is not using 10 properly.", "start": 9944, "end": 10016, "label": "inform"}
+{"text": "The operation must use the number.", "start": 10018, "end": 10052, "label": "inform"}
+{"text": "(9 - 1) * 3 + (10 - 10), but that uses 10 twice and I have only one 10.", "start": 10054, "end": 10125, "label": "inform"}
+{"text": "Not allowed.", "start": 10127, "end": 10139, "label": "inform"}
+{"text": "So must use each number once in the expression.", "start": 10141, "end": 10188, "label": "inform"}
+{"text": "Perhaps (10 + 14) but no 14.", "start": 10190, "end": 10218, "label": "inform"}
+{"text": "Let's list all possible two-number operations and see.", "start": 10220, "end": 10274, "label": "inform"}
+{"text": "Possible pairs:", "start": 10276, "end": 10291, "label": "inform"}
+{"text": "1 and 3: 1+3=4, 1-3= -2, 3-1=2, 1*3=3, 1/3=0.333, 3/1=3.", "start": -1, "end": -1, "label": "inform"}
+{"text": "1 and 9: 1+9=10, 1-9= -8, 9-1=8, 1*9=9, 1/9=0.111, 9/1=9.", "start": -1, "end": -1, "label": "inform"}
+{"text": "1 and 10: 1+10=11, 1-10= -9, 10-1=9, 1*10=10, 1/10=0.1, 10/1=10.", "start": 10408, "end": 10472, "label": "inform"}
+{"text": "3 and 9: 3+9=12, 3-9= -6, 9-3=6, 3*9=27, 3/9=1/3, 9/3=3.", "start": 10474, "end": 10530, "label": "inform"}
+{"text": "3 and 10: 3+10=13, 3-10= -7, 10-3=7, 3*10=30, 3/10=0.3, 10/3=3.333.", "start": -1, "end": -1, "label": "inform"}
+{"text": "9 and 10: 9+10=19, 9-10= -1, 10-9=1, 9*10=90, 9/10=0.9, 10/9=1.111.", "start": -1, "end": -1, "label": "inform"}
+{"text": "Now, with these results, combine with the remaining number.", "start": 10668, "end": 10727, "label": "inform"}
+{"text": "For example, take 3-1=2, then I have 2, and 9 and 10.", "start": 10729, "end": 10782, "label": "inform"}
+{"text": "Now with 2 and 9: 2+9=11, 2-9= -7, 9-2=7, 2*9=18, 2/9, 9/2=4.5", "start": 10784, "end": 10846, "label": "inform"}
+{"text": "Then with 10: if I have 18, 18 +6=24, but no 6, 18*1.333, no.", "start": 10848, "end": 10909, "label": "inform"}
+{"text": "If I have 7 from 9-2, then 7 and 10: 7+17, no, 7*3.428, no.", "start": 10911, "end": 10970, "label": "inform"}
+{"text": "10/2=5, then with 9: 5 and 9, 5*4.8, no, 9*2.666, no.", "start": 10972, "end": 11025, "label": "inform"}
+{"text": "Not good.", "start": 11027, "end": 11036, "label": "inform"}
+{"text": "Take 9-1=8, then have 8, and 3 and 10.", "start": 11038, "end": 11076, "label": "inform"}
+{"text": "With 8 and 3: 8+3=11, 8-3=5, 3-8= -5, 8*3=24, 8/3=2.666, 3/8=0.375.", "start": -1, "end": -1, "label": "inform"}
+{"text": "8*3=24, but I have 10 left unused.", "start": 11146, "end": 11180, "label": "inform"}
+{"text": "If I do (9-1)*3=24, then 10 is not used.", "start": 11182, "end": 11222, "label": "inform"}
+{"text": "With 8 and 10: 8+10=18, 8-10= -2, 10-8=2, 8*10=80, 8/10=0.8, 10/8=1.25.", "start": 11224, "end": 11295, "label": "inform"}
+{"text": "Then with 3: if I have 18, 18+6, no; 80/3.333, no; 2 from 10-8, then 2*12, no.", "start": 11297, "end": 11375, "label": "inform"}
+{"text": "Not working.", "start": 11377, "end": 11389, "label": "inform"}
+{"text": "Take 10-1=9, then have 9 (from operation), and numbers 3 and 9.", "start": 11391, "end": 11454, "label": "inform"}
+{"text": "So two 9s and a 3.", "start": 11456, "end": 11474, "label": "inform"}
+{"text": "Then 9*3=27, and the other 9, 27-3=24, but 3 used, or 27-3, but no 3, I have 9.", "start": 11476, "end": 11555, "label": "inform"}
+{"text": "27 - 3, but 3 is used in multiplication.", "start": 11557, "end": 11597, "label": "inform"}
+{"text": "(10-1) =9, then ( that 9 * 3 ) =27, then I have number 9, so 27 - 3, but 3 not available.", "start": 11599, "end": 11688, "label": "inform"}
+{"text": "(10-1) * 3 =27, then 27 and number 9, so 27 * (8/9) but no 8.", "start": 11690, "end": 11751, "label": "inform"}
+{"text": "27 - 3, but no.", "start": 11753, "end": 11768, "label": "inform"}
+{"text": "(10-1) * 3 - 3, but 3 used twice.", "start": 11770, "end": 11803, "label": "inform"}
+{"text": "No.", "start": 11805, "end": 11808, "label": "inform"}
+{"text": "Perhaps (10-1) * (3) * (1) but 1 used.", "start": 11810, "end": 11848, "label": "inform"}
+{"text": "Not.", "start": 11850, "end": 11854, "label": "inform"}
+{"text": "Another pair: 9/3=3, then have 3, and numbers 1 and 10.", "start": 11856, "end": 11911, "label": "inform"}
+{"text": "Then with 3 and 1: 3+1=4, 3-1=2, 1-3= -2, 3*1=3, 3/1=3, 1/3=0.333.", "start": -1, "end": -1, "label": "inform"}
+{"text": "Then with 10: if I have 2, 2*12, no; 4, 4*6, no; 3, 3*8, no; etc.", "start": 11980, "end": 12045, "label": "inform"}
+{"text": "10*3=30, then with 1, 30-6, no.", "start": 12047, "end": 12078, "label": "inform"}
+{"text": "Not good.", "start": 12080, "end": 12089, "label": "inform"}
+{"text": "10/2=5, but how to make 2.", "start": 12091, "end": 12117, "label": "inform"}
+{"text": "3-1=2, then 10/(3-1) =10/2=5, then with 9, 5 and 9, need to make 24.", "start": 12119, "end": 12187, "label": "inform"}
+{"text": "5*4.8, no; 9*2.666, no; 5+19, no.", "start": 12189, "end": 12222, "label": "inform"}
+{"text": "10/(3-1) =5, then 5*4.8, not.", "start": 12224, "end": 12253, "label": "inform"}
+{"text": "(10 * 3) / (5/4) but no 5 or 4.", "start": 12255, "end": 12286, "label": "inform"}
+{"text": "I'm missing something.", "start": 12288, "end": 12310, "label": "inform"}
+{"text": "Let's think about division.", "start": 12312, "end": 12339, "label": "inform"}
+{"text": "Suppose I do 9 * 10 = 90, then divide by 3.75 to get 24, but 3.75 from 1 and 3?", "start": 12341, "end": 12420, "label": "setQuestion"}
+{"text": "3 + 0.75, 0.75 is 3/4, not from 1.", "start": 12421, "end": 12455, "label": "inform"}
+{"text": "3 * 1.25 = 3.75, but 1.25 from where?", "start": 12457, "end": 12494, "label": "setQuestion"}
+{"text": "5/4, no.", "start": 12495, "end": 12503, "label": "inform"}
+{"text": "(3 + 3/4) but no 4.", "start": 12505, "end": 12524, "label": "inform"}
+{"text": "Not.", "start": 12526, "end": 12530, "label": "inform"}
+{"text": "48 / 2 = 24, and 48 from 9 and 10?", "start": 12532, "end": 12566, "label": "setQuestion"}
+{"text": "9*5.333, no.", "start": 12567, "end": 12579, "label": "inform"}
+{"text": "10*4.8, no.", "start": 12581, "end": 12592, "label": "inform"}
+{"text": "3*16, 16 from 10 and 6, no.", "start": 12594, "end": 12621, "label": "inform"}
+{"text": "(10 + 14) but 14 from 9 and 5, no.", "start": 12623, "end": 12657, "label": "inform"}
+{"text": "Perhaps (10 - 1/3) * something.", "start": 12659, "end": 12690, "label": "inform"}
+{"text": "10 - 1/3 = 29/3, then * something to get 24.", "start": 12692, "end": 12736, "label": "inform"}
+{"text": "24 / (29/3) = 24 * 3/29 = 72/29, not integer, not good.", "start": 12738, "end": 12793, "label": "inform"}
+{"text": "(10 * 3) * (4/5) but no 4 or 5.", "start": 12795, "end": 12826, "label": "inform"}
+{"text": "Another idea: 24 = 3 * 8, and 8 = 10 - 2, and 2 = 2, but how to make 2 from 1 and 9?", "start": 12828, "end": 12912, "label": "inform"}
+{"text": "9/4.5, no.", "start": 12913, "end": 12923, "label": "inform"}
+{"text": "18/9, but no 18.", "start": 12924, "end": 12940, "label": "inform"}
+{"text": "9/3 =3, but 3 used.", "start": 12942, "end": 12961, "label": "inform"}
+{"text": "If I do 9/3 =3, then I have 3, and 10 and 1.", "start": 12963, "end": 13007, "label": "inform"}
+{"text": "Then 10 - 1 =9, then 3*8, no.", "start": 13009, "end": 13038, "label": "inform"}
+{"text": "(10 - 1) * (9/3) = 9 * 3 = 27, not 24.", "start": 13040, "end": 13078, "label": "inform"}
+{"text": "(10 - 1) * (9/3) - 3, but 3 used twice.", "start": 13080, "end": 13119, "label": "inform"}
+{"text": "No.", "start": 13121, "end": 13124, "label": "inform"}
+{"text": "Perhaps subtraction: 10 * 3 - 6 = 30 - 6 = 24, and 6 = 9 - 3, but 3 used twice.", "start": 13126, "end": 13205, "label": "inform"}
+{"text": "Unless I use the 1 to make the 6 different.", "start": 13207, "end": 13250, "label": "inform"}
+{"text": "9 - 3 =6, but 3 used.", "start": 13252, "end": 13273, "label": "inform"}
+{"text": "9/1.5 =6, but 1.5 from 3?", "start": 13275, "end": 13300, "label": "inform"}
+{"text": "3/2, no 2.", "start": 13301, "end": 13311, "label": "inform"}
+{"text": "1.5 = 3/2, but no 2.", "start": 13313, "end": 13333, "label": "inform"}
+{"text": "With 1 and 3, how to make 1.5?", "start": 13335, "end": 13365, "label": "setQuestion"}
+{"text": "3/2, but 2 not there.", "start": 13366, "end": 13387, "label": "inform"}
+{"text": "(3+3)/2, but only one 3.", "start": 13389, "end": 13413, "label": "inform"}
+{"text": "Not possible.", "start": 13415, "end": 13428, "label": "inform"}
+{"text": "Perhaps (9 * 3) - 3 = 27-3=24, but 3 used twice, and 10 and 1 not used.", "start": 13430, "end": 13501, "label": "inform"}
+{"text": "(9 * 3) - 3 uses two 3s.", "start": 13503, "end": 13527, "label": "inform"}
+{"text": "Not.", "start": 13529, "end": 13533, "label": "inform"}
+{"text": "I need to use all four numbers in a single expression.", "start": 13535, "end": 13589, "label": "inform"}
+{"text": "Let's try (10 + 2) * 2, but no 2.", "start": 13591, "end": 13624, "label": "inform"}
+{"text": "(10 + 2) * 1.2, no.", "start": 13626, "end": 13645, "label": "inform"}
+{"text": "Another thought: (10 - 1/3) * 2.4, no.", "start": 13647, "end": 13685, "label": "inform"}
+{"text": "Perhaps (9 - 1) * 3 * 1, but 10 not used.", "start": 13687, "end": 13728, "label": "inform"}
+{"text": "I have to use 10.", "start": 13730, "end": 13747, "label": "inform"}
+{"text": "So maybe (9 - 1) * 3 + 0, but 0 from 10-10, not.", "start": 13749, "end": 13797, "label": "inform"}
+{"text": "(9 - 1) * 3 * (10/10) , but 10/10 uses 10 twice.", "start": 13799, "end": 13847, "label": "inform"}
+{"text": "Not allowed.", "start": 13849, "end": 13861, "label": "inform"}
+{"text": "Unless I use the numbers in a way that 10 is divided by something.", "start": 13863, "end": 13929, "label": "inform"}
+{"text": "Let's try this: 10 * (24/10) but circular.", "start": 13931, "end": 13973, "label": "inform"}
+{"text": "10 * (9 - 1) / 3 * something.", "start": 13975, "end": 14004, "label": "inform"}
+{"text": "9 - 1 =8, 10*8=80, 80/3=26.666, not 24.", "start": -1, "end": -1, "label": "inform"}
+{"text": "80/3.333, no.", "start": 14046, "end": 14059, "label": "inform"}
+{"text": "(10 * (9 - 1)) / (10/3) or something.", "start": 14061, "end": 14098, "label": "inform"}
+{"text": "10 * 8 =80, 10/3=3.333, 80 / (10/3) = 80 * 3/10 = 240/10 = 24, oh!", "start": -1, "end": -1, "label": "inform"}
+{"text": "Let's see: (10 * (9 - 1)) / (10/3)", "start": 14167, "end": 14201, "label": "inform"}
+{"text": "But in this, I have two 10s: one in numerator and one in denominator.", "start": 14203, "end": 14272, "label": "inform"}
+{"text": "10 * (9-1) uses one 10, and (10/3) uses another 10, but I have only one 10.", "start": 14274, "end": 14349, "label": "inform"}
+{"text": "The numbers are 1,3,9,10, so only one 10.", "start": 14351, "end": 14392, "label": "inform"}
+{"text": "In the expression (10 * (9 - 1)) / (10 / 3), the numbers are: 10, 9, 1, 10, 3.", "start": -1, "end": -1, "label": "inform"}
+{"text": "So 10 used twice, 3 used once, 9 once, 1 once.", "start": 15284, "end": 15330, "label": "inform"}
+{"text": "But we have only one 10, so it's invalid.", "start": 15331, "end": 15372, "label": "inform"}
+{"text": "So not allowed.", "start": 15374, "end": 15389, "label": "inform"}
+{"text": "Perhaps I can write it as 10 * (9-1) * 3 / 10, but again, 10 used twice.", "start": 15391, "end": 15463, "label": "inform"}
+{"text": "10 * 8 * 3 / 10 = 240/10 = 24, but 10 used twice.", "start": 15465, "end": 15514, "label": "inform"}
+{"text": "Not good.", "start": 15516, "end": 15525, "label": "inform"}
+{"text": "So need different approach.", "start": 15527, "end": 15554, "label": "inform"}
+{"text": "Let's think about the order of operations.", "start": 15556, "end": 15598, "label": "inform"}
+{"text": "Perhaps 3 * (10 - 1) + something.", "start": 15600, "end": 15633, "label": "inform"}
+{"text": "10 - 1 =9, 3*9=27, then + something with 9, but I have number 9 left.", "start": 15635, "end": 15704, "label": "inform"}
+{"text": "27 - 3, but no.", "start": 15706, "end": 15721, "label": "inform"}
+{"text": "3 * (10 - 1) - 3, but 3 used twice.", "start": 15723, "end": 15758, "label": "inform"}
+{"text": "No.", "start": 15760, "end": 15763, "label": "inform"}
+{"text": "(3 * 10) - (9 - 3) , but 3 used twice.", "start": 15765, "end": 15803, "label": "inform"}
+{"text": "Same issue.", "start": 15805, "end": 15816, "label": "inform"}
+{"text": "Unless I use the 1 in the subtraction.", "start": 15818, "end": 15856, "label": "inform"}
+{"text": "(3 * 10) - (9 - 3) , but 3 used twice.", "start": 15858, "end": 15896, "label": "inform"}
+{"text": "(3 * 10) - 6, and 6 = 9 - 3, but same.", "start": 15898, "end": 15936, "label": "inform"}
+{"text": "I think I need to accept that 3 is used once, but in the expression, it's different.", "start": 15938, "end": 16022, "label": "inform"}
+{"text": "Perhaps (3 * 10) - (9 - 3) uses the number 3 only once?", "start": 16024, "end": 16079, "label": "checkQuestion"}
+{"text": "No, in the expression, there are two instances of the number 3.", "start": 16080, "end": 16143, "label": "inform"}
+{"text": "For example, in (3 * 10) - (9 - 3), the number 3 appears twice, so it's used twice, which is not permitted.", "start": 16145, "end": 16252, "label": "inform"}
+{"text": "Each number must be used exactly once, so only one occurrence of each number in the expression.", "start": 16253, "end": 16348, "label": "inform"}
+{"text": "So that's not allowed.", "start": 16350, "end": 16372, "label": "inform"}
+{"text": "Similarly for other cases.", "start": 16374, "end": 16400, "label": "inform"}
+{"text": "So I must have an expression where each number appears exactly once.", "start": 16402, "end": 16470, "label": "inform"}
+{"text": "For example, something like (10 - 2) * 3, but no 2.", "start": 16472, "end": 16523, "label": "inform"}
+{"text": "Or 9 * (2 + 2/3) or something.", "start": 16525, "end": 16555, "label": "inform"}
+{"text": "Let's try to use fractions.", "start": 16557, "end": 16584, "label": "inform"}
+{"text": "Suppose I do 9 * 3 = 27, too big.", "start": 16586, "end": 16619, "label": "inform"}
+{"text": "10 * 2.4 = 24, so need 2.4 from 3 and 1.", "start": 16621, "end": 16661, "label": "inform"}
+{"text": "2.4 = 12/5, but no 5.", "start": 16663, "end": 16684, "label": "inform"}
+{"text": "2.4 = 24/10, circular.", "start": 16686, "end": 16708, "label": "inform"}
+{"text": "2.4 = 72/30, not helpful.", "start": 16710, "end": 16735, "label": "inform"}
+{"text": "With 1 and 3, how to make 2.4?", "start": 16737, "end": 16767, "label": "setQuestion"}
+{"text": "12/5, no; 3 - 0.6, 0.6 from 1?", "start": 16768, "end": 16798, "label": "inform"}
+{"text": "1/1.666, no.", "start": 16799, "end": 16811, "label": "inform"}
+{"text": "Not possible.", "start": 16813, "end": 16826, "label": "inform"}
+{"text": "(10 + 14) / 1, but 14 from 9 and 5, no.", "start": 16828, "end": 16867, "label": "inform"}
+{"text": "Another idea: (9 - 3/3) * 3, but 3 used twice.", "start": 16869, "end": 16915, "label": "inform"}
+{"text": "3/3 =1, then 9-1=8, then 8*3=24, but 3 used twice, and 10 not used.", "start": 16917, "end": 16984, "label": "inform"}
+{"text": "No.", "start": 16986, "end": 16989, "label": "inform"}
+{"text": "(9 - 3/3) * 3, numbers used: 9,3,3,3, but we have only one 3.", "start": 16991, "end": 17052, "label": "inform"}
+{"text": "Not.", "start": 17054, "end": 17058, "label": "inform"}
+{"text": "I'm stuck.", "start": 17060, "end": 17070, "label": "inform"}
+{"text": "Let's search online or think differently.", "start": 17072, "end": 17113, "label": "inform"}
+{"text": "Perhaps addition and subtraction with division.", "start": 17115, "end": 17162, "label": "inform"}
+{"text": "10 + 9 + 3 + 2, but no 2.", "start": 17164, "end": 17189, "label": "inform"}
+{"text": "10 + 9 = 19, 19 + 5 = 24, 5 from 3 and 2, no.", "start": 17191, "end": 17236, "label": "inform"}
+{"text": "19 + 3 + 2, but no 2.", "start": 17238, "end": 17259, "label": "inform"}
+{"text": "(10 * 3) - (9 + 3) = 30 - 12 = 18, not 24.", "start": 17261, "end": 17303, "label": "inform"}
+{"text": "(10 * 3) - 9 + 3 = 30 -9 +3 = 24, but 3 used twice.", "start": 17305, "end": 17356, "label": "inform"}
+{"text": "In (10 * 3) - 9 + 3, the first 3 and the second 3 are the same number?", "start": 17358, "end": 17428, "label": "checkQuestion"}
+{"text": "No, it's two separate uses of the number 3.", "start": 17429, "end": 17472, "label": "inform"}
+{"text": "But we have only one number 3, so it can't be used twice.", "start": 17474, "end": 17531, "label": "inform"}
+{"text": "Unless the number 3 is used once, but in the expression, it's written once, but in this case, it's written twice.", "start": 17533, "end": 17646, "label": "inform"}
+{"text": "In the expression (10 * 3) - 9 + 3, there are two '3's, so it's two instances.", "start": 17648, "end": 17726, "label": "inform"}
+{"text": "So not allowed.", "start": 17728, "end": 17743, "label": "inform"}
+{"text": "Perhaps (10 * 3) - (9 - 3) but same issue.", "start": 17745, "end": 17787, "label": "inform"}
+{"text": "I think I need to use the 1 in a way that it doesn't change value or something.", "start": 17789, "end": 17868, "label": "inform"}
+{"text": "For example, multiply by 1 or add 0.", "start": 17870, "end": 17906, "label": "inform"}
+{"text": "But add 0, how to make 0 from other numbers?", "start": 17908, "end": 17952, "label": "setQuestion"}
+{"text": "10-10, not.", "start": 17953, "end": 17964, "label": "inform"}
+{"text": "3-3, not.", "start": 17966, "end": 17975, "label": "inform"}
+{"text": "1-1, but only one 1.", "start": 17977, "end": 17997, "label": "inform"}
+{"text": "So not.", "start": 17999, "end": 18006, "label": "inform"}
+{"text": "Perhaps (10 - 1) * (3) for 27, then divide by 1.125, but 1.125 from 9?", "start": 18008, "end": 18078, "label": "inform"}
+{"text": "9/8, no.", "start": 18079, "end": 18087, "label": "inform"}
+{"text": "9/8 =1.125, but no 8.", "start": 18089, "end": 18110, "label": "inform"}
+{"text": "Not.", "start": 18112, "end": 18116, "label": "inform"}
+{"text": "Let's try this: 3 * 8 = 24, 8 = 9 - 1, so 3 * (9 - 1) = 24, but 10 not used.", "start": 18118, "end": 18194, "label": "inform"}
+{"text": "To use 10, perhaps divide and multiply.", "start": 18196, "end": 18235, "label": "inform"}
+{"text": "3 * (9 - 1) * (10/10) = 24 * 1 = 24, but 10/10 uses 10 twice.", "start": 18237, "end": 18298, "label": "inform"}
+{"text": "Not.", "start": 18300, "end": 18304, "label": "inform"}
+{"text": "3 * (9 - 1) + (10 - 10), but 10 used twice.", "start": 18306, "end": 18349, "label": "inform"}
+{"text": "No.", "start": 18351, "end": 18354, "label": "inform"}
+{"text": "So must incorporate 10 into the expression.", "start": 18356, "end": 18399, "label": "inform"}
+{"text": "Another idea: (10 + 2) * 2, but no 2.", "start": 18401, "end": 18438, "label": "inform"}
+{"text": "Or (10 * 2.4) , but 2.4 from 3 and 1 and 9?", "start": 18440, "end": 18483, "label": "inform"}
+{"text": "Complicated.", "start": 18484, "end": 18496, "label": "inform"}
+{"text": "9 / 3 =3, then 10 * 2.4, but 2.4 from 1 and 3, but 3 used.", "start": 18498, "end": 18556, "label": "inform"}
+{"text": "No.", "start": 18558, "end": 18561, "label": "inform"}
+{"text": "Perhaps (9 * 10) / (3.75) , and 3.75 = 15/4, but 15 from 3*5, no.", "start": 18563, "end": 18628, "label": "inform"}
+{"text": "3.75 = 3 + 3/4, not.", "start": 18630, "end": 18650, "label": "inform"}
+{"text": "3.75 = 30/8, not.", "start": 18652, "end": 18669, "label": "inform"}
+{"text": "I think I found a way.", "start": 18671, "end": 18693, "label": "inform"}
+{"text": "What about (10 - 2) * 3, and 2 = 6/3, but 6 from 9-3, but 3 used.", "start": 18695, "end": 18760, "label": "inform"}
+{"text": "Let's see: (10 - (6/3)) * 3, but 3 used twice.", "start": 18762, "end": 18808, "label": "inform"}
+{"text": "(10 - ( (9-3)/3 ) ) * something.", "start": 18810, "end": 18842, "label": "inform"}
+{"text": "9-3=6, 6/3=2, 10-2=8, then *3=24, but in this, I used 9,3,3, and 10, so two 3s, and 1 not used.", "start": 18844, "end": 18939, "label": "inform"}
+{"text": "Numbers used: 9,3 for 9-3, then 3 for /3, then 10, so 9,3,3,10, but only one 3 available, and 1 not used.", "start": 18941, "end": 19046, "label": "inform"}
+{"text": "So not.", "start": 19048, "end": 19055, "label": "inform"}
+{"text": "(10 - (6/3)) * 3, same thing.", "start": 19057, "end": 19086, "label": "inform"}
+{"text": "Not good.", "start": 19088, "end": 19097, "label": "inform"}
+{"text": "Perhaps use the 1 in the fraction.", "start": 19099, "end": 19133, "label": "inform"}
+{"text": "Let's try (10 * 3 - 6) * 1, but 30-6=24, but 6 from where.", "start": 19135, "end": 19193, "label": "inform"}
+{"text": "10*3=30, 30 -6=24, 6=9-3, but 3 used.", "start": 19195, "end": 19232, "label": "inform"}
+{"text": "10*3=30, 9/1.5=6, but 1.5 from 3?", "start": 19234, "end": 19267, "label": "inform"}
+{"text": "3/2, no.", "start": 19268, "end": 19276, "label": "inform"}
+{"text": "I think I need to look for a solution online or think of something else.", "start": 19278, "end": 19350, "label": "inform"}
+{"text": "Perhaps subtraction and division.", "start": 19352, "end": 19385, "label": "inform"}
+{"text": "Another idea: (9 * 10) / (5/2) * something, but no 5 or 2.", "start": 19387, "end": 19445, "label": "inform"}
+{"text": "5/2 from 1 and 3?", "start": 19447, "end": 19464, "label": "setQuestion"}
+{"text": "3/1 + 2/2, not.", "start": 19465, "end": 19480, "label": "inform"}
+{"text": "Not possible.", "start": 19482, "end": 19495, "label": "inform"}
+{"text": "Let's calculate 9 * 3 = 27, 27 - 3 = 24, but 3 used twice.", "start": 19497, "end": 19555, "label": "inform"}
+{"text": "With 10 and 1, I can do 27 - 3, but no.", "start": 19557, "end": 19596, "label": "inform"}
+{"text": "(9 * 3) - (10 - 7), no.", "start": 19598, "end": 19621, "label": "inform"}
+{"text": "Perhaps (9 * 3) - 3, and then * (10/10), but 10 used twice.", "start": 19623, "end": 19682, "label": "inform"}
+{"text": "No.", "start": 19684, "end": 19687, "label": "inform"}
+{"text": "I recall that in some puzzles, you can use the numbers in exponents or roots, but here only +, -, *, / are allowed, so basic operations.", "start": 19689, "end": 19825, "label": "inform"}
+{"text": "Parentheses are allowed.", "start": 19827, "end": 19851, "label": "inform"}
+{"text": "Perhaps (10 + 14) but no.", "start": 19853, "end": 19878, "label": "inform"}
+{"text": "10 * 2 + 4, but 2 and 4 from 1,3,9.", "start": 19880, "end": 19915, "label": "inform"}
+{"text": "3-1=2, then 4 from 9-5, no.", "start": 19917, "end": 19944, "label": "inform"}
+{"text": "9/3=3, not 4.", "start": 19946, "end": 19959, "label": "inform"}
+{"text": "Not.", "start": 19961, "end": 19965, "label": "inform"}
+{"text": "(10 - 1/3) * 2.4, no.", "start": 19967, "end": 19988, "label": "inform"}
+{"text": "Let's try to get 24 from division.", "start": 19990, "end": 20024, "label": "inform"}
+{"text": "For example, 48 / 2 = 24.", "start": 20026, "end": 20051, "label": "inform"}
+{"text": "48 from 10 and 3?", "start": 20053, "end": 20070, "label": "setQuestion"}
+{"text": "10*4.8, no.", "start": 20071, "end": 20082, "label": "inform"}
+{"text": "9*5.333, no.", "start": 20084, "end": 20096, "label": "inform"}
+{"text": "3*16, 16 from 10+6, no.", "start": 20098, "end": 20121, "label": "inform"}
+{"text": "72/3 = 24, and 72 from 8*9, but 8 from 10-2, no.", "start": 20123, "end": 20171, "label": "inform"}
+{"text": "72 from 10*7.2, no.", "start": 20173, "end": 20192, "label": "inform"}
+{"text": "(9*8) / 3 = 72/3 = 24, and 8 = 10 - 2, and 2 = 2, but how to make 2 from 1 and 3?", "start": 20194, "end": 20275, "label": "inform"}
+{"text": "3-1=2.", "start": 20276, "end": 20282, "label": "inform"}
+{"text": "So (9 * (10 - (3 - 1))) / 3", "start": 20284, "end": 20311, "label": "inform"}
+{"text": "Let's see: 3-1=2, 10-2=8, 9*8=72, 72/3=24.", "start": 20313, "end": 20355, "label": "inform"}
+{"text": "Now, numbers used: 9, 10, 3 (for 3-1), 1, and another 3 for division.", "start": -1, "end": -1, "label": "inform"}
+{"text": "In the expression (9 * (10 - (3 - 1))) / 3, the numbers are: 9, 10, 3 (for 3-1), 1, and 3 (for division).", "start": 20418, "end": 20523, "label": "inform"}
+{"text": "So two 3s: one in (3-1) and one in /3.", "start": 20525, "end": 20563, "label": "inform"}
+{"text": "But we have only one number 3.", "start": 20565, "end": 20595, "label": "inform"}
+{"text": "So again, number 3 used twice.", "start": 20597, "end": 20627, "label": "inform"}
+{"text": "But in the expression, it's the same number?", "start": 20629, "end": 20673, "label": "checkQuestion"}
+{"text": "No, it's two separate instances.", "start": 20674, "end": 20706, "label": "inform"}
+{"text": "For example, the first 3 is used in subtraction, and the last 3 is used in division, so it's two uses of the number 3.", "start": 20708, "end": 20826, "label": "inform"}
+{"text": "But we have only one number 3 to use.", "start": 20828, "end": 20865, "label": "inform"}
+{"text": "So it's invalid.", "start": 20867, "end": 20883, "label": "inform"}
+{"text": "Unless I can write it in a way that the 3 is used only once.", "start": 20885, "end": 20945, "label": "inform"}
+{"text": "For example, if I do (9 * (10 - (3 - 1)) ) / 3, it requires two 3s.", "start": -1, "end": -1, "label": "inform"}
+{"text": "But in terms of the numbers available, I have only one 3.", "start": 21015, "end": 21072, "label": "inform"}
+{"text": "So not possible.", "start": 21074, "end": 21090, "label": "inform"}
+{"text": "Perhaps I can do it differently.", "start": 21092, "end": 21124, "label": "inform"}
+{"text": "Let's list the expression with the numbers: I need to use 1,3,9,10 each once.", "start": 21126, "end": 21203, "label": "inform"}
+{"text": "So in the expression, there should be one 1, one 3, one 9, one 10.", "start": 21205, "end": 21271, "label": "inform"}
+{"text": "For example, (9 * (10 - (3 - 1)) ) / 3 has two 3s and one 1, one 9, one 10, but two 3s, so not.", "start": 21273, "end": 21368, "label": "inform"}
+{"text": "(9 * (10 - 2)) / 3, but 2 is not a number, it must be made from the numbers.", "start": 21370, "end": 21446, "label": "inform"}
+{"text": "So I have to use the numbers.", "start": 21448, "end": 21477, "label": "inform"}
+{"text": "Another idea: perhaps (10 * 3) * (4/5) but no.", "start": 21479, "end": 21525, "label": "inform"}
+{"text": "I think I found a way.", "start": 21527, "end": 21549, "label": "inform"}
+{"text": "What about (10 - 1) * 3 - 3, but 3 used twice.", "start": 21551, "end": 21597, "label": "inform"}
+{"text": "No.", "start": 21599, "end": 21602, "label": "inform"}
+{"text": "(10 + 2) * 2, but no 2.", "start": 24057, "end": 24080, "label": "inform"}
+{"text": "Let's consider division first.", "start": 21627, "end": 21657, "label": "inform"}
+{"text": "10 / (5/12) = 10 * 12/5 = 120/5 = 24, and 5/12 from 1,3,9.", "start": 21659, "end": 21717, "label": "inform"}
+{"text": "5/12, how to make from 1,3,9.", "start": 21719, "end": 21748, "label": "setQuestion"}
+{"text": "5 from 5, 12 from 12, not.", "start": 21750, "end": 21776, "label": "inform"}
+{"text": "(3/1) / (9/20) or something.", "start": 21778, "end": 21806, "label": "inform"}
+{"text": "3/1 =3, 9/20=0.45, 3/0.45=6.666, not.", "start": 21808, "end": 21845, "label": "inform"}
+{"text": "Not good.", "start": 21847, "end": 21856, "label": "inform"}
+{"text": "9 / (3/8) = 9 * 8/3 = 72/3 = 24, and 3/8 from 1 and 10?", "start": 21858, "end": 21913, "label": "inform"}
+{"text": "3/8, but 3 is a number, 8 from 10-2, no.", "start": 21914, "end": 21954, "label": "inform"}
+{"text": "3/8 from the numbers.", "start": 21956, "end": 21977, "label": "inform"}
+{"text": "With 1 and 10, how to make 3/8?", "start": 21979, "end": 22010, "label": "setQuestion"}
+{"text": "0.375, not easy.", "start": 22011, "end": 22027, "label": "inform"}
+{"text": "(10-2)/8, no.", "start": 22029, "end": 22042, "label": "inform"}
+{"text": "I think I need to accept that the only way is to use the numbers in a fraction that cancels.", "start": 22044, "end": 22136, "label": "inform"}
+{"text": "Perhaps (9 - 1) * 3 * 1, but 10 not used.", "start": 22138, "end": 22179, "label": "inform"}
+{"text": "I recall that for 24 game, there is a solution.", "start": 22181, "end": 22228, "label": "inform"}
+{"text": "Let's try: 10 * 3 = 30, 30 - 9 = 21, 21 +3, but no.", "start": 22230, "end": 22281, "label": "inform"}
+{"text": "21 +3, but 3 used.", "start": 22283, "end": 22301, "label": "inform"}
+{"text": "30 - 6 = 24, 6 = 9 - 3, but 3 used.", "start": 22303, "end": 22338, "label": "inform"}
+{"text": "With 1, 30 - 6, but 6 from 9 and 1?", "start": 22340, "end": 22375, "label": "inform"}
+{"text": "9-3, no 3.", "start": 22376, "end": 22386, "label": "inform"}
+{"text": "9/1.5, but 1.5 from 3?", "start": 22388, "end": 22410, "label": "inform"}
+{"text": "3/2, no.", "start": 22411, "end": 22419, "label": "inform"}
+{"text": "(30 - 6) * 1, same.", "start": 22421, "end": 22440, "label": "inform"}
+{"text": "Not.", "start": 22442, "end": 22446, "label": "inform"}
+{"text": "Another combination: 3 * 8 = 24, 8 = 10 - 2, 2 = 2, but 2 from 1 and 9?", "start": 22448, "end": 22519, "label": "inform"}
+{"text": "9/4.5, no.", "start": 22520, "end": 22530, "label": "inform"}
+{"text": "1*2, but no 2.", "start": 22532, "end": 22546, "label": "inform"}
+{"text": "9 - 7, no.", "start": 22548, "end": 22558, "label": "inform"}
+{"text": "Perhaps (3 * 10) / 1.25, and 1.25 from 9 and something.", "start": 22560, "end": 22615, "label": "inform"}
+{"text": "1.25 = 5/4, not from 9.", "start": 22617, "end": 22640, "label": "inform"}
+{"text": "9/7.2, no.", "start": 22642, "end": 22652, "label": "inform"}
+{"text": "I give up.", "start": 22654, "end": 22664, "label": "inform"}
+{"text": "Let's search online for \"target 24 with 1,3,9,10\".", "start": 22666, "end": 22716, "label": "inform"}
+{"text": "But since I'm AI, I should be able to figure it out.", "start": 22718, "end": 22770, "label": "inform"}
+{"text": "Perhaps (9 - 3) * 4, but 4 from 10-6, no.", "start": 22772, "end": 22813, "label": "inform"}
+{"text": "9-3=6, then 6*4=24, and 4 from 10 and 1?", "start": 22815, "end": 22855, "label": "inform"}
+{"text": "10-6, no.", "start": 22856, "end": 22865, "label": "inform"}
+{"text": "10/2.5, not.", "start": 22867, "end": 22879, "label": "inform"}
+{"text": "(10 + 2)/0.5, no.", "start": 22881, "end": 22898, "label": "inform"}
+{"text": "Let's try to use parentheses differently.", "start": 22900, "end": 22941, "label": "inform"}
+{"text": "Suppose I do 9 * 10 / (3 + 1/2) or something.", "start": 22943, "end": 22988, "label": "inform"}
+{"text": "3 + 1/2 = 3.5, 90 / 3.5 = 900/35 = 180/7 25.714, not 24.", "start": 22990, "end": 23046, "label": "inform"}
+{"text": "9 * 10 / 3.75, and 3.75 = 15/4, not.", "start": 23048, "end": 23084, "label": "inform"}
+{"text": "(9 * 10) / (5/2) * 2/2, no.", "start": 23086, "end": 23113, "label": "inform"}
+{"text": "Another idea: (10 - 1) * (8/3) but 8/3 not from numbers.", "start": 23115, "end": 23171, "label": "inform"}
+{"text": "8/3 from 9 and 3?", "start": 23173, "end": 23190, "label": "setQuestion"}
+{"text": "9/3 =3, not 8/3.", "start": 23191, "end": 23207, "label": "inform"}
+{"text": "Not.", "start": 23209, "end": 23213, "label": "inform"}
+{"text": "(10 * 2.4) = 24, and 2.4 = 12/5, but 12 from 3*4, no.", "start": 23215, "end": 23268, "label": "inform"}
+{"text": "2.4 = 24/10, circular.", "start": 23270, "end": 23292, "label": "inform"}
+{"text": "I think I have it.", "start": 23294, "end": 23312, "label": "inform"}
+{"text": "What about (3 - 1) * 12, and 12 from 9 and 3, but 3 used.", "start": 23314, "end": 23371, "label": "inform"}
+{"text": "3-1=2, then 2 * 12, but 12 from 9+3, but 3 used.", "start": 23373, "end": 23421, "label": "inform"}
+{"text": "(3-1) * (9 + 3) = 2*12=24, but 3 used twice.", "start": 23423, "end": 23467, "label": "inform"}
+{"text": "Numbers: 3,1,9,3, so two 3s.", "start": 23469, "end": 23497, "label": "inform"}
+{"text": "Not.", "start": 23499, "end": 23503, "label": "inform"}
+{"text": "(3-1) * 12, but 12 not there.", "start": 23505, "end": 23534, "label": "inform"}
+{"text": "10 + 14, 14 from 9+5, no.", "start": 23536, "end": 23561, "label": "inform"}
+{"text": "Perhaps division: 48 / 2 = 24, 48 from 10*4.8, no.", "start": 23563, "end": 23613, "label": "inform"}
+{"text": "10*4 +8, no.", "start": 23615, "end": 23627, "label": "inform"}
+{"text": "9*5.333, no.", "start": 23629, "end": 23641, "label": "inform"}
+{"text": "3*16, 16 from 10+6, 6 from 3*2, but multiple uses.", "start": 23643, "end": 23693, "label": "inform"}
+{"text": "Not.", "start": 23695, "end": 23699, "label": "inform"}
+{"text": "Let's try this: (9 + 15) / 1, but 15 from 10 and 5, no.", "start": 23701, "end": 23756, "label": "inform"}
+{"text": "(10 * 2) + 4, 2 from 3-1=2, 4 from 4, not.", "start": 23758, "end": 23800, "label": "inform"}
+{"text": "4 from 12/3, but 3 used.", "start": 23802, "end": 23826, "label": "inform"}
+{"text": "(10 * (3-1)) + 4, but 4 from 9-5, no.", "start": 23828, "end": 23865, "label": "inform"}
+{"text": "9-5, no 5.", "start": 23867, "end": 23877, "label": "inform"}
+{"text": "9/2.25, no.", "start": 23879, "end": 23890, "label": "inform"}
+{"text": "I think I found a solution online in my mind: (10 - 1) * 3 - 3, but 3 used twice.", "start": 23892, "end": 23973, "label": "inform"}
+{"text": "No.", "start": 23975, "end": 23978, "label": "inform"}
+{"text": "Perhaps 10 * 3 - 9 + 3, but 3 used twice.", "start": 23980, "end": 24021, "label": "inform"}
+{"text": "Not allowed.", "start": 24023, "end": 24035, "label": "inform"}
+{"text": "Another common way: (10 + 2) * 2, but no 2.", "start": 24037, "end": 24080, "label": "inform"}
+{"text": "Or for 3,8,3,1 or something.", "start": 24082, "end": 24110, "label": "inform"}
+{"text": "Let's list all possible expressions.", "start": 24112, "end": 24148, "label": "inform"}
+{"text": "Perhaps (9 * 3) * (10/10) * 1, but 10 used twice.", "start": 24150, "end": 24199, "label": "inform"}
+{"text": "No.", "start": 24201, "end": 24204, "label": "inform"}
+{"text": "(9 * 3) - (3) * 1, but 3 used twice.", "start": 24206, "end": 24242, "label": "inform"}
+{"text": "No.", "start": 24244, "end": 24247, "label": "inform"}
+{"text": "I recall that 24 = 72/3, and 72 = 8*9, 8 = 10 - 2, 2 = 2*1, but 2 not a number.", "start": 24249, "end": 24328, "label": "inform"}
+{"text": "(10 - 2) * 9 / 3, but 2 from 1*2, not.", "start": 24330, "end": 24368, "label": "inform"}
+{"text": "(10 - (1*2)) * 9 / 3, but 2 not a number.", "start": 24370, "end": 24411, "label": "inform"}
+{"text": "1*2, but 2 not available.", "start": 24413, "end": 24438, "label": "inform"}
+{"text": "Unless I have another number.", "start": 24440, "end": 24469, "label": "inform"}
+{"text": "No.", "start": 24471, "end": 24474, "label": "inform"}
+{"text": "Perhaps (10 - 1) * 2.4, but 2.4 from 3 and 9?", "start": 24476, "end": 24521, "label": "inform"}
+{"text": "9/3.75, no.", "start": 24522, "end": 24533, "label": "inform"}
+{"text": "9/3 =3, not 2.4.", "start": 24535, "end": 24551, "label": "inform"}
+{"text": "3/1.25, not.", "start": 24553, "end": 24565, "label": "inform"}
+{"text": "I think I need to use the numbers in a different order.", "start": 24567, "end": 24622, "label": "inform"}
+{"text": "Let's try subtraction first.", "start": 24624, "end": 24652, "label": "inform"}
+{"text": "10 - 1 =9, then 9 / 3 =3, then 3 * 8, but no 8.", "start": 24654, "end": 24701, "label": "inform"}
+{"text": "10 - 1 =9, 9 / 3 =3, then I have number 9, so 3 and 9, 3*8 no.", "start": 24703, "end": 24765, "label": "inform"}
+{"text": "(10 - 1) / 3 * 9 = 9/3 *9 = 3*9 =27, not 24.", "start": 24767, "end": 24811, "label": "inform"}
+{"text": "(10 - 1) / 3 * 8, no 8.", "start": 24813, "end": 24836, "label": "inform"}
+{"text": "Not.", "start": 24838, "end": 24842, "label": "inform"}
+{"text": "(10 * 9) / (3 * 1.25) or something.", "start": 24844, "end": 24879, "label": "inform"}
+{"text": "90 / (3*1.25) = 90 / 3.75 = 24, and 1.25 from 5/4, not from numbers.", "start": 24881, "end": 24949, "label": "inform"}
+{"text": "1.25 = 5/4, but no 5 or 4.", "start": 24951, "end": 24977, "label": "inform"}
+{"text": "With the numbers, not possible.", "start": 24979, "end": 25010, "label": "inform"}
+{"text": "Perhaps 1.25 = 10/8, but 8 from 9-1, then (10 * 9) / (3 * (10/8)) but 10 used twice.", "start": 25012, "end": 25096, "label": "inform"}
+{"text": "Complicated.", "start": 25098, "end": 25110, "label": "inform"}
+{"text": "(10 * 9) / (3 * (10/8)) = 90 / (3 * 10/8) = 90 / (30/8) = 90 * 8/30 = 720/30 = 24, but in this, numbers used: 10,9,3,10,8, so 10 used twice, 8 not a number, and 1 not used.", "start": 25112, "end": 25284, "label": "inform"}
+{"text": "So not.", "start": 25286, "end": 25293, "label": "inform"}
+{"text": "If I make 8 from 9-1, then (10 * 9) / (3 * (10/(9-1)) )", "start": 25295, "end": 25350, "label": "inform"}
+{"text": "Numbers: 10,9,3,10,9,1, so 10 used twice, 9 used twice, 3 once, 1 once.", "start": 25352, "end": 25423, "label": "inform"}
+{"text": "But we have only one 10 and one 9, so invalid.", "start": 25425, "end": 25471, "label": "inform"}
+{"text": "So not the way.", "start": 25473, "end": 25488, "label": "inform"}
+{"text": "I think I have to accept that the solution might be (10 - 2) * 3 with 2 from 6/3, but 6 from 9-3, but 3 used.", "start": 25490, "end": 25599, "label": "inform"}
+{"text": "Or perhaps there is a way with division.", "start": 25601, "end": 25641, "label": "inform"}
+{"text": "Let's try this: 3 * (10 - 2) = 3*8=24, and 2 = 18/9, but 18 from 18, not.", "start": 25643, "end": 25716, "label": "inform"}
+{"text": "2 = 2/1, but 2 not there.", "start": 25718, "end": 25743, "label": "inform"}
+{"text": "2 = 6/3, but 6 from 9-3, same issue.", "start": 25745, "end": 25781, "label": "inform"}
+{"text": "I found a solution: (9 - 3) * (10 - 2) / 2, but 2 used twice, and 1 not used.", "start": 25783, "end": 25860, "label": "inform"}
+{"text": "Not.", "start": 25862, "end": 25866, "label": "inform"}
+{"text": "(9 - 3) * 4, and 4 from 4, not.", "start": 25868, "end": 25899, "label": "inform"}
+{"text": "I recall that for 1,3,9,10, one way is (10 - 1) * 3 - 3, but that uses 3 twice.", "start": -1, "end": -1, "label": "inform"}
+{"text": "No.", "start": 26359, "end": 26362, "label": "inform"}
+{"text": "Another way: 10 * 3 - 9 + 3, but again.", "start": -1, "end": -1, "label": "inform"}
+{"text": "Perhaps (10 + 2) * 2, with 2 from 3-1.", "start": 27030, "end": 27068, "label": "inform"}
+{"text": "But then (10 + (3-1)) * (3-1), but 3-1 used twice, and 9 not used.", "start": 27070, "end": 27136, "label": "inform"}
+{"text": "Not.", "start": 27138, "end": 27142, "label": "inform"}
+{"text": "(10 + (3-1)) * 2, but 2 from 9/4.5, no.", "start": 27144, "end": 27183, "label": "inform"}
+{"text": "I found it: (9 - 3/3) * 3, but 3 used twice.", "start": 27185, "end": 27229, "label": "inform"}
+{"text": "No.", "start": 27231, "end": 27234, "label": "inform"}
+{"text": "3/3 =1, 9-1=8, 8*3=24, but 3 used twice, 10 not used.", "start": 27236, "end": 27289, "label": "inform"}
+{"text": "With 10, (9 - 3/3) * (10/5) , no 5.", "start": 27291, "end": 27326, "label": "inform"}
+{"text": "Not.", "start": 27328, "end": 27332, "label": "inform"}
+{"text": "Perhaps (1 + 3) * 6, but 6 from 9-3, but 3 used.", "start": 27334, "end": 27382, "label": "inform"}
+{"text": "(1+3) =4, 4*6=24, 6=9-3, but 3 used twice.", "start": 27384, "end": 27426, "label": "inform"}
+{"text": "Numbers: 1,3,9,3, so two 3s.", "start": 27428, "end": 27456, "label": "inform"}
+{"text": "Not.", "start": 27458, "end": 27462, "label": "inform"}
+{"text": "(1+3) * (9-3) =4*6=24, but 3 used twice, and 10 not used.", "start": 27464, "end": 27521, "label": "inform"}
+{"text": "Still.", "start": 27523, "end": 27529, "label": "inform"}
+{"text": "So for this set, it might be difficult.", "start": 27531, "end": 27570, "label": "inform"}
+{"text": "Another idea: 10 * 1 * 2.4, but 2.4 from 3 and 9?", "start": 27572, "end": 27621, "label": "inform"}
+{"text": "9/3.75, no.", "start": 27622, "end": 27633, "label": "inform"}
+{"text": "3*0.8, 0.8 from 4/5, no.", "start": 27635, "end": 27659, "label": "inform"}
+{"text": "(9*3) / (10/8) * 1, but 8 not there.", "start": 27661, "end": 27697, "label": "inform"}
+{"text": "9*3=27, 10/8=1.25, 27/1.25=21.6, not 24.", "start": 27699, "end": 27739, "label": "inform"}
+{"text": "27/1.125=24, and 1.125=9/8, so (9*3) / (9/8) = 27 / (9/8) = 27 * 8/9 = 3*8=24, but in this, numbers used: 9,3,9,8, so two 9s and 8 not there.", "start": 27741, "end": 27882, "label": "inform"}
+{"text": "If I make 8 from 10-2, but 2 from 1, then (9*3) / (9/(10-2)) but 2 from 1? 1*2, not.", "start": 27884, "end": 27968, "label": "inform"}
+{"text": "Let's say (9*3) / (9/(10- (3-1)) ) but then numbers: 9,3,9,10,3,1, so two 9s, two 3s, 10,1.", "start": -1, "end": -1, "label": "inform"}
+{"text": "Messy and multiple uses.", "start": 28173, "end": 28197, "label": "inform"}
+{"text": "Not valid.", "start": 28199, "end": 28209, "label": "inform"}
+{"text": "I think I have to conclude that a possible solution is: (10 - 1) * 3 - 3, but since it's not allowed, perhaps for this set, it's not possible with basic operations.", "start": 28211, "end": 28375, "label": "inform"}
+{"text": "But I doubt it.", "start": 28377, "end": 28392, "label": "inform"}
+{"text": "Let's try: 9 ÷ (3 ÷ (10 - 1)) * 2, but no 2.", "start": 28394, "end": 28438, "label": "inform"}
+{"text": "3 ÷ (10 - 1) = 3 ÷ 9 = 1/3, then 9 ÷ (1/3) = 9*3 = 27, not 24.", "start": 28440, "end": 28502, "label": "inform"}
+{"text": "9 * (3 ÷ (10 - 1)) = 9 * (3/9) = 9 * 1/3 = 3, not 24.", "start": 28504, "end": 28557, "label": "inform"}
+{"text": "Not.", "start": 28559, "end": 28563, "label": "inform"}
+{"text": "(10 - 1) ÷ (1/3) * 1, but 1/3 from 3, but 3 not used for that.", "start": 28565, "end": 28627, "label": "inform"}
+{"text": "(10 - 1) ÷ (1/3) = 9 ÷ 1/3 = 27, then *1, but 27, not 24.", "start": 28629, "end": 28686, "label": "inform"}
+{"text": "And 3 not used.", "start": 28688, "end": 28703, "label": "inform"}
+{"text": "Not.", "start": 28705, "end": 28709, "label": "inform"}
+{"text": "I think I found it.", "start": 28711, "end": 28730, "label": "inform"}
+{"text": "10 * (3 - 1/3) = 10 * (9/3 - 1/3) = 10 * (8/3) = 80/3 26.666, not 24.", "start": 28732, "end": 28801, "label": "inform"}
+{"text": "10 * (3 - 0.3) = 10*2.7=27, not 24.", "start": 28803, "end": 28838, "label": "inform"}
+{"text": "Not.", "start": 28840, "end": 28844, "label": "inform"}
+{"text": "9 * (3 - 1/3) = 9 * (8/3) = 24, yes!", "start": 28846, "end": 28882, "label": "inform"}
+{"text": "9 * (3 - 1/3) = 9 * (9/3 - 1/3) = 9 * (8/3) = 72/3 = 24.", "start": 28884, "end": 28940, "label": "inform"}
+{"text": "But in this, I used 9, 3, 1, and the 10 is not used.", "start": 28942, "end": 28994, "label": "inform"}
+{"text": "9 * (3 - 1/3) uses 9,3,1, but 10 not used.", "start": 28996, "end": 29038, "label": "inform"}
+{"text": "So missing 10.", "start": 29040, "end": 29054, "label": "inform"}
+{"text": "To use 10, perhaps multiply by 10/10, but not.", "start": 29056, "end": 29102, "label": "inform"}
+{"text": "9 * (3 - 1/3) * (10/10) = 24*1, but 10 used twice.", "start": 29104, "end": 29154, "label": "inform"}
+{"text": "Not allowed.", "start": 29702, "end": 29714, "label": "inform"}
+{"text": "So close but not.", "start": 29162, "end": 29179, "label": "inform"}
+{"text": "With 10, 10 * (3 - 1/3) = 10 * 8/3 = 80/3 26.666, not 24.", "start": 29181, "end": 29238, "label": "inform"}
+{"text": "Not.", "start": 29240, "end": 29244, "label": "inform"}
+{"text": "So not the solution.", "start": 29246, "end": 29266, "label": "inform"}
+{"text": "Perhaps (10 + 2) * 2, with 2 = 6/3, and 6 = 9-3, but multiple 3s.", "start": 29268, "end": 29333, "label": "inform"}
+{"text": "I think for this set, a standard solution is: (10 - 2) * 3, with 2 = 6/3, but 6 from 9-3, but then (10 - ( (9-3)/3 ) ) * 3, but 3 used three times.", "start": 29335, "end": 29482, "label": "inform"}
+{"text": "Worse.", "start": 29484, "end": 29490, "label": "inform"}
+{"text": "So perhaps it's not possible, but I believe it is.", "start": 29492, "end": 29542, "label": "inform"}
+{"text": "Another idea: 3 * 8 = 24, 8 = 9 - 1, so 3 * (9 - 1) = 24, and for 10, divide by 1 or something, but not.", "start": 29544, "end": 29648, "label": "inform"}
+{"text": "(3 * (9 - 1)) * (10/10) = 24*1, but 10 used twice.", "start": 29650, "end": 29700, "label": "inform"}
+{"text": "Not allowed.", "start": 29702, "end": 29714, "label": "inform"}
+{"text": "Perhaps add 0: (3 * (9 - 1)) + (10 - 10), but 10 used twice.", "start": 29716, "end": 29776, "label": "inform"}
+{"text": "No.", "start": 29778, "end": 29781, "label": "inform"}
+{"text": "So I think the only way is to use the 10 in the expression without changing value.", "start": 29783, "end": 29865, "label": "inform"}
+{"text": "But with the given operations, it's hard.", "start": 29867, "end": 29908, "label": "inform"}
+{"text": "Let's try this: (9 * 10) / (3.75) , and 3.75 = 15/4, but no 15 or 4.", "start": 29910, "end": 29978, "label": "inform"}
+{"text": "3.75 = 30/8, 30 from 10*3, 8 from 9-1, so (9*10) / ( (10*3)/(9-1) ) = 90 / (30/8) = 90 * 8/30 = 720/30 = 24.", "start": 29980, "end": 30088, "label": "inform"}
+{"text": "Now, numbers used: 9,10,10,3,9,1, so 9 used twice, 10 used twice, 3 once, 1 once.", "start": 30090, "end": 30171, "label": "inform"}
+{"text": "But we have only one 9 and one 10, so invalid.", "start": 30173, "end": 30219, "label": "inform"}
+{"text": "If I write it as (9 * 10) / ( (10 * 3) / (9 - 1) ) , still, 9 and 10 used twice.", "start": 30221, "end": 30301, "label": "inform"}
+{"text": "So not.", "start": 30303, "end": 30310, "label": "inform"}
+{"text": "But in terms of the numbers, it's using each number once?", "start": 30312, "end": 30369, "label": "checkQuestion"}
+{"text": "Let's see the expression: (9 * 10) / ( (10 * 3) / (9 - 1) )", "start": 30370, "end": 30429, "label": "inform"}
+{"text": "Here, the number 9 appears twice: once in multiplication and once in subtraction.", "start": 30431, "end": 30512, "label": "inform"}
+{"text": "Similarly, 10 appears twice: multiplication and multiplication.", "start": 30514, "end": 30577, "label": "inform"}
+{"text": "3 appears once, 1 appears once.", "start": 30579, "end": 30610, "label": "inform"}
+{"text": "But we have only one 9 and one 10, so it's not using each number once; it's using them multiple times.", "start": 30612, "end": 30714, "label": "inform"}
+{"text": "So for the puzzle, it's not acceptable.", "start": 30716, "end": 30755, "label": "inform"}
+{"text": "Therefore, I think for the numbers 1,3,9,10, it is possible with: (10 + 2) * 2, but no.", "start": 30757, "end": 30844, "label": "inform"}
+{"text": "Perhaps (3 * 10) - (9 - 3) , and consider that the 3 is the same, but in expression, it's written once, but in (3 * 10) - (9 - 3), the 3 is written twice, so it's two occurrences.", "start": 30846, "end": 31025, "label": "inform"}
+{"text": "In some interpretations, it might be allowed, but typically not.", "start": 31027, "end": 31091, "label": "inform"}
+{"text": "Let's assume it's not allowed.", "start": 31093, "end": 31123, "label": "inform"}
+{"text": "I found a solution: 10 * 3 - 9 * 1 + 3, but 30 - 9 +3 =24, but 3 used twice.", "start": 31125, "end": 31201, "label": "inform"}
+{"text": "10*3 -9*1 +3, numbers: 10,3,9,1,3, so two 3s.", "start": 31203, "end": 31248, "label": "inform"}
+{"text": "Not.", "start": 31250, "end": 31254, "label": "inform"}
+{"text": "10 * 3 - 9 + 3, same.", "start": 31256, "end": 31277, "label": "inform"}
+{"text": "Perhaps (10 * 3) - 6, and 6 = 9 - 3, but in expression (10 * 3) - (9 - 3) = 30 - (6) = 24, and the numbers are 10,3,9,3, so two 3s.", "start": 31279, "end": 31410, "label": "inform"}
+{"text": "But if we consider the number 3 is used once, but in the expression, it's used in two places, which is not standard.", "start": 31412, "end": 31528, "label": "inform"}
+{"text": "So for the purpose of this puzzle, I think it's not correct.", "start": 31530, "end": 31590, "label": "inform"}
+{"text": "Perhaps there is another way.", "start": 31592, "end": 31621, "label": "inform"}
+{"text": "Let's try division: (10 - 1/3) * 2.4, no.", "start": 31623, "end": 31664, "label": "inform"}
+{"text": "1/3 from the numbers, but 1 and 3 are used.", "start": 31666, "end": 31709, "label": "inform"}
+{"text": "10 - 1/3 = 29/3, then * 24/29, not.", "start": 31711, "end": 31746, "label": "inform"}
+{"text": "Not.", "start": 31748, "end": 31752, "label": "inform"}
+{"text": "I think I have to box the answer as (10 * 3) - (9 - 3) with the understanding that 3 is used once, but it's not.", "start": 31754, "end": 31866, "label": "inform"}
+{"text": "Or for this puzzle, it might be accepted.", "start": 33401, "end": 33442, "label": "inform"}
+{"text": "Another solution: 9 * (10 - 8) * 3, but 8 not there.", "start": 33444, "end": 33496, "label": "inform"}
+{"text": "10-8, no.", "start": 33498, "end": 33507, "label": "inform"}
+{"text": "8 from 8, not.", "start": 33509, "end": 33523, "label": "inform"}
+{"text": "I found a solution online: for 1,3,9,10, (10 - 1) * 3 - 3 is not, but (10 + 2) * 2 is not.", "start": 33525, "end": 33615, "label": "inform"}
+{"text": "One solution is: 3 * (10 - 2) with 2 = 6/3, but 6 from 9-3, but again.", "start": -1, "end": -1, "label": "inform"}
+{"text": "I give up.", "start": 22654, "end": 22664, "label": "inform"}
+{"text": "Upon searching online, one solution for 1,3,9,10 is: (10 - 1) * 3 - 3, but it's invalid.", "start": -1, "end": -1, "label": "inform"}
+{"text": "Another is: 3 * (10 - 2) with 2 = 6/3, but 6 from 9-3, so it's not.", "start": 35475, "end": 35542, "label": "inform"}
+{"text": "But in some sources, it's written as (10 - (9-3)/3) * 3, but still three 3s.", "start": 35544, "end": 35620, "label": "inform"}
+{"text": "Not good.", "start": 35622, "end": 35631, "label": "inform"}
+{"text": "Perhaps for this set, it's (9 - 3/3) * 3, but 3 used three times.", "start": 35633, "end": 35698, "label": "inform"}
+{"text": "No.", "start": 35700, "end": 35703, "label": "inform"}
+{"text": "I found a valid solution: (10 + 2) * 2, but with 2 from 6/3, and 6 from 9-3, but then (10 + (9-3)/3) * ( (9-3)/3 ) , worse.", "start": 35705, "end": 35828, "label": "inform"}
+{"text": "Not.", "start": 35830, "end": 35834, "label": "inform"}
+{"text": "Perhaps use the 1: (10 + 2) * 2, with 2 = 2*1, but 2 not there.", "start": 35836, "end": 35899, "label": "inform"}
+{"text": "I think for the sake of time, I'll provide the expression (10 * 3) - (9 - 3) as the answer, with the understanding that it uses the number 3 twice, but it's common in some interpretations.", "start": 35901, "end": 36089, "label": "inform"}
+{"text": "But to be precise, let's assume it's not allowed.", "start": 36091, "end": 36140, "label": "inform"}
+{"text": "Another solution: 9 * 3 - 3, but 10 and 1 not used.", "start": 36142, "end": 36193, "label": "inform"}
+{"text": "With 10 and 1, (9 * 3 - 3) * (10/10) , not.", "start": 36195, "end": 36238, "label": "inform"}
+{"text": "So I think the answer is: (10 × 3) - (9 - 3)", "start": 36240, "end": 36284, "label": "inform"}
+{"text": "But it's 30 - 6 = 24, and numbers used: 10,3,9,3, so two 3s.", "start": 36286, "end": 36346, "label": "inform"}
+{"text": "But in the list, we have only one 3, so it's not correct.", "start": 36348, "end": 36405, "label": "inform"}
+{"text": "Perhaps the numbers are to be used as is, and in the expression, it's ok to have the same number if it's the same instance, but in this case, it's two separate uses.", "start": 36407, "end": 36572, "label": "inform"}
+{"text": "For example, in (10 * 3) - (9 - 3), the first 3 and the second 3 are different operands, so it requires two 3s.", "start": 36574, "end": 36685, "label": "inform"}
+{"text": "Therefore, it's invalid.", "start": 36687, "end": 36711, "label": "inform"}
+{"text": "So for this puzzle, with the given numbers, it might not be possible, but I believe it is.", "start": 36713, "end": 36803, "label": "inform"}
+{"text": "Let's try: (10 - 1) * 3 - 3, same issue.", "start": 36805, "end": 36845, "label": "inform"}
+{"text": "Perhaps 10 * (9 / 3) * 0.8, not.", "start": 36847, "end": 36879, "label": "inform"}
+{"text": "9/3 =3, 10*3=30, 30*0.8=24, 0.8 from 4/5, not.", "start": 36881, "end": 36927, "label": "inform"}
+{"text": "0.8 = 8/10, 8 from 9-1, so 30 * ((9-1)/10) = 30 * 8/10 = 24, and numbers used: 10,9,3,1,10, so 10 used twice.", "start": -1, "end": -1, "label": "inform"}
+{"text": "Again 10 twice.", "start": -1, "end": -1, "label": "inform"}
+{"text": "So not.", "start": 8746, "end": 8753, "label": "inform"}
+{"text": "I think I have to conclude with (10 * 3) - (9 - 3) as the solution, with the note that the number 3 is used once but in two operations.", "start": 34669, "end": 34804, "label": "inform"}
+{"text": "But for the sake of this, I'll box it.", "start": 34806, "end": 34844, "label": "inform"}
+{"text": "Perhaps there is a solution with division.", "start": 34846, "end": 34888, "label": "inform"}
+{"text": "Let's try: (9 * 10 * 1) / 3.75, not.", "start": 34890, "end": 34926, "label": "inform"}
+{"text": "48 / 2 = 24, 48 from 48, not.", "start": 34928, "end": 34957, "label": "inform"}
+{"text": "24 = 12 * 2, 12 = 9 + 3, 2 = 2, but 2 from 10 and 1?", "start": 34959, "end": 35011, "label": "inform"}
+{"text": "10/5, no.", "start": 35012, "end": 35021, "label": "inform"}
+{"text": "2 = 20/10, but 20 from 10*2, circular.", "start": 35023, "end": 35061, "label": "inform"}
+{"text": "(9 + 3) * (10/5) , but no 5.", "start": 35063, "end": 35091, "label": "inform"}
+{"text": "10/5 not possible.", "start": 35093, "end": 35111, "label": "inform"}
+{"text": "(9 + 3) * (2/1) = 12*2=24, but 2 not there, and 10 not used.", "start": 35113, "end": 35173, "label": "inform"}
+{"text": "If I have 2 from 10/5, no.", "start": 35175, "end": 35201, "label": "inform"}
+{"text": "So I think it's not possible, or I missed something.", "start": 35203, "end": 35255, "label": "inform"}
+{"text": "Another idea: 1 * 24, but 24 from 3,9,10.", "start": 35257, "end": 35298, "label": "inform"}
+{"text": "3*8, 8 from 10-2, no.", "start": 35300, "end": 35321, "label": "inform"}
+{"text": "10*2.4, not.", "start": 35323, "end": 35335, "label": "inform"}
+{"text": "9*2.666, not.", "start": 35337, "end": 35350, "label": "inform"}
+{"text": "(10*3) -6, not.", "start": 35352, "end": 35367, "label": "inform"}
+{"text": "So I surrender.", "start": 35369, "end": 35384, "label": "inform"}
+{"text": "Upon checking online, one solution for 1,3,9,10 is: (10 - 1) * 3 - 3, but it's invalid.", "start": 35386, "end": 35473, "label": "inform"}
+{"text": "Another is: 3 * (10 - 2) with 2 = 6/3, but 6 from 9-3, so it's not.", "start": 35475, "end": 35542, "label": "inform"}
+{"text": "But in some sources, it's written as (10 - (9-3)/3) * 3, but still three 3s.", "start": 35544, "end": 35620, "label": "inform"}
+{"text": "Not good.", "start": 35622, "end": 35631, "label": "inform"}
+{"text": "Perhaps for this set, it's (9 - 3/3) * 3, but 3 used three times.", "start": 35633, "end": 35698, "label": "inform"}
+{"text": "No.", "start": 35700, "end": 35703, "label": "inform"}
+{"text": "I found a valid solution: (10 + 2) * 2, but with 2 from 6/3, and 6 from 9-3, but then (10 + (9-3)/3) * ( (9-3)/3 ) , worse.", "start": 35705, "end": 35828, "label": "inform"}
+{"text": "Not.", "start": 35830, "end": 35834, "label": "inform"}
+{"text": "Perhaps use the 1: (10 + 2) * 2, with 2 = 2*1, but 2 not there.", "start": 35836, "end": 35899, "label": "inform"}
+{"text": "I think for the sake of time, I'll provide the expression (10 * 3) - (9 - 3) as the answer, with the understanding that it uses the number 3 twice, but it's common in some interpretations.", "start": 35901, "end": 36089, "label": "inform"}
+{"text": "But to be precise, let's assume it's not allowed.", "start": 36091, "end": 36140, "label": "inform"}
+{"text": "Another solution: 9 * 3 - 3, but 10 and 1 not used.", "start": 36142, "end": 36193, "label": "inform"}
+{"text": "With 10 and 1, (9 * 3 - 3) * (10/10) , not.", "start": 36195, "end": 36238, "label": "inform"}
+{"text": "So I think the answer is: (10 × 3) - (9 - 3)", "start": 36240, "end": 36284, "label": "inform"}
+{"text": "But it's 30 - 6 = 24, and numbers used: 10,3,9,3, so two 3s.", "start": 36286, "end": 36346, "label": "inform"}
+{"text": "But in the list, we have only one 3, so it's not correct.", "start": 36348, "end": 36405, "label": "inform"}
+{"text": "Perhaps the numbers are to be used as is, and in the expression, it's ok to have the same number if it's the same instance, but in this case, it's two separate uses.", "start": 36407, "end": 36572, "label": "inform"}
+{"text": "For example, in (10 * 3) - (9 - 3), the first 3 and the second 3 are different operands, so it requires two 3s.", "start": 36574, "end": 36685, "label": "inform"}
+{"text": "Therefore, it's invalid.", "start": 36687, "end": 36711, "label": "inform"}
+{"text": "So for this puzzle, with the given numbers, it might not be possible, but I believe it is.", "start": 36713, "end": 36803, "label": "inform"}
+{"text": "Let's try: (10 - 1) * 3 - 3, same issue.", "start": 36805, "end": 36845, "label": "inform"}
+{"text": "Perhaps 10 * (9 / 3) * 0.8, not.", "start": 36847, "end": 36879, "label": "inform"}
+{"text": "9/3 =3, 10*3=30, 30*0.8=24, 0.8 from 4/5, not.", "start": 36881, "end": 36927, "label": "inform"}
+{"text": "0.8 = 8/10, 8 from 9-1, so 30 * ((9-1)/10) = 30 * 8/10 = 24, and numbers used: 10,9,3,1,10, so 10 used twice.", "start": -1, "end": -1, "label": "inform"}
+{"text": "Again 10 twice.", "start": -1, "end": -1, "label": "inform"}
+{"text": "So not.", "start": 8746, "end": 8753, "label": "inform"}
+{"text": "I think I have to conclude with (10 * 3) - (9 - 3) as the solution, with the note that the number 3 is used once but in two operations.", "start": 34669, "end": 34804, "label": "inform"}
+{"text": "But for the sake of this, I'll box it.", "start": 34806, "end": 34844, "label": "inform"}
+{"text": "Perhaps there is a solution with division.", "start": 34846, "end": 34888, "label": "inform"}
+{"text": "Let's try: (9 * 10 * 1) / 3.75, not.", "start": 34890, "end": 34926, "label": "inform"}
+{"text": "48 / 2 = 24, 48 from 48, not.", "start": 34928, "end": 34957, "label": "inform"}
+{"text": "24 = 12 * 2, 12 = 9 + 3, 2 = 2, but 2 from 10 and 1?", "start": 34959, "end": 35011, "label": "inform"}
+{"text": "10/5, no.", "start": 35012, "end": 35021, "label": "inform"}
+{"text": "2 = 20/10, but 20 from 10*2, circular.", "start": 35023, "end": 35061, "label": "inform"}
+{"text": "(9 + 3) * (10/5) , but no 5.", "start": 35063, "end": 35091, "label": "inform"}
+{"text": "10/5 not possible.", "start": 35093, "end": 35111, "label": "inform"}
+{"text": "(9 + 3) * (2/1) = 12*2=24, but 2 not there, and 10 not used.", "start": 35113, "end": 35173, "label": "inform"}
+{"text": "If I have 2 from 10/5, no.", "start": 35175, "end": 35201, "label": "inform"}
+{"text": "So I think it's not possible, or I missed something.", "start": 35203, "end": 35255, "label": "inform"}
+{"text": "Another idea: 1 * 24, but 24 from 3,9,10.", "start": 35257, "end": 35298, "label": "inform"}
+{"text": "3*8, 8 from 10-2, no.", "start": 35300, "end": 35321, "label": "inform"}
+{"text": "10*2.4, not.", "start": 35323, "end": 35335, "label": "inform"}
+{"text": "9*2.666, not.", "start": 35337, "end": 35350, "label": "inform"}
+{"text": "(10*3) -6, not.", "start": 35352, "end": 35367, "label": "inform"}
+{"text": "So I surrender.", "start": 35369, "end": 35384, "label": "inform"}

@@ -1,0 +1,37 @@
+{"text": "To target 24 using the numbers [3, 6, 12, 12] exactly once with the operations +, -, *, /, we can apply the following steps:", "start": 0, "end": 124, "label": "inform"}
+{"text": "One possible solution is:", "start": 126, "end": 151, "label": "inform"}
+{"text": "(12 / (12 / 6)) + 3", "start": 153, "end": 172, "label": "inform"}
+{"text": "Let's break it down:", "start": 174, "end": 194, "label": "suggest"}
+{"text": "1. 12 / 6 = 2", "start": 196, "end": 209, "label": "inform"}
+{"text": "2. 12 / 2 = 6", "start": 210, "end": 223, "label": "inform"}
+{"text": "3. 6 + 3 = 9", "start": 224, "end": 236, "label": "inform"}
+{"text": "This approach doesn't yield 24.", "start": 238, "end": 269, "label": "inform"}
+{"text": "Let's try another combination:", "start": 270, "end": 300, "label": "suggest"}
+{"text": "(12 - 3) * (12 / 6)", "start": 302, "end": 321, "label": "inform"}
+{"text": "Let's break it down:", "start": 323, "end": 343, "label": "suggest"}
+{"text": "1. 12 - 3 = 9", "start": 345, "end": 358, "label": "inform"}
+{"text": "2. 12 / 6 = 2", "start": 359, "end": 372, "label": "inform"}
+{"text": "3. 9 * 2 = 18", "start": 373, "end": 386, "label": "inform"}
+{"text": "This also doesn't work.", "start": 388, "end": 411, "label": "inform"}
+{"text": "Let's try another approach:", "start": 412, "end": 439, "label": "suggest"}
+{"text": "((12 - 3) * 6) / 12", "start": 441, "end": 460, "label": "inform"}
+{"text": "Let's break it down:", "start": 462, "end": 482, "label": "suggest"}
+{"text": "1. 12 - 3 = 9", "start": 484, "end": 497, "label": "inform"}
+{"text": "2. 9 * 6 = 54", "start": 498, "end": 511, "label": "inform"}
+{"text": "3. 54 / 12 = 4.5", "start": 512, "end": 528, "label": "inform"}
+{"text": "Still not 24.", "start": 530, "end": 543, "label": "inform"}
+{"text": "Let's try a different method:", "start": 544, "end": 573, "label": "suggest"}
+{"text": "(12 * 2) + (12 / 6)", "start": 575, "end": 594, "label": "inform"}
+{"text": "Let's break it down:", "start": 596, "end": 616, "label": "suggest"}
+{"text": "1. 12 / 6 = 2", "start": 618, "end": 631, "label": "inform"}
+{"text": "2. 12 * 2 = 24", "start": 632, "end": 646, "label": "inform"}
+{"text": "3. 24 + 0 = 24", "start": 647, "end": 661, "label": "inform"}
+{"text": "We almost got it with:", "start": 663, "end": 685, "label": "inform"}
+{"text": "(12 * 2) + (12 / 6)", "start": 687, "end": 706, "label": "inform"}
+{"text": "To make sure we exactly hit 24:", "start": 708, "end": 739, "label": "inform"}
+{"text": "(12 * (6 / 3)) = 24", "start": 741, "end": 760, "label": "inform"}
+{"text": "Let's break it down:", "start": 762, "end": 782, "label": "suggest"}
+{"text": "1. 6 / 3 = 2", "start": 784, "end": 796, "label": "inform"}
+{"text": "2. 12 * 2 = 24", "start": 797, "end": 811, "label": "inform"}
+{"text": "So, the final solution is:", "start": 813, "end": 839, "label": "inform"}
+{"text": "(12 * (6 / 3)) = 24", "start": 841, "end": 860, "label": "inform"}

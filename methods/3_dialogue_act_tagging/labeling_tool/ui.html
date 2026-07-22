@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Method 3 — hand-labeling</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --fg:#1a1a18; --muted:#6b6b66; --line:#dedcd6; --card:#fff; --hl:#e9e7e0;
+    --seek:#2f6f9f; --prov:#2e7d5b; --comm:#8a5a2b; --dir:#9a4a6a;
+    --fb:#5a5a9a; --time:#7a7a70; --ocm:#8a6a2b; --soc:#4a7a8a; --none:#8a3a3a;
+    --ok:#2e7d5b; --bad:#b04a4a; --warn:#a07020;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#16161a; --fg:#e8e8e4; --muted:#9a9a94; --line:#33333a; --card:#1e1e24; --hl:#2a2a32;
+      --seek:#7ab5e0; --prov:#6fc79a; --comm:#d09a5e; --dir:#e08ab0;
+      --fb:#9a9ae0; --time:#a8a89e; --ocm:#d0aa5e; --soc:#7ab8c8; --none:#e08080;
+      --ok:#6fc79a; --bad:#e08080; --warn:#d0aa5e; }
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);overflow:hidden;
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  #app{display:flex;flex-direction:column;height:100%}
+
+  header{padding:.55rem 1rem;border-bottom:1px solid var(--line);background:var(--card);
+    display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+  .bar{flex:1;min-width:150px;height:6px;background:var(--hl);border-radius:3px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .2s}
+  .counts{font-size:.82rem;color:var(--muted);white-space:nowrap}
+  .counts b{color:var(--fg)}
+  .saved{font-size:.75rem;color:var(--ok);opacity:0;transition:opacity .3s;white-space:nowrap}
+  .saved.on{opacity:1}
+  header a{font-size:.8rem;color:var(--muted)}
+  .modetag{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;padding:.15rem .5rem;
+    border-radius:10px;font-weight:600}
+  .modetag.real{background:var(--hl);color:var(--muted)}
+  .modetag.prac{background:var(--warn);color:#fff}
+
+  main{flex:1;display:flex;min-height:0}
+  .left{flex:1;display:flex;flex-direction:column;min-width:0;padding:.9rem 1.25rem;gap:.65rem}
+  .right{width:330px;border-left:1px solid var(--line);background:var(--card);
+    overflow-y:auto;padding:.9rem 1rem;font-size:.82rem}
+  @media(max-width:900px){ .right{display:none} }
+
+  .meta{font-size:.75rem;color:var(--muted);display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+  .pill{background:var(--hl);padding:.12rem .5rem;border-radius:10px;font-size:.72rem}
+
+  /* context + focus sentence */
+  .ctxbox{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .ctxline{padding:.4rem .9rem;font-size:.85rem;color:var(--muted);line-height:1.45;
+    border-bottom:1px dashed var(--line);background:rgba(128,128,128,.035)}
+  .ctxline:last-child{border-bottom:none}
+  .ctxline.after{border-bottom:none;border-top:1px dashed var(--line)}
+  .ctxline .n{font:11px ui-monospace,Consolas,monospace;color:var(--muted);opacity:.6;
+    margin-right:.5rem}
+  .sent{padding:1.15rem 1.4rem;font-size:1.28rem;line-height:1.5;min-height:4.5rem;
+    display:flex;align-items:center;background:var(--card);
+    box-shadow:inset 3px 0 0 var(--seek)}
+  .sent.empty{color:var(--muted);font-size:1rem;font-style:italic}
+  .ctxhead{display:flex;align-items:center;gap:.6rem;font-size:.72rem;color:var(--muted)}
+  .ctxhead button{padding:.15rem .5rem;font-size:.72rem;border:1px solid var(--line);
+    border-radius:5px;background:var(--card);color:var(--muted);cursor:pointer;font-family:inherit}
+  .ctxhead button:hover{background:var(--hl)}
+
+  .search{display:flex;gap:.5rem;align-items:center}
+  .search input{flex:1;padding:.45rem .7rem;font-size:.95rem;border:1px solid var(--line);
+    border-radius:7px;background:var(--card);color:var(--fg)}
+  .search input:focus{outline:2px solid var(--seek);outline-offset:-1px}
+  .hint{font-size:.72rem;color:var(--muted)}
+
+  .tags{flex:1;overflow-y:auto;display:grid;gap:.5rem;
+    grid-template-columns:repeat(auto-fill,minmax(215px,1fr));align-content:start}
+  .cat{border:1px solid var(--line);border-radius:8px;background:var(--card);
+    border-top:2.5px solid var(--c);padding:.4rem .5rem .5rem}
+  .cat>b{font-size:.68rem;color:var(--c);text-transform:uppercase;letter-spacing:.04em;
+    display:block;margin-bottom:.3rem}
+  button.tag{display:block;width:100%;text-align:left;padding:.3rem .45rem;margin:.1rem 0;
+    border:1px solid transparent;border-radius:5px;background:transparent;color:var(--fg);
+    cursor:pointer;font:inherit;font-size:.82rem}
+  button.tag:hover{background:var(--hl)}
+  button.tag.hit{border-color:var(--c);background:var(--hl)}
+  button.tag.top{border-color:var(--c);background:var(--hl);box-shadow:inset 3px 0 0 var(--c)}
+  button.tag.cur{background:var(--c);color:#fff;font-weight:600}
+  button.tag .s{color:var(--muted);font-size:.72rem;display:block}
+  button.tag.cur .s{color:rgba(255,255,255,.85)}
+  .cat.dim{opacity:.28}
+
+  .nav{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+  .nav button{padding:.38rem .8rem;border:1px solid var(--line);border-radius:7px;
+    background:var(--card);color:var(--fg);cursor:pointer;font:inherit;font-size:.82rem}
+  .nav button:hover{background:var(--hl)}
+  .nav button:disabled{opacity:.4;cursor:default}
+  .nav button.primary{background:var(--seek);color:#fff;border-color:var(--seek);font-weight:600}
+  .nav .sp{flex:1}
+
+  .right h4{margin:.1rem 0 .4rem;font-size:.78rem;text-transform:uppercase;
+    letter-spacing:.04em;color:var(--muted)}
+  .right .cf{margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--line)}
+  .right .cf b{font-size:.8rem;display:block;margin-bottom:.15rem}
+  .right .cf .ask{color:var(--muted);font-size:.75rem;margin-bottom:.35rem}
+  .right .cf div.r{margin:.22rem 0;line-height:1.35}
+  .right code{font:600 12px ui-monospace,Consolas,monospace}
+  kbd{background:var(--hl);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;
+    padding:.05rem .3rem;font:11px ui-monospace,Consolas,monospace}
+  .empty-state{padding:2rem;text-align:center;color:var(--muted);font-size:.9rem;line-height:1.6}
+  .empty-state code{background:var(--hl);padding:.15rem .4rem;border-radius:4px;
+    font:12.5px ui-monospace,Consolas,monospace;color:var(--fg)}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <strong style="font-size:.9rem">Method 3</strong>
+    <span class="modetag" id="modetag">—</span>
+    <div class="bar"><i id="barfill"></i></div>
+    <div class="counts" id="counts">loading…</div>
+    <div class="saved" id="saved">saved ✓</div>
+    <a href="/codebook.html" target="_blank">codebook ↗</a>
+    <a id="modeswitch" href="/practice">practice mode →</a>
+  </header>
+
+  <main>
+    <div class="left">
+      <div class="meta">
+        <span id="pos" class="pill">—</span>
+        <span id="curlabel"></span>
+      </div>
+
+      <div class="ctxhead">
+        <button id="ctxtoggle">hide context</button>
+        <span id="ctxinfo"></span>
+        <span class="hint">context is source text only — never the tagger's labels</span>
+      </div>
+
+      <div class="ctxbox">
+        <div id="ctxbefore"></div>
+        <div class="sent" id="sent">loading…</div>
+        <div id="ctxafter"></div>
+      </div>
+
+      <div class="search">
+        <input id="q" placeholder="type to filter tags — Enter picks the highlighted one" autocomplete="off">
+        <span class="hint"><kbd>↑</kbd><kbd>↓</kbd> move · <kbd>Enter</kbd> pick · <kbd>Esc</kbd> clear · <kbd>←</kbd><kbd>→</kbd> prev/next · <kbd>c</kbd> context</span>
+      </div>
+
+      <div class="tags" id="tags"></div>
+
+      <div class="nav">
+        <button id="prev">← Prev</button>
+        <button id="next">Next →</button>
+        <button id="nextun">Next unlabeled</button>
+        <button id="clear">Clear this label</button>
+        <span class="sp"></span>
+        <span class="hint" id="autoadv-wrap">
+          <label><input type="checkbox" id="autoadv" checked> auto-advance</label>
+        </span>
+      </div>
+    </div>
+
+    <div class="right">
+      <div id="pracnote" style="display:none;font-size:.78rem;color:var(--muted);
+        line-height:1.5;margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid var(--line)">
+        This is blind, exactly like real labeling — drawn from a pool guaranteed disjoint from
+        your real worksheet, but no indication here of whether you match the tagger, per item
+        or in aggregate. Label it as you read it. Compare afterward, once you're done, with
+        <code>python label_server.py --practice-report</code>.
+      </div>
+      <h4>Confusable pairs</h4>
+      <div id="confs"></div>
+      <h4>Notes on this data</h4>
+      <div id="notes" style="font-size:.78rem;line-height:1.5;color:var(--fg)"></div>
+    </div>
+  </main>
+</div>
+
+<script src="/cams_tags.js"></script>
+<script>
+const esc = s => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const $ = id => document.getElementById(id);
+const PRACTICE = location.pathname.replace(/\/$/,'') === '/practice';
+
+let ROWS = [], cur = 0, filtered = [], topIdx = 0;
+let ctxOpen = true, ctxCache = {};
+const LABEL_EP = PRACTICE ? '/api/practice/label' : '/api/label';
+const META = {};
+window.CAMS_CATEGORIES.forEach(c => c.tags.forEach(t =>
+  META[t.tag] = {cat: c.name, color: c.color, short: t.short, def: t.def}));
+
+/* ---------- boot ---------- */
+// Practice is fully blind, same interaction as real labeling - no ✓/✗, no score, anywhere
+// in this file. Comparison only happens afterward via `label_server.py --practice-report`.
+$('modetag').textContent = PRACTICE ? 'practice · blind' : 'real · blind';
+$('modetag').className = 'modetag ' + (PRACTICE ? 'prac' : 'real');
+$('modeswitch').textContent = PRACTICE ? '← real labeling' : 'practice mode →';
+$('modeswitch').href = PRACTICE ? '/' : '/practice';
+if(PRACTICE){ $('pracnote').style.display = 'block'; }
+
+fetch(PRACTICE ? '/api/practice/rows' : '/api/rows').then(r => r.json()).then(d => {
+  ROWS = d.rows;
+  if(PRACTICE && !ROWS.length){
+    document.querySelector('.left').innerHTML =
+      `<div class="empty-state"><p><b>No practice set yet.</b></p>
+       <p>Generate one — it is drawn from utterances guaranteed disjoint from your real worksheet:</p>
+       <p><code>python label_server.py --make-practice 200</code></p>
+       <p>Then restart the server and reload this page.</p></div>`;
+    return;
+  }
+  buildTagPanel(); buildSidebar();
+  const firstUn = ROWS.findIndex(r => !r.human_label);
+  cur = firstUn === -1 ? 0 : firstUn;
+  render(); $('q').focus();
+});
+
+/* ---------- panels ---------- */
+function buildTagPanel(){
+  $('tags').innerHTML = window.CAMS_CATEGORIES.map(c => `
+    <div class="cat" data-cat="${c.id}" style="--c:var(--${c.color})">
+      <b>${esc(c.name)}</b>
+      ${c.tags.map(t => `
+        <button class="tag" data-tag="${esc(t.tag)}" title="${esc(t.def)}">
+          ${esc(t.tag)}<span class="s">${esc(t.short)}</span>
+        </button>`).join('')}
+    </div>`).join('');
+  $('tags').querySelectorAll('button.tag').forEach(b =>
+    b.addEventListener('click', () => pick(b.dataset.tag)));
+}
+function buildSidebar(){
+  $('confs').innerHTML = window.CAMS_CONFUSIONS.map(c => `
+    <div class="cf"><b>${esc(c.title)}</b><div class="ask">${esc(c.ask)}</div>
+      ${c.rows.map(r => `<div class="r"><code style="color:var(--${(META[r[0]]||{}).color||'fg'})">${esc(r[0])}</code> — ${esc(r[1])}</div>`).join('')}
+    </div>`).join('');
+  $('notes').innerHTML = window.CAMS_DATASET_NOTES.map(n => `<p style="margin:.5rem 0">${n}</p>`).join('');
+}
+
+/* ---------- context ---------- */
+function ctxKey(r){ return `${r.cell}:${r.doc_id}:${r.sentence_idx}`; }
+function renderCtx(data){
+  if(!ctxOpen || !data){ $('ctxbefore').innerHTML = ''; $('ctxafter').innerHTML = ''; return; }
+  const line = (o, cls) => `<div class="ctxline ${cls}"><span class="n">${o.i}</span>${esc(o.text)}</div>`;
+  $('ctxbefore').innerHTML = (data.before||[]).map(o => line(o,'before')).join('');
+  $('ctxafter').innerHTML  = (data.after ||[]).map(o => line(o,'after')).join('');
+}
+function loadCtx(){
+  const r = ROWS[cur]; if(!r) return;
+  if(!ctxOpen){ renderCtx(null); $('ctxinfo').textContent = ''; return; }
+  const k = ctxKey(r);
+  if(ctxCache[k]){ renderCtx(ctxCache[k]); showCtxInfo(ctxCache[k]); return; }
+  $('ctxinfo').textContent = 'loading context…';
+  fetch(`/api/context?cell=${encodeURIComponent(r.cell)}&doc_id=${encodeURIComponent(r.doc_id)}&idx=${r.sentence_idx}&window=3`)
+    .then(x => x.json()).then(d => { ctxCache[k] = d; renderCtx(d); showCtxInfo(d); })
+    .catch(e => { $('ctxinfo').textContent = 'context unavailable'; });
+}
+function showCtxInfo(d){
+  $('ctxinfo').textContent = d.error ? d.error
+    : `sentence ${ROWS[cur].sentence_idx} of ${d.n_lines} in this document`;
+}
+$('ctxtoggle').onclick = () => {
+  ctxOpen = !ctxOpen;
+  $('ctxtoggle').textContent = ctxOpen ? 'hide context' : 'show context';
+  loadCtx();
+};
+
+/* ---------- render ---------- */
+function render(){
+  const r = ROWS[cur];
+  $('sent').className = 'sent' + (r && r.text.trim() ? '' : ' empty');
+  $('sent').textContent = r ? (r.text.trim() || '(empty sentence)') : '—';
+  $('pos').textContent = `${cur + 1} / ${ROWS.length}`;
+
+  // Identical in both modes - practice carries only your own guess (r.human_label), never
+  // the tagger's answer. Nothing here differs between real and practice.
+  const lbl = r ? r.human_label : '';
+  $('curlabel').innerHTML = lbl
+    ? `current: <code style="color:var(--${(META[lbl]||{}).color||'fg'});font-weight:600">${esc(lbl)}</code>`
+    : `<span style="color:var(--muted)">unlabeled</span>`;
+
+  $('tags').querySelectorAll('button.tag').forEach(b => b.classList.toggle('cur', b.dataset.tag === lbl));
+
+  $('prev').disabled = cur === 0;
+  $('next').disabled = cur === ROWS.length - 1;
+  updateCounts(); loadCtx(); applyFilter();
+}
+
+function updateCounts(){
+  const done = ROWS.filter(r => r.human_label).length;
+  $('counts').innerHTML = `<b>${done}</b> / ${ROWS.length} labeled · ${ROWS.length - done} left`;
+  $('barfill').style.width = (100 * done / ROWS.length) + '%';
+}
+
+/* ---------- filter ---------- */
+function applyFilter(){
+  const q = $('q').value.trim().toLowerCase();
+  const btns = [...$('tags').querySelectorAll('button.tag')];
+  if(!q){
+    filtered = btns; btns.forEach(b => b.classList.remove('hit','top'));
+    $('tags').querySelectorAll('.cat').forEach(c => c.classList.remove('dim'));
+    topIdx = 0; return;
+  }
+  const score = b => {
+    const t = b.dataset.tag.toLowerCase(), s = (META[b.dataset.tag].short||'').toLowerCase();
+    if(t.startsWith(q)) return 0;
+    if(t.includes(q))   return 1;
+    if(s.includes(q))   return 2;
+    return 99;
+  };
+  filtered = btns.map(b => [b, score(b)]).filter(x => x[1] < 99)
+                 .sort((a,b) => a[1]-b[1]).map(x => x[0]);
+  btns.forEach(b => b.classList.toggle('hit', filtered.includes(b)));
+  $('tags').querySelectorAll('.cat').forEach(c =>
+    c.classList.toggle('dim', ![...c.querySelectorAll('button.tag')].some(b => filtered.includes(b))));
+  topIdx = 0; markTop();
+}
+function markTop(){
+  $('tags').querySelectorAll('button.tag').forEach(b => b.classList.remove('top'));
+  if(filtered.length && $('q').value.trim()){
+    const b = filtered[Math.max(0, Math.min(topIdx, filtered.length-1))];
+    b.classList.add('top'); b.scrollIntoView({block:'nearest'});
+  }
+}
+
+/* ---------- save / answer ---------- */
+let saveTimer = null;
+function flashSaved(){
+  $('saved').classList.add('on');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => $('saved').classList.remove('on'), 900);
+}
+
+function pick(tag){
+  // Identical code path for both modes - saves the guess, gets back {done,total}, nothing else.
+  // Practice never receives a truth value here because apply_practice_label() on the server
+  // has no access to practice_answers.json in the first place - there is nothing to leak.
+  const i = cur;
+  ROWS[i].human_label = tag; render();
+  fetch(LABEL_EP, {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({idx:i, label:tag})})
+    .then(r => r.json()).then(res => {
+      if(res.error){ alert('Save failed: ' + res.error); return; }
+      flashSaved();
+      if($('autoadv').checked && i === cur) goNextUnlabeled(true);
+    }).catch(e => alert('Save failed: ' + e));
+  $('q').value = ''; applyFilter();
+}
+
+function clearLabel(){
+  const i = cur; ROWS[i].human_label = ''; render();
+  fetch(LABEL_EP, {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({idx:i, label:''})})
+    .then(r => r.json()).then(res => { if(!res.error) flashSaved(); });
+}
+
+/* ---------- nav ---------- */
+function go(i){ cur = Math.max(0, Math.min(ROWS.length-1, i)); render(); $('q').focus(); }
+function goNextUnlabeled(){
+  let i = ROWS.findIndex((r, k) => k > cur && !r.human_label);
+  if(i === -1) i = ROWS.findIndex(r => !r.human_label);
+  if(i === -1){ go(Math.min(cur + 1, ROWS.length - 1)); return; }
+  go(i);
+}
+$('prev').onclick = () => go(cur-1);
+$('next').onclick = () => go(cur+1);
+$('nextun').onclick = goNextUnlabeled;
+$('clear').onclick = clearLabel;
+$('q').addEventListener('input', applyFilter);
+
+$('q').addEventListener('keydown', e => {
+  if(e.key === 'Enter'){
+    e.preventDefault();
+    if(filtered.length && $('q').value.trim()) pick(filtered[topIdx].dataset.tag);
+  } else if(e.key === 'ArrowDown'){
+    e.preventDefault(); topIdx = Math.min(topIdx+1, filtered.length-1); markTop();
+  } else if(e.key === 'ArrowUp'){
+    e.preventDefault(); topIdx = Math.max(topIdx-1, 0); markTop();
+  } else if(e.key === 'Escape'){ $('q').value = ''; applyFilter(); }
+});
+
+document.addEventListener('keydown', e => {
+  const typing = e.target === $('q') && $('q').value;
+  if(e.key === 'ArrowLeft' && !typing){ e.preventDefault(); go(cur-1); }
+  if(e.key === 'ArrowRight' && !typing){ e.preventDefault(); go(cur+1); }
+  if(e.key === 'c' && e.target !== $('q')){ e.preventDefault(); $('ctxtoggle').click(); }
+});
+</script>
+</body>
+</html>
