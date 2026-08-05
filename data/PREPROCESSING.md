@@ -120,7 +120,7 @@ Before trusting any classification method's output on the known cells (①②③
 
 ### Human Debate Schema
 
-**Files:** `human_debate/json formatted delidata (source in raw)/human_debate_with_speaker_labels.jsonl` → `human_debate/processed_human_debate.jsonl`
+**Files:** `human_debate/json_formatted/human_debate_with_speaker_labels.jsonl` → `human_debate/processed_human_debate.jsonl`
 
 #### Core Fields
 - `puzzle_id` - Unique puzzle identifier (UUID format) (string)
@@ -148,7 +148,7 @@ Before trusting any classification method's output on the known cells (①②③
 
 ### Human Monologue / Think-Aloud Schema
 
-**Files:** `human_monologue/all samples (source in raw folder)/human_think_aloud.jsonl` → `human_monologue/processed_sample_600_human_think_aloud.jsonl`
+**Files:** `human_monologue/all_samples/human_think_aloud.jsonl` → `human_monologue/processed_sample_600_human_think_aloud.jsonl`
 
 #### Core Fields
 - `puzzle_id` - Standardized puzzle ID (g24_XXXX format) (string)
@@ -507,8 +507,8 @@ Keep mathematical meaning but convert LaTeX to standardized plain text.
    - `ai_debate/raw_qwen_generation/regenerated_ai_debate.jsonl` → `ai_debate/processed_ai_debate.jsonl` (600 rows)
    - `ai-monolouge/prompted_ai_monologue.jsonl` → `ai_monologue/processed_prompted_ai_monologue.jsonl` (600 rows)
    - `ai_reasoning/raw_deepseek_generation/native_reasoning_traces.jsonl` → `ai_reasoning/processed_native_reasoning_traces.jsonl` (600 rows)
-   - `human_debate/json formatted delidata (source in raw)/human_debate_with_speaker_labels.jsonl` → `human_debate/processed_human_debate.jsonl` (500 rows)
-   - `human_monologue/all samples (source in raw folder)/human_think_aloud.jsonl` → `human_monologue/processed_sample_600_human_think_aloud.jsonl` (5,143 rows)
+   - `human_debate/json_formatted/human_debate_with_speaker_labels.jsonl` → `human_debate/processed_human_debate.jsonl` (500 rows)
+   - `human_monologue/all_samples/human_think_aloud.jsonl` → `human_monologue/processed_sample_600_human_think_aloud.jsonl` (5,143 rows)
 
 3. **LaTeX Standardization (updated)**
    - `\frac{a}{b}` → `(a/b)` (32,889 conversions in AI debate, 10,105 in AI monologue, 922 in AI reasoning)
@@ -646,8 +646,8 @@ python cell3_build_dataset_random_discussion.py --seed 32345 --ranks "1,9,23,29,
 | `ai_debate/raw_qwen_generation/regenerated_ai_debate.jsonl` | 600 | 200 | No | Clean version: 47 corrupted debates regenerated, English-only, verified |
 | `ai-monolouge/prompted_ai_monologue.jsonl` | 600 | 200 | No | Removed correctness (extraction failed), removed g24_0193 |
 | `ai_reasoning/raw_deepseek_generation/native_reasoning_traces.jsonl` | 600 | 200 | No | Removed correctness (extraction issues), removed g24_0193 |
-| `human_debate/json formatted delidata (source in raw)/human_debate_with_speaker_labels.jsonl` | 500 | 500 | Yes | Original includes speaker labels; Wason card selection task |
-| `human_monologue/all samples (source in raw folder)/human_think_aloud.jsonl` | 5,143 | 200 | Yes | Full dataset, original correctness kept |
+| `human_debate/json_formatted/human_debate_with_speaker_labels.jsonl` | 500 | 500 | Yes | Original includes speaker labels; Wason card selection task |
+| `human_monologue/all_samples/human_think_aloud.jsonl` | 5,143 | 200 | Yes | Full dataset, original correctness kept |
 
 ### Processed Files
 
@@ -714,8 +714,8 @@ python cell3_build_dataset_random_discussion.py --seed 32345 --ranks "1,9,23,29,
 - AI debate (clean): `ai_debate/raw_qwen_generation/regenerated_ai_debate.jsonl`
 - AI monologue: `ai-monolouge/prompted_ai_monologue.jsonl`
 - AI reasoning: `ai_reasoning/raw_deepseek_generation/native_reasoning_traces.jsonl`
-- Human debate: `human_debate/json formatted delidata (source in raw)/human_debate_with_speaker_labels.jsonl`
-- Human monologue: `human_monologue/all samples (source in raw folder)/human_think_aloud.jsonl`
+- Human debate: `human_debate/json_formatted/human_debate_with_speaker_labels.jsonl`
+- Human monologue: `human_monologue/all_samples/human_think_aloud.jsonl`
 
 **Processed Working Files (in `data/00_core-2x2/`):**
 - `ai_debate/processed_ai_debate.jsonl`

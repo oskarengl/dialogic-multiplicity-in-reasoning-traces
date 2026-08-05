@@ -25,7 +25,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 CELLS = [
     {
         "cell": "1",
-        "input": PROJECT_ROOT / "data" / "00_core-2x2" / "human_monologue" / "all samples (source in raw folder)" / "sample_600_human_think_aloud.jsonl",
+        "input": PROJECT_ROOT / "data" / "00_core-2x2" / "human_monologue" / "all_samples" / "sample_600_human_think_aloud.jsonl",
         "output": PROJECT_ROOT / "outputs" / "method3" / "cell1_human_monologue",
         "text_field": "think_trace",
     },

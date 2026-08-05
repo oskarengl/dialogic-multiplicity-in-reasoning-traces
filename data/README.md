@@ -5,7 +5,7 @@ the study sets out to determine.
 
 | Cell | Corpus | N | Producer | Task | Analysis input |
 |---|---|---|---|---|---|
-| ① | human monologue | 600 | human | Game of 24 | `00_core-2x2/human_monologue/all samples (source in raw folder)/sample_600_human_think_aloud.jsonl` |
+| ① | human monologue | 600 | human | Game of 24 | `00_core-2x2/human_monologue/all_samples/sample_600_human_think_aloud.jsonl` |
 | ② | human debate | 500 | human | Wason card task | `00_core-2x2/human_debate/processed_human_debate.jsonl` |
 | ③ | AI debate | 600 | 4× Qwen-2.5-7B | Game of 24 | `00_core-2x2/ai_debate/processed_ai_debate.jsonl` |
 | ④ | AI monologue | 600 | Qwen-2.5-7B | Game of 24 | `00_core-2x2/ai_monologue/processed_prompted_ai_monologue.jsonl` |
@@ -14,7 +14,7 @@ the study sets out to determine.
 **A naming trap in cell ①.** `00_core-2x2/human_monologue/processed_sample_600_human_think_aloud.jsonl`
 contains **5,143** documents, not 600 — it is the full processed think-aloud set and the
 name is wrong. Every analysis in the paper reads the 600-document file listed in the table
-above, under `all samples (source in raw folder)/`. Both runners
+above, under `all_samples/`. Both runners
 (`scripts/run_method3_all_cells.py`, Method 2's `run_calibration.py`) point at that file,
 and Method 2's calibration output contains exactly 600 cell-① documents. The 5,143-row file
 is unused; it is kept because it is the input the 600 were sampled from.

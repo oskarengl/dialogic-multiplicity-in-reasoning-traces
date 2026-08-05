@@ -74,7 +74,7 @@ def turns_to_paras(rec, _=None):                     # one debate turn -> one pa
 
 # cell: (file, text-builder, true_bin)   true_bin: 1 = single (mono), 0 = multi (dia)
 CELLS = {
-    "1": (os.path.join(D, "human_monologue", "all samples (source in raw folder)",
+    "1": (os.path.join(D, "human_monologue", "all_samples",
                        "sample_600_human_think_aloud.jsonl"),
           lambda r: prose(r, "think_trace"), 1),
     "2": (os.path.join(D, "human_debate", "processed_human_debate.jsonl"),

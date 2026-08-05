@@ -345,8 +345,8 @@ def main():
         (base_path / 'ai_debate' / 'raw_qwen_generation' / 'regenerated_ai_debate.jsonl', base_path / 'ai_debate' / 'processed_ai_debate.jsonl', 'full_text_no_labels', True),
         (base_path / 'ai-monolouge' / 'prompted_ai_monologue.jsonl', base_path / 'ai_monologue' / 'processed_prompted_ai_monologue.jsonl', 'transcript', False),
         (base_path / 'ai_reasoning' / 'raw_deepseek_generation' / 'native_reasoning_traces.jsonl', base_path / 'ai_reasoning' / 'processed_native_reasoning_traces.jsonl', 'think_trace', False),
-        (base_path / 'human_debate' / 'json formatted delidata (source in raw)' / 'human_debate_with_speaker_labels.jsonl', base_path / 'human_debate' / 'processed_human_debate.jsonl', 'transcript', True),
-        (base_path / 'human_monologue' / 'all samples (source in raw folder)' / 'human_think_aloud.jsonl', base_path / 'human_monologue' / 'processed_sample_600_human_think_aloud.jsonl', 'think_trace', False),
+        (base_path / 'human_debate' / 'json_formatted' / 'human_debate_with_speaker_labels.jsonl', base_path / 'human_debate' / 'processed_human_debate.jsonl', 'transcript', True),
+        (base_path / 'human_monologue' / 'all_samples' / 'human_think_aloud.jsonl', base_path / 'human_monologue' / 'processed_sample_600_human_think_aloud.jsonl', 'think_trace', False),
     ]
     
     print("=" * 60)

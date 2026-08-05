@@ -33,7 +33,7 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parent.parent
-RAW = ROOT / "data/00_core-2x2/human_debate/json formatted delidata (source in raw)/human_debate_with_speaker_labels.jsonl"
+RAW = ROOT / "data/00_core-2x2/human_debate/json_formatted/human_debate_with_speaker_labels.jsonl"
 PROCESSED = ROOT / "data/00_core-2x2/human_debate/processed_human_debate.jsonl"
 TEMP = ROOT / "data/00_core-2x2/human_debate/processed_human_debate.REFIX_PREVIEW.jsonl"
 

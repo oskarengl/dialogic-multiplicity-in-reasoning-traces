@@ -6,7 +6,7 @@ This folder is the minimal analysis-ready layer for the five research cells. It 
 
 | Cell | Folder | File the methods actually read | N | Meaning |
 |---|---|---|---|---|
-| ① | `human_monologue/` | `all samples (source in raw folder)/sample_600_human_think_aloud.jsonl` | 600 | Game-of-24 think-aloud sample |
+| ① | `human_monologue/` | `all_samples/sample_600_human_think_aloud.jsonl` | 600 | Game-of-24 think-aloud sample |
 | ② | `human_debate/` | `processed_human_debate.jsonl` | 500 | Processed human Wason group dialogues |
 | ③ | `ai_debate/` | `processed_ai_debate.jsonl` | 600 | Processed AI multi-agent debates |
 | ④ | `ai_monologue/` | `processed_prompted_ai_monologue.jsonl` | 600 | Processed AI prompted-monologue condition |
@@ -20,7 +20,7 @@ Cells ②–⑤ each read the `processed_*.jsonl` file at the top of their folde
 `human_monologue/processed_sample_600_human_think_aloud.jsonl` holds **5,143** documents
 despite the `sample_600` in its name — it is the full processed think-aloud set. The
 600-document sample the study actually uses is
-`human_monologue/all samples (source in raw folder)/sample_600_human_think_aloud.jsonl`.
+`human_monologue/all_samples/sample_600_human_think_aloud.jsonl`.
 
 Both runners point at the 600-document file (`scripts/run_method3_all_cells.py:28`, Method
 2's `run_calibration.py:58`), and Method 2's calibration output contains exactly 600 cell-①
