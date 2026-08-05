@@ -1,7 +1,6 @@
-# PAN 2019 corpus — fetch this yourself
+# PAN 2019 corpus
 
-This directory is intentionally empty. The PAN 2019 style change detection corpus is
-access-restricted and is not redistributed here.
+The PAN 2019 style change detection corpus is access-restricted and is not included here.
 
 Request access at https://zenodo.org/records/5174825, then unpack the archives so this
 directory contains:
@@ -13,10 +12,10 @@ pan19_data/
 └── test/
 ```
 
-Each holds paired `problem-*.txt` (document) and `problem-*.truth` (ground truth) files.
+Each holds paired `problem-*.txt` and `problem-*.truth` files.
 
-Only `local_changes/reproduce_compare.py` and `local_changes/evaluate_benchmark.py` use
-this data, to check the patched implementation against the published PAN 2019 accuracy.
-No number reported in the paper depends on it.
+The corpus is used by `local_changes/reproduce_compare.py` and
+`local_changes/evaluate_benchmark.py`, which check the patched implementation against the
+published PAN 2019 accuracy. No number reported in the paper depends on it.
 
-The corpus contents are ignored by git — see the repository `.gitignore`.
+Contents are ignored by git; see the repository `.gitignore`.

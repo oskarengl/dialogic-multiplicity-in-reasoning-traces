@@ -18,7 +18,7 @@ Cells ②–⑤ each read the `processed_*.jsonl` file at the top of their folde
 
 **Cell ① is the exception, and the name misleads.**
 `human_monologue/processed_sample_600_human_think_aloud.jsonl` holds **5,143** documents
-despite the `sample_600` in its name — it is the full processed think-aloud set. The
+despite the `sample_600` in its name. It is the full processed think-aloud set. The
 600-document sample the study actually uses is
 `human_monologue/all_samples/sample_600_human_think_aloud.jsonl`.
 

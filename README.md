@@ -1,61 +1,60 @@
 # Monologue or Dialogue?
 
-### Measuring conversational structure in the reasoning traces of large language models
+### Measuring Conversational Structure in the Reasoning Traces of Large Language Models
 
-Oskar Engl · Johannes Kepler University Linz · <oskar.engl@ik.me>
+Oskar Engl, Johannes Kepler University Linz, <oskar.engl@ik.me>
 
-**📄 [Read the paper](paper/monologue_or_dialogue.pdf)** · [LaTeX source](paper/monologue_or_dialogue.tex)
+**[Read the paper](paper/monologue_or_dialogue.pdf)**
 
----
+## Abstract
 
-A reasoning model such as DeepSeek-R1 writes a long stretch of intermediate tokens before it
-answers. One model writes each one in a single pass, yet inside a trace questions get
-answers, objections get concessions, and the argument turns against itself and starts again.
-Is a trace's textual shape closer to a monologue or to a dialogue?
+Reasoning models such as DeepSeek-R1 produce a long stretch of intermediate tokens before
+they answer. Although each stretch is written by a single model in one pass, one can observe
+in a trace that questions receive answers, objections receive concessions, and the argument
+turns against itself and starts again. Is a reasoning trace's textual shape more akin to a
+monologue or to a dialogue? We examine this with three text-analysis methods, two from
+stylometry and one from conversation analysis, and require each to prove itself first on
+four corpora whose voice structure is known: human monologue, human dialogue, AI monologue
+and AI dialogue. Only a method that separates monologue from dialogue on these known
+datasets goes on to measure the traces. Two of the three do. Both place the DeepSeek-R1
+traces above the four-instance AI debate on their own measure: the traces change style
+between neighbouring sentences more often than the debate does, and they complete more
+question-and-answer pairs than the debate, though several times fewer than a single person
+thinking aloud. The observed text alone cannot settle whether that comes from several voices
+or from one voice writing conversationally.
 
-The study puts that question to three text-analysis methods — two from stylometry, one from
-conversation analysis — and makes each prove itself first on four corpora whose voice
-structure is already known. Only a method that separates monologue from dialogue on the
-known corpora gets to measure the traces.
+## Corpora
 
-**Two of the three qualify, and both place the traces above the four-instance AI debate on
-their own measure.** The traces switch style between neighbouring sentences more often than
-the debate does, and they complete more question-and-answer pairs — though several times
-fewer than one person thinking aloud. The text alone cannot settle whether that comes from
-several voices or from one voice writing conversationally.
-
-## The design
-
-| | monologue | dialogue |
+| Cell | Corpus | N |
 |---|---|---|
-| **human** | think-aloud protocols, N = 600 | DeliData group deliberation, N = 500 |
-| **AI** | one Qwen-2.5-7B, N = 600 | four role-prompted Qwen-2.5-7B, N = 600 |
+| ① | human monologue (think-aloud protocols) | 600 |
+| ② | human dialogue (DeliData group deliberation) | 500 |
+| ③ | AI dialogue (four role-prompted Qwen-2.5-7B) | 600 |
+| ④ | AI monologue (one Qwen-2.5-7B) | 600 |
+| ⑤ | DeepSeek-R1 reasoning traces (the target) | 600 |
 
-Plus the target: **DeepSeek-R1 native reasoning traces, N = 600.** The AI cells and the
-human monologue cell all solve Game of 24, so a method cannot separate them on subject
-matter instead of voice structure.
+## Methods
 
-| Method | Reads | Passes the check | Reading of the traces |
-|---|---|---|---|
-| 1 · author count ([Nath 2019](https://github.com/pan-webis-de/nath19)) | function-word clusters across windows | **no** | *[between AI monologue and AI debate]* |
-| 2 · style switch ([Schmidt et al. 2025](https://github.com/glsch/better-call-claude_pan25-multi-author-style-analysis)) | style change between adjacent sentences | **yes** | more switches than the AI debate |
-| 3 · adjacency pairs (CAMS tagging) | completed question-and-answer structure | **yes** | more pairs than the AI debate, far fewer than human |
+| Method | Passes the validity check | Reading of the traces |
+|---|---|---|
+| 1: author count | no | [between AI monologue and AI debate] |
+| 2: style switch | yes | more switches than AI debate |
+| 3: adjacency pairs | yes | more pairs than AI debate, fewer than human |
 
-Method 1 fails because it reads *all 500* human debates and a majority of the AI debates as
-single-author. DeliData turns average 8.4 words, so a paragraph-sized window swallows
-several speakers at once.
+Table 1 of the paper. Method 1's reading is bracketed because it fails the check and so does
+not judge the traces.
 
 ## Repository map
 
-| Path | What is in it |
+| Path | Contents |
 |---|---|
-| **[`paper/`](paper/)** | The paper, its two figures, and the scripts that regenerate them |
-| **[`preregistration/`](preregistration/)** | The frozen method spec, and an honest record of every deviation from it |
-| **[`data/`](data/README.md)** | The five corpora, their provenance and licences, and preprocessing decisions |
-| **[`methods/`](methods/)** | One folder per method: run instructions, sources, verification, and local changes to upstream code |
-| **[`outputs/`](outputs/README.md)** | Frozen per-document results — every number in the paper comes from here |
-| **[`scripts/`](scripts/)** | Dataset construction, placement, and figure code |
-| **[`notes/`](notes/README.md)** | Working notes and superseded drafts. Not part of the result |
+| [`paper/`](paper/) | The paper, its two figures, and the scripts that generate them |
+| [`preregistration/`](preregistration/) | The frozen method specification and a record of deviations from it |
+| [`data/`](data/README.md) | The five corpora, their provenance and licences, and preprocessing documentation |
+| [`methods/`](methods/) | One folder per method: run instructions, sources, verification, and local changes to upstream code |
+| [`outputs/`](outputs/README.md) | Per-document results for all three methods |
+| [`scripts/`](scripts/) | Dataset construction, placement, and figure code |
+| [`notes/`](notes/README.md) | Working notes and superseded drafts |
 
 ## Reproducing
 
@@ -64,67 +63,41 @@ git clone --recurse-submodules https://github.com/oskarengl/dialogic-multiplicit
 cd dialogic-multiplicity-in-reasoning-traces
 ```
 
-The `--recurse-submodules` matters: four directories are upstream repositories pinned by
-commit, and without it they arrive empty.
+Four directories are upstream repositories pinned by commit. Without
+`--recurse-submodules` they arrive empty.
 
-**The figures regenerate from the committed outputs, with no GPU and no API key:**
+Regenerate the figures from the committed outputs:
 
 ```bash
-python paper/make_fig_grid.py     # Figure 1 — design schematic
-python paper/make_fig_split.py    # Figure 2 — both methods' measurements
+python paper/make_fig_grid.py     # Figure 1
+python paper/make_fig_split.py    # Figure 2
 ```
 
-**The measurement stages need more.** Method 2 needs upstream's 719 MB SSPC checkpoint;
-Method 3 needs API access to Tencent Hunyuan Hy3; the generation of cells ③④⑤ needs Qwen
-and DeepSeek access. Their outputs are committed so nothing downstream depends on re-running
-them. Per-method instructions are in `methods/*/RUN_METHOD*.md`, and each method's
-`local_changes/README.md` explains what to apply to the pinned upstream code before running.
+Running the methods themselves requires more: Method 2 needs the SSPC checkpoint
+(`model.ckpt`, 719 MB) from its upstream repository, Method 3 needs API access to Tencent
+Hunyuan Hy3, and generating cells ③④⑤ needs Qwen and DeepSeek access. Instructions are in
+`methods/*/RUN_METHOD*.md`. Each method's `local_changes/README.md` lists what to apply to
+the pinned upstream code before running.
 
-## What to be sceptical about
-
-Four things a reviewer should know before trusting a number here. Each is documented in
-place, not just mentioned.
-
-**The validity check replaced the pre-registered gates, after the gate results were known.**
-This is the study's one substantive deviation, and it is the situation pre-registration
-exists to constrain. The gates would have admitted Method 1 — which cannot recognise a
-dialogue — and excluded Method 3, which sorts all four known cells correctly. The full
-reasoning, and what can and cannot be checked about it, is in
-[`preregistration/DEVIATIONS.md`](preregistration/DEVIATIONS.md).
-
-**Method 1's failure comes from patched code.** The 2019 implementation does not run on a
-current Python stack. Most patches are compatibility fixes, but one changes the algorithm:
-clustering thresholds are divided by cluster size alone rather than by cluster size times
-average intra-cluster distance. See
+Method 1 runs on patched upstream code. One patch changes the algorithm rather than
+compatibility; see
 [`methods/1_style_change_detection/local_changes/README.md`](methods/1_style_change_detection/local_changes/README.md).
-
-**Method 3's labels are moderate, not good.** The automatic tagger agrees with a human
-annotator on 74.2% of 503 utterances, κ = 0.54 (0.62 tree-weighted) — below the 0.70 the
-study pre-registered. Most disagreements are near misses on the general `inform` label and
-split evenly in both directions. The paper carries Method 3 forward on cell separation
-rather than label accuracy, and names this the weakest link in its chain.
-
-**The AI debate anchor is weak in absolute terms.** Its four voices are four instances of
-one model separated by role prompt, completing adjacency pairs at 0.025 against real human
-conversation's 0.235. Clearing it is a low bar. The paper defends the *direction* of the
-placement, not its size.
 
 ## Data and licences
 
-Cells ① and ② are third-party corpora, redistributed here in processed form under their
-original terms:
+| Cell | Source | Licence |
+|---|---|---|
+| ① | [think-aloud-llms](https://github.com/benpry/think-aloud-llms), Wurgaft et al. 2025 | MIT |
+| ② | [DeliData](https://huggingface.co/datasets/gkaradzhov/DeliData), Karadzhov et al. 2023 | CC-BY-4.0 |
+| ③④⑤ | generated for this study | CC-BY-4.0 |
 
-- **think-aloud** — [Wurgaft et al. 2025](https://github.com/benpry/think-aloud-llms), MIT
-- **DeliData** — [Karadzhov et al. 2023](https://huggingface.co/datasets/gkaradzhov/DeliData), CC-BY-4.0
+Cells ① and ② are redistributed in processed form under the terms above.
 
-Cells ③④⑤ were generated for this study.
+The PAN 2019 corpus is not included. It is access-restricted on Zenodo; see
+[`data/README.md`](data/README.md) for how to request it. No reported result depends on it.
 
-**The PAN 2019 corpus is not included.** It is access-restricted on Zenodo and not ours to
-redistribute; see [`data/README.md`](data/README.md) for how to request it. No reported
-result depends on it.
-
-Literature PDFs are not redistributed either. Every source is cited with a resolvable link
-in the per-method `sources/SOURCES.md`.
+Literature PDFs are not redistributed. Sources are cited with links in each method's
+`sources/SOURCES.md`.
 
 ## Citing
 
@@ -140,9 +113,8 @@ in the per-method `sources/SOURCES.md`.
 
 ## Licence
 
-Code and documentation in this repository: [MIT](LICENSE).
+Code and documentation: [MIT](LICENSE).
 
-The generated corpora (cells ③④⑤) are released under
-[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). The third-party corpora keep
-their upstream licences, listed above. Pinned submodules are governed by their own
-repositories' licences.
+Generated corpora (cells ③④⑤): [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/).
+Third-party corpora keep their upstream licences, listed above. Pinned submodules are
+governed by their own repositories' licences.

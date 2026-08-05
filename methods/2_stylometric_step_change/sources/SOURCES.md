@@ -1,9 +1,7 @@
 # Method 2: Sentence-Level Style Change Detection (PAN 2025 SSPC)
 
-> **The PDFs are not in this repository.** Papers referenced below by filename were kept
-> locally while the study ran; they are not redistributed here, because most are under
-> publisher copyright. Every entry carries a resolvable link or full citation -- follow
-> those instead. Filenames are left in place so this file still matches the working notes.
+> The PDFs referenced below by filename are not included in this repository.
+> Each entry carries a link or full citation.
 
 ## Overview
 Method 2 is now the **Sequential Sentence Pair Classifier (SSPC)** from PAN 2025 (CLEF). It detects sentence-level style changes by encoding each sentence with a pre-trained language model, contextualizing the sequence with a BiLSTM, and classifying each adjacent sentence pair as same-author or different-author. The document-level binary label (single vs multi-author) is derived from the average style-change probability across all sentence boundaries.
