@@ -1,7 +1,7 @@
 # Method 2 — 2×2 validation gate
 
 **Date:** 2026-07-17  
-**Pre-registration commit:** `8cbdee4`  
+**Pre-registration commit:** `fba456b`  
 **Location:** `methods/2_stylometric_step_change/implementation/`  
 **Script:** `run_calibration.py`
 

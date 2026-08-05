@@ -6,8 +6,8 @@ the target cell was touched, and the commits are the record:
 | Commit | Date | What it froze |
 |---|---|---|
 | `b7f40d0` | 2026-07-10 | Method specifications for all three methods, with every open decision filled in |
-| `9b7af9b` | 2026-07-17 | Re-registered the Method 1 gate (balanced accuracy with a label-permutation null) |
-| `44d49ff` | 2026-07-16 | Froze Methods 1–3 before running cell ⑤ (`ai_reasoning`) |
+| `7747aef` | 2026-07-16 | Froze Methods 1–3 before running cell ⑤ (`ai_reasoning`) |
+| `fba456b` | 2026-07-17 | Re-registered the Method 1 gate (balanced accuracy with a label-permutation null) |
 
 Commit hashes changed when this repository was prepared for release; the dates, messages
 and order are unchanged. See [the release note](#history-note) below.
@@ -73,7 +73,7 @@ bar itself was never moved — it was abandoned along with the rest of the per-m
 as above.
 
 **Method 1, gate replacement during pre-registration.** The original imported 80% accuracy
-threshold was replaced by balanced accuracy against a permutation null (commit `9b7af9b`,
+threshold was replaced by balanced accuracy against a permutation null (commit `fba456b`,
 2026-07-17) because pooled accuracy on an imbalanced set could be cleared by a system that
 detected no dialogue at all. This tightened the gate and happened before any cell-⑤
 statistic was computed.
@@ -84,7 +84,7 @@ statistic was computed.
 
 **Speaker-label leak.** Both dialogue cells carried speaker labels, which hand a style-based
 method the number of voices directly. They were removed and all three methods were re-run
-on the cleaned data (commit `449e1af`, 2026-07-22). Pre-fix files are preserved under
+on the cleaned data (commit `77a29ae`, 2026-07-22). Pre-fix files are preserved under
 `data/archive/` as `*.PRE_SPEAKERFIX_2026-07.jsonl`.
 
 **Method 1 implementation patches.** Method 1's reported failure comes from patched

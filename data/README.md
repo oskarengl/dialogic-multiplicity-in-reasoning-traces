@@ -75,5 +75,5 @@ check and does not judge the traces.
 
 Both dialogue cells originally carried speaker labels, which leak the number of voices
 directly to a style-based method. They were removed, and all three methods were re-run on
-the cleaned data (commit `449e1af`, 2026-07-22). The pre-fix files are preserved in
+the cleaned data (commit `77a29ae`, 2026-07-22). The pre-fix files are preserved in
 `archive/` as `*.PRE_SPEAKERFIX_2026-07.jsonl` so the change can be checked.

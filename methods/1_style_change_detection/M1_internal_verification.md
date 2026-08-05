@@ -1,7 +1,7 @@
 # Method 1 — Internal verification (PAN19 source reproduction)
 
 **Date:** 2026-07-17  
-**Pre-registration commit:** `8cbdee4`  
+**Pre-registration commit:** `fba456b`  
 **Location:** `methods/1_style_change_detection/implementation/`  
 **Script:** `reproduce_compare.py`
 

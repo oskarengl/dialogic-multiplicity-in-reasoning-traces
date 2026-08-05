@@ -1,7 +1,7 @@
 # Method 3 — Internal verification
 
 **Date:** 2026-07-17  
-**Pre-registration commit:** `8cbdee4`  
+**Pre-registration commit:** `fba456b`  
 **Location:** `methods/3_dialogue_act_tagging/implementation/`  
 **Scripts:** `run_calibration.py`, `reliability_sample.py`
 
