@@ -49,18 +49,18 @@ from tqdm import tqdm
 # --------------------------------------------------------------------------- #
 SCRIPT_DIR = Path(__file__).resolve().parent
 DATA_ROOT = SCRIPT_DIR.parent / "data"
-CORE_ROOT = DATA_ROOT / "00_core-2x2"
+CORE_ROOT = DATA_ROOT
 DEFAULT_TRIALS = (
     DATA_ROOT
-    / "raw" / "human_monologue" / "think_aloud_source"
+    / "human_monologue" / "unprocessed" / "think_aloud_source"
     / "data" / "processed" / "full-experiment" / "full-experiment-trials.csv"
 )
 DEFAULT_PROBLEM_SET = (
     DATA_ROOT
-    / "raw" / "human_monologue" / "think_aloud_source"
+    / "human_monologue" / "unprocessed" / "think_aloud_source"
     / "data" / "problem-set" / "problem_set.csv"
 )
-DEFAULT_OUT = DATA_ROOT / "raw" / "ai_debate" / "qwen_generation"
+DEFAULT_OUT = DATA_ROOT / "ai_debate" / "unprocessed"
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_MODEL = "deepseek/deepseek-chat"

@@ -84,7 +84,7 @@ M1_CAL = ROOT / "outputs" / "method1" / "calibration_predictions.jsonl"
 M2_CAL = ROOT / "outputs" / "method2" / "calibration_raw_scores.jsonl"
 M1_CELL5 = ROOT / "outputs" / "method1" / "cell5_predictions.jsonl"
 M2_CELL5 = ROOT / "outputs" / "method2" / "cell5_raw_scores.jsonl"
-CELL5_DATA = (ROOT / "data" / "00_core-2x2" / "ai_reasoning" /
+CELL5_DATA = (ROOT / "data" / "ai_reasoning" /
               "processed_native_reasoning_traces.jsonl")
 OUTDIR = ROOT / "outputs" / "placement"
 OUT_JSON = OUTDIR / "margins_frozen.json"

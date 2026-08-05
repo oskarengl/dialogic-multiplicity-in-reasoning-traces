@@ -38,7 +38,7 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent.parent
-DATA = ROOT / "data" / "00_core-2x2"
+DATA = ROOT / "data"
 OUTDIR = ROOT / "outputs" / "method2"; OUTDIR.mkdir(parents=True, exist_ok=True)
 OUTFILE = OUTDIR / "calibration_raw_scores.jsonl"
 LABEL = {"1": "human_monologue", "2": "human_debate", "3": "ai_debate", "4": "ai_monologue",
@@ -54,8 +54,7 @@ def _turns(r, _=None):
 
 # cell -> (file, text-builder, true_bin)   true_bin: 1 = single (mono), 0 = multi (dia)
 CELLS = {
-    "1": (DATA / "human_monologue" / "all_samples" /
-          "sample_600_human_think_aloud.jsonl", lambda r: _prose(r, "think_trace"), 1),
+    "1": (DATA / "human_monologue" / "human_think_aloud_600.jsonl", lambda r: _prose(r, "think_trace"), 1),
     "2": (DATA / "human_debate" / "processed_human_debate.jsonl",
           lambda r: _prose(r, "transcript"), 0),
     "3": (DATA / "ai_debate" / "processed_ai_debate.jsonl", _turns, 0),

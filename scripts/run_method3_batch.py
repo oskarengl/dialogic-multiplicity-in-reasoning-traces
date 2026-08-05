@@ -24,37 +24,37 @@ from datetime import datetime
 DATASETS = [
     # (input path, output directory name, text field, cell label)
     (
-        "data/00_core-2x2/human_monologue/processed_sample_600_human_think_aloud.jsonl",
+        "data/human_monologue/unprocessed/processed_think_aloud_full_variant.jsonl",
         "outputs/method3/human_reasoning_traces_small",
         None,
         "3",
     ),
     (
-        "data/00_core-2x2/ai_debate/processed_ai_debate.jsonl",
+        "data/ai_debate/processed_ai_debate.jsonl",
         "outputs/method3/ai_debate",
         None,
         "3",
     ),
     (
-        "data/00_core-2x2/ai_monologue/processed_prompted_ai_monologue.jsonl",
+        "data/ai_monologue/processed_prompted_ai_monologue.jsonl",
         "outputs/method3/ai_monologue",
         None,
         "3",
     ),
     (
-        "data/00_core-2x2/ai_reasoning/processed_native_reasoning_traces.jsonl",
+        "data/ai_reasoning/processed_native_reasoning_traces.jsonl",
         "outputs/method3/ai_monologue_reasoning",
         None,
         "3",
     ),
     (
-        "data/00_core-2x2/human_debate/processed_human_debate.jsonl",
+        "data/human_debate/processed_human_debate.jsonl",
         "outputs/method3/human_debate_delidata",
         None,
         "3",
     ),
     (
-        "data/00_core-2x2/human_monologue/processed_human_think_aloud.jsonl",
+        "data/human_monologue/unprocessed/processed_human_think_aloud_full.jsonl",
         "outputs/method3/human_reasoning_traces",
         None,
         "3",

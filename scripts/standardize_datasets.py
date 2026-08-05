@@ -334,19 +334,17 @@ def process_dataset(input_path: Path, output_path: Path, text_field: str, is_deb
 
 def main():
     """Main processing function."""
-    base_path = Path(r'C:\bachelor research\.1 recent approach\data\00_core-2x2')
-    raw_path = Path(r'C:\bachelor research\.1 recent approach\data\raw')
-    archive_path = Path(r'C:\bachelor research\.1 recent approach\data\archive')
-    human_debate_path = raw_path / 'human_debate' / 'delidata_source'
-    
+    base_path = Path(__file__).resolve().parent.parent / 'data'
+    human_debate_path = base_path / 'human_debate' / 'unprocessed' / 'delidata_source'
+
     # Define datasets to process
     datasets = [
         # (input_path, output_path, text_field, is_debate)
-        (base_path / 'ai_debate' / 'raw_qwen_generation' / 'regenerated_ai_debate.jsonl', base_path / 'ai_debate' / 'processed_ai_debate.jsonl', 'full_text_no_labels', True),
-        (base_path / 'ai-monolouge' / 'prompted_ai_monologue.jsonl', base_path / 'ai_monologue' / 'processed_prompted_ai_monologue.jsonl', 'transcript', False),
-        (base_path / 'ai_reasoning' / 'raw_deepseek_generation' / 'native_reasoning_traces.jsonl', base_path / 'ai_reasoning' / 'processed_native_reasoning_traces.jsonl', 'think_trace', False),
-        (base_path / 'human_debate' / 'json_formatted' / 'human_debate_with_speaker_labels.jsonl', base_path / 'human_debate' / 'processed_human_debate.jsonl', 'transcript', True),
-        (base_path / 'human_monologue' / 'all_samples' / 'human_think_aloud.jsonl', base_path / 'human_monologue' / 'processed_sample_600_human_think_aloud.jsonl', 'think_trace', False),
+        (base_path / 'ai_debate' / 'unprocessed' / 'regenerated_ai_debate.jsonl', base_path / 'ai_debate' / 'processed_ai_debate.jsonl', 'full_text_no_labels', True),
+        (base_path / 'ai_monologue' / 'unprocessed' / 'prompted_ai_monologue.jsonl', base_path / 'ai_monologue' / 'processed_prompted_ai_monologue.jsonl', 'transcript', False),
+        (base_path / 'ai_reasoning' / 'unprocessed' / 'native_reasoning_traces.jsonl', base_path / 'ai_reasoning' / 'processed_native_reasoning_traces.jsonl', 'think_trace', False),
+        (base_path / 'human_debate' / 'unprocessed' / 'human_debate_with_speaker_labels.jsonl', base_path / 'human_debate' / 'processed_human_debate.jsonl', 'transcript', True),
+        (base_path / 'human_monologue' / 'unprocessed' / 'human_think_aloud_full.jsonl', base_path / 'human_monologue' / 'unprocessed' / 'processed_think_aloud_full_variant.jsonl', 'think_trace', False),
     ]
     
     print("=" * 60)

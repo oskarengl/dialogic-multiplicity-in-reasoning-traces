@@ -25,31 +25,31 @@ PROJECT_ROOT = Path(__file__).parent.parent
 CELLS = [
     {
         "cell": "1",
-        "input": PROJECT_ROOT / "data" / "00_core-2x2" / "human_monologue" / "all_samples" / "sample_600_human_think_aloud.jsonl",
+        "input": PROJECT_ROOT / "data" / "human_monologue" / "human_think_aloud_600.jsonl",
         "output": PROJECT_ROOT / "outputs" / "method3" / "cell1_human_monologue",
         "text_field": "think_trace",
     },
     {
         "cell": "2",
-        "input": PROJECT_ROOT / "data" / "00_core-2x2" / "human_debate" / "processed_human_debate.jsonl",
+        "input": PROJECT_ROOT / "data" / "human_debate" / "processed_human_debate.jsonl",
         "output": PROJECT_ROOT / "outputs" / "method3" / "cell2_human_debate",
         "text_field": "transcript",
     },
     {
         "cell": "3",
-        "input": PROJECT_ROOT / "data" / "00_core-2x2" / "ai_debate" / "processed_ai_debate.jsonl",
+        "input": PROJECT_ROOT / "data" / "ai_debate" / "processed_ai_debate.jsonl",
         "output": PROJECT_ROOT / "outputs" / "method3" / "cell3_ai_debate",
         "text_field": "full_text_no_labels",
     },
     {
         "cell": "4",
-        "input": PROJECT_ROOT / "data" / "00_core-2x2" / "ai_monologue" / "processed_prompted_ai_monologue.jsonl",
+        "input": PROJECT_ROOT / "data" / "ai_monologue" / "processed_prompted_ai_monologue.jsonl",
         "output": PROJECT_ROOT / "outputs" / "method3" / "cell4_ai_monologue",
         "text_field": "transcript",
     },
     {
         "cell": "5",
-        "input": PROJECT_ROOT / "data" / "00_core-2x2" / "ai_reasoning" / "processed_native_reasoning_traces.jsonl",
+        "input": PROJECT_ROOT / "data" / "ai_reasoning" / "processed_native_reasoning_traces.jsonl",
         "output": PROJECT_ROOT / "outputs" / "method3" / "cell5_ai_reasoning",
         "text_field": "think_trace",
     },

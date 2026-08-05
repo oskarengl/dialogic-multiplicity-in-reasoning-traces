@@ -4,20 +4,21 @@ Four corpora whose voice structure is known, and the reasoning traces.
 
 | Cell | Corpus | N | Producer | Task | Analysis input |
 |---|---|---|---|---|---|
-| ① | human monologue | 600 | human | Game of 24 | `00_core-2x2/human_monologue/all_samples/sample_600_human_think_aloud.jsonl` |
-| ② | human debate | 500 | human | Wason card task | `00_core-2x2/human_debate/processed_human_debate.jsonl` |
-| ③ | AI debate | 600 | 4× Qwen-2.5-7B | Game of 24 | `00_core-2x2/ai_debate/processed_ai_debate.jsonl` |
-| ④ | AI monologue | 600 | Qwen-2.5-7B | Game of 24 | `00_core-2x2/ai_monologue/processed_prompted_ai_monologue.jsonl` |
-| ⑤ | reasoning traces | 600 | DeepSeek-R1 | Game of 24 | `00_core-2x2/ai_reasoning/processed_native_reasoning_traces.jsonl` |
+| ① | human monologue | 600 | human | Game of 24 | `human_monologue/human_think_aloud_600.jsonl` |
+| ② | human debate | 500 | human | Wason card task | `human_debate/processed_human_debate.jsonl` |
+| ③ | AI debate | 600 | 4× Qwen-2.5-7B | Game of 24 | `ai_debate/processed_ai_debate.jsonl` |
+| ④ | AI monologue | 600 | Qwen-2.5-7B | Game of 24 | `ai_monologue/processed_prompted_ai_monologue.jsonl` |
+| ⑤ | reasoning traces | 600 | DeepSeek-R1 | Game of 24 | `ai_reasoning/processed_native_reasoning_traces.jsonl` |
 
-## Cell ① file naming
+## Cell ① files
 
-`00_core-2x2/human_monologue/processed_sample_600_human_think_aloud.jsonl` contains 5,143
-documents despite `sample_600` in its name. It is the full processed think-aloud set.
+`human_monologue/` holds the 600-document analysis input at its top level. Three larger
+files sit in `unprocessed/`, each containing the full 5,143-document think-aloud set at a
+different processing stage: `human_think_aloud_full.jsonl`,
+`processed_human_think_aloud_full.jsonl`, and `processed_think_aloud_full_variant.jsonl`.
 
-The 600-document file listed in the table above is the one the analyses read. Both runners
-point at it (`scripts/run_method3_all_cells.py:28`, Method 2's `run_calibration.py:58`), and
-Method 2's calibration output contains 600 cell-① documents.
+Both runners read the 600-document file (`scripts/run_method3_all_cells.py:28`, Method 2's
+`run_calibration.py:58`), and Method 2's calibration output contains 600 cell-① documents.
 
 ## Provenance and licences
 
@@ -28,7 +29,7 @@ Method 2's calibration output contains 600 cell-① documents.
 | ③④ | generated for this study with Qwen-2.5-7B | CC-BY-4.0 | yes |
 | ⑤ | generated for this study with DeepSeek-R1 | CC-BY-4.0 | yes |
 
-The unmodified upstream sources are pinned as submodules under `raw_datasets/`:
+The unmodified upstream sources are pinned as submodules under each cell's `unprocessed/` folder:
 
 ```bash
 git submodule update --init --recursive
@@ -59,15 +60,18 @@ code against the published PAN 2019 accuracy. No reported result depends on it.
 
 | Path | Contents |
 |---|---|
-| `00_core-2x2/` | The analysis-ready cells, with per-cell subfolders holding the raw generation output |
-| `raw_datasets/` | Upstream human corpora as submodules, plus the Qwen and DeepSeek generation runs and logs |
+| `ai_debate/`, `ai_monologue/`, `ai_reasoning/`, `human_debate/`, `human_monologue/` | One folder per cell. The processed file the methods read sits at the top; `unprocessed/` holds the generation output, upstream sources, and intermediate variants. |
 | `problem_sets/` | Game of 24 puzzle selection and Wason items |
-| `associated_files/` | Vocabulary, character-frequency diagnostics, known data issues, sample listings |
-| `archive/` | Pre-speaker-fix versions of the two dialogue cells |
-| `PREPROCESSING.md` | Normalisation decisions, their reasons, and what is still pending |
+| `diagnostics/` | Vocabulary, character-frequency analysis, known data issues, sample listings |
+| `PREPROCESSING.md` | Normalisation decisions, per-cell schemas, and standardization rules |
 
 ## Speaker-label fix
 
 Speaker labels were removed from both dialogue cells and all three methods were re-run on
-the cleaned data (commit `77a29ae`, 2026-07-22). The pre-fix files are in `archive/` as
-`*.PRE_SPEAKERFIX_2026-07.jsonl`.
+the cleaned data (commit `77a29ae`, 2026-07-22). To see exactly what changed:
+
+```bash
+git show 77a29ae
+```
+
+`human_debate/unprocessed/` keeps both the labelled and unlabelled DeliData conversions.

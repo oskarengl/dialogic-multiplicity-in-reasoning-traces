@@ -179,17 +179,17 @@ def verify_dataset(filepath: Path, text_field: str, is_debate: bool = False) -> 
 
 def main():
     """Main verification function."""
-    base_path = Path(r'C:\bachelor research\.1 recent approach\data\00_core-2x2')
-    human_debate_path = Path(r'C:\bachelor research\.1 recent approach\data\00_core-2x2\human_debate')
+    base_path = Path(__file__).resolve().parent.parent / 'data'
+    human_debate_path = Path(__file__).resolve().parent.parent / 'data' / 'human_debate'
     
     # Define processed datasets to verify
     datasets = [
         (base_path / 'ai_debate' / 'processed_ai_debate.jsonl', 'full_text_no_labels', True),
         (base_path / 'ai_monologue' / 'processed_prompted_ai_monologue.jsonl', 'transcript', False),
         (base_path / 'ai_reasoning' / 'processed_native_reasoning_traces.jsonl', 'think_trace', False),
-        (human_debate_path / 'human_debate_delidata_processed.jsonl', 'transcript', True),
-        (base_path / 'human_monologue' / 'processed_human_think_aloud.jsonl', 'think_trace', False),
-        (base_path / 'human_monologue' / 'processed_sample_600_human_think_aloud.jsonl', 'think_trace', False),
+        (human_debate_path / 'processed_human_debate.jsonl', 'transcript', True),
+        (base_path / 'human_monologue' / 'unprocessed' / 'processed_human_think_aloud_full.jsonl', 'think_trace', False),
+        (base_path / 'human_monologue' / 'unprocessed' / 'processed_think_aloud_full_variant.jsonl', 'think_trace', False),
     ]
     
     print("="*60)

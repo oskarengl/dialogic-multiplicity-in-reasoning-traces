@@ -13,7 +13,7 @@ sentence in the original text, and writes the result.
 
 Usage:
   python label_dialogue_acts.py \
-      --input data/00_core-2x2/ai_debate_processed.jsonl \
+      --input data/ai_debate/processed_ai_debate.jsonl \
       --output outputs/method3/ai_debate \
       --prompt ../CAMS_LLM_labeling_prompt.txt \
       --model tencent/hy3:free \

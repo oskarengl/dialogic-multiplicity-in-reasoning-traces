@@ -64,9 +64,9 @@ a system that detected no dialogue at all.
 ## Corrections applied after freezing
 
 **Speaker-label leak.** Speaker labels were removed from both dialogue cells and all three
-methods were re-run on the cleaned data (commit `77a29ae`, 2026-07-22). Pre-fix files are at
-`data/archive/*.PRE_SPEAKERFIX_2026-07.jsonl`. The paper states in §2 that labels were
-removed from both dialogue corpora.
+methods were re-run on the cleaned data (commit `77a29ae`, 2026-07-22); `git show 77a29ae`
+gives the change. The paper states in §2 that labels were removed from both dialogue
+corpora.
 
 **Method 1 implementation patches.** Method 1 was run on patched upstream code. One patch
 changes the algorithm: clustering thresholds are divided by cluster size rather than by
@@ -78,4 +78,6 @@ cluster size times average intra-cluster distance. See
 This repository was prepared for public release from the working repository. The PAN 2019
 corpus, which is access-restricted, and literature PDFs under publisher copyright were
 removed from every commit, so commit hashes differ from those in the working repository.
-Commit dates, messages, authorship and order are preserved.
+Commit dates, messages, authorship and order are preserved. The data and script folders
+were also reorganised for release, so paths quoted inside `methods.md`, which is kept frozen,
+refer to the layout at the time of freezing rather than the current one.

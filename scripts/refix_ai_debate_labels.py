@@ -35,8 +35,8 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parent.parent
-PROCESSED = ROOT / "data/00_core-2x2/ai_debate/processed_ai_debate.jsonl"
-TEMP = ROOT / "data/00_core-2x2/ai_debate/processed_ai_debate.REFIX_PREVIEW.jsonl"
+PROCESSED = ROOT / "data/ai_debate/processed_ai_debate.jsonl"
+TEMP = ROOT / "data/ai_debate/processed_ai_debate.REFIX_PREVIEW.jsonl"
 FIELD = "full_text_no_labels"
 
 ROLE_TITLES = ["Creative Problem Solver", "Critical Analyst",

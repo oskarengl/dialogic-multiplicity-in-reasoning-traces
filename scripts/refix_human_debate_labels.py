@@ -33,9 +33,9 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parent.parent
-RAW = ROOT / "data/00_core-2x2/human_debate/json_formatted/human_debate_with_speaker_labels.jsonl"
-PROCESSED = ROOT / "data/00_core-2x2/human_debate/processed_human_debate.jsonl"
-TEMP = ROOT / "data/00_core-2x2/human_debate/processed_human_debate.REFIX_PREVIEW.jsonl"
+RAW = ROOT / "data/human_debate/unprocessed/human_debate_with_speaker_labels.jsonl"
+PROCESSED = ROOT / "data/human_debate/processed_human_debate.jsonl"
+TEMP = ROOT / "data/human_debate/processed_human_debate.REFIX_PREVIEW.jsonl"
 
 FREQ_FLOOR = 20   # a turn-prefix must occur >= this many times corpus-wide to count as a speaker
                   # (real pseudonyms: 307-693; the cliff to incidental "Word:" is enormous)

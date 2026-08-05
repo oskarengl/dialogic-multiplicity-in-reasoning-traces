@@ -15,7 +15,7 @@ from pathlib import Path
 
 DEFAULT_JSONL = (
     Path(__file__).resolve().parents[2]
-    / "data" / "00_core-2x2" / "ai_debate" / "regenerated_ai_debate.jsonl"
+    / "data" / "ai_debate" / "unprocessed" / "regenerated_ai_debate.jsonl"
 )
 
 

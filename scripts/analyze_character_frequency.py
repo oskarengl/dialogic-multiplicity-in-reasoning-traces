@@ -22,7 +22,7 @@ datasets = {
     '../archive/human_monologue/human_think_aloud.jsonl': 'think_trace'
 }
 
-base_path = Path(r'C:\bachelor research\.1 recent approach\data\00_core-2x2')
+base_path = Path(__file__).resolve().parent.parent / 'data'
 
 
 def analyze_dataset(filepath: Path, text_field: str) -> dict:

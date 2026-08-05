@@ -55,7 +55,7 @@ prep.remove_empty_para = merge_short_paragraphs  # used by paragraph_tokenizer a
 from src.algorithms.threshold_clustering.executor import execute_threshold_clustering
 
 ROOT = os.path.abspath("../../..")
-D = os.path.join(ROOT, "data", "00_core-2x2")
+D = os.path.join(ROOT, "data")
 
 
 def prose(rec, field):
@@ -74,8 +74,7 @@ def turns_to_paras(rec, _=None):                     # one debate turn -> one pa
 
 # cell: (file, text-builder, true_bin)   true_bin: 1 = single (mono), 0 = multi (dia)
 CELLS = {
-    "1": (os.path.join(D, "human_monologue", "all_samples",
-                       "sample_600_human_think_aloud.jsonl"),
+    "1": (os.path.join(D, "human_monologue", "human_think_aloud_600.jsonl"),
           lambda r: prose(r, "think_trace"), 1),
     "2": (os.path.join(D, "human_debate", "processed_human_debate.jsonl"),
           lambda r: lines_to_paras(r, "transcript"), 0),

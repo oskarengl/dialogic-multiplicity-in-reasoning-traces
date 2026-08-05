@@ -8,7 +8,6 @@ Frozen results. The numbers in the paper are computed from these files.
 | `method2/` | Per-document mean adjacent-pair style-switch probability and sentence-pair count, for the known cells and the traces |
 | `method3/` | One `.jsonl` per document per cell, each line an utterance with its CAMS tag. `reliability/` holds the hand-labelling worksheet, the score report, and the disagreement review |
 | `placement/` | Cell ⑤ relative to the two AI poles, under the pre-registered gates |
-| `archive_pre_speakerfix/` | Results computed before speaker labels were stripped from the dialogue cells |
 
 ## `placement/` uses the pre-registered gates
 
