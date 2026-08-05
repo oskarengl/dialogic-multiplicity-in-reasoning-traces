@@ -1,0 +1,22 @@
+M3 GATE (b) — human-vs-tagger reliability, Cohen's kappa
+======================================================
+Run date:        2026-07-22
+Script:          methods/3_dialogue_act_tagging/implementation/reliability_sample.py --score
+Worksheet:       outputs/method3/reliability/worksheet.csv (503 rows, 503 labeled)
+Labels commit:   aecfd6f
+Tagger:          label_dialogue_acts_v2.py, model tencent/hy3, temp 0, post-speaker-fix (clean) data
+Pre-registered:  kappa >= 0.70 (methods.md sec. 3e.1; kappa0 never moved)
+Bootstrap:       2000 resamples, seed 0
+Selftest:        PASSED before scoring (n-formula direction + kappa recovery 0.824 vs target ~0.75)
+
+
+n scored = 503   pooled kappa = 0.5425   bootstrap 95% CI = [0.4788, 0.6038]
+GATE (kappa >= 0.70): FAIL
+
+cell         n   kappa
+1          122  0.5456
+2           82  0.6048
+3          131  0.5725
+4          168  0.3874
+
+Rows skipped: 0 (no missing labels, no unrecognized tags).

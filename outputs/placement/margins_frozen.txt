@@ -1,0 +1,30 @@
+PLACEMENT MARGINS - FROZEN (methods.md sec. 3d via sec. 4)
+==============================================================================
+frozen (UTC)   : 2026-07-22T15:53:42+00:00
+seed           : 20260722    B = 1000 per pole    m = P95 of the null
+cell 5 n docs  : 600  (line count only - no cell-5 text or score was read)
+
+FIREWALL CHECK - cell 5 method outputs present on disk at freeze time:
+  outputs/method1/cell5_predictions.jsonl : False
+  outputs/method2/cell5_raw_scores.jsonl  : False
+  (both False = the margins were fixed with no target results in existence)
+
+M2 pole curve forms: dialogue (3) = semilog, monologue (4) = semilog
+Equidistant-probe mixing proportion (share drawn from the dialogue pole):
+  M1 = 0.5000 (50/50 exactly equalises a mean-difference distance)
+  M2 = 0.2475 (solved so both expected residual distances match)
+
+signal                              m (P95)     median        P99        max
+M1 author count   NULL-A             0.1940     0.0039     0.2555     0.3720
+M1 author count   NULL-B *           0.3615     0.1391     0.4437     0.5164
+M2 lean residual  NULL-A             0.1217     0.0418     0.1601     0.2204
+M2 lean residual  NULL-B *           0.1117     0.0395     0.1449     0.2584
+
+* recommended. NULL-A is the literal reading of sec. 3d but is anti-conservative:
+  it omits probe-side sampling noise and divides by the full pole-to-pole distance
+  rather than the ~half that an equidistant probe sits at. `--selftest` shows a
+  synthetic probe placed exactly midway between the poles being CALLED under NULL-A.
+
+USE: cell 5 is called toward the nearer pole only when
+     |d_mono - d_dia| / max(d_mono, d_dia) >= m
+     Otherwise the verdict is 'no clear margin' (methods.md sec. 3d).

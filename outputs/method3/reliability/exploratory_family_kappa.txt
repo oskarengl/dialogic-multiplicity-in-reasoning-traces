@@ -1,0 +1,50 @@
+EXPLORATORY — NOT A PRE-REGISTERED GATE
+=======================================
+Run date: 2026-07-22
+Script:   scripts/exploratory_family_kappa.py
+Question: how much of the M3 reliability disagreement is fine-grained
+          (right CAMS family, wrong sibling tag) vs coarse (wrong family)?
+
+methods.md sec. 3e registers kappa on the full 28-tag scheme, bar 0.70.
+That gate FAILED (0.5425, CI [0.4788, 0.6038]). The family collapse below
+was chosen AFTER seeing that number and cannot revive the gate.
+
+n scored = 503   (families: 9)
+
+FAMILY-LEVEL pooled kappa = 0.6074   bootstrap 95% CI = [0.5318, 0.6768]
+(exploratory — the registered 28-tag kappa was 0.5425 [0.4788, 0.6038], FAIL)
+
+cell       n    k_tag   k_family
+1        122   0.5456     0.6701
+2         82   0.6048     0.6600
+3        131   0.5725     0.6424
+4        168   0.3874     0.4453
+
+Agreement decomposition (raw counts, not chance-corrected):
+  exact tag match           373  ( 74.2%)
+  same family, wrong tag     45  (  8.9%)
+  different family           85  ( 16.9%)
+
+Top cross-family confusions (human -> tagger):
+  providing    -> directive      26
+  directive    -> providing      24
+  providing    -> fallback        9
+  commissive   -> providing       3
+  seeking      -> providing       3
+  time         -> providing       3
+  providing    -> feedback        3
+  providing    -> ocm             2
+  ocm          -> fallback        1
+  feedback     -> fallback        1
+
+Top within-family confusions (human -> tagger):
+  correction           -> inform                  8
+  answer               -> inform                  6
+  agreement            -> inform                  5
+  disagreement         -> inform                  5
+  inform               -> answer                  3
+  inform               -> agreement               3
+  propositionalQuestion -> setQuestion             2
+  inform               -> confirm                 2
+  disagreement         -> disconfirm              2
+  inform               -> correction              2

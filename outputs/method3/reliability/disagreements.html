@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Label Wall of Shame</title>
+<style>
+  :root { --bg:#0a0507; --ink:#e8d7d7; --dim:#7d6668; --blood:#8b0f1d;
+           --blood2:#c41e2a; --card:#130a0d; --edge:#2a1418; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+          font:16px/1.65 Georgia,'Times New Roman',serif; }
+  .wrap { max-width:820px; margin:0 auto; padding:0 20px 120px; }
+  header.top { text-align:center; padding:80px 0 40px; position:relative; }
+  h1 { font-size:52px; margin:0 0 6px; letter-spacing:.06em; color:var(--blood2);
+        text-shadow:0 0 28px rgba(196,30,42,.35); font-weight:400; }
+  .sub { color:var(--dim); font-style:italic; font-size:17px; margin:0; }
+  .drip { height:70px; background:
+      radial-gradient(ellipse 5px 34px at 12% 0,var(--blood) 50%,transparent 51%),
+      radial-gradient(ellipse 4px 52px at 27% 0,var(--blood) 50%,transparent 51%),
+      radial-gradient(ellipse 6px 26px at 43% 0,var(--blood) 50%,transparent 51%),
+      radial-gradient(ellipse 4px 62px at 58% 0,var(--blood) 50%,transparent 51%),
+      radial-gradient(ellipse 5px 38px at 71% 0,var(--blood) 50%,transparent 51%),
+      radial-gradient(ellipse 4px 48px at 86% 0,var(--blood) 50%,transparent 51%),
+      linear-gradient(var(--blood),var(--blood)) top/100% 7px no-repeat;
+      opacity:.75; margin-bottom:30px; }
+  .stats { display:flex; justify-content:center; gap:34px; flex-wrap:wrap;
+            border-top:1px solid var(--edge); border-bottom:1px solid var(--edge);
+            padding:22px 0; margin-bottom:14px; }
+  .stat { text-align:center; }
+  .stat b { display:block; font-size:30px; color:var(--blood2); font-weight:400; }
+  .stat span { font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--dim); }
+  .solace { border-left:2px solid var(--blood); background:#100709; padding:16px 20px;
+             margin:28px 0 34px; color:#b9a3a5; font-size:15px; font-style:italic; }
+  .solace b { color:var(--ink); font-style:normal; }
+  .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px; }
+  .filters button { background:#150b0e; color:var(--dim); border:1px solid var(--edge);
+      padding:7px 14px; font:inherit; font-size:13px; cursor:pointer; letter-spacing:.04em; }
+  .filters button.on { color:var(--ink); border-color:var(--blood); background:#1d0d11; }
+  .card { background:var(--card); border:1px solid var(--edge); border-left:3px solid var(--blood);
+           margin-bottom:22px; }
+  .card header { display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+                  padding:11px 18px; border-bottom:1px solid var(--edge); }
+  .num { color:var(--blood2); font-size:13px; letter-spacing:.1em; }
+  .meta { color:var(--dim); font-size:12px; font-family:ui-monospace,monospace; flex:1; }
+  .b { font-size:10.5px; letter-spacing:.11em; text-transform:uppercase; padding:3px 9px;
+        border:1px solid; }
+  .b.near { color:#9a8a55; border-color:#4a3f24; }
+  .b.far { color:#d16b74; border-color:#4d1c22; }
+  .body { padding:18px 22px; }
+  .ctx { color:#4f4143; margin:5px 0; font-size:14.5px; }
+  .focus { color:var(--ink); background:linear-gradient(transparent 62%,rgba(139,15,29,.45) 62%);
+            margin:11px 0; padding:2px 0; font-size:17px; }
+  .card footer { display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+                  padding:13px 22px; border-top:1px solid var(--edge); background:#0d0507; }
+  .verdict { display:flex; flex-direction:column; }
+  .lbl { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); }
+  .verdict b { font-family:ui-monospace,monospace; font-size:15px; font-weight:400; }
+  .you { color:#e0b3b7; }
+  .them { color:#8e9ec4; }
+  .vs { color:var(--dim); font-style:italic; font-size:13px; }
+  .dist { margin-left:auto; color:var(--dim); font-size:11.5px; font-family:ui-monospace,monospace; }
+  .end { text-align:center; color:var(--dim); font-style:italic; padding:50px 0 10px;
+          border-top:1px solid var(--edge); margin-top:40px; }
+</style></head><body>
+<header class="top">
+  <h1>The Label Wall of Shame</h1>
+  <p class="sub">130 disagreements, exhumed and laid out for inspection</p>
+</header>
+<div class="drip"></div>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b>503</b><span>items labeled</span></div>
+    <div class="stat"><b>373</b><span>agreed</span></div>
+    <div class="stat"><b>130</b><span>disagreed</span></div>
+    <div class="stat"><b>45</b><span>near misses</span></div>
+    <div class="stat"><b>0.5425</b><span>cohen's &kappa;</span></div>
+  </div>
+
+  <p class="solace">A reliability study has <b>no answer key</b>. hy3 was the second rater,
+  not the correct one — and it called 65% of everything <b>inform</b>, while you made
+  finer distinctions. Every card below is a place two raters diverged. Not 130 mistakes.
+  You labeled 503 items and agreed on 373 of them.</p>
+
+  <div class="filters">
+    <button class="on" data-f="all">all 130</button>
+    <button data-f="far">different family (85)</button>
+    <button data-f="near">near misses (45)</button>
+    <button data-f="1">① monologue</button>
+    <button data-f="2">② human debate</button>
+    <button data-f="3">③ ai debate</button>
+    <button data-f="4">④ ai monologue</button>
+  </div>
+  
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#001</span>
+    <span class="meta">human_monologue · cell1_g24_0008_0023 · sentence 40</span>
+    <span class='b far'>ocm → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">No, wait.</p><p class="ctx">3 times.</p><p class="ctx">9.</p>
+    <p class="focus">Darn it.</p>
+    <p class="ctx">What is this?</p><p class="ctx">9 times 3 is 3 plus 11.</p><p class="ctx">11.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">retraction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#002</span>
+    <span class="meta">human_monologue · cell1_g24_0058_0171 · sentence 9</span>
+    <span class='b far'>time → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Oh my God.</p><p class="ctx">10 divided by 2, 5 times... . . . no 40.</p><p class="ctx">Yo, buy, buy, buy those bundles.</p>
+    <p class="focus">Oh my God.</p>
+    <p class="ctx">I'm not, I'm not, getting anything over here.</p><p class="ctx">Minus 1, plus 10.</p><p class="ctx">me I'm not getting anything over here no I don't care this answer I'm not getting it 8 divided by 2 is 4 but 10 minus 8</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">stalling</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#003</span>
+    <span class="meta">human_monologue · cell1_g24_0167_0499 · sentence 15</span>
+    <span class='b far'>fallback → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">No, that's not right.</p><p class="ctx">8 plus 5 is 13.</p><p class="ctx">8 plus 5 is 13.</p>
+    <p class="focus">Plus 4.</p>
+    <p class="ctx">4.</p><p class="ctx">No, I've got to multiply something that's right.</p><p class="ctx">5 times 4 is 20.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">none</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#004</span>
+    <span class="meta">human_debate · cell2_d003d4e8-cd3e-44c2-9e25-972c641900e3_p1 · sentence 10</span>
+    <span class='b far'>feedback → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Big in the house</p><p class="ctx">big poggers</p><p class="ctx">Lmao</p>
+    <p class="focus">lol</p>
+    <p class="ctx">So, anyone else somewhat confused</p><p class="ctx">YUP</p><p class="ctx">do yall have U N 8 5?</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">autoPositive</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#005</span>
+    <span class="meta">ai_debate · cell3_g24_0001_p2 · sentence 232</span>
+    <span class='b far'>providing → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Have a great day, team!</p><p class="ctx">Until next time!</p><p class="ctx">Great to see that we've thoroughly covered all the solutions and explored various approaches to the problem!</p>
+    <p class="focus">If anyone else has any more mathematical challenges, questions, or wants to discuss other problem-solving techniques, feel free to reach out.</p>
+    <p class="ctx">Have a great day, everyone!</p><p class="ctx">Until next time!</p><p class="ctx">Great job, everyone!</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#006</span>
+    <span class="meta">ai_debate · cell3_g24_0001_p3 · sentence 108</span>
+    <span class='b far'>providing → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">To recap, weve thoroughly validated As solution and explored its variations, confirming that they all reduce to the same core structure. Bs critique highlighted the algebraic equivalence of these variations, and Cs calculations confirmed their correctness.</p><p class="ctx">any alternative approaches that havent been explored yet, perhaps with a different operational twist?</p><p class="ctx">Or is this indeed the only viable path?</p>
+    <p class="focus">*Sits back, awaiting Ds response, while mentally double-checking all previous steps*</p>
+    <p class="ctx">**Final Validation**: (12 × 10/8 - 6) = 24 is the correct and unique solution under the given constraints.</p><p class="ctx">*Nods firmly*</p><p class="ctx">Over to D for any final insights or confirmations.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#007</span>
+    <span class="meta">ai_debate · cell3_g24_0049_p3 · sentence 96</span>
+    <span class='b far'>providing → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3. **Alternative Operations and Orders:**</p><p class="ctx">- (7 × 3 + 3/3) × 2 = 12</p><p class="ctx">- (7 × (3 + 3)/2) = 21</p>
+    <p class="focus">Detailed Conclusion:</p>
+    <p class="ctx">1. **Final Expression Validation:**</p><p class="ctx">- (7 × (3 + 3)/2) = 21</p><p class="ctx">- No combination of standard arithmetic operations yields exactly 24.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#008</span>
+    <span class="meta">ai_debate · cell3_g24_0063_p3 · sentence 93</span>
+    <span class='b far'>providing → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(8 + 8) × (12 div 12) + 8 - 8 = 24</p><p class="ctx">This approach simplifies the solution and confirms that our expression is indeed correct.</p><p class="ctx">Let's finalize the solution:</p>
+    <p class="focus">(8 + 8) × (12 div 12) + 8 - 8 = 24</p>
+    <p class="ctx">This verifies the solution effectively.</p><p class="ctx">Great work! Your approach of focusing on combining the numbers 8, 8, 12, and 1 using the operations +, -, ×, and / led us to a successful solution.</p><p class="ctx">Your step-by-step breakdown clearly shows that:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#009</span>
+    <span class="meta">ai_debate · cell3_g24_0112_p3 · sentence 137</span>
+    <span class='b far'>providing → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's continue to challenge each other in our next debate!</p><p class="ctx">It's been a great collaborative effort, everyone!</p><p class="ctx">The puzzle required a bit of creativity and methodical checking, and your structured approach, was key to finding the solution.</p>
+    <p class="focus">Looking forward to our next challenge where we can explore different variations and problem-solving techniques!</p>
+    <p class="ctx">That was an excellent puzzle and problem-solving session, everyone!</p><p class="ctx">Heres a brief recap of the key points and an exploration of an alternative approach for future reference:</p><p class="ctx">Recap:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#010</span>
+    <span class="meta">ai_debate · cell3_g24_0164_p1 · sentence 214</span>
+    <span class='b far'>providing → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">35 is not 24.</p><p class="ctx">Let's try:</p><p class="ctx">( (6 + 3/1) ) - 4</p>
+    <p class="focus">Breaking it down:</p>
+    <p class="ctx">1. 6 + 3 = 9</p><p class="ctx">2. (9/1) = 9</p><p class="ctx">3. 9 - 4 = 5</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#011</span>
+    <span class="meta">ai_debate · cell3_g24_0199_p2 · sentence 113</span>
+    <span class='b far'>providing → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">For the digits 4, 4, 4, 4, the solution is:</p><p class="ctx">4 × 4 + 4 + 4 = 24</p><p class="ctx">Generalization</p>
+    <p class="focus">- For a, a, a, a, where a is a number:</p>
+    <p class="ctx">- Use the product a × a and adjust with sums and subtractions to reach 24.</p><p class="ctx">Additional Considerations</p><p class="ctx">- For 8, 8, 8, 8:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#012</span>
+    <span class="meta">ai_monologue · cell4_g24_0012_p1_0044 · sentence 5</span>
+    <span class='b far'>providing → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">1. We can start by trying to get a product or a quotient that gets us close to 24.</p><p class="ctx">2. A useful approach often involves breaking down the problem into smaller parts or using parentheses to manipulate the operations.</p><p class="ctx">Let's try this combination:</p>
+    <p class="focus">(13 - 11) × (2 + 1)</p>
+    <p class="ctx">Breaking it down:</p><p class="ctx">- 13 - 11 = 2</p><p class="ctx">- 2 + 1 = 3</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#013</span>
+    <span class="meta">ai_monologue · cell4_g24_0074_p1_0087 · sentence 8</span>
+    <span class='b far'>directive → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">11 - (5/5) + 6 = 11 - 1 + 6 = 10 + 6 = 16</p><p class="ctx">This doesn't work either.</p><p class="ctx">Let's try:</p>
+    <p class="focus">5 × (11 - 5) + 6 = 5 × 6 + 6 = 30 + 6 = 36</p>
+    <p class="ctx">Another attempt:</p><p class="ctx">5 × (6 - 5) + 11 = 5 × 1 + 11 = 5 + 11 = 16</p><p class="ctx">Another valid approach:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#014</span>
+    <span class="meta">ai_monologue · cell4_g24_0179_p3_0504 · sentence 28</span>
+    <span class='b far'>providing → fallback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(10 - 1) × (7 - 1) / 2 = 9 × 6 / 2 = 54 / 2 = 27 - 3 = 24</p><p class="ctx">The correct solution is:</p><p class="ctx">(10 - 1) × (7 - 1) / 2 = 9 × 6 / 2 = 24</p>
+    <p class="focus">So:</p>
+    <p class="ctx">(10 - 1) × (7 - 1) / 2 = 24</p><p class="ctx">Hence, the numbers used are 10, 7, 1, and 1 with operations -, -, ×, / to get 24.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">none</b></div>
+    <div class="dist">off-tree</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#015</span>
+    <span class="meta">human_monologue · cell1_g24_0038_0113 · sentence 21</span>
+    <span class='b far'>providing → feedback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">11 times 9 divided by 8, no.</p><p class="ctx">Times 8, I'm just guessing at this point.</p><p class="ctx">No.</p>
+    <p class="focus">I don't understand, 11 times 8, 9 times 8, no.</p>
+    <p class="ctx">Yeah, I don't know.</p><p class="ctx">17, that's... none of these work.</p><p class="ctx">Frustrating, frustrating, frustrating.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">autoNegative</b></div>
+    <div class="dist">tree distance 7</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#016</span>
+    <span class="meta">human_debate · cell2_12924100-f2c3-487e-83c0-bc3dedd16f2e_p1 · sentence 19</span>
+    <span class='b far'>providing → social</span>
+  </header>
+  <div class="body">
+    <p class="ctx">I misread</p><p class="ctx">7 is an odd number though</p><p class="ctx">but it does say most people get it wrong, so maybe there is a trick to it</p>
+    <p class="focus">sorry you are correct a and 4</p>
+    <p class="ctx">yes a and four</p><p class="ctx">Okay A and 4</p><p class="ctx">'I think it''s A and 7'</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">agreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">apology</b></div>
+    <div class="dist">tree distance 7</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#017</span>
+    <span class="meta">human_debate · cell2_7df21e35-5524-411c-9f93-2a9b4d1c1910_p1 · sentence 7</span>
+    <span class='b far'>time → feedback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">'That''s what I thought'</p><p class="ctx">I have revised the solution with U and 6.</p><p class="ctx">Did you think we need to pick any other cards?</p>
+    <p class="focus">Oh</p>
+    <p class="ctx">No</p><p class="ctx">'I can see why the J wouldn''t prove anything, but what about the 5?'</p><p class="ctx">What if there were a vowel on the back?</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">stalling</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">autoPositive</b></div>
+    <div class="dist">tree distance 7</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#018</span>
+    <span class="meta">human_debate · cell2_94b2f56c-7856-454c-a60c-4d68dce2ee4c_p1 · sentence 0</span>
+    <span class='b far'>social → providing</span>
+  </header>
+  <div class="body">
+    
+    <p class="focus">E</p>
+    <p class="ctx">Hello</p><p class="ctx">hi</p><p class="ctx">Hey there.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">greeting</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">answer</b></div>
+    <div class="dist">tree distance 7</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#019</span>
+    <span class="meta">human_debate · cell2_f3b0ab5d-6ae4-45ea-87ad-2f627ddf9474_p1 · sentence 3</span>
+    <span class='b far'>social → seeking</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Hi everyone</p><p class="ctx">Hello</p><p class="ctx">What cards do you think we need to filp?</p>
+    <p class="focus">Hi! How are you?</p>
+    <p class="ctx">'I''m good.'</p><p class="ctx">'I''m not sure. The A was standing out to me.'</p><p class="ctx">For me I feel that A and 4 are ones we need to filp for sure</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">greeting</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">setQuestion</b></div>
+    <div class="dist">tree distance 7</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#020</span>
+    <span class="meta">human_monologue · cell1_g24_0026_0076 · sentence 9</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">I can get a 12 and a 10.</p><p class="ctx">So if I did 12 and 10, that would give me a 2.</p><p class="ctx">But then what do I do with the 4?</p>
+    <p class="focus">I could divide 4.</p>
+    <p class="ctx">I could say 4 divided by open parentheses.</p><p class="ctx">Oops.</p><p class="ctx">Oh.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#021</span>
+    <span class="meta">human_monologue · cell1_g24_0036_0106 · sentence 36</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">8?</p><p class="ctx">8 times 12.</p><p class="ctx">No, that can't be right.</p>
+    <p class="focus">Divided by 8 plus 12.</p>
+    <p class="ctx">Is that maybe it?</p><p class="ctx">I don't know.</p><p class="ctx">I don't know.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#022</span>
+    <span class="meta">human_monologue · cell1_g24_0047_0138 · sentence 3</span>
+    <span class='b far'>providing → ocm</span>
+  </header>
+  <div class="body">
+    <p class="ctx">26 minus 5 is 21.</p><p class="ctx">13 plus 13 is 26 minus 5 is 21.</p><p class="ctx">30 minus 20 is 20.</p>
+    <p class="focus">30 minus 13, no, that's not going to work.</p>
+    <p class="ctx">So let's try 42 minus 13.</p><p class="ctx">This is 37 minus 13.</p><p class="ctx">Okay, so let's try 6 times 5.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">retraction</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#023</span>
+    <span class="meta">human_monologue · cell1_g24_0067_0198 · sentence 15</span>
+    <span class='b far'>time → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">9 plus 13.</p><p class="ctx">One plus six, that is seven.</p><p class="ctx">I don't know, I don't understand this, I don't know, I don't know, I don't know, I don't know, I don't comprehend this.</p>
+    <p class="focus">I don't know, I don't know, I don't know... I don't know how to do this, I can't comprehend how to do this.</p>
+    <p class="ctx">Oh, six times one, six times one, six times one.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">stalling</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#024</span>
+    <span class="meta">human_monologue · cell1_g24_0073_0216 · sentence 12</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">24 minus 1.</p><p class="ctx">So if it's 8 times 3 is 24 minus 1, you add 2.</p><p class="ctx">Or do you want to add, let's see, parentheses, 8 times 24 plus 2.</p>
+    <p class="focus">No, multiply.</p>
+    <p class="ctx">Okay, let's do this.</p><p class="ctx">Let's try to see if we can do this.</p><p class="ctx">8, okay, let's delete that.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">disagreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">answer</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#025</span>
+    <span class="meta">human_monologue · cell1_g24_0088_0261 · sentence 13</span>
+    <span class='b far'>providing → time</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Delete, plus, plus, 8.</p><p class="ctx">Oh, I forgot to do the bracket.</p><p class="ctx">Plus, 8.</p>
+    <p class="focus">Oh, wait, I forgot to do the bracket.</p>
+    <p class="ctx">Bracket, 3 bracket.</p><p class="ctx">Bracket.</p><p class="ctx">Delete, delete, delete, delete, delete, delete, delete, delete, delete.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">stalling</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#026</span>
+    <span class="meta">human_monologue · cell1_g24_0134_0399 · sentence 26</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">There we go.</p><p class="ctx">There we go.</p><p class="ctx">12.</p>
+    <p class="focus">12 times 8.</p>
+    <p class="ctx">Does that work?</p><p class="ctx">Does that work?</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#027</span>
+    <span class="meta">human_monologue · cell1_g24_0150_0448 · sentence 4</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">2 and 4 is 6.</p><p class="ctx">12 is 18 and 7 is 25.</p><p class="ctx">So pluses all across don't work.</p>
+    <p class="focus">8.</p>
+    <p class="ctx">That doesn't work.</p><p class="ctx">Let's see.</p><p class="ctx">7 minus 2 is 5.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#028</span>
+    <span class="meta">human_monologue · cell1_g24_0162_0485 · sentence 2</span>
+    <span class='b far'>providing → ocm</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Thirteen minus three is ten.</p><p class="ctx">Eight minus five is three, no.</p>
+    <p class="focus">Three plus five, no.</p>
+    <p class="ctx">Three minus five is eight.</p><p class="ctx">Eight plus thirteen is twenty-one, no.</p><p class="ctx">Three plus five plus eight, sixteen, no.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">retraction</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#029</span>
+    <span class="meta">human_monologue · cell1_g24_0167_0500 · sentence 6</span>
+    <span class='b far'>time → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">minus 5</p><p class="ctx">oh shit</p><p class="ctx">I did this thing</p>
+    <p class="focus">I did this thing</p>
+    <p class="ctx">I did this thing</p><p class="ctx">damn it</p><p class="ctx">8 times 5</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">stalling</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#030</span>
+    <span class="meta">human_monologue · cell1_g24_0172_0515 · sentence 14</span>
+    <span class='b far'>commissive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">No, that's not what I want.</p><p class="ctx">I know I'm saying my thoughts aloud.</p><p class="ctx">Stop yelling at me.</p>
+    <p class="focus">I'm trying.</p>
+    <p class="ctx">Ugh.</p><p class="ctx">This one's hard and I don't know what to do.</p><p class="ctx">13 times 6.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">accept</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#031</span>
+    <span class="meta">human_monologue · cell1_g24_0185_0554 · sentence 8</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Yeah, there's a problem.</p><p class="ctx">Um, let's see.</p><p class="ctx">15?</p>
+    <p class="focus">Wouldn't work.</p>
+    <p class="ctx">Um, yeah, because 3 times 5 is 15.</p><p class="ctx">Um, let's see.</p><p class="ctx">5 times 7 is 35.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">disagreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#032</span>
+    <span class="meta">human_monologue · cell1_g24_0190_0569 · sentence 31</span>
+    <span class='b far'>time → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's see.</p><p class="ctx">So 24 minus 3?</p><p class="ctx">No, that wouldn't work.</p>
+    <p class="focus">So 22.</p>
+    <p class="ctx">Let's see.</p><p class="ctx">If we did 11 times 2... times two again.</p><p class="ctx">So I'm going to get to 22.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">stalling</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#033</span>
+    <span class="meta">human_debate · cell2_0884e8f0-ca8f-413a-9455-f166a0ad67d8_p1 · sentence 21</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">I guess so.</p><p class="ctx">Its good here, how about you?</p><p class="ctx">'Since we have the extra time, might as well also point out that the M doesn''t matter because we don''t care if it has an odd or even number on the back'</p>
+    <p class="focus">yeah, this game is more confusing than it should be lol</p>
+    <p class="ctx">ok!</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">agreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#034</span>
+    <span class="meta">human_debate · cell2_15295929-9497-4e84-8827-ae258aa691fa_p1 · sentence 21</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">I''m happy with the 2 and A'</p><p class="ctx">yes</p><p class="ctx">okay</p>
+    <p class="focus">Yes.</p>
+    <p class="ctx">ok</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">agreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">answer</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#035</span>
+    <span class="meta">human_debate · cell2_2004c992-ea0b-4566-b6d8-45dd4a048447_p1 · sentence 4</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">My first instinct was to turn over an odd numbered-card and a non-vowel card</p><p class="ctx">I am here.</p><p class="ctx">Oh, I was thinking that you only had to turn over A because if it had an odd number the rule would be broken.</p>
+    <p class="focus">Yeah, that's a good point, but it wouldn't prove the rule every time, so I have to assume that you need more than one for a correct solution</p>
+    <p class="ctx">But both &quot;test&quot; and &quot;verify&quot; are used in the task and those are different</p><p class="ctx">I don't have either of those options in my window</p><p class="ctx">All I have are four cards with check boxes below them, &quot;Revise Solution&quot; and &quot;Final Decision and Submit HIT&quot;</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">agreement</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#036</span>
+    <span class="meta">human_debate · cell2_2004c992-ea0b-4566-b6d8-45dd4a048447_p1 · sentence 16</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">With this interface, I have no idea what I'm supposed to do</p><p class="ctx">Well, I tried &quot;Revise Solution&quot; a few times, and nothing happened</p><p class="ctx">Maybe A and 8?</p>
+    <p class="focus">If you turn over A and it has an even number, and then you turn over 8 and it has a consonant, the rule would hold</p>
+    <p class="ctx">And I guess the time has ran out, so all I can do is &quot;Final Decision and Submit HIT&quot;</p><p class="ctx">Hmm...I don't think that turning over 8 would matter in this case.</p><p class="ctx">No matter what is behind 8, it would be ok with the rule</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#037</span>
+    <span class="meta">human_debate · cell2_6506d159-9c5b-44b2-8d28-3b0839c02892_p1 · sentence 28</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">E and 4 is fine with me</p><p class="ctx">I agree with</p><p class="ctx">Ok just e.</p>
+    <p class="focus">e</p>
+    <p class="ctx">Gr8</p><p class="ctx">e</p><p class="ctx">We submit e</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">agreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#038</span>
+    <span class="meta">human_debate · cell2_6b331b42-c9a7-4ccc-89f4-0589b8dcc79e_p1 · sentence 7</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">what about 8?</p><p class="ctx">oh!</p><p class="ctx">True.</p>
+    <p class="focus">Flipping #8 would let us test the rule.</p>
+    <p class="ctx">wait vowels have even numbers but even numbers don't need vowels</p><p class="ctx">so I think you're right about U but we might also need to flip J?</p><p class="ctx">I think you're right about that point, but I interpret it differently.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">agreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#039</span>
+    <span class="meta">human_debate · cell2_9f25f000-082e-4644-af25-0e1af4e6a120_p1 · sentence 8</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">I went with 8 and U.</p><p class="ctx">I think its only two cards though, doe that sound familiar?</p><p class="ctx">yes thats what i think it is too</p>
+    <p class="focus">Maybe it can just be U</p>
+    <p class="ctx">I went with 5 and U</p><p class="ctx">'no i don''t think it''s 5'</p><p class="ctx">Because if you flip 5 and see a vowel then you know.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#040</span>
+    <span class="meta">human_debate · cell2_b8ea60b6-8519-428d-9aae-69b204dcb7b8_p1 · sentence 39</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Reading it again rather?</p><p class="ctx">We need to see if there are all letters on one side and all numbers on the other</p><p class="ctx">If we are going with two I would go with U5 or P4.</p>
+    <p class="focus">U5 works.</p>
+    <p class="ctx">can we all agree</p><p class="ctx">'I''m okay with that.'</p><p class="ctx">Guinea?</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">confirm</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#041</span>
+    <span class="meta">human_debate · cell2_e1e55629-1b36-4540-805c-ccfff51f9f07_p1 · sentence 44</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">You have to flip it over to confirm the rule.</p><p class="ctx">'so it doesn''t matter.'</p><p class="ctx">only card that is a vowel is E</p>
+    <p class="focus">'No, you have to prove the rule. You don''t know what is on the other side of 5. If it is a vowel it disproves the rule.'</p>
+    <p class="ctx">'because the rule needs to be proven, need to flip two cards, i''m okay with E &amp; 5'</p><p class="ctx">I agree with. Those two cards should prove the rule</p><p class="ctx">ok</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">disagreement</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#042</span>
+    <span class="meta">human_debate · cell2_e2fb18bc-2822-4611-900b-c779ccd635a5_p1 · sentence 58</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Changed</p><p class="ctx">i think we are good</p><p class="ctx">So just submit that now?</p>
+    <p class="focus">'I''d give it one more minute and then go.</p>
+    <p class="ctx">Say 1:01pm (my time)'</p><p class="ctx">I’m submitting nice working with you guys.</p><p class="ctx">Yes, this was pretty easy.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">answer</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">suggest</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#043</span>
+    <span class="meta">human_debate · cell2_f68053f2-0e2b-4a69-a72c-767cf767d897_p1 · sentence 32</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">But yes, I have revised my answer to just A. I think everybody has?</p><p class="ctx">That makes sense. I really have a hard time with these tasks! LOL.</p><p class="ctx">'I originally had the same thoughts, but again agreed with you that it''didn't say all cards with even numbers had to be vowels and ruled out'</p>
+    <p class="focus">Haha, I know</p>
+    
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">agreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#044</span>
+    <span class="meta">ai_debate · cell3_g24_0001_p1 · sentence 9</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">That's a great start!</p><p class="ctx">Using division and parentheses in that way can definitely open up new paths.</p><p class="ctx">Let's break it down:</p>
+    <p class="focus">1. Calculate the expression inside the parentheses: 10 - 8 = 2.</p>
+    <p class="ctx">2. Then divide 12 by 2: 12 / 2 = 6.</p><p class="ctx">3. Finally, multiply the result by 6: 6 * 6 = 36, which is close but not 24.</p><p class="ctx">Let's think about tweaking this or perhaps using 6, 8, and 10 differently.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#045</span>
+    <span class="meta">ai_debate · cell3_g24_0017_p3 · sentence 72</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Considering the numbers 1, 7, 10, and 13, we might benefit from nested operations or a different sequence.</p><p class="ctx">Let's break it down differently:</p><p class="ctx">(13 - 7) × (10 - 1) = 6 × 9 = 54</p>
+    <p class="focus">While this doesn't work, we can explore nested operations like:</p>
+    <p class="ctx">((13 - 7) × 10) - 18 = 60 - 18 = 42</p><p class="ctx">This is still not correct, but it gives us a clue.</p><p class="ctx">Let's try another approach:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#046</span>
+    <span class="meta">ai_debate · cell3_g24_0029_p1 · sentence 53</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">No luck.</p><p class="ctx">Let's ensure no fractional or decimal adjustments are missed.</p><p class="ctx">Let's test:</p>
+    <p class="focus">(8 + 8 + 6 - 5) = 17</p>
+    <p class="ctx">Addition isn't working either.</p><p class="ctx">Let's finalize a correct approach:</p><p class="ctx">(8 + 8) + (6 - 5) × 8 = 16 + 8 = 24</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#047</span>
+    <span class="meta">ai_debate · cell3_g24_0031_p3 · sentence 217</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">We have considered various combinations and operations, and none of them have yielded the desired result.</p><p class="ctx">To reiterate, the conclusion is:</p><p class="ctx">24 text is not achievable with the given numbers and operations.</p>
+    <p class="focus">If there are any additional constraints or variations to explore, or if you have any further questions or scenarios to consider, please let us know!</p>
+    <p class="ctx">Based on the detailed analysis and exploration by all participants, we have determined that the number 24 cannot be achieved using the numbers 11, 13, 13, and 13 with the operations +, -, *, and / exactly once.</p><p class="ctx">To summarize:</p><p class="ctx">1. Direct arithmetic combinations did not result in 24.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="3">
+  <header>
+    <span class="num">#048</span>
+    <span class="meta">ai_debate · cell3_g24_0038_p2 · sentence 14</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's consider the possibility of subtraction or addition in a different order.</p><p class="ctx">How about we try 12 × (9 - 8) + 1?</p><p class="ctx">This way, we're utilizing all the numbers exactly once and exploring different operators.</p>
+    <p class="focus">That's a solid approach.</p>
+    <p class="ctx">Let's evaluate 12 × (9 - 8) + 1:</p><p class="ctx">1. First, 9 - 8 = 1.</p><p class="ctx">2. Then, 12 × 1 = 12.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">agreement</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#049</span>
+    <span class="meta">ai_debate · cell3_g24_0057_p3 · sentence 195</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">1. Calculate inside the parentheses: 5 - 1 = 4.</p><p class="ctx">2. Perform the multiplication: 12 × 4 = 48.</p><p class="ctx">3. Divide by 10: 48 / 10 = 4.8.</p>
+    <p class="focus">This isn't correct, so let's try another valid combination:</p>
+    <p class="ctx">(12 + 10 - 1) × (5 / 1) = 21 × 5 = 105</p><p class="ctx">This also isn't correct.</p><p class="ctx">Let's try another path:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">suggest</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#050</span>
+    <span class="meta">ai_debate · cell3_g24_0066_p3 · sentence 51</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Still not 24.</p><p class="ctx">We need a more precise combination.</p><p class="ctx">Let's try:</p>
+    <p class="focus">13 - (4 - 6 / 2) = 13 - (4 - 3) = 13 - 1 = 12</p>
+    <p class="ctx">12 * 2 = 24</p><p class="ctx">This works!</p><p class="ctx">The combination is:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="3">
+  <header>
+    <span class="num">#051</span>
+    <span class="meta">ai_debate · cell3_g24_0077_p1 · sentence 54</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">((5 - 1/1)) × (5 + 1) = 4 × 6 = 24</p><p class="ctx">So, the solution is confirmed and, in this case, there aren't other unique paths to 24 using these constraints.</p><p class="ctx">Great job, everyone!</p>
+    <p class="focus">The solution ((5 - 1/1)) × (5 + 1) = 4 × 6 = 24 is indeed valid and innovative.</p>
+    <p class="ctx">Your exploration and alternative paths have ensured we didn't miss any potential solutions and have thoroughly verified the correctness of the answer.</p><p class="ctx">To summarize, the key steps were:</p><p class="ctx">1. Using the operations and numbers effectively.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">confirm</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#052</span>
+    <span class="meta">ai_debate · cell3_g24_0083_p2 · sentence 27</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">1. 3 × 3 = 9</p><p class="ctx">2. 4 - (1/3) = (12/3) - (1/3) = (11/3)</p><p class="ctx">3. 9 × (11/3) = 3 × 3 × (11/3) = 3 × 11 = 33</p>
+    <p class="focus">This doesn't work, so let's simplify further:</p>
+    <p class="ctx">(3 × 4) × (3 - 1)</p><p class="ctx">1. 3 × 4 = 12</p><p class="ctx">2. 3 - 1 = 2</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">suggest</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#053</span>
+    <span class="meta">ai_debate · cell3_g24_0088_p1 · sentence 57</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3. Finally, multiply by 6: 7.4 × 6 = 44.4.</p><p class="ctx">We're still not hitting 24.</p><p class="ctx">Let's reassess the basic operations.</p>
+    <p class="focus">Perhaps a simpler approach is needed.</p>
+    <p class="ctx">Let's consider (8 - 3) × (6 - 5).</p><p class="ctx">1. First, solve the subtractions: 8 - 3 = 5 and 6 - 5 = 1.</p><p class="ctx">2. Then, perform the multiplication: 5 × 1 = 5.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">suggest</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#054</span>
+    <span class="meta">ai_debate · cell3_g24_0090_p2 · sentence 69</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">- 60 - 20 = 40, which is not 24.</p><p class="ctx">We need to re-evaluate the combination.</p><p class="ctx">Let's try:</p>
+    <p class="focus">((10 + 4) × (6 - 5)/1) = 24:</p>
+    <p class="ctx">- 10 + 4 = 14</p><p class="ctx">- 6 - 5 = 1</p><p class="ctx">- 14 × 1 = 14, which is not 24.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="3">
+  <header>
+    <span class="num">#055</span>
+    <span class="meta">ai_debate · cell3_g24_0090_p3 · sentence 92</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">This works.</p><p class="ctx">Thus, the solution is:</p><p class="ctx">(4 + 5) × (6 - 10 / 5) = 24.</p>
+    <p class="focus">That's a thorough validation!</p>
+    <p class="ctx">Your step-by-step approach ensures we've explored many avenues to solve the problem.</p><p class="ctx">Alternatively, let's confirm the solution you've identified:</p><p class="ctx">The expression you provided is (4 + 5) × (6 - 10 / 5).</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">agreement</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#056</span>
+    <span class="meta">ai_debate · cell3_g24_0097_p1 · sentence 2</span>
+    <span class='b far'>seeking → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Okay, let's think creatively!</p><p class="ctx">How about we use subtraction and division in a unique way?</p>
+    <p class="focus">How about: (13 - 5) × (13 / 10)?</p>
+    <p class="ctx">Let's analyze your approach.</p><p class="ctx">The expression (13 - 5) × (13 / 10) simplifies to 8 × 1.3 = 10.4, which doesn't equal 24.</p><p class="ctx">We need to find a way to get exactly 24 using these numbers.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">propositionalQuestion</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">suggest</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="3">
+  <header>
+    <span class="num">#057</span>
+    <span class="meta">ai_debate · cell3_g24_0099_p1 · sentence 26</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Maybe we need to *divide earlier*like forcing the 11 or 7 into a fractional term.</p><p class="ctx">(still overshooting).</p><p class="ctx">Waitwhat if we *divide the product of two numbers by another*?</p>
+    <p class="focus">(nope).</p>
+    <p class="ctx">This is tougher than expected!</p><p class="ctx">D, can you find a hidden path?</p><p class="ctx">Or is B right that its impossible?</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">disagreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="3">
+  <header>
+    <span class="num">#058</span>
+    <span class="meta">ai_debate · cell3_g24_0141_p1 · sentence 53</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">This expression is another valid and creative way to reach 24.</p><p class="ctx">It might be more complex, but it showcases a different thinking path.</p><p class="ctx">Your explorations have been thorough and methodical, A and B.</p>
+    <p class="focus">The expressions you've provided indeed meet the criteria of the puzzle, using each number exactly once with the allowed operations.</p>
+    <p class="ctx">Let's summarize and validate both paths:</p><p class="ctx">1. **Path 1: (10 - 1) × 3 - 3 = 24**</p><p class="ctx">- **Step-by-step verification**:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">agreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#059</span>
+    <span class="meta">ai_debate · cell3_g24_0157_p1 · sentence 268</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">This is incorrect.</p><p class="ctx">Let's try (12 × (10 - 8) + 10 - 1/1).</p><p class="ctx">1. 10 - 8 = 2.</p>
+    <p class="focus">2. 12 × 2 = 24.</p>
+    <p class="ctx">3. 24 + 10 - 1 = 33.</p><p class="ctx">4. 33 / 1 = 33.</p><p class="ctx">This is incorrect.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#060</span>
+    <span class="meta">ai_debate · cell3_g24_0168_p3 · sentence 154</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Consider incorporating 3! differently:</p><p class="ctx">(13 - 9) × (10 + 3 - 1) + 3!</p><p class="ctx">Not 24.</p>
+    <p class="focus">Let's consider one more creative approach incorporating 3!:</p>
+    <p class="ctx">(13 - 9) × (10 + 3 - 2) + 3!</p><p class="ctx">Not 24.</p><p class="ctx">Let's consider:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#061</span>
+    <span class="meta">ai_debate · cell3_g24_0186_p1 · sentence 87</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">9 × (12 div 9 - 9 + 8) = 12 - 9 + 8 = 11</p><p class="ctx">We need to find the perfect combination.</p><p class="ctx">Lets try:</p>
+    <p class="focus">9 × (12 div 9 - 9 + 8) = 12 - 9 + 8 = 11</p>
+    <p class="ctx">It seems we're not hitting the target of 24 directly, and the combinations we're exploring are yielding results that are far from 24.</p><p class="ctx">Let's step back and methodically validate each step to ensure we're not missing something simple.</p><p class="ctx">We'll start by re-evaluating the basic operations and combinations:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="3">
+  <header>
+    <span class="num">#062</span>
+    <span class="meta">ai_debate · cell3_g24_0190_p2 · sentence 23</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Absolutely, that's a fantastic solution!</p><p class="ctx">Let's box the final expression for clarity:</p><p class="ctx">11 × 2 - (2 + 3) = 2</p>
+    <p class="focus">That's a great solution!</p>
+    <p class="ctx">Let's explore if there are any other interesting ways to arrive at 24 using the same numbers.</p><p class="ctx">How about we try using division or consider the numbers in a different order?</p><p class="ctx">Maybe there's another operation sequence that could work as well.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">agreement</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#063</span>
+    <span class="meta">ai_monologue · cell4_g24_0023_p1_0088 · sentence 31</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Breaking down:</p><p class="ctx">1. Compute (8/8) which is 1.</p><p class="ctx">2. Add 5 + 1 = 6.</p>
+    <p class="focus">3. Multiply 8 × 6 = 48.</p>
+    <p class="ctx">We still need to find a combination. Let's try:</p><p class="ctx">9 + 8 + 5 - (8/8)</p><p class="ctx">Breaking it down:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#064</span>
+    <span class="meta">ai_monologue · cell4_g24_0024_p3_0500 · sentence 23</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's try another combination:</p><p class="ctx">(11 - 1) × (6 - 1)</p><p class="ctx">Breaking it down:</p>
+    <p class="focus">1. Calculate the subtraction 11 - 1:</p>
+    <p class="ctx">11 - 1 = 10</p><p class="ctx">2. Calculate the subtraction 6 - 1:</p><p class="ctx">6 - 1 = 5</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#065</span>
+    <span class="meta">ai_monologue · cell4_g24_0024_p3_0500 · sentence 188</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3. Subtract 11 from the result:</p><p class="ctx">65 - 11 = 54</p><p class="ctx">Finally, let's try:</p>
+    <p class="focus">13 × (6 - 1) - 11</p>
+    <p class="ctx">Breaking it down:</p><p class="ctx">1. Calculate the difference between 6 and 1:</p><p class="ctx">6 - 1 = 5</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#066</span>
+    <span class="meta">ai_monologue · cell4_g24_0028_p2_0309 · sentence 7</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(12 - 7) × (10 + 10) = 5 × 20 = 100</p><p class="ctx">This also does not work.</p><p class="ctx">Let's try another combination:</p>
+    <p class="focus">(12 - 7) × (10 - 10) div 10 = 5 × 0 = 0</p>
+    <p class="ctx">This is incorrect.</p><p class="ctx">We need to find a different combination.</p><p class="ctx">Let's try:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#067</span>
+    <span class="meta">ai_monologue · cell4_g24_0029_p2_0314 · sentence 11</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">It looks like there was an error, since the result is not 24.</p><p class="ctx">Let's try another approach:</p><p class="ctx">Let's break it down step by step:</p>
+    <p class="focus">1. Calculate 6 + 8 :</p>
+    <p class="ctx">6 + 8 = 14</p><p class="ctx">2. Calculate 8 / 5 :</p><p class="ctx">8 / 5 = 1.6</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#068</span>
+    <span class="meta">ai_monologue · cell4_g24_0029_p3_0510 · sentence 16</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's break it down:</p><p class="ctx">1. Calculate the division: (8/8) = 1.</p><p class="ctx">2. Subtract this result from 5: 5 - 1 = 4.</p>
+    <p class="focus">3. Multiply by 6: 4 × 6 = 24.</p>
+    <p class="ctx">Therefore, the correct expression is:</p><p class="ctx">So the final answer is:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#069</span>
+    <span class="meta">ai_monologue · cell4_g24_0039_p3_0571 · sentence 31</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3. Divide the result by 13:</p><p class="ctx">(86/13) = 6.615384615384615</p><p class="ctx">This also didn't work.</p>
+    <p class="focus">Let's try another approach:</p>
+    <p class="ctx">(13 + 7/5) × 13</p><p class="ctx">Let's break it down:</p><p class="ctx">1. Calculate 13 + 7 :</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#070</span>
+    <span class="meta">ai_monologue · cell4_g24_0039_p3_0571 · sentence 163</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's try:</p><p class="ctx">13 - 5 + 7 × (13/5)</p><p class="ctx">Let's break it down:</p>
+    <p class="focus">1. Calculate 7 × (13/5) :</p>
+    <p class="ctx">(13/5) = 2.6</p><p class="ctx">7 × 2.6 = 18.2</p><p class="ctx">2. Calculate 13 - 5 + 18.2 :</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#071</span>
+    <span class="meta">ai_monologue · cell4_g24_0041_p2_0362 · sentence 5</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's break it down:</p><p class="ctx">1. Calculate 10 - 8:</p><p class="ctx">10 - 8 = 2</p>
+    <p class="focus">2. Calculate 8 + 6:</p>
+    <p class="ctx">8 + 6 = 14</p><p class="ctx">3. Multiply the results from steps 1 and 2:</p><p class="ctx">2 × 14 = 28</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#072</span>
+    <span class="meta">ai_monologue · cell4_g24_0041_p2_0362 · sentence 42</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">10 - 6 = 4</p><p class="ctx">2. Calculate 8 div 2:</p><p class="ctx">8 div 2 = 4</p>
+    <p class="focus">3. Multiply the results from steps 1 and 2:</p>
+    <p class="ctx">4 × 4 = 16</p><p class="ctx">This approach still does not give us the required 24.</p><p class="ctx">Let's try:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#073</span>
+    <span class="meta">ai_monologue · cell4_g24_0053_p2_0204 · sentence 26</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(8 + 4) × (7 / 11) = 12 × (7/11) = 12 × 0.6363 = 7.6363</p><p class="ctx">Not it.</p><p class="ctx">Let's try:</p>
+    <p class="focus">(8 - 4) × (11 / 7) = 4 × (11/7) = 4 × 1.5714 approx 6.2857</p>
+    <p class="ctx">Not there yet.</p><p class="ctx">Finally, the correct combination is:</p><p class="ctx">(11 - 8) × (7 + 4) / 11 = 3 × 11 / 11 = 33 / 11 = 3 × 1 = 24</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#074</span>
+    <span class="meta">ai_monologue · cell4_g24_0060_p3_0432 · sentence 43</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3. Subtract the result from the previous step:</p><p class="ctx">24 - 1 = 23</p><p class="ctx">It doesnt work either.</p>
+    <p class="focus">Let's try one more combination:</p>
+    <p class="ctx">(11 + 13) - 9 + 9</p><p class="ctx">Lets break it down step by step:</p><p class="ctx">1. Calculate 11 + 13 :</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#075</span>
+    <span class="meta">ai_monologue · cell4_g24_0072_p2_0279 · sentence 28</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(4 + 4 + 5 - 6) × 4 = (8 + 5 - 6) × 4 = 7 × 4 = 28</p><p class="ctx">We missed it.</p><p class="ctx">Let's try the correctly:</p>
+    <p class="focus">(6 - (4/4)) × 4 = (6 - 1) × 4 = 5 × 4 = 24</p>
+    <p class="ctx">The correct combination is:</p><p class="ctx">(6 - (4/4)) × 4 = 24</p><p class="ctx">So, the correct expression to get 24 is:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#076</span>
+    <span class="meta">ai_monologue · cell4_g24_0074_p3_0485 · sentence 112</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">11 - 5 = 6</p><p class="ctx">2. Multiply the result by 5:</p><p class="ctx">6 × 5 = 30</p>
+    <p class="focus">3. Add 6:</p>
+    <p class="ctx">30 + 6 = 36</p><p class="ctx">4. Subtract 5:</p><p class="ctx">36 - 5 = 31</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">suggest</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#077</span>
+    <span class="meta">ai_monologue · cell4_g24_0075_p1_0089 · sentence 18</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">11 - 7 = 4</p><p class="ctx">(4/11)</p><p class="ctx">9 - (4/11) = (99/11) - (4/11) = (95/11)</p>
+    <p class="focus">This doesn't work either.</p>
+    <p class="ctx">Let's try a different approach by constructing 24 directly:</p><p class="ctx">11 × ((9/11) + 1)</p><p class="ctx">Let's simplify:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">disagreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#078</span>
+    <span class="meta">ai_monologue · cell4_g24_0087_p1_0137 · sentence 6</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">1. Compute 10 * 5 = 50</p><p class="ctx">2. Subtract 10 from 50: 50 - 10 = 40</p><p class="ctx">3. Divide 40 by 3: 40 / 3 approx 13.3333</p>
+    <p class="focus">4. Multiply the result by 3: 13.3333 * 3 = 40</p>
+    <p class="ctx">It seems I made a small mistake in the final result, let's correct it and find the proper solution:</p><p class="ctx">Another way to reach 24 is:</p><p class="ctx">(10 * (5 - 3 / 10))</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">suggest</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#079</span>
+    <span class="meta">ai_monologue · cell4_g24_0094_p1_0160 · sentence 4</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">12 × (3 - (2/2))</p><p class="ctx">Let's break it down:</p><p class="ctx">1. First, calculate the division part: (2/2) = 1.</p>
+    <p class="focus">2. Then, perform the subtraction: 3 - 1 = 2.</p>
+    <p class="ctx">3. Finally, multiply by 12: 12 × 2 = 24.</p><p class="ctx">So the expression 12 × (3 - (2/2)) gives us the target number 24.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#080</span>
+    <span class="meta">ai_monologue · cell4_g24_0098_p1_0177 · sentence 3</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">To solve this problem, we need to use the numbers 3, 5, 6, and 11 exactly once with the operations +, -, *, and / to reach the target number 24.</p><p class="ctx">Here's one way to achieve this:</p><p class="ctx">(11 - 5) × (6 - 3) = 24</p>
+    <p class="focus">Let's break it down step-by-step:</p>
+    <p class="ctx">1. First, perform the operation inside the first set of parentheses: 11 - 5 = 6 .</p><p class="ctx">2. Then, perform the operation inside the second set of parentheses: 6 - 3 = 3 .</p><p class="ctx">3. Finally, multiply the results of the two parentheses: 6 × 3 = 24 .</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#081</span>
+    <span class="meta">ai_monologue · cell4_g24_0108_p1_0030 · sentence 43</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Here's the breakdown:</p><p class="ctx">- Calculate 7 - 1 = 6.</p><p class="ctx">- Then, calculate 3 × 6 = 18.</p>
+    <p class="focus">- Finally, add 3: 18 + 3 = 21.</p>
+    <p class="ctx">This is still not quite there.</p><p class="ctx">Let's try:</p><p class="ctx">Here's the breakdown:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#082</span>
+    <span class="meta">ai_monologue · cell4_g24_0108_p1_0030 · sentence 47</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">This is still not quite there.</p><p class="ctx">Let's try:</p><p class="ctx">Here's the breakdown:</p>
+    <p class="focus">- Calculate 7 + 1 = 8.</p>
+    <p class="ctx">- Then, calculate 3 × 8 = 24.</p><p class="ctx">- No subtraction needed.</p><p class="ctx">Thus, the correct expression is:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#083</span>
+    <span class="meta">ai_monologue · cell4_g24_0109_p3_0430 · sentence 51</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Breaking it down:</p><p class="ctx">1. Calculate inside the first set of parentheses: 9 - 6 + 2 = 5.</p><p class="ctx">2. Multiply the result by 4: 5 × 4 = 20.</p>
+    <p class="focus">3. Divide by 2: 20 div 2 = 10.</p>
+    <p class="ctx">This still doesn't work.</p><p class="ctx">Finally, the correct combination is:</p><p class="ctx">(9 - 6 + 2) × 4 = 3 × 8 = 24</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#084</span>
+    <span class="meta">ai_monologue · cell4_g24_0122_p3_0496 · sentence 30</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3. Add the results: 40 + 3 = 43</p><p class="ctx">That also doesn't work.</p><p class="ctx">Let try:</p>
+    <p class="focus">(8 + 1) × (5 - 4)</p>
+    <p class="ctx">Breaking it down:</p><p class="ctx">1. Compute the sum inside the first parenthesis: 8 + 1 = 9</p><p class="ctx">2. Compute the difference inside the second parenthesis: 5 - 4 = 1</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#085</span>
+    <span class="meta">ai_monologue · cell4_g24_0124_p2_0277 · sentence 32</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3 + 7 = 10</p><p class="ctx">2. Then, multiply by 12:</p><p class="ctx">12 × 10 = 120</p>
+    <p class="focus">3. Finally, subtract 1:</p>
+    <p class="ctx">120 - 1 = 119</p><p class="ctx">It still doesn't work.</p><p class="ctx">Finally, let's try:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#086</span>
+    <span class="meta">ai_monologue · cell4_g24_0124_p2_0277 · sentence 46</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">1. First, calculate 12 × 3 - 7:</p><p class="ctx">12 × 3 - 7 = 36 - 7 = 29</p><p class="ctx">2. Finally, divide by 1:</p>
+    <p class="focus">29 div 1 = 24</p>
+    <p class="ctx">The correct expression to get 24 is:</p><p class="ctx">(12 × 3 - 7) div 1 = 24</p><p class="ctx">(12 × 3 - 7) div 1 = 24</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#087</span>
+    <span class="meta">ai_monologue · cell4_g24_0136_p1_0150 · sentence 52</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(13 - 8 + 1) × 6 / 1 = 6 × 5 = 30</p><p class="ctx">The correct solution is:</p><p class="ctx">(13 - 8 + 1) × 6 / 1 = 6 × 5 = 30</p>
+    <p class="focus">This is not correct.</p>
+    <p class="ctx">The correct solution is:</p><p class="ctx">(13 - 8 + 1) × 6 / 1 = 6 × 5 = 30</p><p class="ctx">The correct solution is:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">disagreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#088</span>
+    <span class="meta">ai_monologue · cell4_g24_0139_p2_0342 · sentence 2</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">To achieve the target number 24 using the numbers [2, 2, 5, 12] exactly once with the operations +, -, *, /, we can proceed as follows:</p><p class="ctx">12 × (5 - 2) + 2 = 12 × 3 + 2 = 36 + 2 = 38</p>
+    <p class="focus">This doesn't work, so let's try another approach:</p>
+    <p class="ctx">12 × (2 + 2) - 5 = 12 × 4 - 5 = 48 - 5 = 43</p><p class="ctx">This also doesn't work.</p><p class="ctx">Let's try another combination:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">suggest</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#089</span>
+    <span class="meta">ai_monologue · cell4_g24_0140_p3_0576 · sentence 26</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's try another approach:</p><p class="ctx">(5 + 5 + (10/7)) × 2</p><p class="ctx">But this is not accurate since we need exact use of 24.</p>
+    <p class="focus">Instead, let's use:</p>
+    <p class="ctx">(10 - 5) × (7 - 5/5)</p><p class="ctx">Correct calculation should be:</p><p class="ctx">(10 - 5) × (7 - 1) = 5 × 6 = 30</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#090</span>
+    <span class="meta">ai_monologue · cell4_g24_0149_p3_0595 · sentence 72</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">2 - 1 = 1</p><p class="ctx">Now add:</p><p class="ctx">12 + 1 = 13</p>
+    <p class="focus">This is not correct.</p>
+    <p class="ctx">Let's try:</p><p class="ctx">(4 × 3) - (2 - 1)</p><p class="ctx">First, calculate 4 × 3 :</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">disagreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#091</span>
+    <span class="meta">ai_monologue · cell4_g24_0152_p3_0404 · sentence 18</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Breaking it down step by step:</p><p class="ctx">1. Calculate the division: (5/7) approx 0.7143.</p><p class="ctx">2. Subtract the result from 6: 6 - 0.7143 = 5.2857.</p>
+    <p class="focus">3. Multiply the result by 7: 7 × 5.2857 = 37.0 approx 24.</p>
+    <p class="ctx">This isn't exact either, but let's try this combination:</p><p class="ctx">(7 - (5/7)) × 6 = (7 - (5/7)) × 6 = ((49 - 5/7)) × 6 = ((44/7)) × 6 = (264/7) = 37.7142</p><p class="ctx">This isn't 24 either, but given the constraints, the correct combination that works exactly is:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#092</span>
+    <span class="meta">ai_monologue · cell4_g24_0156_p3_0419 · sentence 21</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3. 6 × (-1) = -6</p><p class="ctx">This also does not give us 24, so let's try a different combination.</p><p class="ctx">Let's try:</p>
+    <p class="focus">(11 + 5) × (10 / 9)</p>
+    <p class="ctx">Here's the step-by-step breakdown:</p><p class="ctx">1. 11 + 5 = 16</p><p class="ctx">2. 10 / 9 = (10/9) approx 1.1111</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#093</span>
+    <span class="meta">ai_monologue · cell4_g24_0173_p3_0480 · sentence 15</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's break this down step-by-step:</p><p class="ctx">1. Calculate (9/7):</p><p class="ctx">(9/7) approx 1.2857</p>
+    <p class="focus">2. Subtract this result from the sum of 13 and 13:</p>
+    <p class="ctx">13 + 13 = 26</p><p class="ctx">26 - 1.2857 approx 24.7143</p><p class="ctx">Both methods get us very close to 24.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#094</span>
+    <span class="meta">ai_monologue · cell4_g24_0194_p2_0387 · sentence 29</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">13 + 12 = 25</p><p class="ctx">2. Calculate 13 / 12 :</p><p class="ctx">13 / 12 approx 1.083</p>
+    <p class="focus">3. Multiply the results:</p>
+    <p class="ctx">25 × 1.083 approx 27.075</p><p class="ctx">Finally, let's try:</p><p class="ctx">(13 + 12 - 12 / 13) × 2</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#095</span>
+    <span class="meta">ai_monologue · cell4_g24_0195_p1_0171 · sentence 37</span>
+    <span class='b far'>directive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's try the correct expression:</p><p class="ctx">(13 - 7) × (4 + 1) = 6 × 5 = 30</p><p class="ctx">Nope, let's try:</p>
+    <p class="focus">(13 + 7 - 4) × 1 = 16 × 1 = 16</p>
+    <p class="ctx">This still doesn't work.</p><p class="ctx">Let's try:</p><p class="ctx">(13 + 4 - 7) × 1 = 10 × 1 = 10</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">suggest</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="4">
+  <header>
+    <span class="num">#096</span>
+    <span class="meta">ai_monologue · cell4_g24_0196_p2_0391 · sentence 7</span>
+    <span class='b far'>providing → directive</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(3/3) = 1 implies 3 + 1 = 4</p><p class="ctx">2. Calculate 13 - 7:</p><p class="ctx">13 - 7 = 6</p>
+    <p class="focus">3. Multiply the results from the previous steps:</p>
+    <p class="ctx">6 × 4 = 24</p><p class="ctx">So, the expression (13 - 7) × (3 + (3/3)) equals 24.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">request</b></div>
+    <div class="dist">tree distance 6</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#097</span>
+    <span class="meta">human_debate · cell2_217085ef-42a5-4ea9-bb15-90743bff1c0b_p1 · sentence 28</span>
+    <span class='b far'>seeking → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">vowels lol</p><p class="ctx">because it does not say that for sure the even number will have a vowel on the other side so i think a only</p><p class="ctx">It doesn't ha e to say that because we know it does if it's true one way.</p>
+    <p class="focus">I think it might be only A because we're testing 'all cards with vowels on one side have an even number on the other' And the A card is the only card with a vowel on it.</p>
+    <p class="ctx">Make sense?</p><p class="ctx">I am going with the a and you can go with what you think to be true</p><p class="ctx">yes</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">checkQuestion</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 5</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#098</span>
+    <span class="meta">human_debate · cell2_a0c5e4f1-62d5-48d3-be33-6215314cd23b_p1 · sentence 8</span>
+    <span class='b far'>seeking → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">I guess tehsame would apply if you pick card H and got a 2</p><p class="ctx">the same*</p><p class="ctx">card 3 could have a vowel on the other side</p>
+    <p class="focus">'Maybe it''s all the cards'</p>
+    <p class="ctx">'It wouldn''t invalidate the rule if H had a 2 behind it'</p><p class="ctx">H could have an odd or even number</p><p class="ctx">Nothing in the rule indicates what needs to be behind consonants</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">checkQuestion</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 5</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#099</span>
+    <span class="meta">human_debate · cell2_5230e824-e8b5-4a70-b22d-600d775249b3_p1 · sentence 13</span>
+    <span class='b far'>seeking → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">I did 4</p><p class="ctx">same as but also makes a point</p><p class="ctx">feel like</p>
+    <p class="focus">I did all 4 needed to be tested because how do we know that U has an even number?</p>
+    <p class="ctx">both ways work</p><p class="ctx">'I did U and 4. U to test if there''s an even number and 4 to test for a vowel'</p><p class="ctx">Sorry, I did U also</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">setQuestion</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 4</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="1">
+  <header>
+    <span class="num">#100</span>
+    <span class="meta">human_monologue · cell1_g24_0001_0000 · sentence 18</span>
+    <span class='b far'>providing → feedback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">120, um, minus 8 times 6.</p><p class="ctx">Ugh.</p><p class="ctx">Um, 80 minus 36.</p>
+    <p class="focus">Nope.</p>
+    <p class="ctx">80 minus 6, 7, 8, 18.</p><p class="ctx">Nope.</p><p class="ctx">80.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">disagreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">autoNegative</b></div>
+    <div class="dist">tree distance 3</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#101</span>
+    <span class="meta">human_debate · cell2_c5fdc451-5d29-4aef-a210-b2896fa6354b_p1 · sentence 12</span>
+    <span class='b far'>commissive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">hmmm thats interesting!!</p><p class="ctx">'In which case we''d have to check all of them'</p><p class="ctx">'But it doesn''t explicitly say that'</p>
+    <p class="focus">thats true but it like you said it doesnt expicitly say odd numbers are apart of the rule</p>
+    <p class="ctx">'So I think we have to assume they''re not?'</p><p class="ctx">this is tricky!</p><p class="ctx">'Yeah, this is probably why most people don''t get it right'</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">conditionalAccept</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">agreement</b></div>
+    <div class="dist">tree distance 3</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#102</span>
+    <span class="meta">ai_debate · cell3_g24_0067_p2 · sentence 53</span>
+    <span class='b far'>providing → feedback</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3. Finally, 6 × 12 = 72 / 3 = 24.</p><p class="ctx">Ah, this gives us 24!</p><p class="ctx">So, the solution is (12 - 6) × (13 - 1) = 24.</p>
+    <p class="focus">Great find!</p>
+    <p class="ctx">The solution (12 - 6) × (13 - 1) works perfectly.</p><p class="ctx">Its a fantastic example of how rearranging the order and operations can lead to the desired result.</p><p class="ctx">Let's break it down one more time to ensure clarity:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">agreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">autoPositive</b></div>
+    <div class="dist">tree distance 3</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="3">
+  <header>
+    <span class="num">#103</span>
+    <span class="meta">ai_debate · cell3_g24_0185_p3 · sentence 0</span>
+    <span class='b far'>commissive → feedback</span>
+  </header>
+  <div class="body">
+    
+    <p class="focus">Sure!</p>
+    <p class="ctx">How about we start by seeing if we can get close to 24 using multiplication or division, since those operations tend to produce larger numbers.</p><p class="ctx">What if we multiply 7 and 3 to get 21, and then try to get to 24 from there?</p><p class="ctx">Adding 5 and dividing by 11 doesn't work, but what if we think about it the other way around?</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">accept</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">autoPositive</b></div>
+    <div class="dist">tree distance 3</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#104</span>
+    <span class="meta">human_monologue · cell1_g24_0017_0050 · sentence 0</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    
+    <p class="focus">Okay, 1, 7, 10, 3, 1, 7, 10, 3, 10, oh sorry, it's 13.</p>
+    <p class="ctx">8.</p><p class="ctx">1 plus 7 equals 8.</p><p class="ctx">Plus 10.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">correction</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#105</span>
+    <span class="meta">human_monologue · cell1_g24_0020_0057 · sentence 29</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">It's not going to do it.</p><p class="ctx">Um, but...</p><p class="ctx">5 times 5 times 13.</p>
+    <p class="focus">Divide that by 8.</p>
+    <p class="ctx">You might not get it.</p><p class="ctx">Um...</p><p class="ctx">Okay.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">request</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">suggest</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#106</span>
+    <span class="meta">human_monologue · cell1_g24_0021_0062 · sentence 18</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">No.</p><p class="ctx">I need to like 7 times 3.</p><p class="ctx">7 times 2.</p>
+    <p class="focus">No.</p>
+    <p class="ctx">14.</p><p class="ctx">2 times 7 is 14.</p><p class="ctx">We want some 8s.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">disagreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">disconfirm</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#107</span>
+    <span class="meta">human_monologue · cell1_g24_0074_0221 · sentence 37</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">11 plus 5?</p><p class="ctx">16.</p><p class="ctx">5 plus 5?</p>
+    <p class="focus">10.</p>
+    <p class="ctx">And 10.</p><p class="ctx">Hmm.</p><p class="ctx">Still not getting 24.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">answer</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#108</span>
+    <span class="meta">human_monologue · cell1_g24_0105_0312 · sentence 14</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">So I have to multiply by 2.</p><p class="ctx">I have 10 and 7, so I get 3.</p><p class="ctx">Well, can I make 48?</p>
+    <p class="focus">Well, then I couldn't divide enough to get 24.</p>
+    <p class="ctx">Let's see.</p><p class="ctx">Well, what's 24 times 6?</p><p class="ctx">So I can divide by 6.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">answer</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#109</span>
+    <span class="meta">human_monologue · cell1_g24_0132_0393 · sentence 1</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">24.</p>
+    <p class="focus">5, 8, 9, and 11.</p>
+    <p class="ctx">It's 23.</p><p class="ctx">What about 17?</p><p class="ctx">Boom.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">answer</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#110</span>
+    <span class="meta">human_monologue · cell1_g24_0143_0427 · sentence 12</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">I feel like I can work with that</p><p class="ctx">7 minus 3</p><p class="ctx">so that equals 4</p>
+    <p class="focus">nope</p>
+    <p class="ctx">it's not right either</p><p class="ctx">so 21</p><p class="ctx">14</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">disagreement</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">disconfirm</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#111</span>
+    <span class="meta">human_monologue · cell1_g24_0156_0465 · sentence 4</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">We got the number 5, 9, 10, and 11!</p><p class="ctx">So... 9... we're going to do parentheses... nope, nope, nope.</p><p class="ctx">Just one parentheses... 9 minus... I... okay, I'm saying it.</p>
+    <p class="focus">Nope.</p>
+    <p class="ctx">Okay.</p><p class="ctx">9 minus 5 in parentheses... and then we're going to do parentheses... 11... 4... minus 10... No!</p><p class="ctx">Okay, that's not the right answer.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">disconfirm</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">disagreement</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#112</span>
+    <span class="meta">human_monologue · cell1_g24_0190_0569 · sentence 8</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3.</p><p class="ctx">No, that wouldn't work.</p><p class="ctx">So what if we did 11 times 2?</p>
+    <p class="focus">That would be 22.</p>
+    <p class="ctx">So 11 times 2 would give me 22.</p><p class="ctx">And then if I add 3 to that, that would be 25.</p><p class="ctx">No, that wouldn't work.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">answer</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#113</span>
+    <span class="meta">human_monologue · cell1_g24_0198_0590 · sentence 1</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Um, did we use these numbers already?</p>
+    <p class="focus">I swear we did.</p>
+    <p class="ctx">Um, okay.</p><p class="ctx">8 and 7 is 15.</p><p class="ctx">6, 7, 8, and 10.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">answer</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#114</span>
+    <span class="meta">human_debate · cell2_0686b2d0-dddc-4052-92b2-2c274f3e4def_p1 · sentence 3</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Hi</p><p class="ctx">hello i picked u, not you but the letter u</p><p class="ctx">U and 6</p>
+    <p class="focus">oh just U</p>
+    <p class="ctx">The sequence may be 3,4,5,6</p><p class="ctx">I only picked u</p><p class="ctx">so i picked both U and V</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">correction</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#115</span>
+    <span class="meta">human_debate · cell2_18f40f8c-bf2a-4e59-bf21-ee466224a0b1_p1 · sentence 21</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">lets do it</p><p class="ctx">I was way off thinking 9 and C</p><p class="ctx">Think the researchers put the (s) after cards to be misleading?</p>
+    <p class="focus">that is in case more than one vowel</p>
+    <p class="ctx">9 and C makes sense because that is just the deductive way of investigating</p><p class="ctx">which is clearly not what they want</p><p class="ctx">but we cannot click on two cards</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">answer</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#116</span>
+    <span class="meta">human_debate · cell2_47f1cd2e-ddbb-4269-aa22-79e4b7c101b6_p1 · sentence 15</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">'you don''t need to check the 4 because it doesn''t matter if it has a vowel or consonant on the other side'</p><p class="ctx">If it has a vowel, then it fulfills the rule.</p><p class="ctx">'because if it''s a vowel - it should not be 7'</p>
+    <p class="focus">'If it has a consonant it doesn''t matter what''s on the other side'</p>
+    <p class="ctx">But the U could have an odd number on the other side?</p><p class="ctx">why 7?</p><p class="ctx">Yes, we need to check the U and 7</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="2">
+  <header>
+    <span class="num">#117</span>
+    <span class="meta">human_debate · cell2_ac424128-d5a0-4894-a913-487735e61ced_p1 · sentence 28</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">I think we just pick u</p><p class="ctx">Agreed</p><p class="ctx">done?</p>
+    <p class="focus">how about 6?</p>
+    <p class="ctx">'6 could have a consanant on the other side or a vowel, it wouldn''t matter which'</p><p class="ctx">if it is not a vowel, does it break the rule?</p><p class="ctx">no</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">propositionalQuestion</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">setQuestion</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="far" data-cell="2">
+  <header>
+    <span class="num">#118</span>
+    <span class="meta">human_debate · cell2_e39b1e78-e5be-4a7a-9834-315742a229ea_p1 · sentence 15</span>
+    <span class='b far'>commissive → providing</span>
+  </header>
+  <div class="body">
+    <p class="ctx">'Agreed - sounds like they aren''t responding so I''m going to stick with U and 6'</p><p class="ctx">'Me, too.</p><p class="ctx"> I''ll wait a couple minutes for them just to make sure they have a chance to respond.'</p>
+    <p class="focus">Sounds good to me</p>
+    <p class="ctx">'Ok I''m going to submit my final decision now'</p><p class="ctx">It was good talking to you</p><p class="ctx">Me, too.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">accept</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">agreement</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="3">
+  <header>
+    <span class="num">#119</span>
+    <span class="meta">ai_debate · cell3_g24_0046_p1 · sentence 63</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">*adjusts glasses critically*</p><p class="ctx">Wait a minuteAs solution is technically correct, but lets pressure-test it for elegance.</p><p class="ctx">Nesting operations feels like brute-forcing the parentheses.</p>
+    <p class="focus">Is there a flatter, more intuitive arrangement?</p>
+    <p class="ctx">For example:</p><p class="ctx">- (6 × 6) - (3 × 2) = 36 - 6 = 30 Overshoots.</p><p class="ctx">- (6 + 6) + (3 × 2) = 12 + 6 = 18 Too low.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">propositionalQuestion</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">setQuestion</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="3">
+  <header>
+    <span class="num">#120</span>
+    <span class="meta">ai_debate · cell3_g24_0149_p1 · sentence 193</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">2. Then, add the results to 3: 3 + 0.5 + 0.5 = 4.</p><p class="ctx">3. Finally, multiply the result by 4: 4 * 4 = 16.</p><p class="ctx">This still doesn't work.</p>
+    <p class="focus">The correct combination is (4 * (3 + 1 / 2)).</p>
+    <p class="ctx">1. First, calculate the division: 1 / 2 = 0.5.</p><p class="ctx">2. Then, add the result to 3: 3 + 0.5 = 3.5.</p><p class="ctx">3. Finally, multiply the result by 4: 4 * 3.5 = 14.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="3">
+  <header>
+    <span class="num">#121</span>
+    <span class="meta">ai_debate · cell3_g24_0167_p1 · sentence 75</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">However, one correct solution is:</p><p class="ctx">(5 - (4/5)) × 8 = (5 - 0.8) × 8 = 4.2 × 8 = 33.6</p><p class="ctx">After further consideration, the correct answer is:</p>
+    <p class="focus">(5 - (4/5)) × 8 = (21/5) × 8 = (168/5) = 33.6</p>
+    <p class="ctx">We need to find the correct combination:</p><p class="ctx">(5 - (4/5)) × 8 = (5 - 0.8) × 8 = 4.2 × 8 = 33.6</p><p class="ctx">The correct solution is:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#122</span>
+    <span class="meta">ai_monologue · cell4_g24_0003_p2_0203 · sentence 41</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(10 - 5) × (8 - 5) = 5 × 3 = 15</p><p class="ctx">The correct and effective solution is:</p><p class="ctx">(10 - 5) × (8 - 5) = 5 × 3 = 15</p>
+    <p class="focus">Actually, the correct and effective solution is:</p>
+    <p class="ctx">(10 - 5) × (8 - 5) = 5 × 3 = 15</p><p class="ctx">The correct and effective solution is:</p><p class="ctx">(10 - 5) × (8 - 5) = 5 × 3 = 15</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#123</span>
+    <span class="meta">ai_monologue · cell4_g24_0003_p2_0203 · sentence 75</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(10 - 5) × (8 - 5) = 5 × 3 = 15</p><p class="ctx">The correct and effective solution is:</p><p class="ctx">(10 - 5) × (8 - 5) = 5 × 3 = 15</p>
+    <p class="focus">Actually, the correct and effective solution is:</p>
+    <p class="ctx">(10 - 5) × (8 - 5) = 5 × 3 = 15</p><p class="ctx">The correct and effective solution is:</p><p class="ctx">(10 - 5) × (8 - 5) = 5 × 3 = 15</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#124</span>
+    <span class="meta">ai_monologue · cell4_g24_0030_p3_0525 · sentence 98</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">1. Add 11 and 1:</p><p class="ctx">11 + 1 = 12</p><p class="ctx">2. Subtract 1 from 12:</p>
+    <p class="focus">12 - 1 = 11</p>
+    <p class="ctx">3. Multiply the results:</p><p class="ctx">12 × 11 = 24</p><p class="ctx">Thus, the solution is:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">answer</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#125</span>
+    <span class="meta">ai_monologue · cell4_g24_0039_p3_0571 · sentence 35</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(13 + 7/5) × 13</p><p class="ctx">Let's break it down:</p><p class="ctx">1. Calculate 13 + 7 :</p>
+    <p class="focus">13 + 7 = 20</p>
+    <p class="ctx">2. Divide 20 by 5:</p><p class="ctx">(20/5) = 4</p><p class="ctx">3. Multiply the result by 13:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">inform</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">answer</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#126</span>
+    <span class="meta">ai_monologue · cell4_g24_0044_p2_0375 · sentence 11</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">So, let's try another combination:</p><p class="ctx">(13 - 2 + 3) × 10 / 2</p><p class="ctx">But it seems complex.</p>
+    <p class="focus">A simpler and exact fit is:</p>
+    <p class="ctx">(13 - 2) + (10 - 3) = 11 + 7 = 18</p><p class="ctx">Let's try:</p><p class="ctx">(13 - 10) × (3 + 2)</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#127</span>
+    <span class="meta">ai_monologue · cell4_g24_0122_p1_0093 · sentence 127</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">3. Subtract the results:</p><p class="ctx">40 - 5 = 35</p><p class="ctx">This still doesn't work.</p>
+    <p class="focus">The correct way is:</p>
+    <p class="ctx">(8 × 4) - (5 - 1)</p><p class="ctx">Let's break it down:</p><p class="ctx">1. Calculate 8 × 4:</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#128</span>
+    <span class="meta">ai_monologue · cell4_g24_0178_p1_0107 · sentence 68</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">(13 - 1) × (5 - 1) + 10 - 2 = 24</p><p class="ctx">Therefore, the correct solution is:</p><p class="ctx">(13 - 1) × (5 - 1) = 12 × 4 = 48</p>
+    <p class="focus">48 + 10 - 2 = 24</p>
+    <p class="ctx">Therefore, the correct solution is:</p><p class="ctx">(13 - 1) × (5 - 1) + 10 - 2 = 24</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">answer</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="4">
+  <header>
+    <span class="num">#129</span>
+    <span class="meta">ai_monologue · cell4_g24_0189_p3_0542 · sentence 22</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Let's break it down to fit 24:</p><p class="ctx">12 × (7 - (12 / 4)) = 12 × (7 - 3) = 12 × 4 = 48</p><p class="ctx">Correct way:</p>
+    <p class="focus">(12 - 4) × (7 / 3) = 8 × 2 = 16</p>
+    <p class="ctx">Final correct:</p><p class="ctx">(12 - 4) × (7 / 3) = 8 × 3 = 24</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">correction</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">inform</b></div>
+    <div class="dist">tree distance 2</div>
+  </footer>
+</article>
+<article class="card" data-fam="near" data-cell="1">
+  <header>
+    <span class="num">#130</span>
+    <span class="meta">human_monologue · cell1_g24_0152_0453 · sentence 7</span>
+    <span class='b near'>near miss · same family</span>
+  </header>
+  <div class="body">
+    <p class="ctx">Minus 7 minus 6?</p><p class="ctx">No.</p><p class="ctx">7 times 6?</p>
+    <p class="focus">Minus 7 minus 5?</p>
+    <p class="ctx">Nope.</p><p class="ctx">7 times 7 is 49.</p><p class="ctx">5 times 6 is 34.</p>
+  </div>
+  <footer>
+    <div class="verdict"><span class="lbl">you said</span><b class="you">propositionalQuestion</b></div>
+    <div class="vs">vs</div>
+    <div class="verdict"><span class="lbl">hy3 said</span><b class="them">checkQuestion</b></div>
+    <div class="dist">tree distance 1</div>
+  </footer>
+</article>
+  <p class="end">Here ends the wall.<br>The gate failed. The labeling did not.</p>
+</div>
+<script>
+  const btns=[...document.querySelectorAll('.filters button')];
+  const cards=[...document.querySelectorAll('.card')];
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    btns.forEach(x=>x.classList.toggle('on',x===b));
+    const f=b.dataset.f;
+    cards.forEach(c=>{
+      const show = f==='all' || c.dataset.fam===f || c.dataset.cell===f;
+      c.style.display = show ? '' : 'none';
+    });
+  }));
+</script>
+</body></html>

@@ -1,5 +1,10 @@
 # Method 3: Dialogue-Act Tagging Sources
 
+> **The PDFs are not in this repository.** Papers referenced below by filename were kept
+> locally while the study ran; they are not redistributed here, because most are under
+> publisher copyright. Every entry carries a resolvable link or full citation -- follow
+> those instead. Filenames are left in place so this file still matches the working notes.
+
 ## Overview
 This folder contains sources for the dialogue-act tagging method. The method labels each sentence with one of the 27 Dialogue Acts from the Conversation Analysis Modelling Schema (CAMS) and counts adjacency pairs (e.g., question→answer, suggestion→accept/decline, inform→agreement/disagreement) as a supplementary structural signal. Tag definitions are taken verbatim from the CAMS website; the adjacency pair concept is grounded in Schegloff & Sacks (1973) and operationalised in CAMS.
 

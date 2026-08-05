@@ -1,0 +1,311 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[a4paper,margin=1.9cm,columnsep=0.7cm]{geometry}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{authblk}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\captionsetup{font=small,labelfont=bf,skip=5pt}
+\raggedbottom
+\setlength{\parindent}{1.1em}
+\definecolor{mono}{HTML}{2F6F9F}
+\definecolor{dia}{HTML}{C25A3C}
+\definecolor{m3gray}{HTML}{8A8A8A}
+
+\title{\vspace{-1.2em}\bfseries Monologue or Dialogue?\\[2pt]
+\large Measuring Conversational Structure in the Reasoning Traces of Large Language Models}
+\author[ ]{Oskar Engl}
+\affil[ ]{\small Johannes Kepler University Linz, Austria \quad\textit{oskar.engl@ik.me}}
+\date{\small Working version, July 2026}
+
+\begin{document}
+\twocolumn[
+\begin{@twocolumnfalse}
+\maketitle
+\begin{abstract}
+\noindent
+A reasoning model such as DeepSeek-R1 produces a long ``thinking'' trace before it gives an answer.
+That trace can be read as one mind working step by step, or as several voices exchanging proposals
+and objections. This paper asks which reading the text itself supports once it is measured. No
+reasoning trace comes labelled with its true voice structure, so we build a small grid of corpora
+whose structure is known: human and AI, monologue and dialogue. We check that each of three
+text-analysis methods can separate monologue from dialogue on these known corpora, and then apply
+them to the traces. Two of the three place the traces on the dialogue side of the scale, and the
+third, which reads the coarsest signal, places them just onto the monologue side by a small margin.
+The three methods are not equally well validated, so we state how much weight each one can bear and
+flag the one that depends on an automatic labeller. Taken together, the traces show several surface
+marks of dialogue, most clearly in how the writing style shifts from sentence to sentence and in how
+often a question is followed by an answer.
+\medskip
+\end{abstract}
+\end{@twocolumnfalse}
+]
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{fin_fig_grid.pdf}
+\caption{\textbf{Study design.} Four corpora of known voice structure (left) feed a validity check
+that each method must pass: separating monologue from dialogue on all four known cells. Methods that
+pass are applied to the DeepSeek-R1 traces (\texttt{ai-reason}) and place them on a
+monologue--dialogue scale anchored by the two same-task AI cells; the human cells serve only to
+confirm that a method works. The check shown here is the monologue/dialogue separation, which all
+three methods pass. Method~3 faces a further check on the reliability of its labels, described in
+Section~4.}
+\label{fig:grid}
+\end{figure*}
+
+\section{The question}
+Reasoning-oriented training has become standard in frontier models. Given a problem, a model such as
+DeepSeek-R1 \cite{guo2025} first produces a long stretch of intermediate text, often called a
+reasoning trace \cite{kambhampati2025}, and only then gives its final answer. These traces have a
+notable feature: each is written by a single model in one pass, yet a trace often contains questions
+and their answers, objections and concessions, and sudden reversals such as ``Wait, that is not
+right.'' In writing by people, features like these can mark a real exchange between participants,
+though they can also mark a single inner voice. This raises a question that is easy to pose and hard
+to settle: does a reasoning trace have the textual shape of a monologue or of a dialogue?
+
+The question also bears on current theory. Kim et al.~\cite{kim2026} argue that reasoning-trained
+models improve in part because they simulate a ``society of thought,'' a set of internal perspectives
+that propose, criticise, and reconcile. Older ideas in cognitive science point the same way, from
+reasoning as a social and argumentative activity \cite{mercier2017} to the mind as a set of
+interacting agents \cite{minsky1986}. Our premise is narrower and testable: if a trace is produced by
+several voices taking turns, that should leave marks in the writing. Writers differ in small and
+largely involuntary habits, such as how they use function words, how their sentences flow, and which
+conversational moves they make, and authorship analysis and conversation analysis use these habits to
+tell writers and turns apart. We therefore treat the question in operational terms: a monologue
+should read as the work of one author, and a dialogue as several voices exchanging turns, and we ask
+which of these the traces resemble.
+
+\section{The design: a calibration grid}
+No collection of reasoning traces comes labelled with its true voice structure, which is what makes
+the question hard to answer directly. We address this with the grid in Figure~\ref{fig:grid}. We
+assemble four corpora whose structure is known and vary two properties across them: who produced the
+text (a human or an AI) and whether it is a monologue or a dialogue. The four cells are human
+monologue (think-aloud protocols, in which a person speaks their thoughts aloud while solving a task
+\cite{wurgaft2025}), human dialogue (group deliberation from DeliData \cite{karadzhov2023}), AI
+monologue (a single Qwen-2.5-7B model solving a puzzle on its own), and AI dialogue (four separate
+copies of Qwen-2.5-7B, each given a role, taking turns in a debate). The fifth cell, the DeepSeek-R1
+traces, is the one whose structure we want to determine.
+
+The grid functions as a validity check, or gate. A method may report on the traces only after it has
+shown that it can separate monologue from dialogue on all four known corpora. The rationale is
+straightforward: a method that cannot tell the voices apart in a genuine four-way debate is in no
+position to rule them out in a trace, and a method that reports several voices in one person's
+think-aloud protocol is in no position to affirm them there.
+
+One design choice keeps the comparison clean: we hold the task fixed where possible. The AI
+monologue, AI dialogue, and DeepSeek-R1 cells all solve the same puzzle, Game of 24 \cite{yao2023}, a
+small arithmetic puzzle in which four given numbers must be combined with the four basic operations to
+reach 24, and the human monologue cell uses the same puzzle. A method that reads a monologue as a
+single voice therefore cannot be responding merely to the subject matter. The human dialogue cell is
+the one exception, since it uses the Wason card task, another compact logic puzzle, because no
+group-deliberation corpus exists for Game of 24; its role is only to confirm that a method can detect
+human dialogue at all, so it never anchors the placement. We also removed speaker names, role titles,
+and letter labels from both dialogue corpora before analysis, so that a method cannot detect dialogue
+by identifying who is speaking instead of reading the structure of the exchange.
+
+\section{Three methods, three signals}
+The three methods read deliberately different signals, so that agreement among them carries more
+weight than any single method alone.
+
+\textbf{Method 1: counting authors across the document} \cite{nath2019}. This method treats a
+document as a whole. It divides the text into paragraph-sized windows, describes each window by how
+often the 50 most common words occur in it, and groups similar windows together. The number of groups
+is read as the number of authors, which we reduce to a binary decision: one author, or more than one.
+Its check is balanced accuracy across the four known cells, which must exceed the level expected by
+chance. Balanced accuracy here is the average of two quantities, how often the method is correct on
+the single-author cells and how often it is correct on the multi-author cells, which prevents an
+uneven mix of the two classes from inflating the score.
+
+\textbf{Method 2: detecting style changes between sentences} \cite{schmidt2025}. This method operates
+sentence by sentence. For each pair of neighbouring sentences it estimates the probability that the
+two were written by different authors, using an encoder trained to capture writing style while
+ignoring topic \cite{patel2025}. Longer documents contain more sentence pairs, which affects the raw
+score, so we adjust for length before comparing cells. Each document receives a single number, which
+we call its \emph{lean}, indicating whether its style-change pattern lies closer to the dialogue cells
+or to the monologue cells. Its check is that the dialogue cells must lean more toward dialogue than
+the monologue cells, by a clear margin (Cliff's $\delta$ of at least $0.33$; Cliff's $\delta$ is a
+rank-based measure of how cleanly two groups separate, with a size of $0$ when they overlap completely
+and $1$ when they do not overlap at all).
+
+\textbf{Method 3: measuring question-and-answer structure} \cite{duran2022,schegloff1973}. This
+method reads the text as a sequence of conversational moves. A language model tags each utterance with
+its function using CAMS, a standard scheme whose labels include a question, an answer, an agreement,
+or a suggestion. From these tags we measure how often an \emph{adjacency pair} is completed. An
+adjacency pair is a two-part exchange in which the first part makes the second one due, such as a
+question followed by an answer, or a proposal followed by its acceptance. A single writer has little
+reason to produce completed pairs, so their presence is evidence of genuine dialogue. Method~3 must
+clear two checks, and is the only method to which this applies. The first is the same check the others
+face: its completion rate must separate the dialogue cells from the monologue cells. The second
+applies to Method~3 alone, because its labels are produced by a language model acting as a tagger. For
+that check we compare the tagger's labels with a human annotator's and require sufficient agreement.
+
+\section{Results}
+\textbf{Method 1 passes its check, but by a narrow margin.} Its balanced accuracy is $0.6088$ (95\%
+confidence interval $0.596$ to $0.621$), above the chance level of $0.50$. The composition of this
+score is important. On single-author text the method is nearly perfect, correctly labelling $0.975$
+of the human monologue documents and $0.998$ of the AI monologue documents. On multi-author text it
+is far weaker, recovering $0.423$ of the AI debates and none of the human debates. In sum, the method
+confirms a single author reliably but detects multiple authors poorly. A monologue-side placement
+therefore indicates the absence of a detected authorship signal, and should not be taken as positive
+evidence of a single voice. This caveat applies to its verdict on the traces.
+
+\textbf{Method 2 passes cleanly.} The dialogue cells lean more toward dialogue than the monologue
+cells (average lean $0.0125$ versus $-0.0105$), and the separation is strong, with Cliff's
+$\delta=0.6211$, well above the $0.33$ floor. The traces themselves lean further toward dialogue than
+either AI anchor.
+
+\textbf{Method 3 requires closer examination, since it must clear two checks.} On the first check,
+which bears directly on our question, it performs well. Its completion rate separates dialogue from
+monologue in the expected direction (Cliff's $\delta=0.4717$, above the $0.33$ floor). Within each
+producer, the dialogue cell completes more pairs than the monologue cell: $0.235$ against $0.096$ for
+the human cells, and $0.025$ against $0.003$ for the AI cells. The tagger therefore performs the
+essential task, distinguishing genuine dialogue from genuine monologue.
+
+On the second check, the tagger falls short of the threshold set in advance. We compared its labels
+with a human annotator's and measured agreement using Cohen's $\kappa$, an agreement score that
+corrects for the rate at which two labellers would match by chance. The tagger reached $\kappa=0.54$,
+below the required $0.70$.
+
+We report Method~3's result despite this outcome, and explain the decision here, since it departs from
+our original plan. Two considerations motivate it. The first is the separation just described: the
+check that bears directly on our question, distinguishing monologue from dialogue, is the one the
+tagger passed, and passed clearly. The second is that the $0.70$ threshold is too strict for this
+labelling scheme. CAMS uses a set of 28 fine-grained labels, many of them close relatives, such as
+\texttt{inform} and \texttt{suggest}, which are easily confused even by careful human coders.
+Unweighted $\kappa$ penalises a near miss between two similar tags as heavily as a disagreement
+between two unrelated ones. The CAMS authors make the same point and recommend an agreement measure
+that gives partial credit for near misses. Under such a measure, agreement rises to a tree-weighted
+value of $0.62$, and the raw share of labels on which tagger and human agree is $0.74$. These values
+remain below our original threshold, so we do not claim the labels are error-free. They indicate that
+the labels are reasonable, and that the pre-registered threshold was too severe for an inherently
+ambiguous scheme.
+
+To make this dependence explicit, we state one assumption and carry it through the paper: wherever a
+result relies on Method~3, it also relies on the assumption that the tagger is reliable. We state this
+at each point, shade Method~3 in gray in every figure, and mark it with a dagger in every table.
+Readers who accept the assumption may weigh Method~3 alongside the other two; readers who do not may
+set it aside, since the main result rests on Methods~1 and~2 alone. Under the assumption, Method~3's
+completion rate places the traces on the dialogue side: the trace rate of $0.035$ lies closer to the
+AI dialogue anchor ($0.025$) than to the AI monologue anchor ($0.003$).
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.90\textwidth]{fin_fig_split.pdf}
+\caption{\textbf{Placement of the traces by each method} on the monologue--dialogue scale (poles at
+$0$ and $1$). The shaded band is each method's margin, within which no lean is reported. Method~1 sits
+at the edge of a wide band, just onto the monologue side, a marginal call. Method~2 sits well past the
+dialogue pole. Method~3 also sits past the dialogue pole, and is shown in gray with a dagger to
+indicate that it depends on the valid-tagger assumption of Section~4.}
+\label{fig:split}
+\end{figure*}
+
+\textbf{Across the three methods} (Table~\ref{tab:verdict} and Figure~\ref{fig:split}), two of the
+signals place the traces on the dialogue side and one places them just onto the monologue side.
+Method~2, reading style changes between sentences, places them firmly past the dialogue anchor.
+Method~3, reading completed question-and-answer pairs, places them past the dialogue anchor as well,
+under the assumption above. Method~1, which reads only the coarse, whole-document sense of authorship,
+is the method that leans monologue, and it does so only marginally, at the edge of its no-decision
+band. The two methods that read fine-grained, turn-by-turn structure agree; the dissenting method is
+the one that reads the least detail.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4.5pt}
+\caption{Placement of the reasoning traces by each method. The \emph{mono/dia} column is the validity
+check every method must pass, separating monologue from dialogue on the known corpora. The
+\emph{labels} column is a further check that applies only to Method~3, on the reliability of its
+automatic tags; Method~3 did not pass it. Method~3's verdict is therefore conditional ($\dagger$) and
+shown in gray.}
+\label{tab:verdict}
+\begin{tabular}{@{}lccl@{}}
+\toprule
+Method & mono/dia & labels & Verdict \\
+\midrule
+1: author count & pass & n/a & \textcolor{mono}{monologue (marginal)} \\
+2: style switch & pass & n/a & \textcolor{dia}{dialogue} \\
+\textcolor{m3gray}{3: adjacency pairs} & \textcolor{m3gray}{pass} & \textcolor{m3gray}{fail} &
+\textcolor{m3gray}{dialogue $\dagger$} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{What it means}
+The claim here concerns the surface of the text, that is, the patterns a reader or a tool can observe
+in the writing. It says nothing directly about what occurs inside the model. On that surface, the
+picture leans toward dialogue. The traces change writing style from sentence to sentence in the manner
+of dialogue, and, under the valid-tagger assumption, they complete question-and-answer pairs at a rate
+above the dialogue anchor. The one method that points the other way reads the coarsest signal and
+makes only a marginal call; it is a conservative detector, so its monologue reading indicates the
+absence of an authorship signal, and should not be read as positive evidence of a single voice.
+
+The scope of this claim is limited. A dialogue-leaning reading does not show that a model contains
+several minds, just as a novel full of dialogue does not have several authors. It shows that the trace
+is organised like a conversation, which is a measurable fact in itself, and a natural surface
+counterpart to the internal multi-agent behaviour that Kim et al.~\cite{kim2026} describe from the
+inside, through interpretability. The outside view and the inside view point the same way, which is
+reassuring, though the present evidence stands on its own as a statement about surface structure.
+
+The study supports two readings, depending on how far the tagger is trusted. Under the valid-tagger
+assumption, two independent structural signals agree that the traces are dialogue-like, and the case
+is fairly strong. Without that assumption, the evidence rests on Methods~1 and~2, which disagree: one
+marginal monologue call from a coarse detector, and one clear dialogue call from a finer one. Even in
+the more cautious reading, nothing points cleanly to monologue, and the sharpest single signal points
+to dialogue. We present both readings so that they can be weighed separately.
+
+Two caveats temper the dialogue placements, and both concern how a distance was measured rather than
+its direction. Method~2's distance to the monologue side is partly an extrapolation, because the
+traces are much longer than the monologue anchor, so it is more accurate to say that they track the
+dialogue anchor closely over the range where the two overlap. Method~3's verdict rests on its
+completion signal, since its coarser tag-frequency profiles cannot separate the two AI anchors.
+Neither caveat changes a direction; each limits only how far past the pole the placement should be
+read.
+
+\section{Limitations}
+Several limitations should be noted. The target is a single reasoning model, DeepSeek-R1, on a single
+family of puzzles, so the verdict concerns this setting and does not yet generalise to reasoning
+traces at large. The two anchors were generated with a different base model (Qwen-2.5-7B) than the
+target, so part of the measured distance may reflect the change of model as well as voice structure,
+and the placement is best read as ``closer to which pole'' than as an exact distance. Method~2's
+monologue comparison rests on extrapolation, as noted above. Method~3's labels come from an automatic
+tagger, which is why we state the valid-tagger assumption explicitly and mark its results throughout.
+The validity check is the basis for our confidence: a method that clears it has shown that it can
+distinguish the two structures on data whose labels are known.
+
+\begin{thebibliography}{99}
+\small
+\setlength{\itemsep}{0.6pt}\setlength{\parskip}{0pt}
+\bibitem{guo2025} D.\ Guo et al. DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement
+learning. \textit{Nature} 645:633--638, 2025.
+\bibitem{kambhampati2025} S.\ Kambhampati et al. Stop anthropomorphizing intermediate tokens as
+reasoning/thinking traces! \textit{arXiv:2504.09762}, 2025.
+\bibitem{kim2026} J.\ Kim, S.\ Lai, N.\ Scherrer, B.\ Ag\"uera y Arcas, J.\ Evans. Reasoning models
+generate societies of thought. \textit{arXiv:2601.10825}, 2026.
+\bibitem{mercier2017} H.\ Mercier, D.\ Sperber. \textit{The Enigma of Reason.} Harvard Univ.\
+Press, 2017.
+\bibitem{minsky1986} M.\ Minsky. \textit{The Society of Mind.} Simon \& Schuster, 1986.
+\bibitem{wurgaft2025} D.\ Wurgaft et al. Scaling up the think-aloud method. \textit{Proc.\ CogSci},
+2025.
+\bibitem{karadzhov2023} G.\ Karadzhov, T.\ Stafford, A.\ Vlachos. DeliData: a dataset for
+deliberation in multi-party problem solving. \textit{Proc.\ ACM HCI} 7(CSCW2), 2023.
+\bibitem{yao2023} S.\ Yao et al. Tree of thoughts: deliberate problem solving with LLMs.
+\textit{NeurIPS} 36, 2023.
+\bibitem{nath2019} S.\ Nath. Style change detection by threshold-based and window-merge clustering.
+\textit{CLEF Working Notes}, 2019.
+\bibitem{schmidt2025} G.\ Schmidt et al. Style change detection using a sequential sentence-pair
+classifier. \textit{CLEF Working Notes}, 2025. \textit{arXiv:2508.00675}.
+\bibitem{patel2025} A.\ Patel et al. StyleDistance: content-independent style embeddings with
+synthetic parallel examples. \textit{NAACL}, 2025.
+\bibitem{duran2022} N.\ Duran, S.\ Battle, J.\ Smith. Inter-annotator agreement using the
+Conversation Analysis Modelling Schema. \textit{Comm.\ Methods \& Measures} 16(3):182--214, 2022.
+\bibitem{schegloff1973} E.\ Schegloff, H.\ Sacks. Opening up closings. \textit{Semiotica}
+8(4):289--327, 1973.
+\end{thebibliography}
+
+\end{document}

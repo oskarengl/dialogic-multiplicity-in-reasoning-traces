@@ -1,0 +1,83 @@
+{
+  "computed_at_utc": "2026-07-22T18:00:23+00:00",
+  "spec": "methods.md sec. 4 (placement) with sec. 3d margins, NULL-B",
+  "margins_source": "outputs\\placement\\margins_frozen.json",
+  "margins_frozen_at_utc": "2026-07-22T15:53:42+00:00",
+  "method1": {
+    "d_mono": 0.31666666666666665,
+    "d_dia": 0.5366666666666666,
+    "r": 0.40993788819875776,
+    "m": 0.3614525900211016,
+    "verdict": "monologue-leaning",
+    "verdict_stability": 0.7070000000000001,
+    "cell_means": {
+      "1": 1.0266666666666666,
+      "2": 1.0,
+      "3": 1.855,
+      "4": 1.0016666666666667,
+      "5": 1.3183333333333334
+    },
+    "s_raw": {
+      "1": 0.0292968749999999,
+      "2": 0.0019455252918288387,
+      "3": 1.0,
+      "4": 0.0,
+      "5": 0.37109375
+    }
+  },
+  "method2": {
+    "d_mono": 0.058753062146465106,
+    "d_dia": 0.015438083164591297,
+    "r": 0.7372378119440685,
+    "m": 0.11174808848766808,
+    "verdict": "dialogue-leaning",
+    "verdict_stability": 1.0,
+    "s_raw": {
+      "1": 0.4332506455014861,
+      "2": 0.5161939127266524,
+      "3": 0.6932941666477274,
+      "4": 0.4727124282809893,
+      "5": 0.7919147480489074
+    },
+    "length_extrapolation": {
+      "cell5_median_pairs": 232.0,
+      "cell5_max_pairs": 959.0,
+      "pole3_max_pairs": 823.0,
+      "pole4_max_pairs": 209.0,
+      "cell5_share_beyond_pole3_max": 0.016666666666666666,
+      "cell5_share_beyond_pole4_max": 0.6366666666666667
+    }
+  },
+  "method3": {
+    "verdict": "EXCLUDED - failed sec. 3e reliability gate (kappa = 0.5425 < 0.70); does not speak about cell (5)"
+  },
+  "pattern": "SPLIT: M1 monologue-leaning, M2 dialogue-leaning",
+  "reading": "The two methods point in opposite directions. Per sec. 4 this is read as genuinely mixed evidence - cell (5) carrying some monologue-like and some dialogue-like structure - and is a real result about reasoning traces, not a failure of the study. No tie-break is applied.",
+  "normalised_axis_pole4_0_pole3_1": {
+    "method1": {
+      "1": 0.0292968749999999,
+      "2": 0.0019455252918288387,
+      "3": 1.0,
+      "4": 0.0,
+      "5": 0.37109375
+    },
+    "method2": {
+      "1": -0.17889868432306136,
+      "2": 0.1971218685989816,
+      "3": 1.0,
+      "4": 0.0,
+      "5": 1.4470931371354683
+    }
+  },
+  "no_clear_margin_band_on_axis": {
+    "method1": [
+      0.389703347056111,
+      0.610296652943889
+    ],
+    "method2": [
+      -0.010439591328187978,
+      0.2578541952845912
+    ]
+  },
+  "method2_docs_dropped_lt2_sentences": 0
+}

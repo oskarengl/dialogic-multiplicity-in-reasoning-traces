@@ -1,0 +1,75 @@
+{
+  "frozen_at_utc": "2026-07-22T15:53:42+00:00",
+  "spec": "methods.md sec. 3d (noise-floor margin) applied via sec. 4",
+  "null_A": "literal sec. 3d: same-pole equal disjoint halves vs a fixed opposite-pole reference; r = |d(A,R)-d(B,R)|/max(...); pooled over poles (3),(4)",
+  "null_B": "equidistant synthetic probe built from pole documents at a solved mixing proportion; probe and both anchors resampled (M2 curves refit per draw)",
+  "recommended": "null_B (null_A is anti-conservative - see --selftest)",
+  "B_iters_per_pole": 1000,
+  "percentile": 95,
+  "seed": 20260722,
+  "n_cell5_documents": 600,
+  "mixing_proportion_dialogue_side": {
+    "m1": 0.5,
+    "m2": 0.24751101915297513
+  },
+  "cell5_outputs_present_at_freeze_time": {
+    "method1_predictions": false,
+    "method2_raw_scores": false
+  },
+  "inputs": {
+    "method1": "outputs/method1/calibration_predictions.jsonl",
+    "method2": "outputs/method2/calibration_raw_scores.jsonl"
+  },
+  "m2_pole_curve_forms": {
+    "dia_cell3": "semilog",
+    "mono_cell4": "semilog"
+  },
+  "n_calibration_docs": {
+    "method1": {
+      "1": 600,
+      "2": 500,
+      "3": 600,
+      "4": 600
+    },
+    "method2": {
+      "1": 559,
+      "2": 497,
+      "3": 600,
+      "4": 559
+    }
+  },
+  "margins": {
+    "m1_nullA": {
+      "m": 0.19400352733686066,
+      "median": 0.003898635477582936,
+      "p99": 0.25553662691652473,
+      "max": 0.37201907790143085,
+      "n_draws": 2000
+    },
+    "m2_nullA": {
+      "m": 0.1216942539543501,
+      "median": 0.041751384953747986,
+      "p99": 0.16007219599208738,
+      "max": 0.22040365224863168,
+      "n_draws": 2000
+    },
+    "m1_nullB": {
+      "m": 0.3614525900211016,
+      "median": 0.13914594177752093,
+      "p99": 0.4437165617623918,
+      "max": 0.5164473684210528,
+      "n_draws": 1000
+    },
+    "m2_nullB": {
+      "m": 0.11174808848766808,
+      "median": 0.03952234292671057,
+      "p99": 0.14488335398095728,
+      "max": 0.2583659317292198,
+      "n_draws": 1000
+    }
+  },
+  "MARGIN_M1_nullB": 0.3614525900211016,
+  "MARGIN_M2_nullB": 0.11174808848766808,
+  "MARGIN_M1_nullA": 0.19400352733686066,
+  "MARGIN_M2_nullA": 0.1216942539543501
+}

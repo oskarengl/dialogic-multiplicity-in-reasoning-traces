@@ -1,0 +1,187 @@
+diff --git a/src/algorithms/threshold_clustering/cluster_graph.py b/src/algorithms/threshold_clustering/cluster_graph.py
+index 0cced78..a54cb6b 100644
+--- a/src/algorithms/threshold_clustering/cluster_graph.py
++++ b/src/algorithms/threshold_clustering/cluster_graph.py
+@@ -7,6 +7,13 @@ import copy
+ from statistics import mean, stdev
+ 
+ 
++def _entry_in_array(entry, array):
++    """Check if a 3-element entry is present in a 2D array of entries."""
++    if len(array) == 0:
++        return False
++    return np.any(np.all(array == entry, axis=1))
++
++
+ def create_cg(edge_dist_array):
+     """
+     Given an edge distance array, returns a new cluster graph
+@@ -102,7 +109,7 @@ def check_and_add_node(cg, node, edge_dist_array, add_node_threshold):
+     avg_dist = get_cg_avg_dist(cg)
+     cluster_size = len(cg.nodes())
+     if cluster_size>0 and avg_dist>0:
+-        add_node_threshold = add_node_threshold /(cluster_size * avg_dist)
++        add_node_threshold = add_node_threshold / cluster_size
+     #print("Attempting to add node", node, " to cluster ", cg.nodes())
+     #print("Add Node threshold: ", add_node_threshold)
+     if not cg_has_node(cg, node) and check_node_adding_criteria(cg, edge_dist_array, add_node_threshold):
+@@ -126,7 +133,7 @@ def check_and_add_node2(cg, node, edge_dist_array, add_node_threshold):
+     avg_dist = get_cg_avg_dist(cg)
+     cluster_size = len(cg.nodes())
+     if cluster_size>0 and avg_dist>0:
+-        add_node_threshold = add_node_threshold /(cluster_size * avg_dist)
++        add_node_threshold = add_node_threshold / cluster_size
+         if not cg_has_node(cg, node) and check_node_adding_criteria(cg, edge_dist_array, add_node_threshold):
+             #print("Attempting to add node", node, " to cluster ", cg.nodes())
+             #print("Add Node threshold: ", add_node_threshold)
+@@ -175,9 +182,9 @@ def check_cg_merge_criteria(cg1, cg2, edge_dist_array, merge_cluster_threshold):
+     merge_cluster_threshold_cg1 = merge_cluster_threshold
+     merge_cluster_threshold_cg2 = merge_cluster_threshold
+     if cluster_size_cg1 > 0 and avg_dist_cg1>0:
+-        merge_cluster_threshold_cg1 = merge_cluster_threshold / (cluster_size_cg1 * avg_dist_cg1)
++        merge_cluster_threshold_cg1 = merge_cluster_threshold / cluster_size_cg1
+     if cluster_size_cg2 > 0 and avg_dist_cg2:
+-        merge_cluster_threshold_cg2 = merge_cluster_threshold / (cluster_size_cg2 * avg_dist_cg2)
++        merge_cluster_threshold_cg2 = merge_cluster_threshold / cluster_size_cg2
+     new_cg = merge_clusters(cg1, cg2, edge_dist_array)
+     new_cg_avg_dist = get_cg_avg_dist(new_cg)
+     cg1_avg_dist = get_cg_avg_dist(cg1)
+@@ -215,22 +222,22 @@ def check_cg_merge_criteria2(cg1, cg2, edge_dist_array, merge_cluster_threshold)
+     new_cg = merge_clusters(cg1, cg2, edge_dist_array)
+     new_cg_avg_dist = get_cg_avg_dist(new_cg)
+     if cluster_size_cg1 > 0 and cluster_size_cg2 > 0 and avg_dist_cg1>0 and avg_dist_cg2>0:
+-        merge_cluster_threshold_cg1 = merge_cluster_threshold / (cluster_size_cg1 * avg_dist_cg1)
+-        merge_cluster_threshold_cg2 = merge_cluster_threshold / (cluster_size_cg2 * avg_dist_cg2)
++        merge_cluster_threshold_cg1 = merge_cluster_threshold / cluster_size_cg1
++        merge_cluster_threshold_cg2 = merge_cluster_threshold / cluster_size_cg2
+         diff_dist_c1 = ((new_cg_avg_dist - avg_dist_cg1)*100)/avg_dist_cg1
+         diff_dist_c2 = ((new_cg_avg_dist - avg_dist_cg2)*100)/avg_dist_cg2
+         #print("merge cluster threshold cg1: ", merge_cluster_threshold_cg1, " cg2: ", merge_cluster_threshold_cg2)
+         #print(diff_dist_c1, diff_dist_c2)
+         return diff_dist_c1 < merge_cluster_threshold_cg1 and diff_dist_c2 < merge_cluster_threshold_cg2
+     elif cluster_size_cg1 > 0 and cluster_size_cg2 > 0 and avg_dist_cg1 == 0 and avg_dist_cg2 > 0:
+-        merge_cluster_threshold_cg2 = merge_cluster_threshold / (cluster_size_cg2 * avg_dist_cg2)
++        merge_cluster_threshold_cg2 = merge_cluster_threshold / cluster_size_cg2
+         diff_dist_c2 = ((new_cg_avg_dist - avg_dist_cg2) * 100) / avg_dist_cg2
+         #print(" cg2: ", merge_cluster_threshold_cg2)
+         #print(0.4, diff_dist_c2)
+         #print("new avg dist", new_cg_avg_dist )
+         return new_cg_avg_dist < 0.3 and diff_dist_c2 < merge_cluster_threshold_cg2
+     elif cluster_size_cg1 > 0 and cluster_size_cg2 > 0 and avg_dist_cg1 > 0 and avg_dist_cg2 == 0:
+-        merge_cluster_threshold_cg1 = merge_cluster_threshold / (cluster_size_cg1 * avg_dist_cg1)
++        merge_cluster_threshold_cg1 = merge_cluster_threshold / cluster_size_cg1
+         diff_dist_c1 = ((new_cg_avg_dist - avg_dist_cg1) * 100) / avg_dist_cg1
+         #print(" cg1: ", merge_cluster_threshold_cg1)
+         #print(0.4, diff_dist_c1)
+@@ -249,7 +256,7 @@ def check_and_merge_cg(cg1, cg2, dist_array, merge_cluster_threshold):
+     :param merge_threshold: Two clusters can be merged together if the average distance of the new cluster is below
+     the merge_thresholds for either contributing clusters
+     """
+-    nodes = set(list(cg1.node.keys()) + list( cg2.node.keys()))
++    nodes = set(cg1.nodes) | set(cg2.nodes)
+     selected_dist_array = np.asarray([e for e in dist_array if e[0] in nodes and e[1] in nodes])
+     #print(selected_dist_array)
+     if check_cg_merge_criteria2(cg1, cg2, selected_dist_array, merge_cluster_threshold):
+@@ -368,16 +375,16 @@ def cluster_graph(node_labels, dist_matrix, merge_cluster_threshold = 50, add_no
+     #print("Sorted dist array")
+     #print(sorted_dist_array)
+     cg_list = [] # placeholder list to contain cluster_graphs
+-    entries_already_traversed = np.asarray([])
+-    ''' Placeholder list to contain the entries that have been used before they were traversed, 
+-    perhaps because an entry containing one of the nodes was being processed. 
+-    The idea is to prevent entries that were traversed from being traversed again. 
++    entries_already_traversed = np.asarray([]).reshape(0, 3)
++    ''' Placeholder list to contain the entries that have been used before they were traversed,
++    perhaps because an entry containing one of the nodes was being processed.
++    The idea is to prevent entries that were traversed from being traversed again.
+     Can be programmed differently to not require this complication
+     '''
+     for i in range(0, len(sorted_dist_array)): # for all entries in the sorted_dist_arr
+         entry = sorted_dist_array[i]
+         #print("Entries covered ", entries_already_traversed)
+-        if entry not in entries_already_traversed:
++        if not _entry_in_array(entry, entries_already_traversed):
+             #print("\n\n\n Evaluating edge ", entry)
+             exclude_indices = range(0, i) # indices covered in order
+             remaining_dist_array = remove_indices(sorted_dist_array, exclude_indices) #remaining dist_array after entry
+@@ -446,13 +453,17 @@ def update_entry_already_traversed_list(old_traversed_array, new_entry_array):
+         Keyword arguments:
+             cg_list: list of cluster grpahs
+     """
+-    #print(dist_array.shape, new_entry_array.shape)
+-    entries_to_add = [entry for entry in new_entry_array if entry not in old_traversed_array]
+-    if len(entries_to_add) > 0 :
++    if new_entry_array is None or len(new_entry_array) == 0:
++        return old_traversed_array
++    entries_to_add = [entry for entry in new_entry_array if not _entry_in_array(entry, old_traversed_array)]
++    if len(entries_to_add) > 0:
++        entries_to_add = np.asarray(entries_to_add)
++        if len(entries_to_add.shape) == 1:
++            entries_to_add = entries_to_add.reshape(1, -1)
+         if len(old_traversed_array) > 0:
+             return np.concatenate((old_traversed_array, entries_to_add), axis=0)
+         else:
+-            return new_entry_array
++            return entries_to_add
+     else:
+         return old_traversed_array
+ 
+diff --git a/src/algorithms/threshold_clustering/executor.py b/src/algorithms/threshold_clustering/executor.py
+index d403051..4a4bdd1 100644
+--- a/src/algorithms/threshold_clustering/executor.py
++++ b/src/algorithms/threshold_clustering/executor.py
+@@ -88,7 +88,7 @@ def execute_threshold_clustering(text, merge_threshold, add_node_threshold, prun
+         cg_list = cluster_graph(node_labels, dist_matrix, merge_cluster_threshold=merge_threshold,
+                                 add_node_threshold=add_node_threshold)
+         if prune:
+-            prune_clusters(cg_list)
++            cg_list = prune_clusters(cg_list)
+         number_of_authors = reduce_excess_authors(cg_list) # reduces authors when there are too many cluster graphs, say more than 5
+     return number_of_authors
+ 
+diff --git a/src/algorithms/window_merge_clustering/executor.py b/src/algorithms/window_merge_clustering/executor.py
+index cb962af..d0b8969 100644
+--- a/src/algorithms/window_merge_clustering/executor.py
++++ b/src/algorithms/window_merge_clustering/executor.py
+@@ -121,7 +121,7 @@ def get_number_of_authors(cluster_list_obj, rejected_windows, windows):
+     if rejected_windows is None:
+         return authors
+     labels = ['w' + str(i) for i in range(0, len(windows))]
+-    win_len_arr = np.array([len(win) for win in windows])
++    win_len_arr = [len(win) for win in windows]
+     greater_than_threshold = 0
+     for i in range(0, len(windows)):
+         if labels[i] in rejected_windows:
+@@ -155,7 +155,9 @@ def execute_window_merge_clustering(text, use_duplication_feature= True):
+         number_of_authors = get_number_of_authors(trimmed_cluster_list_obj, rejected_windows, windows)  # len(cluster_list_obj_cut)#
+         if number_of_authors == 0:
+             number_of_authors = 1
+-    except:
++    except Exception as _e:
++        import traceback
+         print("Something went wrong. Appending the predicted authors with a 1")
++        traceback.print_exc()
+         number_of_authors = 1
+     return number_of_authors
+\ No newline at end of file
+diff --git a/src/main.py b/src/main.py
+index 949a646..e3c24ef 100644
+--- a/src/main.py
++++ b/src/main.py
+@@ -10,6 +10,7 @@ import preprocess_NLP_pkg
+ from src.algorithms.window_merge_clustering.executor import execute_window_merge_clustering
+ from src.algorithms.threshold_clustering.executor import execute_threshold_clustering
+ from src.load_data import write_result_to_output_dir
++import os
+ import re
+ import sys
+ import getopt
+@@ -36,7 +37,7 @@ if __name__ == '__main__':
+     files.sort()
+     for i in range(0, len(files)):
+         file = files[i]
+-        training_text = preprocess_NLP_pkg.read_file(inputFolder + "/" + file, mode='rb',
++        training_text = preprocess_NLP_pkg.read_file(os.path.join(inputFolder, file), mode='rb',
+                                                          ignore_comments=False).decode('utf-8')
+         prediction_TBC = execute_threshold_clustering(training_text, merge_threshold=50, add_node_threshold=50,
+                                                     prune=True, number_of_terms=50,

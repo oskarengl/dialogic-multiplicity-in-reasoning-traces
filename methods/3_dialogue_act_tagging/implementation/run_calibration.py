@@ -46,7 +46,7 @@ def report():
         mean_r = np.mean(r) if r else float("nan")
         print(f"cell {c} ({S.CELL_LABEL[c]:16s}) n_docs={n_docs:4d}  "
               f"FPP-absent={n_absent:4d} ({n_absent/n_docs:.1%})  "
-              f"defined_n={len(r):4d}  mean_rate={mean_r:.4f}")
+              f"scored_n={len(r):4d}  mean_rate={mean_r:.4f}  (FPP-absent scored 0)")
 
     dia = np.array(sum((rates[c] for c in DIALOGUE), []))
     mono = np.array(sum((rates[c] for c in MONOLOGUE), []))

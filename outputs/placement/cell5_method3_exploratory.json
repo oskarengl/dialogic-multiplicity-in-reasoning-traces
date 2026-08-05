@@ -1,0 +1,278 @@
+{
+  "status": "EXPLORATORY",
+  "banner": "EXPLORATORY - NOT A CONFIRMATORY RESULT\nMethod 3 failed the methods.md sec. 3e reliability gate (kappa = 0.5425, 95% CI [0.4788, 0.6038], bar 0.70).\nThe confirmatory placement of cell (5) is Methods 1 and 2 only and is frozen in\noutputs/placement/cell5_placement.{txt,json}. Nothing below enters Table X or Fig X.1,\nand nothing below resolves the M1/M2 split.\nThe margins here are POST-HOC: they were computed on 2026-07-23, after the M1/M2 result\nwas known. The M1/M2 margins were frozen 2026-07-22T15:53:42Z, before cell (5) existed.",
+  "confirmatory": false,
+  "enters_table_x": false,
+  "enters_fig_x1": false,
+  "margin_frozen_before_target": false,
+  "margin_computed_at_utc": "2026-07-22T22:59:54+00:00",
+  "seed": 20260723,
+  "b_iters": 1000,
+  "boot_stability_draws": 2000,
+  "kappa": 0.5425,
+  "kappa_ci": [
+    0.4788,
+    0.6038
+  ],
+  "kappa_bar": 0.7,
+  "cells": {
+    "1": {
+      "n_docs": 600,
+      "n_sentences": 12166,
+      "n_fpp_absent": 26,
+      "fpp_absent_share": 0.043333333333333335,
+      "n_defined_rates": 574,
+      "mean_completion_rate": 0.09982153193698066,
+      "n_bad_lines": 0
+    },
+    "2": {
+      "n_docs": 500,
+      "n_sentences": 14794,
+      "n_fpp_absent": 0,
+      "fpp_absent_share": 0.0,
+      "n_defined_rates": 500,
+      "mean_completion_rate": 0.23495039055868466,
+      "n_bad_lines": 0
+    },
+    "3": {
+      "n_docs": 591,
+      "n_sentences": 75353,
+      "n_fpp_absent": 0,
+      "fpp_absent_share": 0.0,
+      "n_defined_rates": 591,
+      "mean_completion_rate": 0.024764184147182084,
+      "n_bad_lines": 0
+    },
+    "4": {
+      "n_docs": 597,
+      "n_sentences": 18172,
+      "n_fpp_absent": 0,
+      "fpp_absent_share": 0.0,
+      "n_defined_rates": 597,
+      "mean_completion_rate": 0.002980413286483745,
+      "n_bad_lines": 0
+    },
+    "5": {
+      "n_docs": 597,
+      "n_sentences": 160343,
+      "n_fpp_absent": 0,
+      "fpp_absent_share": 0.0,
+      "n_defined_rates": 597,
+      "mean_completion_rate": 0.03497400722206528,
+      "n_bad_lines": 11
+    }
+  },
+  "margins_post_hoc": {
+    "a_unigram": {
+      "nullA": {
+        "m": 0.24270773103988239,
+        "median": 0.0890523752544643,
+        "p99": 0.29855751923929724,
+        "max": 0.40048979080445457,
+        "n_draws": 2000
+      },
+      "nullB": {
+        "m": 0.943353516345626,
+        "median": 0.8773881899939755,
+        "p99": 0.9616242767740699,
+        "max": 0.9745290471499631,
+        "n_draws": 1000
+      },
+      "mix_p": 0.41241941035849194
+    },
+    "b_bigram": {
+      "nullA": {
+        "m": 0.2267377930635914,
+        "median": 0.07906630568511508,
+        "p99": 0.2834290026743249,
+        "max": 0.37029140377418834,
+        "n_draws": 2000
+      },
+      "nullB": {
+        "m": 0.9082190923518079,
+        "median": 0.8438682326954159,
+        "p99": 0.9227549151899745,
+        "max": 0.9380060502107191,
+        "n_draws": 1000
+      },
+      "mix_p": 0.41394641353636885
+    },
+    "c_completion": {
+      "nullA": {
+        "m": 0.21453099789927715,
+        "median": 0.07154219905786438,
+        "p99": 0.28356338837546213,
+        "max": 0.36517818683955733,
+        "n_draws": 2000
+      },
+      "nullB": {
+        "m": 0.4403914504523484,
+        "median": 0.17577845560865224,
+        "p99": 0.5556621250922006,
+        "max": 0.7172138263937088,
+        "n_draws": 1000
+      },
+      "mix_p": 0.5
+    }
+  },
+  "placement": {
+    "a_unigram": {
+      "d_mono": 0.1496171179886475,
+      "d_dia": 0.16122080801216124,
+      "r": 0.071973898199533,
+      "m": 0.943353516345626,
+      "verdict": "no clear margin",
+      "verdict_stability": 1.0,
+      "pole_to_pole": 0.05229084281690426,
+      "per_cell_distances": {
+        "1": {
+          "d_mono": 0.16749700902459336,
+          "d_dia": 0.14967044201387883
+        },
+        "2": {
+          "d_mono": 0.2900631380505977,
+          "d_dia": 0.20976428750531795
+        },
+        "3": {
+          "d_mono": 0.05229084281690426,
+          "d_dia": 0.0
+        },
+        "4": {
+          "d_mono": 0.0,
+          "d_dia": 0.05229084281690426
+        },
+        "5": {
+          "d_mono": 0.1496171179886475,
+          "d_dia": 0.16122080801216124
+        }
+      },
+      "s_raw": {
+        "1": 0.5281027686673816,
+        "2": 0.5803265751733913,
+        "3": 1.0,
+        "4": 0.0,
+        "5": 0.48133482266336514
+      }
+    },
+    "b_bigram": {
+      "d_mono": 0.2776981496876219,
+      "d_dia": 0.2790893342022115,
+      "r": 0.004984728343583398,
+      "m": 0.9082190923518079,
+      "verdict": "no clear margin",
+      "verdict_stability": 1.0,
+      "pole_to_pole": 0.10184152067174101,
+      "per_cell_distances": {
+        "1": {
+          "d_mono": 0.31481613920956825,
+          "d_dia": 0.27311926688353344
+        },
+        "2": {
+          "d_mono": 0.4821575836296492,
+          "d_dia": 0.35271640364591134
+        },
+        "3": {
+          "d_mono": 0.10184152067174101,
+          "d_dia": 0.0
+        },
+        "4": {
+          "d_mono": 0.0,
+          "d_dia": 0.10184152067174101
+        },
+        "5": {
+          "d_mono": 0.2776981496876219,
+          "d_dia": 0.2790893342022115
+        }
+      },
+      "s_raw": {
+        "1": 0.5354604195409113,
+        "2": 0.5775213876324872,
+        "3": 1.0,
+        "4": 0.0,
+        "5": 0.4987507042140472
+      }
+    },
+    "c_completion": {
+      "d_mono": 0.03199359393558153,
+      "d_dia": 0.010209823074883193,
+      "r": 0.6808791442611771,
+      "m": 0.4403914504523484,
+      "verdict": "dialogue-leaning",
+      "verdict_stability": 1.0,
+      "cell_means": {
+        "1": 0.09982153193698066,
+        "2": 0.23495039055868466,
+        "3": 0.024764184147182084,
+        "4": 0.002980413286483745,
+        "5": 0.03497400722206528
+      },
+      "cell_fpp_absent_share": {
+        "1": 0.043333333333333335,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "cell_defined_n": {
+        "1": 574,
+        "2": 500,
+        "3": 591,
+        "4": 597,
+        "5": 597
+      },
+      "pole_to_pole": 0.02178377086069834,
+      "per_cell_distances": {
+        "1": {
+          "d_mono": 0.09684111865049692,
+          "d_dia": 0.07505734778979858
+        },
+        "2": {
+          "d_mono": 0.23196997727220092,
+          "d_dia": 0.21018620641150257
+        },
+        "3": {
+          "d_mono": 0.02178377086069834,
+          "d_dia": 0.0
+        },
+        "4": {
+          "d_mono": 0.0,
+          "d_dia": 0.02178377086069834
+        },
+        "5": {
+          "d_mono": 0.03199359393558153,
+          "d_dia": 0.010209823074883193
+        }
+      },
+      "s_raw": {
+        "1": 0.5633623187914373,
+        "2": 0.5246335702909466,
+        "3": 1.0,
+        "4": 0.0,
+        "5": 0.7580806532240844
+      }
+    }
+  },
+  "axis_normalised": {
+    "a_unigram": {
+      "1": 0.5281027686673816,
+      "2": 0.5803265751733913,
+      "3": 1.0,
+      "4": 0.0,
+      "5": 0.48133482266336514
+    },
+    "b_bigram": {
+      "1": 0.5354604195409113,
+      "2": 0.5775213876324872,
+      "3": 1.0,
+      "4": 0.0,
+      "5": 0.4987507042140472
+    },
+    "c_completion": {
+      "1": 0.5633623187914373,
+      "2": 0.5246335702909466,
+      "3": 1.0,
+      "4": 0.0,
+      "5": 0.7580806532240844
+    }
+  }
+}

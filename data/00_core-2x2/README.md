@@ -4,22 +4,35 @@ This folder is the minimal analysis-ready layer for the five research cells. It 
 
 ## Research cells
 
-| Cell | Folder | Main file | Meaning |
-|---|---|---|---|
-| ① | `human_monologue/` | `processed_sample_600_human_think_aloud.jsonl` | Processed 600-row Game-of-24 think-aloud sample |
-| ② | `human_debate/` | `processed_human_debate.jsonl` | Processed human Wason group dialogues |
-| ③ | `ai_debate/` | `processed_ai_debate.jsonl` | Processed AI multi-agent debates |
-| ④ | `ai_monologue/` | `processed_prompted_ai_monologue.jsonl` | Processed AI prompted-monologue condition |
-| ⑤ | `ai_reasoning/` | `processed_native_reasoning_traces.jsonl` | Processed native DeepSeek-R1 reasoning traces |
+| Cell | Folder | File the methods actually read | N | Meaning |
+|---|---|---|---|---|
+| ① | `human_monologue/` | `all samples (source in raw folder)/sample_600_human_think_aloud.jsonl` | 600 | Game-of-24 think-aloud sample |
+| ② | `human_debate/` | `processed_human_debate.jsonl` | 500 | Processed human Wason group dialogues |
+| ③ | `ai_debate/` | `processed_ai_debate.jsonl` | 600 | Processed AI multi-agent debates |
+| ④ | `ai_monologue/` | `processed_prompted_ai_monologue.jsonl` | 600 | Processed AI prompted-monologue condition |
+| ⑤ | `ai_reasoning/` | `processed_native_reasoning_traces.jsonl` | 600 | Processed native DeepSeek-R1 reasoning traces |
 
 ## File naming
 
-All files in this folder are `processed_...jsonl` analysis inputs. The 600-row human-monologue file is the development sample used by the current Method 3 runner.
+Cells ②–⑤ each read the `processed_*.jsonl` file at the top of their folder.
 
-## Where the other files went
+**Cell ① is the exception, and the name misleads.**
+`human_monologue/processed_sample_600_human_think_aloud.jsonl` holds **5,143** documents
+despite the `sample_600` in its name — it is the full processed think-aloud set. The
+600-document sample the study actually uses is
+`human_monologue/all samples (source in raw folder)/sample_600_human_think_aloud.jsonl`.
 
-- `data/raw/`: raw API outputs and original human-source repositories, grouped by research cell.
-- `data/archive/`: regenerated/original variants, generation logs, historical samples, and diagnostics.
-- `data/reference/`: unrelated benchmark datasets, puzzle sets, and the local IQ2 environment.
+Both runners point at the 600-document file (`scripts/run_method3_all_cells.py:28`, Method
+2's `run_calibration.py:58`), and Method 2's calibration output contains exactly 600 cell-①
+documents. The 5,143-row file is kept as the set the sample was drawn from, and is not read
+by any analysis.
 
-Nothing was deleted. The legacy empty folders left by the earlier layout are retained until explicitly approved for removal.
+## Where the other files live
+
+- `data/raw_datasets/`: upstream human corpora (submodules) and the Qwen/DeepSeek generation runs.
+- `data/archive/`: pre-speaker-fix versions of the two dialogue cells.
+- `data/problem_sets/`: Game of 24 selection and Wason items.
+- `data/associated_files/`: vocabulary, character-frequency diagnostics, known data issues.
+
+See [`../README.md`](../README.md) for provenance, licences, and the PAN 2019 fetch
+instructions.

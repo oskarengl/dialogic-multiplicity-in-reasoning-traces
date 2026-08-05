@@ -1,0 +1,49 @@
+EXPLORATORY — WEIGHTED INTER-ANNOTATOR AGREEMENT (NOT A GATE)
+============================================================
+Run date: 2026-07-22
+Script:   scripts/exploratory_weighted_agreement.py
+Inputs:   outputs/method3/reliability/worksheet.csv (503 hand labels, commit aecfd6f)
+          methods/3_dialogue_act_tagging/sources/duran_cams_agreement/da_labels_tree.json
+
+Rationale: Duran, Battle & Smith (2022) — the CAMS authors — argue unweighted
+pi/kappa are not an acceptable measure for dialogue-act labeling, since they give
+no credit for semantically near-miss labels. They use weighted coefficients with a
+distance matrix derived from the CAMS DA tree. This reproduces that on our data.
+
+THE PRE-REGISTERED GATE (unweighted kappa >= 0.70) FAILED AT 0.5425 AND THAT
+VERDICT STANDS. The weighted measure was adopted after seeing that number, so it
+is reported as exploratory context and does not place cell 5.
+
+[validation] Artstein & Poesio (2005) fixture, via Duran et al.
+[validation]   alpha       got 0.8156  expected 0.8156
+[validation]   alpha_prime got 0.8146  expected 0.8146
+[validation]   beta        got 0.8163  expected 0.8163
+[validation]   PASS
+
+n pairs total        = 503
+dropped ('none' tag) = 14   (no node in the CAMS DA tree)
+n scored             = 489
+
+--- Duran normalisation (column-wise) ---
+  Krippendorff alpha     = 0.6188
+  Artstein-Poesio alpha' = 0.6184
+  Artstein-Poesio beta   = 0.6185
+  alpha bootstrap 95% CI = [0.5531, 0.6864]
+
+  cell       n    alpha
+  1        119   0.6766
+  2         81   0.6414
+  3        124   0.6724
+  4        165   0.4236
+
+--- symmetric (global max) ---
+  Krippendorff alpha     = 0.6207
+  Artstein-Poesio alpha' = 0.6203
+  Artstein-Poesio beta   = 0.6206
+
+Reference points:
+  unweighted Cohen's kappa, 28 tags (PRE-REGISTERED) = 0.5425  [0.4788, 0.6038]  FAIL vs 0.70
+  unweighted Cohen's kappa, 9 families (exploratory) = 0.6074  [0.5318, 0.6768]
+
+NOTE: no threshold applies to the numbers above. The pre-registered gate
+was unweighted kappa >= 0.70 and it FAILED. This is exploratory context only.

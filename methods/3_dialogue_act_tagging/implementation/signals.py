@@ -156,13 +156,20 @@ def doc_completion_rate(tags):
 
 
 def cell_completion_rates(docs):
-    """Returns (rates: list of defined per-doc rates, n_fpp_absent, n_docs)."""
+    """Returns (rates, n_fpp_absent, n_docs).
+
+    One entry per document in `rates`: its completion rate, or 0.0 for a document that
+    contains no FPP. Per methods.md sec. 3c, an FPP-absent document initiates no adjacency
+    pairs and completes none of them, so it is scored 0 and folded directly into the cell
+    mean (rather than excluded). `n_fpp_absent` still counts these documents so the FPP-absent
+    share can be reported as descriptive context."""
     rates = []
     n_absent = 0
     for d in docs:
         r, _ = doc_completion_rate(d["tags"])
         if r is None:
             n_absent += 1
+            rates.append(0.0)
         else:
             rates.append(r)
     return rates, n_absent, len(docs)

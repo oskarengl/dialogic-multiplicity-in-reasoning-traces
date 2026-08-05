@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+*.egg-info/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+paper/build/
+
+# Model checkpoints -- fetch from upstream, never commit
+*.ckpt
+*.pt
+*.safetensors
+
+# PAN 2019 corpus -- access-restricted, not redistributable.
+# See methods/1_style_change_detection/pan19_data/README.md
+methods/1_style_change_detection/pan19_data/*
+!methods/1_style_change_detection/pan19_data/README.md
+
+# Editor and OS
+.obsidian/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Agent tooling
+.claude/worktrees/
+.claude/checkpoints/

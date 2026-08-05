@@ -1,0 +1,45 @@
+CELL (5) ai_reasoning - PLACEMENT
+==============================================================================
+computed (UTC)   : 2026-07-22T18:00:23+00:00
+margins frozen   : 2026-07-22T15:53:42+00:00  (NULL-B, margins_frozen.json)
+spec             : methods.md sec. 4 (placement) with sec. 3d margins, NULL-B
+
+TABLE X - methods x {passed Step 1?, cell-(5) verdict, margin}
+------------------------------------------------------------------------------
+method                              Step 1   d_mono    d_dia       r       m
+M1 style-change (author count)        PASS   0.3167   0.5367  0.4099  0.3615
+M2 stylometric step-change            PASS   0.0588   0.0154  0.7372  0.1117
+M3 dialogue-act tagging               FAIL        -        -       -       -
+
+  M1 verdict : monologue-leaning   (bootstrap stability 70.7%)
+  M2 verdict : dialogue-leaning   (bootstrap stability 100.0%)
+  M3 verdict : excluded - failed the sec. 3e reliability gate (kappa = 0.5425 < 0.70)
+
+PATTERN (methods.md sec. 4 - reported, not voted)
+------------------------------------------------------------------------------
+  SPLIT: M1 monologue-leaning, M2 dialogue-leaning
+
+  The two methods point in opposite directions. Per sec. 4 this is read as genuinely mixed evidence - cell (5) carrying some monologue-like and some dialogue-like structure - and is a real result about reasoning traces, not a failure of the study. No tie-break is applied.
+
+NORMALISED AXIS (pole (4) = 0, pole (3) = 1)  - Fig X.1
+------------------------------------------------------------------------------
+cell                       M1         M2
+(4) ai_mono [pole]     0.0000     0.0000
+(1) human_mono         0.0293    -0.1789
+(2) human_debate       0.0019     0.1971
+(3) ai_debate [pole]     1.0000     1.0000
+(5) ai_reasoning *     0.3711     1.4471
+
+  no-clear-margin band  M1: [0.3897, 0.6103]
+                        M2: [-0.0104, 0.2579]
+  cells (1) and (2) are context only - sec. 3d restricts the anchors to the AI pair.
+
+M2 LENGTH EXTRAPOLATION (descriptive - Fig M2.2)
+------------------------------------------------------------------------------
+  cell (5) median sentence pairs : 232
+  cell (5) max sentence pairs    : 959
+  pole (3) max / pole (4) max    : 823 / 209
+  share of cell (5) beyond pole (3)'s observed max : 1.7%
+  share of cell (5) beyond pole (4)'s observed max : 63.7%
+  Both pole curves are being extrapolated here; read the verdict with Fig M2.2.
+

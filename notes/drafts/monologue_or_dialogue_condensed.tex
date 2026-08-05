@@ -1,0 +1,243 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[a4paper,margin=1.9cm,columnsep=0.7cm]{geometry}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{authblk}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\captionsetup{font=small,labelfont=bf,skip=5pt}
+\setlength{\parindent}{1.1em}
+\definecolor{mono}{HTML}{2F6F9F}
+\definecolor{dia}{HTML}{C25A3C}
+
+\title{\vspace{-1.2em}\bfseries Monologue or Dialogue?\\[2pt]
+\large Measuring Conversational Structure in the Reasoning Traces of Large Language Models}
+\author[ ]{Oskar Engl}
+\affil[ ]{\small Johannes Kepler University Linz, Austria \quad\textit{oskar.engl@ik.me}}
+\date{\small Condensed version --- July 2026}
+
+\begin{document}
+\twocolumn[
+\begin{@twocolumnfalse}
+\maketitle
+\begin{abstract}
+\noindent
+A reasoning model such as DeepSeek-R1 emits a long ``thinking'' trace before it answers. That
+trace can read as one mind reasoning step by step, or as several voices trading proposals and
+objections. We ask which description the \emph{text} fits when the question is put to measurement.
+Because no reasoning trace comes labelled with its true voice structure, we build a $2\times2$
+grid of corpora whose structure \emph{is} known --- human and AI, monologue and dialogue --- and
+let each detection method judge the traces only after it passes a pre-registered validity gate on
+the four known corpora. Of three methods, two style-based detectors pass and a dialogue-act
+detector fails and is set aside. The two survivors \emph{disagree}: a document-level author-count
+method places the traces just onto the monologue side of its (wide) decision band, while a
+sentence-level style-switch method places them firmly past the dialogue pole. R1 traces therefore
+carry local, sentence-level marks of style switching \emph{without} a matching separation into
+distinct document-level authors --- a single narrator whose register shifts, not a transcribed
+conversation.
+\medskip
+\end{abstract}
+\end{@twocolumnfalse}
+]
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.94\textwidth]{fig_grid.pdf}
+\caption{\textbf{The design.} Left to right: four corpora of known voice structure feed a
+\emph{validity gate} that each of the three detection methods must pass --- separating monologue
+from dialogue on all four known cells --- before it is allowed to judge the target. Only surviving
+methods are applied to the DeepSeek-R1 traces (\texttt{ai-reason}) and place them on the
+monologue--dialogue axis anchored by the two same-task AI cells; the human cells validate only.}
+\label{fig:grid}
+\end{figure*}
+
+\section{The question}
+Reasoning-oriented training is now standard in frontier models: given a problem, a model like
+DeepSeek-R1 \cite{guo2025} first generates an extended stretch of intermediate tokens
+\cite{kambhampati2025} --- a reasoning trace --- and only then commits to an answer. These traces
+have a curious property. Each is produced by a single model in one pass, yet a trace often contains
+questions and their answers, objections and concessions, and abrupt reversals
+(``Wait, that's not right''). In human writing such features can mark a genuine exchange, but they
+can equally mark one vivid inner voice. Hence a question easy to state and less easy to settle:
+\emph{does a reasoning trace have the textual structure of a monologue or of a dialogue?}
+
+The question has a live theoretical stake. Kim et al.~\cite{kim2026} argue that reasoning-trained
+models improve partly because they simulate a ``society of thought'' --- distinct internal
+perspectives that propose, criticise, and reconcile --- and older ideas echo it: reasoning as at
+root argumentative and social \cite{mercier2017}, and the mind as many interacting agents
+\cite{minsky1986}. Our premise is narrower and testable: voice structure leaves marks in the
+writing itself. If distinct perspectives take turns producing the text, they should also differ in
+the small, largely involuntary habits --- function-word use, sentence rhythm, dialogue-act moves
+--- that authorship analysis uses to tell writers apart. We therefore treat the question
+operationally: a monologue should read as one author, a dialogue as several, and we ask which the
+traces resemble.
+
+\section{The design: a calibration grid with a gate}
+No corpus of reasoning traces is labelled with its true voice structure, which is what makes the
+question hard to settle directly. We address this with the grid in Figure~\ref{fig:grid}. Four
+corpora of \emph{known} structure vary producer (human vs.\ AI) and structure (monologue vs.\
+dialogue): human monologue (think-aloud protocols \cite{wurgaft2025}), human dialogue (group
+deliberation, DeliData \cite{karadzhov2023}), AI monologue (one Qwen-2.5-7B instance solving a
+puzzle alone), and AI dialogue (four stateless Qwen-2.5-7B instances, each given a fixed role,
+debating). The fifth cell --- native DeepSeek-R1 traces --- is the target.
+
+The grid works as a \emph{gate}. A method may report on the target only after it correctly
+separates monologue from dialogue on all four known cells; a method that fails is reported as
+failing and set aside. A detector that cannot tell voices apart in a genuine four-way debate is in
+no position to rule them out in a trace; one that reports several voices in a lone think-aloud
+protocol is in no position to affirm them there.
+
+Two design choices keep the contrast clean. First, \emph{task control}: \texttt{ai-mono},
+\texttt{ai-dia}, \texttt{ai-reason} and \texttt{hum-mono} all use the same puzzle, Game of 24
+\cite{yao2023}, so a method reading a monologue as one voice cannot merely be reacting to subject
+matter. (\texttt{hum-dia} uses the Wason task, the closest human group-deliberation data available;
+its role is only to confirm that a method detects human dialogue at all, so it never anchors the
+placement.) Second, \emph{pre-registration}: every method configuration, gate, threshold and figure
+was fixed in a written specification and committed to version control (commit \texttt{8cbdee4},
+2026-07-17) before any statistic was computed on the traces. Speaker-identity tokens
+(pseudonyms, role titles, letter labels) were stripped from both dialogue cells beforehand, so
+dialogue detection cannot be an artefact of speaker cues.
+
+\section{Three methods, three signals}
+The methods read deliberately different signals, so that agreement among them would carry more
+weight than any one alone.
+
+\textbf{Method 1 --- document-level author count} \cite{nath2019}. Clusters a document's
+paragraph-sized windows on their 50-most-frequent-token profiles and reports the number of
+clusters as an author count, reduced to a binary single/multi call. \emph{Gate:} balanced accuracy
+across the four cells must beat the 0.50 label-permutation baseline.
+
+\textbf{Method 2 --- sentence-level style switch} \cite{schmidt2025}. A pretrained sequential
+sentence-pair classifier emits, for each adjacent sentence pair, the probability that the two were
+written by different authors, using content-independent style embeddings \cite{patel2025}. Because
+raw scores depend on length, each document's score is turned into a length-adjusted \emph{lean}
+--- its distance to the dialogue anchor's fitted length curve minus its distance to the monologue
+anchor's. \emph{Gate:} mean lean must be higher on the dialogue cells than the monologue cells,
+with Cliff's $\delta\ge0.33$.
+
+\textbf{Method 3 --- dialogue-act structure} \cite{duran2022,schegloff1973}. An LLM tags each
+utterance with a CAMS dialogue act and measures adjacency-pair completion: when a question,
+request or offer occurs, is it met by a valid answer or acceptance in the very next utterance ---
+the mark of conversation a lone writer has little reason to produce. \emph{Gates:} the completion
+rate must separate dialogue from monologue cells \emph{and} the tagger's labels must reach
+Cohen's $\kappa\ge0.70$ against hand labels.
+
+\section{Results: a split}
+\textbf{Method 1 passes, but softly.} Balanced accuracy is $0.6088$ (bootstrap 95\% CI
+$[0.596,0.621]$; permutation $p=0.0001$), clearing the baseline. But the pass leans on
+near-perfect single-author recall ($0.975$ on \texttt{hum-mono}, $0.998$ on \texttt{ai-mono})
+averaged against weak multi-author recall: $0.423$ on \texttt{ai-dia} and a complete miss on
+\texttt{hum-dia} ($0.000$). The detector flags dialogue where it finds it but essentially never
+rules single authorship \emph{out}. A monologue-leaning placement under this method should thus be
+read as the \emph{absence} of a detected authorship signal, not positive evidence of one voice.
+
+\textbf{Method 2 passes cleanly.} Mean lean is higher on the dialogue cells than the monologue cells
+($0.0125$ vs.\ $-0.0105$) with Cliff's $\delta=0.6211$, well above the $0.33$ floor. The traces
+themselves ($0.0433$) sit above \emph{both} AI anchors.
+
+\textbf{Method 3 fails its reliability gate.} Its completion rate does separate dialogue from
+monologue (Cliff's $\delta=0.4717$), but the tagger reaches only $\kappa=0.5425$
+(95\% CI $[0.479,0.604]$) against hand labels --- below the pre-registered $0.70$, with the interval
+not even touching it. Much of the disagreement is between semantically adjacent tags
+(a tree-weighted $\alpha$ reaches $0.619$), but under the frozen rule the method is reported as a
+failed validation and takes no part in placing the target.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.90\textwidth]{fig_split.pdf}
+\caption{\textbf{The answer in one view.} Each surviving method's placement of the target on the
+monologue--dialogue axis (poles at $0$ and $1$). The shaded band is that method's margin, within
+which no lean is called. Method~1's marker sits at the edge of a \emph{wide} margin, just onto the
+monologue side --- a marginal call the bootstrap reverses in nearly a third of resamples.
+Method~2 lands well past the dialogue pole (stable in every resample). The two calls disagree ---
+the result is a split.}
+\label{fig:split}
+\end{figure*}
+
+\textbf{The two survivors disagree} (Table~\ref{tab:verdict}, Figure~\ref{fig:split}). Under the
+placement rule fixed in advance, Method~1 puts the traces just onto the \emph{monologue} side of
+its own no-decision band ($r=0.410$ vs.\ margin $m=0.361$) --- a marginal call the bootstrap
+reverses in nearly a third of resamples. Method~2 puts them firmly on the \emph{dialogue} side,
+past the dialogue anchor itself ($r=0.737$ vs.\ $m=0.112$; stable in every resample). By the rule
+fixed in advance this is reported as a split, not resolved by a vote.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Cross-method verdicts on the reasoning traces. This is the answer to the research
+question.}
+\label{tab:verdict}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Method & Passed gate? & Verdict on \texttt{ai-reason} \\
+\midrule
+1: author count (doc.) & pass & \textcolor{mono}{monologue-leaning} \\
+2: style switch (sent.) & pass & \textcolor{dia}{dialogue-leaning} \\
+3: dialogue acts & \textbf{fail} & excluded --- no reading \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{What the split means}
+The claim this study licenses is about \emph{textual surface structure}, not hidden minds: whether
+the traces exhibit the style-switching and adjacency-pair regularities of multi-party dialogue.
+Read together, the two survivors describe the traces as text that carries local, sentence-level
+marks of style switching \emph{without} a matching separation into distinct document-level authors.
+Two qualifications both pull toward the middle: Method~1 is a conservative detector (it recovers
+multi-voice structure in under a quarter of genuinely multi-voice text), so its monologue call is
+weak evidence; and Method~2's monologue distance is \emph{extrapolated}, because the traces run far
+longer than the monologue anchor --- what it measures directly is that the traces track the
+\emph{dialogue} anchor closely across the shared length range.
+
+The upshot is that the outside view and the inside view do not straightforwardly coincide. Kim et
+al.~\cite{kim2026} infer distinct internal perspectives from interpretability and trace labelling;
+the surface text measured here does not resolve into distinct authorial voices even where its
+register shifts. Internal multi-agent dynamics can coexist with a stylometrically single-author
+surface, and the present evidence is consistent with that gap --- not with a text that reads, on its
+face, as a transcribed conversation. We report this as the reading the pre-registered frame
+supports, not as a refutation of the internal account.
+
+\section{Limitations}
+The target is one model (DeepSeek-R1) on one puzzle family, so the verdict is about this cell, not
+reasoning traces at large. The target is also a \emph{different} base model than the anchors
+(Qwen-2.5-7B), so any measured distance carries a shared model offset; the placement is best read
+as ``closer to which pole,'' not as an absolute distance. Method~2's monologue comparison rests on
+extrapolation beyond the fitted length range, and all three methods run out of domain. These are the
+reasons the validity gate exists: a method that survives it has at least shown competence on this
+data.
+
+\begin{thebibliography}{99}
+\small
+\bibitem{guo2025} D.\ Guo et al. DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement
+learning. \textit{Nature} 645:633--638, 2025.
+\bibitem{kambhampati2025} S.\ Kambhampati et al. Stop anthropomorphizing intermediate tokens as
+reasoning/thinking traces! \textit{arXiv:2504.09762}, 2025.
+\bibitem{kim2026} J.\ Kim, S.\ Lai, N.\ Scherrer, B.\ Ag\"uera y Arcas, J.\ Evans. Reasoning models
+generate societies of thought. \textit{arXiv:2601.10825}, 2026.
+\bibitem{mercier2017} H.\ Mercier, D.\ Sperber. \textit{The Enigma of Reason.} Harvard Univ.\
+Press, 2017.
+\bibitem{minsky1986} M.\ Minsky. \textit{The Society of Mind.} Simon \& Schuster, 1986.
+\bibitem{wurgaft2025} D.\ Wurgaft et al. Scaling up the think-aloud method. \textit{Proc.\ CogSci},
+2025.
+\bibitem{karadzhov2023} G.\ Karadzhov, T.\ Stafford, A.\ Vlachos. DeliData: a dataset for
+deliberation in multi-party problem solving. \textit{Proc.\ ACM HCI} 7(CSCW2), 2023.
+\bibitem{yao2023} S.\ Yao et al. Tree of thoughts: deliberate problem solving with LLMs.
+\textit{NeurIPS} 36, 2023.
+\bibitem{nath2019} S.\ Nath. Style change detection by threshold-based and window-merge clustering.
+\textit{CLEF Working Notes}, 2019.
+\bibitem{schmidt2025} G.\ Schmidt et al. Style change detection using a sequential sentence-pair
+classifier. \textit{CLEF Working Notes}, 2025. \textit{arXiv:2508.00675}.
+\bibitem{patel2025} A.\ Patel et al. StyleDistance: content-independent style embeddings with
+synthetic parallel examples. \textit{NAACL}, 2025.
+\bibitem{duran2022} N.\ Duran, S.\ Battle, J.\ Smith. Inter-annotator agreement using the
+Conversation Analysis Modelling Schema. \textit{Comm.\ Methods \& Measures} 16(3):182--214, 2022.
+\bibitem{schegloff1973} E.\ Schegloff, H.\ Sacks. Opening up closings. \textit{Semiotica}
+8(4):289--327, 1973.
+\end{thebibliography}
+
+\end{document}
