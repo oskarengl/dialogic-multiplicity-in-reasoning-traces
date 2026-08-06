@@ -49,7 +49,7 @@ not judge the traces.
 | Path | Contents |
 |---|---|
 | [`paper/`](paper/) | The paper, its two figures, and the scripts that generate them |
-| [`preregistration/`](preregistration/) | The frozen method specification and a record of deviations from it |
+| [`preregistration/`](preregistration/) | How the methods were judged, and the frozen method specification |
 | [`data/`](data/README.md) | One folder per corpus, with provenance, licences and preprocessing documentation |
 | [`methods/`](methods/) | One folder per method: run instructions, sources, verification, and local changes to upstream code |
 | [`outputs/`](outputs/README.md) | Per-document results for all three methods |

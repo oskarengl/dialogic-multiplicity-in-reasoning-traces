@@ -33,6 +33,6 @@ upstream repository before running either script.
 `run_calibration.py --report` implements the original pre-registered gate, which selected a
 length curve per AI pole and required Cliff's δ ≥ 0.33 between dialogue and monologue cells.
 The paper does not use that gate; see
-[`../../../preregistration/DEVIATIONS.md`](../../../preregistration/DEVIATIONS.md). The
+[`../../../preregistration/METHOD_SELECTION.md`](../../../preregistration/METHOD_SELECTION.md). The
 inference phase, which produces the raw scores the reported Method 2 numbers are computed
 from, is unaffected.

@@ -23,7 +23,7 @@ M3 dialogue-act tagging               FAIL   ...  excluded (kappa = 0.5425 < 0.7
 These files apply the per-method gates as pre-registered, under which Method 1 passed and
 Method 3 was excluded. The paper applies a single validity check to all three methods
 instead, under which Method 1 fails and Method 3 passes. See
-[`../preregistration/DEVIATIONS.md`](../preregistration/DEVIATIONS.md) and the paper's §3.
+[`../preregistration/METHOD_SELECTION.md`](../preregistration/METHOD_SELECTION.md) and the paper's §3.
 
 The per-document measurements in `method1/`, `method2/` and `method3/` are the same under
 either framing.

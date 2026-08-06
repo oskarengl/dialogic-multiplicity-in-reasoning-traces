@@ -1,6 +1,48 @@
-# Deviations from the pre-registration
+# How the methods were judged
 
-[`methods.md`](methods.md) is the frozen method specification. The commits that froze it:
+A method is carried forward only if it sorts the four known cells correctly into monologue
+and dialogue. The same check is applied to all three methods.
+
+Under it, Method 2 and Method 3 pass and Method 1 fails. Method 1 reads all 500 human
+debates and a majority of the AI debates as single-author, placing both known dialogue cells
+on the monologue side. Its reading of the traces appears in brackets in Table 1 of the paper
+and carries no weight.
+
+## This replaced a set of per-method gates
+
+[`methods.md`](methods.md) is the frozen method specification. It gave each method its own
+statistical gate:
+
+| Method | Pre-registered gate |
+|---|---|
+| 1 | Balanced accuracy significantly above 0.50, against a label-permutation null |
+| 2 | Mean `lean` for dialogue cells ②③ above monologue cells ①④, and Cliff's δ ≥ 0.33 |
+| 3 | (a) Tagger to human Cohen's κ ≥ 0.70, and (b) completion rate separating dialogue from monologue within each producer |
+
+Under those gates Method 1 passed, and Method 3 failed gate (a) with κ = 0.5425.
+`methods.md` records in a clarification dated 2026-07-22 that Method 3 therefore gets no
+call on cell ⑤.
+
+The paper gives the reason for the change in §3, "Deviation from the pre-registered gates":
+the gates admitted a method that reads most debates as the work of a single author, and
+excluded a method that correctly separates all four known cells.
+
+**The change was made after the gate results were known.** The check that replaced them is
+defined only on the four known cells and does not refer to cell ⑤, but swapping which
+methods qualify does change what the paper reports about cell ⑤. The paper states the
+deviation rather than presenting the single check as the original plan.
+
+Method 3's κ shortfall is not set aside. §4.1 reports 74.2% agreement on 503 utterances,
+κ = 0.54, or 0.62 tree-weighted, records that 101 of 130 disagreements turn on the general
+`inform` label against a more specific one, and names the labels as the weakest link in
+Method 3's chain.
+
+An earlier treatment reported Method 3's cell-⑤ reading as a separately sectioned
+exploratory analysis. Artifacts from it remain at
+`scripts/place_cell5_method3_exploratory.py` and
+`outputs/placement/cell5_method3_exploratory.json`.
+
+## When the specification was frozen
 
 | Commit | Date | What it froze |
 |---|---|---|
@@ -11,38 +53,9 @@
 Commit hashes changed when this repository was prepared for release. Dates, messages and
 order are unchanged. See [History note](#history-note).
 
-## The validity check replaced the per-method gates
-
-**Pre-registered.** Each method had its own gate, and only a method passing its own gate
-could speak about cell ⑤:
-
-| Method | Pre-registered gate |
-|---|---|
-| 1 | Balanced accuracy significantly above 0.50, against a label-permutation null |
-| 2 | Mean `lean` for dialogue cells ②③ above monologue cells ①④, and Cliff's δ ≥ 0.33 |
-| 3 | (a) Tagger to human Cohen's κ ≥ 0.70, and (b) completion rate separating dialogue from monologue within each producer |
-
-**Results under those gates.** Method 1 passed. Method 3 failed gate (a) with κ = 0.5425.
-`methods.md` records in a clarification dated 2026-07-22 that Method 3 therefore gets no
-call on cell ⑤.
-
-**What the paper reports instead.** A single check applied identically to all three methods:
-a method is carried forward only if it sorts the four known cells correctly into monologue
-and dialogue. Under it, Methods 2 and 3 pass and Method 1 fails.
-
-The paper states the change and its reason in §3, "Deviation from the pre-registered gates":
-the gates admitted a method that reads most debates as the work of a single author, and
-excluded a method that correctly separates all four known cells. Method 1's reading of the
-traces is reported in brackets in Table 1.
-
-Method 3's κ shortfall is reported in §4.1, which records 74.2% agreement on 503 utterances,
-κ = 0.54, or 0.62 tree-weighted, and states that 101 of 130 disagreements turn on the general
-`inform` label against a more specific one.
-
-An earlier treatment reported Method 3's cell-⑤ reading as a separately sectioned
-exploratory analysis. Artifacts from it remain at
-`scripts/place_cell5_method3_exploratory.py` and
-`outputs/placement/cell5_method3_exploratory.json`.
+`outputs/placement/margins_frozen.txt` records that the no-clear-margin bands were fixed
+while no cell-⑤ results existed on disk, at 2026-07-22T15:53:42Z with seed `20260722`. The
+placement was computed at 18:00:23Z the same day.
 
 ## Smaller precisifications
 
@@ -78,6 +91,6 @@ cluster size times average intra-cluster distance. See
 This repository was prepared for public release from the working repository. The PAN 2019
 corpus, which is access-restricted, and literature PDFs under publisher copyright were
 removed from every commit, so commit hashes differ from those in the working repository.
-Commit dates, messages, authorship and order are preserved. The data and script folders
-were also reorganised for release, so paths quoted inside `methods.md`, which is kept frozen,
+Commit dates, messages, authorship and order are preserved. The data and script folders were
+also reorganised for release, so paths quoted inside `methods.md`, which is kept frozen,
 refer to the layout at the time of freezing rather than the current one.
