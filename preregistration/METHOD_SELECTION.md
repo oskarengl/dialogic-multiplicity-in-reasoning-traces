@@ -25,14 +25,13 @@ call on cell ⑤.
 
 The paper gives the reason for the change in §3, "Deviation from the pre-registered gates":
 the gates admitted a method that reads most debates as the work of a single author, and
-excluded a method that correctly separates all four known cells. The check was therefore 
-similified into that a method passes if it correctly seperates the monologue from the 
-dialogue corpora for both the human and the AI datasets. 
-
+excluded a method that correctly separates all four known cells. The check was therefore
+simplified: a method passes if it correctly separates the monologue from the dialogue
+corpora for both the human and the AI datasets.
 
 **The change was made after the gate results were known.** The check that replaced them is
 defined only on the four known cells and does not refer to cell ⑤, but swapping which
-methods qualify does change what the paper reports about cell ⑤. 
+methods qualify does change what the paper reports about cell ⑤.
 
 Method 3's κ shortfall is reported. §4.1 reports 74.2% agreement on 503 utterances,
 κ = 0.54, or 0.62 tree-weighted, records that 101 of 130 disagreements turn on the general
@@ -93,6 +92,8 @@ cluster size times average intra-cluster distance. See
 This repository was prepared for public release from the working repository. The PAN 2019
 corpus, which is access-restricted, and literature PDFs under publisher copyright were
 removed from every commit, so commit hashes differ from those in the working repository.
-Commit dates, messages, authorship and order are preserved. The data and script folders were
-also reorganised for release, so paths quoted inside `methods.md`, which is kept frozen,
-refer to the layout at the time of freezing rather than the current one.
+Commit dates, messages, authorship and order are preserved.
+
+`methods.md` was also condensed for readability during release preparation. Its
+specifications, thresholds and numbers are unchanged, and the text as frozen is retrievable
+with `git show 7747aef:methods.md`.
