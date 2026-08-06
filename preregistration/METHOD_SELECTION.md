@@ -25,14 +25,16 @@ call on cell ⑤.
 
 The paper gives the reason for the change in §3, "Deviation from the pre-registered gates":
 the gates admitted a method that reads most debates as the work of a single author, and
-excluded a method that correctly separates all four known cells.
+excluded a method that correctly separates all four known cells. The check was therefore 
+similified into that a method passes if it correctly seperates the monologue from the 
+dialogue corpora for both the human and the AI datasets. 
+
 
 **The change was made after the gate results were known.** The check that replaced them is
 defined only on the four known cells and does not refer to cell ⑤, but swapping which
-methods qualify does change what the paper reports about cell ⑤. The paper states the
-deviation rather than presenting the single check as the original plan.
+methods qualify does change what the paper reports about cell ⑤. 
 
-Method 3's κ shortfall is not set aside. §4.1 reports 74.2% agreement on 503 utterances,
+Method 3's κ shortfall is reported. §4.1 reports 74.2% agreement on 503 utterances,
 κ = 0.54, or 0.62 tree-weighted, records that 101 of 130 disagreements turn on the general
 `inform` label against a more specific one, and names the labels as the weakest link in
 Method 3's chain.
