@@ -1,4 +1,4 @@
-# How the methods were judged
+# Method Verification 
 
 A method is carried forward only if it sorts the four known cells correctly into monologue
 and dialogue. The same check is applied to all three methods.
