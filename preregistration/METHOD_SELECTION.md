@@ -48,9 +48,9 @@ exploratory analysis. Artifacts from it remain at
 
 | Commit | Date | What it froze |
 |---|---|---|
-| `b7f40d0` | 2026-07-10 | Method specifications for all three methods, with open decisions filled in |
-| `7747aef` | 2026-07-16 | Methods 1 to 3, before running cell ⑤ (`ai_reasoning`) |
-| `fba456b` | 2026-07-17 | Re-registered the Method 1 gate (balanced accuracy with a label-permutation null) |
+| `b7f40d0` | 2026-07-10 | `research_plan.md`, the design document, including a section pre-registering the three methods. Retrieve with `git show b7f40d0:research_plan.md` |
+| `7747aef` | 2026-07-16 | `methods.md`, the operational specification that superseded that section, before cell ⑤ (`ai_reasoning`) was measured |
+| `fba456b` | 2026-07-17 | The re-registered Method 1 gate: balanced accuracy with a label-permutation null |
 
 Commit hashes changed when this repository was prepared for release. Dates, messages and
 order are unchanged. See [History note](#history-note).
